@@ -1,0 +1,21 @@
+components: []
+container:
+  properties:
+    html: |
+      <div anvil-slot="default"></div>
+  type: HtmlTemplate
+custom_component: true
+custom_component_container: true
+events:
+- default_event: true
+  description: When the RadioButton selection changes
+  name: change
+  parameters: []
+- {description: When the component is removed from the screen, name: hide}
+- {description: When the component is shown on the screen, name: show}
+is_package: true
+properties:
+- {allow_binding_writeback: true, default_binding_prop: true, description: Value property of the selected RadioButton, important: true, name: selected_value, type: object}
+toolbox_item:
+  hidden: true
+  icon: {dark: 'asset:designer_icons/radio_group_panel_dark.svg', light: 'asset:designer_icons/radio_group_panel.svg'}

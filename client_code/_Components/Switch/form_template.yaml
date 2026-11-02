@@ -1,0 +1,79 @@
+components: []
+container:
+  event_bindings: {}
+  properties:
+    html: |+
+      <div anvil-name="anvil-m3-switch-container" class="anvil-m3-switch-container">
+        <label anvil-name="anvil-m3-switch" class="anvil-m3-switch">
+          <input class="anvil-m3-switch-input" anvil-name="anvil-m3-switch-input" type="checkbox">
+          <span class="anvil-m3-switch-slider" anvil-name="anvil-m3-switch-slider">
+            <span anvil-name="anvil-m3-enabled-switch-icon" class="anvil-m3-enabled-switch-icon"></span>
+            <span anvil-name="anvil-m3-disabled-switch-icon" class="anvil-m3-disabled-switch-icon"></span>
+          </span>
+        </label>
+      </div>
+
+
+  type: HtmlTemplate
+custom_component: true
+events:
+- {default_event: true, description: When the state of the component is changed., name: change}
+- {description: When the component is shown on the screen., name: show}
+- {description: When the component is removed from the screen., name: hide}
+is_package: true
+properties:
+- default_value: ''
+  description: Optional icon to appear on the Switch when toggled on.
+  group: Icon
+  iconsets: [material-icons]
+  important: false
+  include_none_option: true
+  name: selected_icon
+  type: icon
+- allow_binding_writeback: true
+  binding_writeback_events: [change]
+  default_binding_prop: true
+  default_value: false
+  description: If True, this component is toggled on.
+  designerHint: toggle
+  designer_hint: toggle
+  group: Key Properties
+  important: true
+  name: selected
+  type: boolean
+- default_value: ''
+  description: Optional icon on the Switch when toggled off.
+  group: Icon
+  iconsets: [material-icons]
+  important: false
+  include_none_option: true
+  name: unselected_icon
+  type: icon
+- {default_value: '', description: The background colour of the component when toggled off., group: Look and Feel, important: false, name: unselected_background_color, type: color}
+- {default_value: '', description: The background colour of the component when toggled on., group: Look and Feel, important: false, name: selected_background_color, type: color}
+- {default_value: '', description: The colour of the Switch thumb when toggled off., group: Look and Feel, name: unselected_thumb_color, type: color}
+- {default_value: '', description: The colour of the Switch thumb when toggled on., group: Look and Feel, name: selected_thumb_color, type: color}
+- {default_value: '', description: The colour of the outline of the Switch when toggled off., group: Look and Feel, name: unselected_outline_color, type: color}
+- {default_value: '', description: A style for this component defined in CSS and added to Roles., group: Look and Feel, name: role, type: themeRole}
+- {description: Use this property to store any extra data for the component., group: Other, important: false, name: tag, type: object}
+- {default_value: true, description: 'If True, this component allows user interaction.', designerHint: enabled, designer_hint: enabled, group: Interaction, name: enabled, type: boolean}
+- default_value: left
+  description: The position of this component in the available space.
+  designerHint: align-horizontal
+  designer_hint: align-horizontal
+  group: Layout
+  important: true
+  name: align
+  options: [left, center, right]
+  type: enum
+- default_value: ['', '', '', '']
+  description: The margin (pixels) of the component.
+  group: Layout
+  important: true
+  name: margin
+  type: margin
+- {default_value: true, description: 'If True, the component will be displayed.', designer_hint: visible, group: Look and Feel, important: true, name: visible, type: boolean}
+- {default_value: '', description: The text to display when the mouse is hovered over this component., group: Other, important: true, name: tooltip, type: string}
+toolbox_item:
+  hidden: true
+  icon: {dark: 'asset:designer_icons/switch_dark.svg', light: 'asset:designer_icons/switch.svg'}

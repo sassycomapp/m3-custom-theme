@@ -1,0 +1,52 @@
+components: []
+container:
+  event_bindings: {}
+  properties:
+    html: |-
+      <!-- <div anvil-name="anvil-m3-card-component" style="display: flex"> -->
+        <div anvil-name="anvil-m3-card" class="anvil-m3-card anvil-m3-card-direction-column">
+          <div anvil-slot="card-content-slot" anvil-name="content" class="anvil-m3-card-content">
+            <p anvil-name="empty-content" anvil-if-slot-empty="card-content-slot" style="color: #BBB"><i>Card Content</i></p>
+          </div>
+        </div>
+      <!-- </div> -->
+  type: HtmlTemplate
+custom_component: true
+custom_component_container: true
+events:
+- {default_event: true, description: When the component is shown on the screen., name: show}
+- {description: When the component is removed from the screen., name: hide}
+is_package: true
+properties:
+- {default_binding_prop: true, default_value: true, description: 'If True, the component will be displayed.', designer_hint: visible, group: Look and Feel, important: true, name: visible, type: boolean}
+- {default_value: '', description: A style for this component defined in CSS and added to Roles., group: Look and Feel, name: role, type: themeRole}
+- {description: Use this property to store any extra data for the component., group: Other, important: false, name: tag, type: object}
+- default_value: left
+  description: The position of this component in the available space.
+  designer_hint: align-horizontal
+  group: Layout
+  important: true
+  name: align
+  options: [left, center, right, full]
+  type: enum
+- default_value: elevated
+  description: A predefined style for this component.
+  group: Key Properties
+  important: true
+  name: appearance
+  options: [elevated, filled, outlined]
+  type: enum
+- {description: The margin and padding (pixels) of the component., group: Layout, important: true, name: spacing, type: spacing}
+- {default_value: '', description: The colour of the background of this component., group: Look and Feel, important: false, name: background_color, type: color}
+- {default_value: '', description: The text to display when the mouse is hovered over this component., group: Other, important: false, name: tooltip, type: string}
+- {default_value: '', description: The border of this component. Can take any valid CSS border value., group: Look and Feel, important: false, name: border, type: string}
+- default_value: column
+  description: The orientation of the content in this Card
+  group: Key Properties
+  important: true
+  name: orientation
+  options: [column, row]
+  type: enum
+toolbox_item:
+  hidden: true
+  icon: {dark: 'asset:designer_icons/card_dark.svg', light: 'asset:designer_icons/card.svg'}

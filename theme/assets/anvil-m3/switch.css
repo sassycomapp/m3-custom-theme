@@ -1,0 +1,146 @@
+/*Inspired by W3 schools slider: https://www.w3schools.com/howto/howto_css_switch.asp*/
+
+element {
+  --anvil-m3-unselected-thumb-color: var(--anvil-m3-outline);
+  --anvil-m3-selected-thumb-color: var(--anvil-m3-on-primary);
+}
+
+.anvil-m3-switch-container {
+  display: flex;
+  margin: 8px;
+}
+.anvil-m3-switch {
+  position: relative;
+  display: inline-block;
+  width: 52px;
+  height: 32px;
+}
+
+.anvil-m3-switch input.anvil-m3-switch-input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.anvil-m3-switch-slider {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--anvil-m3-surface-container-highest);
+  -webkit-transition-duration: .15s;
+  transition-duration: .15s;
+  border-radius: 16px;
+  border: 2px var(--anvil-m3-outline) solid;
+}
+
+.anvil-m3-switch-slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  margin-left: 4px;
+  background-color: var(--anvil-m3-unselected-thumb-color);
+  -webkit-transition: height .15s, width .15s, transform .15s .15s;
+  transition: height .15s, width .15s, transform .15s .15s;
+  border-radius: 50%;
+}
+
+.anvil-m3-switch-slider.anvil-m3-has-disabled-icon:before {
+  height: 24px;
+  width: 24px;
+}
+
+.anvil-m3-switch-input:checked + .anvil-m3-switch-slider {
+  background-color: var(--anvil-m3-primary);
+  border: none;
+}
+
+.anvil-m3-switch-input:checked + .anvil-m3-switch-slider:before {
+  -webkit-transform: translate(19px);
+  -ms-transform: translate(19px);
+  transform: translate(19px);
+  background-color: var(--anvil-m3-selected-thumb-color);
+  height: 24px;
+  width: 24px;
+}
+
+.anvil-m3-switch-slider .anvil-m3-enabled-switch-icon, .anvil-m3-switch-slider .anvil-m3-disabled-switch-icon  {
+  z-index: 1;
+  font-size: 16px;
+  margin-left: 10px;
+  -webkit-transition: transform .15s .15s;
+  transition: transform .15s .15s;
+}
+
+.anvil-m3-switch-slider .anvil-m3-disabled-switch-icon {
+  margin-left: -18px;
+}
+
+.anvil-m3-switch-slider.anvil-m3-has-disabled-icon:not(.anvil-m3-has-enabled-icon) .anvil-m3-disabled-switch-icon {
+  margin-left: -2px;
+}
+
+.anvil-m3-switch-input:checked + .anvil-m3-switch-slider .anvil-m3-enabled-switch-icon, .anvil-m3-switch-input:checked + .anvil-m3-switch-slider .anvil-m3-disabled-switch-icon {
+  -webkit-transform: translate(17px);
+  -ms-transform: translate(17px);
+  transform: translate(17px);
+}
+
+.anvil-m3-switch input.anvil-m3-switch-input:checked + .anvil-m3-switch-slider .anvil-m3-enabled-switch-icon {
+  color: var(--anvil-m3-on-primary-container);
+  visibility: visible;
+}
+
+.anvil-m3-switch input.anvil-m3-switch-input:checked + .anvil-m3-switch-slider .anvil-m3-disabled-switch-icon {
+  visibility: hidden;
+}
+
+.anvil-m3-switch-input:not(:checked) + .anvil-m3-switch-slider .anvil-m3-disabled-switch-icon {
+  color: var(--anvil-m3-surface-container-highest);
+  visibility: visible;
+}
+
+.anvil-m3-switch-input:not(:checked) + .anvil-m3-switch-slider .anvil-m3-enabled-switch-icon {
+  visibility: hidden;
+}
+
+/**Disabled states**/
+.anvil-m3-switch input.anvil-m3-switch-input:checked:disabled + .anvil-m3-switch-slider .anvil-m3-enabled-switch-icon {
+  color: var(--anvil-m3-on-disabled);
+}
+
+.anvil-m3-switch-input:disabled + .anvil-m3-switch-slider {
+  border-color: var(--anvil-m3-dark-overlay-2);
+  cursor: not-allowed
+}
+
+.anvil-m3-switch-input:disabled + .anvil-m3-switch-slider:before {
+  background-color: var(--anvil-m3-on-disabled)
+}
+
+.anvil-m3-switch-input:checked:disabled + .anvil-m3-switch-slider {
+  background-color: var(--anvil-m3-dark-overlay-2);
+}
+
+.anvil-m3-switch-input:checked:disabled + .anvil-m3-switch-slider:before {
+  background-color: var(--anvil-m3-surface)
+}
+
+.anvil-m3-switch-input:focus-visible + .anvil-m3-switch-slider {
+  outline: 1px auto var(--anvil-m3-primary);
+}
+
+.anvil-m3-switch-input:focus:not(:checked) + .anvil-m3-switch-slider {
+  background: linear-gradient(0deg, var(--anvil-m3-dark-overlay-2), var(--anvil-m3-dark-overlay-2)), var(--anvil-m3-surface-container-highest)
+}
+
+.anvil-m3-switch-input:focus:checked + .anvil-m3-switch-slider {
+  background: linear-gradient(0deg, var(--anvil-m3-light-overlay-2), var(--anvil-m3-light-overlay-2)), var(--anvil-m3-primary);
+}
+
+

@@ -1,0 +1,165 @@
+.anvil-m3-heading-container, .anvil-m3-text-container, .anvil-m3-link-icon-container {
+  display: flex;
+  align-items: center;
+}
+
+.anvil-m3-link-container {
+  display: flex
+}
+
+.anvil-m3-heading-container > .anvil-m3-heading-icon, .anvil-m3-text-container > .anvil-m3-text-icon {
+  font-size: inherit;
+}
+
+.anvil-m3-text-icon {
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/*HEADING*/
+.anvil-m3-heading-display, .anvil-m3-heading-headline, .anvil-m3-heading-title{
+  font-weight: 400;
+}
+
+.anvil-m3-heading-display.anvil-m3-heading-large {
+  font-size: 57px;
+  letter-spacing: -0.25px;
+}
+
+.anvil-m3-heading-display.anvil-m3-heading-medium {
+  font-size: 45px;
+
+}
+
+.anvil-m3-heading-display.anvil-m3-heading-small {
+  font-size: 36px;
+}
+
+.anvil-m3-heading-headline.anvil-m3-heading-large {
+  font-size: 32px;
+}
+
+.anvil-m3-heading-headline.anvil-m3-heading-medium {
+  font-size: 28px;
+}
+
+.anvil-m3-heading-headline.anvil-m3-heading-small {
+  font-size: 24px;
+}
+
+.anvil-m3-heading-title.anvil-m3-heading-large {
+  font-size: 22px;
+}
+
+.anvil-m3-heading-title.anvil-m3-heading-large .anvil-m3-heading-icon {
+  font-size: 24px;
+}
+
+.anvil-m3-heading-title.anvil-m3-heading-medium {
+  font-size: 16px;
+  letter-spacing: 0.15px;
+  font-weight: 500;
+}
+
+.anvil-m3-heading-title.anvil-m3-heading-medium .anvil-m3-heading-icon {
+  font-size: 24px;
+}
+
+
+.anvil-m3-heading-title.anvil-m3-heading-small {
+  font-size: 14px;
+  letter-spacing: 0.1px;
+  font-weight: 500;
+}
+
+.anvil-m3-heading-title.anvil-m3-heading-small .anvil-m3-heading-icon {
+  font-size: 20px;
+}
+
+/*TEXT*/
+.anvil-m3-text-body {
+  font-weight: 400;
+}
+
+.anvil-m3-text-label {
+  font-weight: 500;
+}
+
+.anvil-m3-text-body.anvil-m3-text-large {
+  font-size: 16px;
+  letter-spacing: 0.5px;
+}
+
+.anvil-m3-text-body.anvil-m3-text-large .anvil-m3-text-icon {
+  font-size: 24px;
+}
+
+.anvil-m3-text-body.anvil-m3-text-medium {
+  font-size: 14px;
+  letter-spacing: 0.25px;
+}
+
+.anvil-m3-text-body.anvil-m3-text-medium .anvil-m3-text-icon {
+  font-size: 20px;
+}
+
+.anvil-m3-text-body.anvil-m3-text-small .anvil-m3-text-icon {
+  font-size: 18px;
+}
+
+.anvil-m3-text-body.anvil-m3-text-small {
+  font-size: 12px;
+  letter-spacing: 0.4px;
+}
+
+.anvil-m3-text-label.anvil-m3-text-large {
+  font-size: 14px;
+  letter-spacing: 0.1px;
+}
+
+.anvil-m3-text-label.anvil-m3-text-large .anvil-m3-text-icon {
+  font-size: 20px;
+}
+
+.anvil-m3-text-label.anvil-m3-text-medium .anvil-m3-text-icon, .anvil-m3-text-label.anvil-m3-text-small .anvil-m3-text-icon {
+  font-size: 18px;
+}
+
+.anvil-m3-text-label.anvil-m3-text-medium {
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+
+.anvil-m3-text-label.anvil-m3-text-small {
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+
+/*LINK*/
+
+a.anvil-m3-link:hover, a.anvil-m3-link:focus {
+  text-decoration: none;
+}
+
+.anvil-m3-link {
+  display: inline-block;
+  text-decoration: none;
+  width: 100%;
+}
+
+.anvil-m3-link, .anvil-m3-link:focus {
+  color: var(--anvil-m3-primary);
+}
+
+.anvil-m3-link:hover {
+  color: var(--anvil-m3-on-primary-container)
+}
+
+.anvil-m3-link:focus:hover .anvil-m3-link-icon-container {
+  color: var(--anvil-m3-on-primary-container)
+}
+
+.anvil-m3-link-icon-container {
+  display: flex;
+}
+

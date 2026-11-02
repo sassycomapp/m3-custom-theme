@@ -1,0 +1,68 @@
+components: []
+container:
+  event_bindings: {}
+  properties:
+    html: |-
+      <div class="anvil-m3-heading-container" anvil-name="anvil-m3-heading-container">
+        <span anvil-name="anvil-m3-heading-icon" class="anvil-m3-heading-icon material-symbols-outlined"></span>
+        <h1 class="anvil-m3-heading-display" anvil-name="anvil-m3-heading-display"></h1>
+        <h2 class="anvil-m3-heading-headline" anvil-name="anvil-m3-heading-headline"></h2>
+        <h3 class="anvil-m3-heading-title" anvil-name="anvil-m3-heading-title"></h3>
+      </div>
+  type: HtmlTemplate
+custom_component: true
+events:
+- {default_event: true, description: When the component is shown on the screen., name: show}
+- {description: When the component is removed from the screen., name: hide}
+is_package: true
+properties:
+- default_value: headline
+  description: 'Role of the heading component: display, headline or title'
+  group: Key Properties
+  important: true
+  name: style
+  options: [display, headline, title]
+  type: enum
+- default_value: medium
+  description: Size of the heading component
+  group: Key Properties
+  important: true
+  name: scale
+  options: [small, medium, large]
+  type: enum
+- {description: The font size of the text displayed on this component., group: Text, important: true, name: font_size, type: number}
+- {description: Use this property to store any extra data for the component., group: Other, important: false, name: tag, type: object}
+- {default_value: '', description: A style for this component defined in CSS and added to Roles., group: Look and Feel, name: role, type: themeRole}
+- {default_value: '', description: The font family to use for this component., group: Text, name: font_family, type: string}
+- {default_value: false, description: 'If True, this component’s text will be bold.', designer_hint: font-bold, group: Text, name: bold, type: boolean}
+- {default_value: false, description: 'If True, this component’s text will be italic.', designer_hint: font-italic, group: Text, name: italic, type: boolean}
+- {default_binding_prop: true, default_value: '', description: The text displayed on this component., group: Key Properties, important: true, multiline: true, name: text, type: string}
+- {default_value: false, description: 'If True, this component’s text will be underlined.', designer_hint: font-underline, group: Text, name: underline, type: boolean}
+- {default_value: true, description: If True, designer_hint: visible, group: Look and Feel, important: true, name: visible, the component will be displayed.: null, type: boolean}
+- default_value: ''
+  description: The icon to display on this component.
+  group: Icon
+  iconsets: [material-icons]
+  important: true
+  include_none_option: true
+  name: icon
+  type: icon
+- {default_value: '', description: The colour of the text on the component., group: Look and Feel, name: text_color, type: color}
+- {default_value: '', description: The background colour of this component., group: Look and Feel, name: background_color, type: color}
+- {default_value: '', description: The border of this component. Can take any valid CSS border value., group: Look and Feel, name: border, type: string}
+- default_value: left
+  description: The position of this component in the available space.
+  designer_hint: align-horizontal
+  group: Layout
+  important: true
+  name: align
+  options: [left, center, right, justify]
+  type: enum
+- {description: The size (pixels) of the icon displayed on this component., group: Icon, name: icon_size, type: number}
+- {default_value: '', description: The colour of the icon displayed on this component., group: Look and Feel, name: icon_color, type: color}
+- {description: The margin and padding (pixels) of the component., group: Layout, important: true, name: spacing, type: spacing}
+- {default_value: '', description: The text to display when the mouse is hovered over this component., group: Other, important: true, name: tooltip, type: string}
+- {default_value: '', description: The line height of the component, group: Text, important: false, name: line_height, type: string}
+toolbox_item:
+  hidden: true
+  icon: {dark: 'asset:designer_icons/heading_dark.svg', light: 'asset:designer_icons/heading.svg'}

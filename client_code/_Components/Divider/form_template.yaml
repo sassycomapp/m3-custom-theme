@@ -1,0 +1,28 @@
+components: []
+container:
+  properties:
+    html: |-
+      <div class="anvil-m3-divider" anvil-name="anvil-m3-divider">
+      </div>
+  type: HtmlTemplate
+custom_component: true
+events:
+- {default_event: true, name: show}
+- {name: hide}
+is_package: true
+properties:
+- default_binding_prop: true
+  default_value: full_width
+  description: Display the Divider across the full width of the container or inset.
+  group: Key Properties
+  important: true
+  name: type
+  options: [full_width, inset]
+  type: enum
+- {default_value: true, description: 'If True, the component will be displayed.', designer_hint: visible, group: Look and Feel, important: true, name: visible, type: boolean}
+- {default_value: '', description: A style for this component defined in CSS and added to Roles., group: Look and Feel, name: role, type: themeRole}
+- {default_value: '', description: The colour of this component., important: true, name: color, type: color}
+- {description: The margin (pixels) of the component., group: Layout, important: true, name: margin, type: margin}
+toolbox_item:
+  hidden: true
+  icon: {dark: 'asset:designer_icons/divider_dark.svg', light: 'asset:designer_icons/divider.svg'}

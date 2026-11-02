@@ -1,0 +1,72 @@
+components: []
+container:
+  event_bindings: {show: form_show}
+  properties:
+    html: |-
+      <div anvil-name="anvil-m3-button-component" style="display:flex">
+        <button anvil-name="anvil-m3-button" class="anvil-m3-button">
+          <i anvil-name="anvil-m3-button-icon" class="material-symbols-outlined" style="display: none;"></i>
+          <span anvil-name="anvil-m3-button-text"></span>
+        </button>
+      </div>
+  type: HtmlTemplate
+custom_component: true
+custom_component_container: false
+data_bindings: []
+events:
+- {default_event: true, description: When the component is clicked., name: click}
+- {description: When the component is shown on the screen., name: show}
+- {description: When the component is removed from the screen., name: hide}
+is_package: true
+properties:
+- {default_value: true, description: 'If True, this component allows user interaction.', designer_hint: enabled, group: Interaction, name: enabled, type: boolean}
+- {description: Use this property to store any extra data for the component., group: Other, important: false, name: tag, type: object}
+- {default_value: '', description: A style for this component defined in CSS and added to Roles., group: Look and Feel, name: role, type: themeRole}
+- default_value: left
+  description: The position of this component in the available space.
+  designer_hint: align-horizontal
+  group: Layout
+  important: true
+  name: align
+  options: [left, center, right, full]
+  type: enum
+- {default_value: true, description: 'If True, the component will be displayed.', designer_hint: visible, group: Look and Feel, important: true, name: visible, type: boolean}
+- default_value: filled
+  description: A predefined style for this component.
+  group: Key Properties
+  important: true
+  name: appearance
+  options: [filled, elevated, tonal, outlined, text]
+  type: enum
+- {default_value: '', description: The text displayed on this component., group: Key Properties, important: true, name: text, type: string}
+- {default_value: '', description: The colour of the text on the component., group: Look and Feel, name: text_color, type: color}
+- {default_value: '', description: The font family to use for this component., group: Text, name: font_family, type: string}
+- {description: The font size of the text displayed on this component., group: Text, name: font_size, type: number}
+- {default_value: false, description: 'If True, this component’s text will be underlined.', designer_hint: font-underline, group: Text, important: false, name: underline, type: boolean}
+- {default_value: false, description: 'If True, this component’s text will be italic.', designer_hint: font-italic, group: Text, important: false, name: italic, type: boolean}
+- {default_value: true, description: 'If True, this component’s text will be bold.', designer_hint: font-bold, group: Text, important: false, name: bold, type: boolean}
+- default_value: ''
+  description: The icon to display on this component.
+  group: Icon
+  iconsets: [material-icons]
+  important: true
+  include_none_option: true
+  name: icon
+  type: icon
+- {default_value: '', description: The colour of the icon displayed on this component., group: Look and Feel, name: icon_color, type: color}
+- {description: The size (pixels) of the icon displayed on this component., group: Icon, name: icon_size, type: number}
+- default_value: left
+  description: The position of the icon on this component.
+  designer_hint: align-horizontal
+  group: Icon
+  important: true
+  name: icon_align
+  options: [left, right]
+  type: enum
+- {description: The margin and padding (pixels) of the component., group: Layout, important: true, name: spacing, type: spacing}
+- {default_value: '', description: The colour of the background of this component., group: Look and Feel, important: false, name: background_color, type: color}
+- {default_value: '', description: The border of this component. Can take any valid CSS border value., group: Look and Feel, important: false, name: border, type: string}
+- {default_value: '', description: The text to display when the mouse is hovered over this component., group: Other, important: true, name: tooltip, type: string}
+toolbox_item:
+  hidden: true
+  icon: {dark: 'asset:designer_icons/button_dark.svg', light: 'asset:designer_icons/button.svg'}

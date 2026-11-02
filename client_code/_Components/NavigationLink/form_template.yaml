@@ -1,0 +1,59 @@
+components: []
+container:
+  event_bindings: {}
+  properties:
+    html: |
+      <div anvil-name="anvil-m3-navigation-link-container" class="anvil-m3-navigation-link-container">
+        <a href="javascript:void(0)" class="anvil-m3-navigation-link" anvil-name="anvil-m3-navigation-link" onclick="">
+        <!--   <i anvil-name="navigation-link-icon" class="fa fa-star">
+          </i> -->
+          <div class="anvil-m3-navigation-link-icon-label">
+            <div class=anvil-m3-navigation-link-icon-container>
+              <span anvil-name="anvil-m3-navigation-link-icon" class="material-symbols-outlined">star</span>
+              <span anvil-name="anvil-m3-icon-badge" class="anvil-m3-icon-badge"></span>
+            </div>
+            <div anvil-name="anvil-m3-navigation-link-text" class="anvil-m3-navigation-link-text"></div>
+          </div>
+
+          <span anvil-name="anvil-m3-navigation-drawer-icon-badge" class="anvil-m3-navigation-drawer-icon-badge"></span>
+        </a>
+      </div>
+  type: HtmlTemplate
+custom_component: true
+custom_component_container: false
+event_bindings: {show: form_show}
+events:
+- {default_event: true, description: when the component is clicked, name: click}
+- {description: When the component is shown on the screen., name: show}
+- {description: When the component is removed from the screen., name: hide}
+is_package: true
+properties:
+- {default_value: '', description: The target URL of the link, group: Other, important: false, name: url, type: string}
+- {description: Use this property to store any extra data for the component., group: Other, important: false, name: tag, type: object}
+- {default_value: Label, description: The text displayed on this component., group: Key Properties, important: true, name: text, type: string}
+- {default_value: false, description: 'If True, the component is in the selected state.', designer_hint: toggle, group: Interaction, important: true, name: selected, type: boolean}
+- {default_value: '', description: A style for this component defined in CSS and added to Roles., group: Look and Feel, name: role, type: themeRole}
+- {default_value: false, description: 'If True, display a notification badge on the icon.', group: Key Properties, name: badge, type: boolean}
+- {default_value: '', description: The number to display on the badge, group: Key Properties, name: badge_count, type: number}
+- {default_value: '', description: The colour of the text on the component., group: Look and Feel, name: text_color, type: color}
+- {default_value: '', description: The font size of the text displayed on this component., group: Text, name: font_size, type: string}
+- {default_value: '', description: The font family to use for this component., group: Text, name: font_family, type: string}
+- {default_value: '', description: The colour of the icon displayed on this component., group: Look and Feel, name: icon_color, type: color}
+- {default_value: '', description: The size (pixels) of the icon displayed on this component., group: Icon, name: icon_size, type: string}
+- default_value: mi:star
+  description: The icon to display on this component.
+  group: Key Properties
+  iconsets: [material-icons]
+  important: true
+  include_none_option: true
+  name: icon
+  type: icon
+- {default_binding_prop: true, default_value: null, description: The Form to navigate to when the link is clicked, group: Key Properties, important: true, name: navigate_to, type: form}
+- {description: The margin and padding (pixels) of the component., group: Layout, important: true, name: spacing, type: spacing}
+- {default_value: '', description: The text to display when the mouse is hovered over this component., group: Other, important: true, name: tooltip, type: string}
+- {default_value: true, description: 'If True, the component will be displayed.', designer_hint: visible, group: Look and Feel, important: true, name: visible, type: boolean}
+- {default_value: false, description: 'If True, this component’s text will be italic.', designer_hint: font-italic, group: Text, important: false, name: italic, type: boolean}
+- {default_value: false, description: 'If True, this component’s text will be underlined.', designer_hint: font-underline, group: Text, important: false, name: underline, type: boolean}
+- {default_value: false, description: 'If True, this component’s text will be bold.', designer_hint: font-bold, group: Text, important: false, name: bold, type: boolean}
+- {default_value: '', description: The color of the background of this component, group: Look and Feel, important: false, name: background_color, type: color}
+toolbox_item: {hidden: true}

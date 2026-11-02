@@ -1,0 +1,23 @@
+components: []
+container:
+  properties:
+    html: |-
+      <div anvil-slot="card-content-container-slot" anvil-name="anvil-m3-card-content-container" class="anvil-m3-card-content-container">
+        <p anvil-name="empty-slot" anvil-if-slot-empty="card-content-container-slot" style="color: #BBB"><i>Insert Content</i></p>
+      </div>
+  type: HtmlTemplate
+custom_component: true
+custom_component_container: true
+events:
+- {default_event: true, description: When the component is shown on the screen., name: show}
+- {description: When the component is removed from the screen., name: hide}
+is_package: true
+properties:
+- default_binding_prop: true
+  default_value: ['16', '16', '16', '16']
+  description: The margin (pixels) of this component
+  group: Layout
+  important: true
+  name: margin
+  type: margin
+toolbox_item: {hidden: true}

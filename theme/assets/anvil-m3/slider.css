@@ -1,0 +1,166 @@
+/* Inspired by: https://codepen.io/viestursm/pen/BayEjaN */
+
+.anvil-m3-slider { position: relative; z-index: 1; display: flex;padding: 15px 0; margin: 4px 0;}
+.anvil-m3-slider input { width: 100%; height: 16px; -webkit-appearance: none; background: transparent; }
+
+.anvil-m3-slider-track-container {
+  height: 16px;
+  position: absolute;
+  z-index: -1;
+  left: 2px;
+}
+
+.anvil-m3-slider-progress, .anvil-m3-slider-background {
+  position: absolute;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+.anvil-m3-slider-progress { background: var(--anvil-m3-primary); border-radius: 16px 2px 2px 16px; }
+.anvil-m3-slider-background { 
+  width: 100%; 
+  border-radius: 2px 16px 16px 2px;
+  background-color: var(--anvil-m3-primary-container); 
+  position: absolute;
+  right: 0;
+}
+
+.anvil-m3-slider input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 44px;
+  width: 4px;
+  border-radius: 4px;
+  background: var(--anvil-m3-slider-thumb-color);
+  cursor: pointer;
+  margin-top: -13.5px;
+  transition-property: width;
+  transition-duration: 0.1s;
+}
+.anvil-m3-slider input::-moz-range-thumb {
+  height: 44px;
+  width: 4px;
+  border-radius: 4px;
+  background: var(--anvil-m3-slider-thumb-color);
+  cursor: pointer;
+  margin-top: -13.5px;
+  transition-duration: 0.1s;
+}
+.anvil-m3-slider input::-ms-thumb {
+  height: 44px;
+  width: 4px;
+  border-radius: 4px;
+  background: var(--anvil-m3-slider-thumb-color);
+  cursor: pointer;
+  margin-top: -13.5px;
+  transition-duration: 0.1s;
+}
+
+.anvil-m3-slider input::-webkit-slider-thumb:hover { background: linear-gradient(0deg, var(--anvil-m3-light-overlay-1), var(--anvil-m3-light-overlay-1)), var(--anvil-m3-primary); }
+.anvil-m3-slider input::-moz-range-thumb:hover { background: linear-gradient(0deg, var(--anvil-m3-light-overlay-1), var(--anvil-m3-light-overlay-1)), var(--anvil-m3-primary); }
+.anvil-m3-slider input::-ms-thumb:hover { background: linear-gradient(0deg, var(--anvil-m3-light-overlay-1), var(--anvil-m3-light-overlay-1)), var(--anvil-m3-primary); }
+
+.anvil-m3-slider input:focus-visible::-webkit-slider-thumb { 
+  background: linear-gradient(0deg, var(--anvil-m3-light-overlay-2), var(--anvil-m3-light-overlay-2)), var(--anvil-m3-primary); 
+  width: 2px;
+}
+.anvil-m3-slider input:focus-visible::-moz-range-thumb { 
+  background: linear-gradient(0deg, var(--anvil-m3-light-overlay-2), var(--anvil-m3-light-overlay-2)), var(--anvil-m3-primary); 
+  width: 2px;
+}
+.anvil-m3-slider input:focus-visible::-ms-thumb { 
+  background: linear-gradient(0deg, var(--anvil-m3-light-overlay-2), var(--anvil-m3-light-overlay-2)), var(--anvil-m3-primary); 
+  width: 2px; 
+}
+
+.anvil-m3-slider input:active::-webkit-slider-thumb { 
+  background: linear-gradient(0deg, var(--anvil-m3-light-overlay-2), var(--anvil-m3-light-overlay-2)), var(--anvil-m3-primary); 
+  width: 2px;
+}
+.anvil-m3-slider input:active::-moz-range-thumb { 
+  background: linear-gradient(0deg, var(--anvil-m3-light-overlay-2), var(--anvil-m3-light-overlay-2)), var(--anvil-m3-primary); 
+  width: 2px;
+}
+.anvil-m3-slider input:active::-ms-thumb { 
+  background: linear-gradient(0deg, var(--anvil-m3-light-overlay-2), var(--anvil-m3-light-overlay-2)), var(--anvil-m3-primary); 
+  width: 2px;
+}
+
+.anvil-m3-slider input::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 16px;
+  cursor: pointer;
+  background: transparent;
+}
+
+.anvil-m3-slider-label-container {
+  position: absolute;
+  display: flex;
+  background-color: var(--anvil-m3-inverse-surface);
+  color: var(--anvil-m3-inverse-on-surface);
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.5px;
+  width: 48px;
+  height: 44px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  margin-top: -62px;
+  margin-left: -18px;
+  z-index: 10000;
+}
+
+.anvil-m3-slider input:disabled::-webkit-slider-runnable-track { cursor: not-allowed; }
+.anvil-m3-slider input:disabled::-webkit-slider-thumb { 
+  background: var(--anvil-m3-on-disabled); 
+  cursor: not-allowed;
+  box-shadow: none;
+  transition: none;
+}
+.anvil-m3-slider input:disabled::-moz-range-thumb { 
+  background: var(--anvil-m3-on-disabled); 
+  cursor: not-allowed; 
+  box-shadow: none;
+  transition: none;
+}
+.anvil-m3-slider input:disabled::-ms-thumb { 
+  background: var(--anvil-m3-on-disabled); 
+  cursor: not-allowed; 
+  box-shadow: none;
+  transition: none;
+}
+.anvil-m3-slider-disabled .anvil-m3-slider-progress { background: var(--anvil-m3-on-disabled); }
+.anvil-m3-slider-disabled .anvil-m3-slider-background { background-color: var(--anvil-m3-disabled-container); }
+
+.anvil-m3-slider input:disabled::-webkit-slider-thumb:hover { outline: none; }
+.anvil-m3-slider input:disabled::-moz-range-thumb:hover { outline: none; }
+.anvil-m3-slider input:disabled::-ms-thumb:hover { outline: none; }
+
+.anvil-m3-slider input:disabled:focus::-webkit-slider-thumb { width: 4px; }
+.anvil-m3-slider input:disabled:focus::-moz-range-thumb { width: 4px; }
+.anvil-m3-slider input:disabled:focus::-ms-thumb { width: 4px; }
+
+.anvil-m3-slider input:disabled:active::-webkit-slider-thumb { width: 4px; }
+.anvil-m3-slider input:disabled:active::-moz-range-thumb { width: 4px; }
+.anvil-m3-slider input:disabled:active::-ms-thumb { width: 4px; }
+
+.anvil-m3-slider-markers-container-bg, .anvil-m3-slider-markers-container-progress {
+  position: absolute;
+  z-index: 1;
+  top: 6px;
+  display: flex;
+  justify-content: space-between;
+}
+.anvil-m3-slider-markers-container-bg { right: 0; margin-right: 4px; }
+.anvil-m3-slider-markers-container-progress { left: 0; margin-left: 4px; }
+
+.anvil-m3-slider-marker-bg, .anvil-m3-slider-marker-progress {
+  width: 4px;
+  height: 4px;
+  border-radius: 100%;
+}
+.anvil-m3-slider-marker-bg { background: var(--anvil-m3-primary); }
+.anvil-m3-slider-marker-progress { background: var(--anvil-m3-primary-container); }
+
+.anvil-m3-slider-disabled .anvil-m3-slider-marker-bg { background: var(--anvil-m3-on-disabled); }
+.anvil-m3-slider-disabled .anvil-m3-slider-marker-progress { background: var(--anvil-m3-inverse-on-surface); }

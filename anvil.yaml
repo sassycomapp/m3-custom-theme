@@ -1,18 +1,280 @@
 allow_embedding: false
-dependencies:
-- config: {}
-  dep_id: dep_lin1x4oec0ytd
-  resolution_hints: {app_id: 4UK6WHQ6UX7AKELK, name: Material 3 Theme, package_name: m3}
-  version: {version_tag: v1.2.6}
+client_init_module: InitModule
+code_prelude: {form: import m3.components as m3}
+db_schema: {}
 name: m3-custom-theme
-native_deps: null
-package_name: m3_custom_theme
+native_deps:
+  head_html: |
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block" />
+    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=block" rel="stylesheet"> -->
+    <script src="_/theme/anvil-m3/floating-ui/core@1.6.7.js"></script>
+    <script src="_/theme/anvil-m3/floating-ui/dom@1.6.10.js"></script>
+package_name: m3
 runtime_options:
   client_version: '3'
-  server_spec: {base: python314}
+  server_spec: {base: python310-minimal}
+  server_version: python3-full
   version: 3
 services:
 - client_config: {}
   server_config: {}
   source: /runtime/services/tables.yml
 startup_form: Form1
+toolbox: {hide_classic_components: true}
+toolbox_sections:
+- description: Commonly used components
+  items:
+  - component: {type: m3._Components.Button}
+    icon: {dark: 'asset:designer_icons/button_dark.svg', light: 'asset:designer_icons/button.svg'}
+    title: Button
+  - component: {type: m3._Components.Text}
+    icon: {dark: 'asset:designer_icons/text_dark.svg', light: 'asset:designer_icons/text.svg'}
+    title: Text
+  - component: {type: m3._Components.Link}
+    icon: {dark: 'asset:designer_icons/link_dark.svg', light: 'asset:designer_icons/link.svg'}
+    title: Link
+  - component: {type: m3._Components.Checkbox}
+    icon: {dark: 'asset:designer_icons/checkbox_dark.svg', light: 'asset:designer_icons/checkbox.svg'}
+    title: Checkbox
+  - component: {type: m3._Components.TextInput.TextBox}
+    icon: {dark: 'asset:designer_icons/textfield_dark.svg', light: 'asset:designer_icons/textfield.svg'}
+    title: TextBox
+  - component:
+      components:
+      - layout_properties: {slot: card-content-slot}
+        type: m3._Components.Card.CardContentContainer
+      type: m3._Components.Card
+    icon: {dark: 'asset:designer_icons/card_dark.svg', light: 'asset:designer_icons/card.svg'}
+    title: Card
+  packageName: m3
+  title: Common Components
+- description: Use Typography components to display text
+  items:
+  - component: {type: m3._Components.Text}
+    icon: {dark: 'asset:designer_icons/text_dark.svg', light: 'asset:designer_icons/text.svg'}
+    title: Text
+  - component: {type: m3._Components.Heading}
+    icon: {dark: 'asset:designer_icons/heading_dark.svg', light: 'asset:designer_icons/heading.svg'}
+    title: Heading
+  - component: {type: m3._Components.Link}
+    icon: {dark: 'asset:designer_icons/link_dark.svg', light: 'asset:designer_icons/link.svg'}
+    title: Link
+  - component: {type: anvil.RichText}
+    icon: {dark: /ide/img/toolbox/RichText.dark.svg, light: /ide/img/toolbox/RichText.svg}
+    title: RichText
+    url: /docs/client/components/containers#richtext
+  packageName: m3
+  title: Typography
+- description: Use Buttons to have users perform actions
+  items:
+  - component: {type: m3._Components.Button}
+    icon: {dark: 'asset:designer_icons/button_dark.svg', light: 'asset:designer_icons/button.svg'}
+    title: Button
+  - component: {type: m3._Components.IconButton}
+    icon: {dark: 'asset:designer_icons/icon_button_dark.svg', light: 'asset:designer_icons/icon_button.svg'}
+    title: IconButton
+  - component: {type: m3._Components.ToggleIconButton}
+    icon: {dark: 'asset:designer_icons/toggle_icon_button_dark.svg', light: 'asset:designer_icons/toggle_icon_button.svg'}
+    title: ToggleIconButton
+  packageName: m3
+  title: Buttons
+- description: Display components help display content on the page
+  items:
+  - component: {type: m3._Components.Avatar}
+    icon: {dark: 'asset:designer_icons/avatar_dark.svg', light: 'asset:designer_icons/avatar.svg'}
+    title: Avatar
+  - component:
+      components:
+      - layout_properties: {slot: card-content-slot}
+        type: m3._Components.Card.CardContentContainer
+      type: m3._Components.Card
+    icon: {dark: 'asset:designer_icons/card_dark.svg', light: 'asset:designer_icons/card.svg'}
+    title: Card
+  - component:
+      components:
+      - layout_properties: {slot: card-content-slot}
+        type: m3._Components.Card.CardContentContainer
+      type: m3._Components.InteractiveCard
+    icon: {dark: 'asset:designer_icons/interactive_card_dark.svg', light: 'asset:designer_icons/interactive_card.svg'}
+    title: InteractiveCard
+  - component: {type: m3._Components.Card.CardContentContainer}
+    icon: {dark: 'asset:designer_icons/card_content_container_dark.svg', light: 'asset:designer_icons/card_content_container.svg'}
+    title: CardContentContainer
+  - component:
+      components:
+      - layout_properties: {slot: anvil-m3-sidesheet-title}
+        type: m3._Components.Heading
+      - layout_properties: {slot: anvil-m3-sidesheet-close-button}
+        properties: {icon: 'mi:close'}
+        type: m3._Components.IconButton
+      type: m3._Components.SidesheetContent
+    icon: {dark: 'asset:designer_icons/sidesheet_dark.svg', light: 'asset:designer_icons/sidesheet.svg'}
+    title: SidesheetContent
+  - component: {type: m3._Components.Divider}
+    icon: {dark: 'asset:designer_icons/divider_dark.svg', light: 'asset:designer_icons/divider.svg'}
+    title: Divider
+  packageName: m3
+  title: Display
+- description: Use Form Input containers to get data from the user
+  items:
+  - component: {type: m3._Components.Checkbox}
+    icon: {dark: 'asset:designer_icons/checkbox_dark.svg', light: 'asset:designer_icons/checkbox.svg'}
+    title: Checkbox
+  - component: {type: m3._Components.RadioButton}
+    icon: {dark: 'asset:designer_icons/radio_button_dark.svg', light: 'asset:designer_icons/radio_button.svg'}
+    title: RadioButton
+  - component: {type: m3._Components.TextInput.TextBox}
+    icon: {dark: 'asset:designer_icons/textfield_dark.svg', light: 'asset:designer_icons/textfield.svg'}
+    title: TextBox
+  - component: {type: m3._Components.TextInput.TextArea}
+    icon: {dark: 'asset:designer_icons/textfield_dark.svg', light: 'asset:designer_icons/textfield.svg'}
+    title: TextArea
+  - component: {type: m3._Components.DropdownMenu}
+    icon: {dark: 'asset:designer_icons/dropdown_menu_dark.svg', light: 'asset:designer_icons/dropdown_menu.svg'}
+    title: DropdownMenu
+  - component: {type: m3._Components.Switch}
+    icon: {dark: 'asset:designer_icons/switch_dark.svg', light: 'asset:designer_icons/switch.svg'}
+    title: Switch
+  - component: {type: m3._Components.FileLoader}
+    icon: {dark: 'asset:designer_icons/file_loader_dark.svg', light: 'asset:designer_icons/file_loader.svg'}
+    title: FileLoader
+  - component: {type: m3._Components.Slider}
+    icon: {dark: 'asset:designer_icons/slider_dark.svg', light: 'asset:designer_icons/slider.svg'}
+    title: Slider
+  - component: {type: anvil.DatePicker}
+    icon: {dark: /ide/img/toolbox/DatePicker.dark.svg, light: /ide/img/toolbox/DatePicker.svg}
+    title: DatePicker
+    url: /docs/client/components/basic#datepicker
+  - component:
+      components:
+      - {type: m3._Components.RadioButton}
+      - {type: m3._Components.RadioButton}
+      - {type: m3._Components.RadioButton}
+      type: m3._Components.RadioGroupPanel
+    icon: {dark: 'asset:designer_icons/radio_group_panel_dark.svg', light: 'asset:designer_icons/radio_group_panel.svg'}
+    title: RadioGroupPanel
+  packageName: m3
+  title: Form Input
+- description: Use navigation components to navigate between parts of your app
+  items:
+  - component: {type: m3._Components.NavigationLink}
+    icon: {dark: 'asset:designer_icons/navigation_link_dark.svg', light: 'asset:designer_icons/navigation_link.svg'}
+    title: NavigationLink
+  packageName: m3
+  title: Navigation
+- description: Use menus to hold other components and display them as a list of options
+  items:
+  - component: {type: m3._Components.ButtonMenu}
+    icon: {dark: 'asset:designer_icons/button_menu_dark.svg', light: 'asset:designer_icons/button_menu.svg'}
+    title: ButtonMenu
+  - component: {type: m3._Components.IconButtonMenu}
+    icon: {dark: 'asset:designer_icons/icon_button_menu_dark.svg', light: 'asset:designer_icons/icon_button_menu.svg'}
+    title: IconButtonMenu
+  - component: {type: m3._Components.AvatarMenu}
+    icon: {dark: 'asset:designer_icons/avatar_menu_dark.svg', light: 'asset:designer_icons/avatar_menu.svg'}
+    title: AvatarMenu
+  - component: {type: m3._Components.MenuItem}
+    icon: {dark: 'asset:designer_icons/menu_item_dark.svg', light: 'asset:designer_icons/menu_item.svg'}
+    title: MenuItem
+  packageName: m3
+  title: Menus
+- description: Use Feedback componentes to show the status of a process
+  items:
+  - component: {type: m3._Components.LinearProgressIndicator}
+    icon: {dark: 'asset:designer_icons/linear_progress_indicator_dark.svg', light: 'asset:designer_icons/linear_progress_indicator.svg'}
+    title: LinearProgressIndicator
+  - component: {type: m3._Components.CircularProgressIndicator}
+    icon: {dark: 'asset:designer_icons/circular_progress_indicator_dark.svg', light: 'asset:designer_icons/circular_progress_indicator.svg'}
+    title: CircularProgressIndicator
+  packageName: m3
+  title: Feedback
+- description: Integrations allow you to connect to other platforms and services
+  items:
+  - component: {type: anvil.Plot}
+    icon: {dark: /ide/img/toolbox/Plot.dark.svg, light: /ide/img/toolbox/Plot.svg}
+    title: Plot
+    codePrelude: "import plotly.graph_objects as go"
+    url: /docs/client/components/plot
+  - component: {type: anvil.YouTubeVideo}
+    icon: {dark: /ide/img/toolbox/YouTubeVideo.dark.svg, light: /ide/img/toolbox/YouTubeVideo.svg}
+    title: YouTube Video
+    url: /docs/client/components/basic#youtube-video
+  - component: {type: anvil.GoogleMap}
+    icon: {dark: /ide/img/toolbox/GoogleMap.dark.svg, light: /ide/img/toolbox/GoogleMap.svg}
+    title: Google Map
+    url: /docs/client/components/maps
+  - component: {type: anvil.Canvas}
+    icon: {dark: /ide/img/toolbox/Canvas.dark.svg, light: /ide/img/toolbox/Canvas.svg}
+    title: Canvas
+    url: /docs/client/components/canvas
+  packageName: m3
+  title: Integrations
+- description: Use Containers to lay out the components on the page
+  items:
+  - component: {type: anvil.ColumnPanel}
+    icon: {dark: /ide/img/toolbox/ColumnPanel.dark.svg, light: /ide/img/toolbox/ColumnPanel.svg}
+    title: ColumnPanel
+    url: /docs/client/components/containers#columnpanel
+  - component: {type: anvil.FlowPanel}
+    icon: {dark: /ide/img/toolbox/FlowPanel.dark.svg, light: /ide/img/toolbox/FlowPanel.svg}
+    title: FlowPanel
+    url: /docs/client/components/containers#flowpanel
+  - component:
+      properties: {item_template: '#form#ITEM_TEMPLATE'}
+      type: anvil.RepeatingPanel
+    createForms:
+      ITEM_TEMPLATE: {className: ItemTemplate, container: anvil.ColumnPanel}
+    icon: {dark: /ide/img/toolbox/RepeatingPanel.dark.svg, light: /ide/img/toolbox/RepeatingPanel.svg}
+    title: Repeating Panel
+    url: /docs/client/components/repeating-panel
+  - component: {type: anvil.DataRowPanel}
+    icon: {dark: /ide/img/toolbox/DataRowPanel.dark.svg, light: /ide/img/toolbox/DataRowPanel.svg}
+    title: DataRowPanel
+    url: /docs/client/components/containers#datarowpanel
+  - component: {type: anvil.LinearPanel}
+    icon: {dark: /ide/img/toolbox/RepeatingPanel.dark.svg, light: /ide/img/toolbox/RepeatingPanel.svg}
+    title: LinearPanel
+    url: /docs/client/components/containers#linearpanel
+  - component: {type: anvil.GridPanel}
+    icon: {dark: /ide/img/toolbox/GridPanel.dark.svg, light: /ide/img/toolbox/GridPanel.svg}
+    title: GridPanel
+    url: /docs/client/components/containers#gridpanel
+  - component: {type: anvil.XYPanel}
+    icon: {dark: /ide/img/toolbox/XYPanel.dark.svg, light: /ide/img/toolbox/XYPanel.svg}
+    title: XYPanel
+    url: /docs/client/components/containers#xypanel
+  - component:
+      components:
+      - properties: {item_template: '#form#ROW_TEMPLATE'}
+        type: anvil.RepeatingPanel
+      type: anvil.DataGrid
+    createForms:
+      ROW_TEMPLATE: {className: RowTemplate, container: anvil.DataRowPanel}
+    icon: {dark: /ide/img/toolbox/DataGrid.dark.svg, light: /ide/img/toolbox/DataGrid.svg}
+    properties:
+      columns:
+      - {data_key: column_1, id: JKSDUP, title: Column 1}
+      - {data_key: column_2, id: VJQQOR, title: Column 2}
+      - {data_key: column_3, id: OJLQEN, title: Column 3}
+    title: Data Grid
+    url: /docs/client/components/data-grids
+  packageName: m3
+  title: Containers
+- items:
+  - component: {type: anvil.Image}
+    icon: {dark: /ide/img/toolbox/Image.dark.svg, light: /ide/img/toolbox/Image.svg}
+    title: Image
+    url: /docs/client/components/basic#image
+  - component: {type: anvil.Spacer}
+    icon: {dark: /ide/img/toolbox/Spacer.dark.svg, light: /ide/img/toolbox/Spacer.svg}
+    title: Spacer
+    url: /docs/client/components/basic#spacer
+  - component: {type: anvil.Timer}
+    icon: {dark: /ide/img/toolbox/Timer.dark.svg, light: /ide/img/toolbox/Timer.svg}
+    title: Timer
+    url: /docs/client/components/basic#timer
+  packageName: m3
+  title: Other

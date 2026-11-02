@@ -1,0 +1,13 @@
+src = ["client_code", "server_code"]
+
+indent-width = 4
+
+[lint]
+select = ["E", "F", "I001"]
+
+[lint.isort]
+known-third-party = ["anvil"]
+
+[format]
+# Prefer single quotes over double quotes.
+quote-style = "preserve"

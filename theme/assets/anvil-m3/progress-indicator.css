@@ -1,0 +1,62 @@
+.anvil-m3-progressindicator-component { 
+  display: flex;
+  margin: 4px 0;
+}
+
+.anvil-m3-progressindicator-track {
+  position: relative;
+  margin: 0px;
+  width: 100%;
+  height: 4px;
+  background-color: var(--anvil-m3-surface-container-highest); 
+}
+
+.anvil-m3-progressindicator-indicator {
+  stroke: var(--anvil-m3-primary);
+  stroke-width: 4px;
+  transition: x2 0.2s ease;
+}
+
+.anvil-m3-progressindicator-circular {
+  width: 48px !important;
+  height: 48px !important;
+}
+
+.anvil-m3-progressindicator-arc {
+  stroke: var(--anvil-m3-primary);
+  fill: none;
+  stroke-width: 4px;
+}
+
+.anvil-m3-indefinate {
+  stroke-dasharray: 105;
+  stroke-dashoffset: 90;
+  animation: 2400ms ease-in-out infinite pendulate, spin 1100ms linear infinite;
+  transform-origin: 24px 23px;
+}
+
+@keyframes pendulate {
+  0% {
+    stroke-dashoffset: 90; 
+  }
+  50%{
+    stroke-dashoffset: 0; 
+  }
+
+  100%{
+    stroke-dashoffset: 90; 
+  }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(360deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.anvil-m3-progressindicator-hidden {
+   display: none;
+}

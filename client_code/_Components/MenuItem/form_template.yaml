@@ -1,0 +1,53 @@
+components: []
+container:
+  properties:
+    html: |-
+      <div anvil-name="anvil-m3-menuItem-container" class="anvil-m3-menuItem-container">
+        <div anvil-name="anvil-m3-menuItem-leadingIcon" class="anvil-m3-menuItem-aux anvil-m3-menuItem-leadingIcon material-symbols-outlined"></div>
+        <div anvil-name="anvil-m3-menuItem-content" class="anvil-m3-menuItem-content">
+          <div anvil-name="anvil-m3-menuItem-labelText" class="anvil-m3-menuItem-labelText anvil-m3-menuItem-core"></div>
+          <div anvil-name="anvil-m3-menuItem-trailingText" class="anvil-m3-menuItem-trailingText anvil-m3-menuItem-aux"></div>
+          <div anvil-name="anvil-m3-menuItem-trailingIcon" class="anvil-m3-menuItem-aux anvil-m3-menuItem-trailingIcon material-symbols-outlined"></div>
+        </div>
+      </div>
+  type: HtmlTemplate
+custom_component: true
+events:
+- {default_event: true, description: When the component is clicked, name: click}
+is_package: true
+properties:
+- default_value: ''
+  description: The leading icon to display on this component.
+  group: Key Properties
+  iconsets: [material-icons]
+  include_none_option: true
+  name: leading_icon
+  type: icon
+- {default_value: '', description: The main text displayed on this component, group: Key Properties, name: text, type: string}
+- {description: Use this property to store any extra data for the component., group: Other, important: false, name: tag, type: object}
+- default_value: ''
+  description: The trailing icon to display on this component.
+  group: Key Properties
+  iconsets: [material-icons]
+  include_none_option: true
+  name: trailing_icon
+  type: icon
+- {default_value: '', description: The text to be displayed on the right side of the component. Will be to the left of the trailing icon if both exist., group: Key Properties, name: trailing_text, type: string}
+- {default_value: false, description: 'If True, add a space where the leading_icon would be so that this MenuItem is aligned with MenuItems with leading_icons.', group: Look and Feel, name: add_icon_space, type: boolean}
+- {default_value: true, description: 'If True, this component allows user interaction.', designer_hint: enabled, group: Interaction, name: enabled, type: boolean}
+- {default_value: false, description: 'If True, the main text will be bold.', designer_hint: font-bold, group: Text Style, important: true, name: bold, type: boolean}
+- {default_value: '', description: The font family to use for the main text., group: Text Style, important: true, name: font_family, type: string}
+- {default_value: '', description: The font size of the text displayed on this component., group: Text Style, important: true, name: font_size, type: number}
+- {default_value: '', description: The colour of the text on the component., group: Text Style, important: true, name: text_color, type: color}
+- {default_value: false, description: 'If True, the main text will be italic.', designer_hint: font-italic, group: Text Style, important: true, name: italic, type: boolean}
+- {default_value: false, description: 'If True, the main text will be underlined.', designer_hint: font-underline, group: Text Style, important: true, name: underline, type: boolean}
+- {default_value: '', description: The colour of the background of this component., group: Look and Feel, important: false, name: background_color, type: color}
+- {default_value: true, description: 'If True, this component will be displayed', designer_hint: visible, group: Look and Feel, important: true, name: visible, type: boolean}
+- {description: The size (pixels) of the leading icon displayed on this component, group: Icon, important: false, name: leading_icon_size, type: number}
+- {description: The size (pixels) of the trailing icon displayed on this component, group: Icon, important: false, name: trailing_icon_size, type: number}
+- {default_value: '', description: The colour of the leading icon displayed on this component, group: Look and Feel, important: false, name: leading_icon_color, type: color}
+- {default_value: '', description: The colour of the trailing icon displayed on this component, group: Look and Feel, important: false, name: trailing_icon_color, type: color}
+- {default_value: '', description: A style for this component defined in CSS and added to Roles., group: Look and Feel, important: false, name: role, type: string}
+- {description: The margin and padding (pixels) of the component., group: Layout, important: true, name: spacing, type: spacing}
+- {default_value: '', description: The text to display when the mouse is hovered over this component., group: Other, important: true, name: tooltip, type: string}
+toolbox_item: {hidden: true}

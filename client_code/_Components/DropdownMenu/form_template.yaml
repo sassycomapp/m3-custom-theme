@@ -1,0 +1,103 @@
+components:
+- layout_properties: {slot: anvil-m3-dropdownMenu-textfield}
+  name: selection_field
+  properties: {background_color: '', trailing_icon: 'mi:arrow_drop_down'}
+  type: form:_Components.TextInput.TextBox
+- layout_properties: {slot: anvil-m3-dropdownMenu-slot}
+  name: menu
+  properties: {visible: false}
+  type: form:_Components.Menu
+container:
+  event_bindings: {show: form_show}
+  properties:
+    html: |-
+      <div anvil-name="anvil-m3-dropdownMenu-container" class="anvil-m3-dropdownMenu-container" >
+        <div anvil-slot="anvil-m3-dropdownMenu-textfield" anvil-name="anvil-m3-dropdownMenu-textbox" class="anvil-m3-dropdownMenu-textfield" anvil-slot-internal></div>
+        <div anvil-slot="anvil-m3-dropdownMenu-slot" anvil-name="anvil-m3-dropdownMenu-items-container" class="anvil-m3-dropdownMenu-items-container" anvil-slot-internal></div>
+      </div>
+    visible: true
+  type: HtmlTemplate
+custom_component: true
+custom_component_container: true
+events:
+- {default_event: true, description: When an item is selected, name: change}
+- {description: When the component is shown on the screen., name: show}
+- {description: When the component is removed from the screen., name: hide}
+is_package: true
+properties:
+- {default_value: '', description: The colour of the background of this component., group: Look and Feel, important: false, name: background_color, type: color}
+- {default_value: false, description: 'If True, the label text will be bold', group: Label Style, important: false, name: label_bold, type: boolean}
+- {description: Use this property to store any extra data for the component., group: Other, important: false, name: tag, type: object}
+- {default_value: true, description: 'If True, this component allows user interaction.', designerHint: enabled, designer_hint: enabled, group: Interaction, important: true, name: enabled, type: boolean}
+- {default_value: '', description: The font family to use for this component's label, group: Label Style, important: false, name: label_font_family, type: string}
+- {description: The height of text displayed on this component's label in pixels, group: Label Style, important: false, name: label_font_size, type: number}
+- {default_value: '', description: The colour of the label text on the component., group: Label Style, important: false, name: label_color, type: color}
+- {default_value: false, description: 'If True, the label text will be italic', group: Label Style, important: false, name: label_italic, type: boolean}
+- {default_value: '', description: A style for this component defined in CSS and added to Roles., group: Look and Feel, name: role, type: themeRole}
+- default_value: left
+  description: The position of this component in the available space.
+  designer_hint: align-horizontal
+  group: Layout
+  important: true
+  name: align
+  options: [left, center, right, full]
+  type: enum
+- default_binding_prop: true
+  default_value: []
+  description: The items to display in the menu
+  group: Key Properties
+  important: true
+  name: items
+  type: text[]
+- {default_value: '', description: The text to be displayed when the selected_value is None, group: Key Properties, important: true, name: placeholder, type: string}
+- default_value: filled
+  description: A predefined style for this component.
+  group: Key Properties
+  important: true
+  name: appearance
+  options: [filled, outlined]
+  type: enum
+- allow_binding_writeback: true
+  binding_writeback_events: [change]
+  description: The value of the currently selected item. Can only be set at runtime.
+  group: Interaction
+  important: true
+  name: selected_value
+  type: object
+- {default_value: false, description: 'If True, the label text will be underlined', group: Label Style, important: false, name: label_underline, type: boolean}
+- {default_value: true, description: 'If True, the component will be displayed.', designerHint: visible, designer_hint: visible, group: Look and Feel, important: true, name: visible, type: boolean}
+- {default_value: '', description: Label text associated with the component. Usually the prompt., group: Key Properties, important: true, name: label, type: string}
+- {default_value: false, description: 'If True, the menu items will be bold', group: Dropdown Items Style, important: false, name: items_bold, type: boolean}
+- {default_value: false, description: 'If True, the menu items will be italic', group: Dropdown Items Style, important: false, name: items_italic, type: boolean}
+- {default_value: false, description: 'If True, the menu items will be underlined', group: Dropdown Items Style, important: false, name: items_underline, type: boolean}
+- {default_value: '', description: The colour of the menu items' text, group: Dropdown Items Style, important: false, name: items_text_color, type: color}
+- {default_value: '', description: The background colour of the menu, group: Look and Feel, important: false, name: menu_background_color, type: color}
+- {default_value: '', description: The font family to use for the menu items, group: Dropdown Items Style, important: false, name: items_font_family, type: string}
+- {description: The font size of the menu items, group: Dropdown Items Style, important: false, name: items_font_size, type: number}
+- {default_value: false, description: 'If True, a placeholder item is added to the menu with value None', group: Interaction, important: true, name: allow_none, type: boolean}
+- {default_value: false, description: 'If True and there is a selected item, the displayed text is in italic.', group: Selection Field Style, important: false, name: selected_italic, type: boolean}
+- {default_value: false, description: 'If True and there is a selected item, the displayed text is bold', group: Selection Field Style, important: false, name: selected_bold, type: boolean}
+- {default_value: false, description: 'If True and there is a selected item, the displayed text is underlined', group: Selection Field Style, important: false, name: selected_underline, type: boolean}
+- {default_value: '', description: The font-family of the displayed text if there is a selected item, group: Selection Field Style, important: false, name: selected_font_family, type: string}
+- {description: The font size (pixels) of the displayed text if there is a selected item, group: Selection Field Style, important: false, name: selected_font_size, type: number}
+- {default_value: '', description: The colour of the displayed text if there is a selected item, group: Selection Field Style, important: false, name: selected_text_color, type: color}
+- {description: The margin (pixels) of the component., group: Layout, important: true, name: margin, type: margin}
+- {default_value: false, description: 'If True, this component is in an error state.', group: Interaction, important: true, name: error, type: boolean}
+- default_value: ''
+  description: The leading icon to display on this component.
+  group: Icon
+  iconsets: [material-icons]
+  important: true
+  include_none_option: true
+  name: icon
+  type: icon
+- {default_value: '', description: The colour of the leading icon, group: Icon, important: false, name: icon_color, type: color}
+- {default_value: '', description: ' The text to display when the mouse is hovered over this component', important: false, name: tooltip, type: string}
+- {default_value: '', description: The supporting text displayed underneath this component, group: Key Properties, important: false, name: supporting_text, type: string}
+- {default_value: '', description: The colour of the supporting text underneath this component, group: Supporting Text Style, important: false, name: supporting_text_color, type: color}
+- {description: The font size of the supporting text displayed underneath this component, group: Supporting Text Style, important: false, name: supporting_text_font_size, type: number}
+- {default_value: '', description: The font family to use for the supporting text underneath this component, group: Supporting Text Style, important: false, name: supporting_text_font_family, type: string}
+- {default_value: '', group: Look and Feel, important: false, name: border_color, type: color}
+toolbox_item:
+  hidden: true
+  icon: {dark: 'asset:designer_icons/dropdown_menu_dark.svg', light: 'asset:designer_icons/dropdown_menu.svg'}

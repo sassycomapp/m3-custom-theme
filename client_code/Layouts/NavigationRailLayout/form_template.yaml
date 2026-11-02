@@ -1,0 +1,89 @@
+components: []
+container:
+  event_bindings: {}
+  properties:
+    html: |+
+      <div class="anvil-m3-structure">
+
+        <div anvil-name="anvil-m3-navigation-rail" class="anvil-m3-navigation-rail">
+        <!-- <div anvil-name="anvil-m3-drawer-close-btn" class="anvil-m3-drawer-close-btn"> -->
+          <!-- <span class="material-symbols-outlined">menu_open</span>
+        </div> -->
+        <div class="anvil-m3-navigation-rail-content" anvil-slot="anvil-m3-navigation-rail-content">
+            <p anvil-if-slot-empty="anvil-m3-navigation-rail-content" class="anvil-designer-only" style="font-style: italic;">Add navigation links here</p>
+        </div>
+      </div>
+
+      <div anvil-name="anvil-m3-top-app-bar" class="anvil-m3-top-app-bar">
+        <!--TODO: change this to an icon button-->
+        <div class="anvil-m3-title-container">
+          <div anvil-name="anvil-m3-drawer-open-btn" class="anvil-m3-drawer-open-btn">
+            <span class="material-symbols-outlined">menu</span>
+          </div>
+          <div anvil-slot="anvil-m3-app-title" class="anvil-m3-app-title"><span anvil-if-slot-empty="anvil-m3-app-title" class="anvil-designer-only" style="font-style: italic;">Drop optional title here</span></div>
+        </div>
+        <div class="anvil-m3-app-bar-links" anvil-slot="anvil-m3-app-bar-links"><span anvil-if-slot-empty="anvil-m3-app-bar-links" class="anvil-designer-only"  style="font-style: italic; font-size:14px;">Drop optional icon buttons here</span></div>
+      </div>
+
+      <div anvil-name="anvil-m3-navigation-drawer-scrim" class="anvil-m3-navigation-drawer-scrim"></div>
+      <div anvil-name="anvil-m3-sidesheet-scrim" class="anvil-m3-sidesheet-scrim"></div>
+
+      <div class="anvil-m3-content anvil-m3-content-navigation-rail" anvil-slot="anvil-m3-content" anvil-name="anvil-m3-content">
+        <p anvil-if-slot-empty="anvil-m3-content" class="anvil-designer-only" style="font-style: italic;">Add content here</p>
+      </div>
+      <div class="anvil-m3-sidesheet anvil-m3-open" anvil-slot="anvil-m3-sidesheet" anvil-name="anvil-m3-sidesheet">
+        <p anvil-if-slot-empty="anvil-m3-sidesheet" class="anvil-designer-only" style="font-style: italic;">Add optional sidesheet content here</p>
+      </div>
+
+      </div>
+
+  type: HtmlTemplate
+custom_component: true
+is_package: true
+layout_metadata: {description: A simple layout with a left-side navigation rail and optional right-hand sidepanel, thumbnail: 'asset:designer_icons/navigation-rail-thumb.png', title: NavigationRailLayout}
+properties:
+- default_binding_prop: true
+  default_value: bottom_app_bar
+  description: The way the side navigation will collapse on mobile.
+  important: true
+  name: navigation_rail_collapse_to
+  options: [bottom_app_bar, modal_navigation_drawer]
+  type: enum
+- {default_value: '', name: navigation_rail_color, type: color}
+- {default_value: '', description: The background color of Forms using this Layout., name: background_color, type: color}
+- {default_value: '', description: Default color of the text on Forms using this layout, name: text_color, type: color}
+- {default_value: true, important: true, name: show_sidesheet, type: boolean}
+- default_value: top
+  description: The vertical position of the content in the navigation rail.
+  important: true
+  name: navigation_rail_vertical_align
+  options: [top, center, bottom]
+  type: enum
+- default_value: ['8', '8', '8', '8']
+  description: The padding (pixels) around the content of the page
+  group: Layout
+  important: true
+  name: content_padding
+  type: padding
+slots:
+  content:
+    index: 0
+    set_layout_properties: {slot: anvil-m3-content}
+    target: {name: '', type: container}
+  navigation:
+    index: 0
+    set_layout_properties: {slot: anvil-m3-navigation-rail-content}
+    target: {name: '', type: container}
+  sidesheet:
+    index: 0
+    set_layout_properties: {slot: anvil-m3-sidesheet}
+    target: {name: '', type: container}
+  slot_2:
+    index: 0
+    set_layout_properties: {slot: anvil-m3-app-bar-links}
+    target: {name: '', type: container}
+  slot_4:
+    index: 0
+    set_layout_properties: {slot: anvil-m3-app-title}
+    target: {name: '', type: container}
+toolbox_item: {hidden: true}
