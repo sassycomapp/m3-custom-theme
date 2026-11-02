@@ -66,15 +66,6 @@ SECTIONS = [
         ],
     ),
     (
-        "RadioButton",
-        m3.RadioButton,
-        [
-            dict(text="Option A", group="demo-radio", value="a", selected=True),
-            dict(text="Option B", group="demo-radio", value="b"),
-            dict(text="Disabled", group="demo-radio", value="c", enabled=False),
-        ],
-    ),
-    (
         "Switch",
         m3.Switch,
         [
@@ -143,6 +134,7 @@ class Form1(Form1Template):
             row = self._section(title)
             for kwargs in variants:
                 row.add_component(cls(**kwargs))
+        self._build_radio_buttons()
         self._build_typography()
         self._build_cards()
         self._build_progress()
@@ -160,6 +152,16 @@ class Form1(Form1Template):
         return row
 
     # ---- sections that need more than a row of components ------------------
+
+    def _build_radio_buttons(self):
+        # RadioButtons join a group by sitting inside a RadioGroupPanel. Do not
+        # pass the group property: it must be a RadioGroup object, not a string.
+        row = self._section("RadioGroupPanel and RadioButton")
+        panel = m3.RadioGroupPanel()
+        panel.add_component(m3.RadioButton(text="Option A", value="a", selected=True))
+        panel.add_component(m3.RadioButton(text="Option B", value="b"))
+        panel.add_component(m3.RadioButton(text="Disabled", value="c", enabled=False))
+        row.add_component(panel)
 
     def _build_typography(self):
         self._heading("Heading")
