@@ -75,6 +75,7 @@ unique_ids:
     designer_icons/textfield_dark.svg: '1702402307460382509534197.2156'
     designer_icons/toggle_icon_button.svg: X3PPQYH2PRT3SVAH6IEOB7A5JEZD5QBO
     designer_icons/toggle_icon_button_dark.svg: 7DAFFO5P4PSMHDQ73R2FXYVFP4ARD7VN
+    m3x/palettes.css: '1793702553869665498540454.4127'
     theme.css: ETNISNSUVCSJYUF6AOQQTK6JLIO7LPER
   forms:
     Form1: '1793626054416316229045705.0675'
@@ -117,6 +118,7 @@ unique_ids:
     _Components.ToggleIconButton: '1698221918450299392855785.47437'
     _utils: NG7DBGUUSPXECPDER2G65KMIKCVG4GRL
     _utils.fui: '1701404784306666394613830.7113'
+    _utils.m3x_theming: '1793702553874683304788471.3342'
     _utils.properties: Y3NC6AD7NRD45BWEUOKRSS7YEKY553LE
     components: '172372848777778606650063.94086'
   scripts: {}

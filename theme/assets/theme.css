@@ -12,7 +12,11 @@
 @import '_/theme/anvil-m3/progress-indicator.css';
 @import '_/theme/anvil-m3/fileloader.css';
 @import '_/theme/anvil-m3/avatar.css';
+/* m3x: palettes and dark mode (Step 4). Generated file, see docs/upstream-edits.md */
+@import '_/theme/m3x/palettes.css';
 
+/* m3x: every %color:...% token below this block was replaced by the matching
+   var(--anvil-m3-...) so that palettes and dark mode reach the whole theme. */
 :root {
   --anvil-m3-primary: %color:Primary%;
   --anvil-m3-primary-container: %color:Primary Container%;
@@ -34,6 +38,7 @@
   --anvil-m3-on-surface: %color:On Surface%;
   --anvil-m3-surface-variant: %color:Surface Variant%;
   --anvil-m3-background: %color:Background%;
+  --anvil-m3-on-background: %color:On Background%;
   --anvil-m3-outline: %color:Outline%;
   --anvil-m3-outline-variant: %color:Outline Variant%;
   --anvil-m3-primary-overlay-1: %color:Primary Overlay 1%;
@@ -64,8 +69,8 @@
 
 body {
   font-family: roboto;
-  color: %color:On Background%;
-  background-color: %color:Background%;
+  color: var(--anvil-m3-on-background);
+  background-color: var(--anvil-m3-background);
   margin: 0;
 }
 
@@ -122,7 +127,7 @@ body {
     z-index:8;
     /* top: 0; */
     left: 0px !important;
-    background: linear-gradient(0deg, %color:Primary Overlay 2%, %color:Primary Overlay 2%), %color:Background%; 
+    background: linear-gradient(0deg, var(--anvil-m3-primary-overlay-2), var(--anvil-m3-primary-overlay-2)), var(--anvil-m3-background); 
     width: 80px !important;
     height: 100%;
     height: calc(100% - %anvil-banner-height%)
@@ -154,7 +159,7 @@ body {
     flex-direction: row;
     justify-content: center;
     overflow-y: hidden;
-    background: linear-gradient(0deg, %color:Primary Overlay 2%, %color:Primary Overlay 2%), %color:Background%;
+    background: linear-gradient(0deg, var(--anvil-m3-primary-overlay-2), var(--anvil-m3-primary-overlay-2)), var(--anvil-m3-background);
     z-index:9;
     display: block;
     height: 100vh;
@@ -177,7 +182,7 @@ body {
     flex-direction: row;
     justify-content: center;
     overflow-y: hidden;
-    background: linear-gradient(0deg, %color:Primary Overlay 2%, %color:Primary Overlay 2%), %color:Background%;
+    background: linear-gradient(0deg, var(--anvil-m3-primary-overlay-2), var(--anvil-m3-primary-overlay-2)), var(--anvil-m3-background);
     z-index:8;
     display: block;
     height: 100vh;
@@ -199,7 +204,7 @@ body {
     flex-direction: row;
     justify-content: center;
     overflow-y: hidden;
-    background: linear-gradient(0deg, %color:Primary Overlay 2%, %color:Primary Overlay 2%), %color:Background%;
+    background: linear-gradient(0deg, var(--anvil-m3-primary-overlay-2), var(--anvil-m3-primary-overlay-2)), var(--anvil-m3-background);
     bottom: 0;
     top: unset;
     height: 80px;
@@ -225,7 +230,7 @@ body {
     border-radius: 0 20px 20px 0;
     position: fixed;
     overflow-y: hidden;
-    background: linear-gradient(0deg, %color:Primary Overlay 2%, %color:Primary Overlay 2%), %color:Background%;
+    background: linear-gradient(0deg, var(--anvil-m3-primary-overlay-2), var(--anvil-m3-primary-overlay-2)), var(--anvil-m3-background);
   }
 }
 
@@ -239,7 +244,7 @@ body {
 
 .anvil-m3-top-app-bar.anvil-m3-scrolled {
   transition: background-color .25s; 
-  background: linear-gradient(0deg, %color:Primary Overlay 2%, %color:Primary Overlay 2%), %color:Background%;
+  background: linear-gradient(0deg, var(--anvil-m3-primary-overlay-2), var(--anvil-m3-primary-overlay-2)), var(--anvil-m3-background);
 }
 
 
@@ -531,7 +536,7 @@ body {
 /*DIALOGS: ALERTS AND NOTIFICATIONS*/
 /*Default Anvil alert*/
 .anvil-modal-content {
-  background: linear-gradient(0deg, %color:Primary Overlay 3%, %color:Primary Overlay 3%), %color:Background%;
+  background: linear-gradient(0deg, var(--anvil-m3-primary-overlay-3), var(--anvil-m3-primary-overlay-3)), var(--anvil-m3-background);
   box-shadow: none;
   border: none;
   border-radius: 28px;
@@ -553,20 +558,20 @@ body {
   background: transparent;
   font-family: "Material Icons";
   text-shadow: none;
-  color: %color:Inverse On Surface%;
+  color: var(--anvil-m3-inverse-on-surface);
   opacity: 1;
   /* content: "\e5cd" */
 }
 
 .anvil-modal-header .anvil-close {
-  color: %color:On Surface%;
+  color: var(--anvil-m3-on-surface);
 }
 
 .anvil-modal-title {
   font-size: 24px;
   line-height: 32px;
   font-weight: 400;
-  color: %color:On Surface%;
+  color: var(--anvil-m3-on-surface);
 }
 
 .anvil-modal-body {
@@ -582,8 +587,8 @@ body {
 
 /*Notifications*/
 .anvil-alert {
-  background-color: %color:Inverse Surface%;
-  color: %color:Inverse On Surface%;
+  background-color: var(--anvil-m3-inverse-surface);
+  color: var(--anvil-m3-inverse-on-surface);
   border: none;
   font-size: 14px;
   letter-spacing: 0.25px;
@@ -592,14 +597,14 @@ body {
 }
 
 .anvil-alert.anvil-alert-danger {
-  background-color: %color:Error%;
-  color: %color:On Error%
+  background-color: var(--anvil-m3-error);
+  color: var(--anvil-m3-on-error)
 }
 
 
 .anvil-alert.anvil-alert-success {
-  background-color: %color:Primary%;
-  color: %color:On Primary%
+  background-color: var(--anvil-m3-primary);
+  color: var(--anvil-m3-on-primary)
 }
 
 
@@ -614,7 +619,7 @@ body {
   
 /*DIVIDER*/
 .anvil-m3-divider {
-  border-top: solid 1px %color:Outline Variant%;
+  border-top: solid 1px var(--anvil-m3-outline-variant);
   margin-top: 8px;
   margin-bottom: 8px
 }
@@ -721,7 +726,7 @@ body {
     border-right: none;
     border-radius: 20px 0px 0px 20px;
     position: absolute;
-    background: linear-gradient(0deg, %color:Primary Overlay 2%, %color:Primary Overlay 2%), %color:Background%;
+    background: linear-gradient(0deg, var(--anvil-m3-primary-overlay-2), var(--anvil-m3-primary-overlay-2)), var(--anvil-m3-background);
     z-index:10;
   }
 }
@@ -744,8 +749,8 @@ a.anvil-inlinable { color: %color:Primary%%; }
 /*TOOLTIP PROPERTY*/
 
 .anvil-m3-tooltip {
-  background-color: %color:Inverse Surface%;
-  color: %color:Inverse On Surface%;
+  background-color: var(--anvil-m3-inverse-surface);
+  color: var(--anvil-m3-inverse-on-surface);
   min-height: 24px;
   padding-left: 8px;
   padding-right: 8px;
@@ -771,9 +776,9 @@ a.anvil-inlinable { color: %color:Primary%%; }
   vertical-align: middle;
   padding: 0px 16px;
   background-color: transparent;
-  border: 1px solid %color:Outline%;
+  border: 1px solid var(--anvil-m3-outline);
   border-radius: 4px;
-  color: %color:On Surface%;
+  color: var(--anvil-m3-on-surface);
   height: 56px !important;
   letter-spacing: 0.5px;
   transition: all 0.15s ease-out;
@@ -783,7 +788,7 @@ a.anvil-inlinable { color: %color:Primary%%; }
   font-family: "Material Symbols Outlined";
   content: "calendar_today";
   font-size: 24px;
-  color: %color:On Surface Variant%;
+  color: var(--anvil-m3-on-surface-variant);
   padding: 6px 8px;
   border-radius: 24px;
 } 
@@ -910,9 +915,9 @@ th.month select.monthselect::after {
 
 /* Data Grids */
 .anvil-data-grid>.anvil-data-grid-child-panel>div.anvil-auto-grid-header, .anvil-data-grid>.anvil-data-grid-child-panel div.anvil-role-data-grid-header {
-  background: %color:Surface Container Low%;
-  border-bottom: 1px solid %color:Outline Variant%;
-  color: %color:On Surface Variant%;
+  background: var(--anvil-m3-surface-container-low);
+  border-bottom: 1px solid var(--anvil-m3-outline-variant);
+  color: var(--anvil-m3-on-surface-variant);
   border-radius: 24px 24px 0 0;
 }
 
@@ -923,7 +928,7 @@ th.month select.monthselect::after {
 .anvil-data-grid>.anvil-data-grid-child-panel>div.anvil-auto-grid-header div.anvil-data-row-col:not(.anvil-extra-column), .anvil-data-grid>.anvil-data-grid-child-panel div.anvil-role-data-grid-header div.anvil-data-row-col:not(.anvil-extra-column){
   padding: 12px;
   margin: 0;
-  border-right: 1px solid %color:Outline Variant%;
+  border-right: 1px solid var(--anvil-m3-outline-variant);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -931,7 +936,7 @@ th.month select.monthselect::after {
 
 .anvil-data-grid > .anvil-data-grid-child-panel>div.anvil-auto-grid-header div.anvil-data-row-col:not(.anvil-extra-column) div {
   font-size: 16px;
-  color: %color:On Surface Variant%;
+  color: var(--anvil-m3-on-surface-variant);
   font-weight: 500;
 }
 
@@ -941,20 +946,20 @@ th.month select.monthselect::after {
 
 .anvil-data-grid {
   border-radius: 24px;
-  border: 1px solid %color:Outline Variant%;
+  border: 1px solid var(--anvil-m3-outline-variant);
 }
 
 .anvil-data-grid .anvil-data-grid-child-panel .anvil-repeating-panel div.anvil-data-row-col:not(.anvil-extra-column) {
-  border-right: 1px solid %color:Outline Variant%;
-  border-bottom: 1px solid %color:Outline Variant%;
+  border-right: 1px solid var(--anvil-m3-outline-variant);
+  border-bottom: 1px solid var(--anvil-m3-outline-variant);
   display: flex;
   align-items: center;
   padding: 16px 24px;
 }
 
 .anvil-data-grid .anvil-data-grid-child-panel .anvil-design-repeating-panel div.anvil-data-row-col:not(.anvil-extra-column) {
-  border-right: 1px solid %color:Outline Variant%;
-  border-bottom: 1px solid %color:Outline Variant%;
+  border-right: 1px solid var(--anvil-m3-outline-variant);
+  border-bottom: 1px solid var(--anvil-m3-outline-variant);
   display: flex;
   align-items: center;
   padding: 16px 24px;
@@ -985,14 +990,14 @@ th.month select.monthselect::after {
 }
 
 .anvil-data-grid .anvil-data-grid-child-panel .anvil-data-row-panel div.anvil-data-row-col:not(.anvil-extra-column) {
-  border-right: 1px solid %color:Outline Variant%;
-  border-bottom: 1px solid %color:Outline Variant%;
+  border-right: 1px solid var(--anvil-m3-outline-variant);
+  border-bottom: 1px solid var(--anvil-m3-outline-variant);
   padding: 16px 24px;
 }
 
 .anvil-data-grid .anvil-data-grid-child-panel .anvil-design-data-row-panel div.anvil-data-row-col:not(.anvil-extra-column) {
-  border-right: 1px solid %color:Outline Variant%;
-  border-bottom: 1px solid %color:Outline Variant%;
+  border-right: 1px solid var(--anvil-m3-outline-variant);
+  border-bottom: 1px solid var(--anvil-m3-outline-variant);
   padding: 16px 24px;
 }
 

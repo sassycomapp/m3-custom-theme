@@ -7,6 +7,8 @@ component here, in every variant and state, before merging it.
 from anvil import *
 import m3.components as m3
 
+from m3._utils import m3x_theming
+
 from ._anvil_designer import Form1Template
 
 BUTTON_APPEARANCES = ["filled", "elevated", "tonal", "outlined", "text"]
@@ -129,7 +131,9 @@ class Form1(Form1Template):
         # Set Form properties and Data Bindings.
         super().__init__(**properties)
 
+        m3x_theming.apply_saved()
         self._heading("M3 custom theme: demo and test form", "display", "small")
+        self._build_theme_controls()
         for title, cls, variants in SECTIONS:
             row = self._section(title)
             for kwargs in variants:
@@ -166,6 +170,27 @@ class Form1(Form1Template):
         panel.add_component(m3.RadioButton(text="Option B", value="b"))
         panel.add_component(m3.RadioButton(text="Disabled", value="c", enabled=False))
         row.add_component(panel)
+
+    def _build_theme_controls(self):
+        row = self._section("Palette and mode")
+        self._palette_menu = m3.DropdownMenu(
+            label="Palette", items=list(m3x_theming.PALETTES)
+        )
+        self._palette_menu.selected_value = m3x_theming.get_palette()
+        self._palette_menu.add_event_handler("change", self._on_palette_change)
+        row.add_component(self._palette_menu)
+        self._mode_menu = m3.DropdownMenu(label="Mode", items=list(m3x_theming.MODES))
+        self._mode_menu.selected_value = m3x_theming.get_mode()
+        self._mode_menu.add_event_handler("change", self._on_mode_change)
+        row.add_component(self._mode_menu)
+
+    def _on_palette_change(self, **event_args):
+        if self._palette_menu.selected_value:
+            m3x_theming.set_palette(self._palette_menu.selected_value)
+
+    def _on_mode_change(self, **event_args):
+        if self._mode_menu.selected_value:
+            m3x_theming.set_mode(self._mode_menu.selected_value)
 
     def _menu_items(self):
         # MenuItems cannot be shared between menus, so make a fresh set each time.
