@@ -137,6 +137,7 @@ class Form1(Form1Template):
         self._build_radio_buttons()
         self._build_menus()
         self._build_dropdown_menus()
+        self._build_dropdown_diagnostics()
         self._build_file_loaders()
         self._build_navigation_links()
         self._build_typography()
@@ -230,6 +231,21 @@ class Form1(Form1Template):
             m3.DropdownMenu(label="Disabled", items=items, appearance="outlined",
                             enabled=False)
         )
+
+    def _build_dropdown_diagnostics(self):
+        # Diagnostic for the fault where a DropdownMenu placed in the Anvil design
+        # view shows no list in run mode. Both dropdowns use the same properties
+        # as the design-view one (label "Fruits"). Test A sits directly in the
+        # form, like the design-view one. Test B sits in a FlowPanel like the rest.
+        fruits = dict(
+            items=["Apple", "Orange", "Banana", "Cherry"],
+            label="Fruits",
+            placeholder="Pick your fruit",
+        )
+        self._heading("DropdownMenu test A: directly in the form")
+        self.add_component(m3.DropdownMenu(**fruits))
+        row = self._section("DropdownMenu test B: inside a FlowPanel")
+        row.add_component(m3.DropdownMenu(**fruits))
 
     def _build_file_loaders(self):
         row = self._section("FileLoader")
