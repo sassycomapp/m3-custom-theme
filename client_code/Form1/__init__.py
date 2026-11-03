@@ -135,6 +135,10 @@ class Form1(Form1Template):
             for kwargs in variants:
                 row.add_component(cls(**kwargs))
         self._build_radio_buttons()
+        self._build_menus()
+        self._build_dropdown_menus()
+        self._build_file_loaders()
+        self._build_navigation_links()
         self._build_typography()
         self._build_cards()
         self._build_progress()
@@ -162,6 +166,88 @@ class Form1(Form1Template):
         panel.add_component(m3.RadioButton(text="Option B", value="b"))
         panel.add_component(m3.RadioButton(text="Disabled", value="c", enabled=False))
         row.add_component(panel)
+
+    def _menu_items(self):
+        # MenuItems cannot be shared between menus, so make a fresh set each time.
+        return [
+            m3.MenuItem(text="Cut", leading_icon="mi:content_cut"),
+            m3.MenuItem(text="Copy", leading_icon="mi:content_copy",
+                        trailing_text="Ctrl+C"),
+            m3.MenuItem(text="Disabled item", enabled=False),
+        ]
+
+    def _build_menus(self):
+        row = self._section("ButtonMenu")
+        for appearance in ("elevated", "filled", "tonal", "outlined"):
+            row.add_component(
+                m3.ButtonMenu(
+                    text=appearance.title() + " menu",
+                    appearance=appearance,
+                    menu_items=self._menu_items(),
+                )
+            )
+        row.add_component(
+            m3.ButtonMenu(text="Disabled menu", enabled=False,
+                          menu_items=self._menu_items())
+        )
+        row = self._section("IconButtonMenu")
+        for appearance in ICON_BUTTON_APPEARANCES:
+            row.add_component(
+                m3.IconButtonMenu(
+                    icon="mi:more_vert",
+                    appearance=appearance,
+                    menu_items=self._menu_items(),
+                )
+            )
+        row = self._section("AvatarMenu")
+        for appearance in AVATAR_APPEARANCES:
+            row.add_component(
+                m3.AvatarMenu(
+                    user_name="Ada Lovelace",
+                    appearance=appearance,
+                    menu_items=self._menu_items(),
+                )
+            )
+
+    def _build_dropdown_menus(self):
+        row = self._section("DropdownMenu")
+        items = ["Apple", "Banana", "Cherry"]
+        for appearance in TEXT_INPUT_APPEARANCES:
+            row.add_component(
+                m3.DropdownMenu(
+                    label="Label " + appearance,
+                    items=items,
+                    appearance=appearance,
+                    placeholder="Choose one",
+                    supporting_text="Supporting text",
+                )
+            )
+        row.add_component(
+            m3.DropdownMenu(label="Error", items=items, appearance="outlined",
+                            error=True, supporting_text="Error text")
+        )
+        row.add_component(
+            m3.DropdownMenu(label="Disabled", items=items, appearance="outlined",
+                            enabled=False)
+        )
+
+    def _build_file_loaders(self):
+        row = self._section("FileLoader")
+        for appearance in ("text", "elevated", "filled", "tonal", "outlined"):
+            row.add_component(
+                m3.FileLoader(text="Upload " + appearance, appearance=appearance)
+            )
+        row.add_component(m3.FileLoader(text="Disabled", enabled=False))
+
+    def _build_navigation_links(self):
+        row = self._section("NavigationLink")
+        row.add_component(m3.NavigationLink(text="Home", icon="mi:home"))
+        row.add_component(
+            m3.NavigationLink(text="Selected", icon="mi:home", selected=True)
+        )
+        row.add_component(
+            m3.NavigationLink(text="Badge", icon="mi:mail", badge=True, badge_count=3)
+        )
 
     def _build_typography(self):
         self._heading("Heading")
