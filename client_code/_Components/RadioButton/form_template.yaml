@@ -14,7 +14,6 @@ container:
           <label class="anvil-m3-radiobutton-label" anvil-name="anvil-m3-radiobutton-label"></label>
         </div>
       </div>
-    tooltip: tooltip test
     visible: true
   type: HtmlTemplate
 custom_component: true
