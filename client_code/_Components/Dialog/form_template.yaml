@@ -1,8 +1,6 @@
 components: []
 container:
-  properties:
-    html: |-
-      <div anvil-name="m3x-dialog" class="m3x-dialog" role="dialog" aria-modal="true"><button anvil-name="m3x-dialog-close" class="m3x-dialog-close" type="button" aria-label="Close"><i class="material-symbols-outlined" aria-hidden="true">close</i></button><i anvil-name="m3x-dialog-icon" class="m3x-dialog-icon material-symbols-outlined" aria-hidden="true" style="display: none;"></i><h2 anvil-name="m3x-dialog-headline" class="m3x-dialog-headline" style="display: none;"></h2><div anvil-name="m3x-dialog-supporting-text" class="m3x-dialog-supporting-text" style="display: none;"></div><div anvil-slot="dialog-content-slot" class="m3x-dialog-content"></div><div anvil-slot="dialog-actions-slot" class="m3x-dialog-actions"></div></div>
+  properties: {html: '<div anvil-name="m3x-dialog" class="m3x-dialog" role="dialog" aria-modal="true"><button anvil-name="m3x-dialog-close" class="m3x-dialog-close" type="button" aria-label="Close"><i class="material-symbols-outlined" aria-hidden="true">close</i></button><i anvil-name="m3x-dialog-icon" class="m3x-dialog-icon material-symbols-outlined" aria-hidden="true" style="display: none;"></i><h2 anvil-name="m3x-dialog-headline" class="m3x-dialog-headline" style="display: none;"></h2><div anvil-name="m3x-dialog-supporting-text" class="m3x-dialog-supporting-text" style="display: none;"></div><div anvil-slot="dialog-content-slot" class="m3x-dialog-content"></div><div anvil-slot="dialog-actions-slot" class="m3x-dialog-actions"></div></div>'}
   type: HtmlTemplate
 custom_component: true
 custom_component_container: true
