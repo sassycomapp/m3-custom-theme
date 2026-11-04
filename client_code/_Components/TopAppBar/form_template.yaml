@@ -1,0 +1,31 @@
+components: []
+container:
+  properties: {html: '<header anvil-name="m3x-top-app-bar" class="m3x-top-app-bar m3x-top-app-bar-small"><div class="m3x-top-app-bar-row"><button anvil-name="m3x-top-app-bar-navigation" class="m3x-top-app-bar-navigation" type="button" style="display: none;"><i anvil-name="m3x-top-app-bar-navigation-icon" class="material-symbols-outlined" aria-hidden="true"></i></button><div anvil-name="m3x-top-app-bar-headline" class="m3x-top-app-bar-headline"><div anvil-name="m3x-top-app-bar-title" class="m3x-top-app-bar-title"></div><div anvil-name="m3x-top-app-bar-subtitle" class="m3x-top-app-bar-subtitle" style="display: none;"></div></div><div anvil-slot="top-app-bar-actions-slot" class="m3x-top-app-bar-actions"></div></div></header>'}
+  type: HtmlTemplate
+custom_component: true
+custom_component_container: true
+events:
+- {default_event: true, description: When the navigation icon at the start of the bar is clicked., name: navigation_click}
+- {description: When the top app bar is shown on the screen., name: show}
+- {description: When the top app bar is removed from the screen., name: hide}
+is_package: true
+properties:
+- {default_binding_prop: true, default_value: Title, description: The title of the page., group: Key Properties, important: true, name: title, type: string}
+- {default_value: '', description: A smaller line of text below the title., group: Key Properties, important: true, name: subtitle, type: string}
+- default_value: small
+  description: 'small: the title sits in the bar. medium and large: a larger title sits below the bar, for the top of a page.'
+  group: Key Properties
+  important: true
+  name: size
+  options: [small, medium, large]
+  type: enum
+- {default_value: false, description: 'If True, the title of a small bar is centred.', group: Key Properties, important: false, name: centered, type: boolean}
+- {default_value: '', description: 'An icon button at the start of the bar, such as mi:menu or mi:arrow_back. It raises the navigation_click event.', group: Key Properties, iconsets: [material-icons], important: true, name: navigation_icon, type: icon}
+- {default_value: '', description: 'The name of the navigation icon for screen readers, such as Open menu or Back.', group: Key Properties, important: false, name: navigation_label, type: string}
+- {default_value: true, description: 'If True, the bar stays at the top of the window when the page scrolls, and takes a slightly darker colour while the page is scrolled.', group: Layout, important: true, name: sticky, type: boolean}
+- {default_value: true, description: 'If True, the component will be displayed.', designer_hint: visible, group: Look and Feel, important: true, name: visible, type: boolean}
+- {default_value: '', description: A style for this component defined in CSS and added to Roles., group: Look and Feel, name: role, type: themeRole}
+- {description: Use this property to store any extra data for the component., group: Other, important: false, name: tag, type: object}
+toolbox_item:
+  hidden: true
+  icon: {dark: 'asset:designer_icons/top_app_bar_dark.svg', light: 'asset:designer_icons/top_app_bar.svg'}

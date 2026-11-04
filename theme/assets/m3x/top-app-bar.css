@@ -1,0 +1,208 @@
+/* Top app bar (m3._Components.TopAppBar). See docs/components/TopAppBar.md.
+   One grid: navigation icon, title and actions. Small bars keep the title in
+   the row; medium and large bars put a larger title on a row of its own. */
+
+.m3x-top-app-bar {
+  box-sizing: border-box;
+  width: 100%;
+  background-color: var(--m3x-top-app-bar-container-color);
+  transition: background-color var(--m3x-motion-duration-short4) var(--m3x-motion-easing-standard);
+}
+
+.m3x-top-app-bar-sticky {
+  position: sticky;
+  top: 0;
+  z-index: var(--m3x-top-app-bar-z-index);
+}
+
+.m3x-top-app-bar-scrolled {
+  background-color: var(--m3x-top-app-bar-scrolled-container-color);
+}
+
+.m3x-top-app-bar-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas: "navigation headline actions";
+  align-items: center;
+  box-sizing: border-box;
+  min-height: var(--m3x-top-app-bar-small-height);
+  padding: 0 var(--m3x-top-app-bar-edge-space);
+}
+
+.m3x-top-app-bar-navigation {
+  grid-area: navigation;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--m3x-touch-target-size);
+  height: var(--m3x-touch-target-size);
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: var(--m3x-shape-corner-full);
+  background: none;
+  color: var(--m3x-top-app-bar-leading-icon-color);
+  cursor: pointer;
+}
+
+.m3x-top-app-bar-navigation .material-symbols-outlined {
+  font-size: var(--m3x-top-app-bar-icon-size);
+}
+
+.m3x-top-app-bar-navigation::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-color: currentColor;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--m3x-motion-duration-short2) var(--m3x-motion-easing-standard);
+}
+
+.m3x-top-app-bar-navigation:hover::before {
+  opacity: var(--m3x-state-hover-opacity);
+}
+
+.m3x-top-app-bar-navigation:active::before {
+  opacity: var(--m3x-state-pressed-opacity);
+}
+
+.m3x-top-app-bar-navigation:focus-visible {
+  outline: var(--m3x-focus-indicator-thickness) solid var(--m3x-focus-indicator-color);
+  outline-offset: calc(-1 * var(--m3x-focus-indicator-thickness));
+}
+
+.m3x-top-app-bar-headline {
+  grid-area: headline;
+  min-width: 0;
+  padding: 0 var(--m3x-top-app-bar-title-padding);
+}
+
+.m3x-top-app-bar-has-navigation .m3x-top-app-bar-headline {
+  padding-left: var(--m3x-top-app-bar-edge-space);
+}
+
+.m3x-top-app-bar-title,
+.m3x-top-app-bar-subtitle {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.m3x-top-app-bar-title {
+  color: var(--m3x-top-app-bar-title-color);
+}
+
+.m3x-top-app-bar-subtitle {
+  color: var(--m3x-top-app-bar-subtitle-color);
+}
+
+.m3x-top-app-bar-actions {
+  grid-area: actions;
+  display: flex;
+  align-items: center;
+}
+
+/* Small */
+.m3x-top-app-bar-small .m3x-top-app-bar-title {
+  font-family: var(--m3x-typescale-title-large-font);
+  font-size: var(--m3x-typescale-title-large-size);
+  line-height: var(--m3x-typescale-title-large-line-height);
+  letter-spacing: var(--m3x-typescale-title-large-tracking);
+  font-weight: var(--m3x-typescale-title-large-weight);
+}
+
+.m3x-top-app-bar-small .m3x-top-app-bar-subtitle {
+  font-family: var(--m3x-typescale-label-medium-font);
+  font-size: var(--m3x-typescale-label-medium-size);
+  line-height: var(--m3x-typescale-label-medium-line-height);
+  letter-spacing: var(--m3x-typescale-label-medium-tracking);
+  font-weight: var(--m3x-typescale-label-medium-weight);
+}
+
+.m3x-top-app-bar-small.m3x-top-app-bar-centered .m3x-top-app-bar-row {
+  grid-template-columns: 1fr auto 1fr;
+}
+
+.m3x-top-app-bar-small.m3x-top-app-bar-centered .m3x-top-app-bar-headline {
+  padding: 0 var(--m3x-top-app-bar-edge-space);
+  text-align: center;
+}
+
+.m3x-top-app-bar-small.m3x-top-app-bar-centered .m3x-top-app-bar-actions {
+  justify-content: flex-end;
+}
+
+/* Medium and large: the title on a row of its own, at the bottom of the bar */
+.m3x-top-app-bar-medium .m3x-top-app-bar-row,
+.m3x-top-app-bar-large .m3x-top-app-bar-row {
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: var(--m3x-top-app-bar-small-height) 1fr;
+  grid-template-areas:
+    "navigation . actions"
+    "headline headline headline";
+  align-items: center;
+}
+
+.m3x-top-app-bar-medium .m3x-top-app-bar-headline,
+.m3x-top-app-bar-large .m3x-top-app-bar-headline {
+  align-self: end;
+  padding: 0 calc(var(--m3x-top-app-bar-title-padding) - var(--m3x-top-app-bar-edge-space)) var(--m3x-space-12);
+}
+
+.m3x-top-app-bar-medium .m3x-top-app-bar-row {
+  min-height: var(--m3x-top-app-bar-medium-height);
+}
+
+.m3x-top-app-bar-medium.m3x-top-app-bar-has-subtitle .m3x-top-app-bar-row {
+  min-height: var(--m3x-top-app-bar-medium-height-with-subtitle);
+}
+
+.m3x-top-app-bar-large .m3x-top-app-bar-row {
+  min-height: var(--m3x-top-app-bar-large-height);
+}
+
+.m3x-top-app-bar-large.m3x-top-app-bar-has-subtitle .m3x-top-app-bar-row {
+  min-height: var(--m3x-top-app-bar-large-height-with-subtitle);
+}
+
+.m3x-top-app-bar-medium .m3x-top-app-bar-title {
+  font-family: var(--m3x-typescale-headline-medium-font);
+  font-size: var(--m3x-typescale-headline-medium-size);
+  line-height: var(--m3x-typescale-headline-medium-line-height);
+  letter-spacing: var(--m3x-typescale-headline-medium-tracking);
+  font-weight: var(--m3x-typescale-headline-medium-weight);
+}
+
+.m3x-top-app-bar-medium .m3x-top-app-bar-subtitle {
+  font-family: var(--m3x-typescale-label-large-font);
+  font-size: var(--m3x-typescale-label-large-size);
+  line-height: var(--m3x-typescale-label-large-line-height);
+  letter-spacing: var(--m3x-typescale-label-large-tracking);
+  font-weight: var(--m3x-typescale-label-large-weight);
+}
+
+.m3x-top-app-bar-large .m3x-top-app-bar-title {
+  font-family: var(--m3x-typescale-display-small-font);
+  font-size: var(--m3x-typescale-display-small-size);
+  line-height: var(--m3x-typescale-display-small-line-height);
+  letter-spacing: var(--m3x-typescale-display-small-tracking);
+  font-weight: var(--m3x-typescale-display-small-weight);
+}
+
+.m3x-top-app-bar-large .m3x-top-app-bar-subtitle {
+  font-family: var(--m3x-typescale-title-medium-font);
+  font-size: var(--m3x-typescale-title-medium-size);
+  line-height: var(--m3x-typescale-title-medium-line-height);
+  letter-spacing: var(--m3x-typescale-title-medium-tracking);
+  font-weight: var(--m3x-typescale-title-medium-weight);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .m3x-top-app-bar,
+  .m3x-top-app-bar-navigation::before {
+    transition: none;
+  }
+}

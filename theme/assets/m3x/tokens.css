@@ -462,4 +462,35 @@
   --m3x-button-group-icon-gap: var(--m3x-space-8);
   --m3x-button-group-icon-size: 20px;
   --m3x-button-group-outline-width: 1px;
+
+  /* Component: Navigation bar (NavigationBarTokens,
+     NavigationBarVerticalItemTokens v0_11_0) */
+  --m3x-navigation-bar-container-color: var(--m3x-color-surface-container);
+  --m3x-navigation-bar-height: 64px;
+  --m3x-navigation-bar-indicator-color: var(--m3x-color-secondary-container);
+  --m3x-navigation-bar-indicator-width: 56px;
+  --m3x-navigation-bar-indicator-height: 32px;
+  --m3x-navigation-bar-icon-size: 24px;
+  --m3x-navigation-bar-icon-label-gap: var(--m3x-space-4);
+  --m3x-navigation-bar-active-icon-color: var(--m3x-color-on-secondary-container);
+  --m3x-navigation-bar-active-label-color: var(--m3x-color-secondary);
+  --m3x-navigation-bar-inactive-color: var(--m3x-color-on-surface-variant);
+  --m3x-navigation-bar-z-index: 1010;
+
+  /* Component: Top app bar (AppBarTokens, AppBarSmallTokens,
+     AppBarMediumFlexibleTokens, AppBarLargeFlexibleTokens 14_0_0) */
+  --m3x-top-app-bar-container-color: var(--m3x-color-surface);
+  --m3x-top-app-bar-scrolled-container-color: var(--m3x-color-surface-container);
+  --m3x-top-app-bar-title-color: var(--m3x-color-on-surface);
+  --m3x-top-app-bar-subtitle-color: var(--m3x-color-on-surface-variant);
+  --m3x-top-app-bar-leading-icon-color: var(--m3x-color-on-surface);
+  --m3x-top-app-bar-icon-size: 24px;
+  --m3x-top-app-bar-edge-space: var(--m3x-space-4);
+  --m3x-top-app-bar-title-padding: var(--m3x-space-16);
+  --m3x-top-app-bar-small-height: 64px;
+  --m3x-top-app-bar-medium-height: 112px;
+  --m3x-top-app-bar-medium-height-with-subtitle: 136px;
+  --m3x-top-app-bar-large-height: 120px;
+  --m3x-top-app-bar-large-height-with-subtitle: 152px;
+  --m3x-top-app-bar-z-index: 1000;
 }

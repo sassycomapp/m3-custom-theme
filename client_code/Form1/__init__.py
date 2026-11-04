@@ -190,6 +190,8 @@ class Form1(Form1Template):
         self._build_fabs()
         self._build_list_items()
         self._build_button_groups()
+        self._build_app_bars()
+        self._build_navigation_bars()
         self._build_tokens()
 
     # ---- helpers -------------------------------------------------------
@@ -700,6 +702,61 @@ class Form1(Form1Template):
         self._group_result.text = (
             f"Button group: clicked '{name}', selected {sender.selected_indices}"
         )
+
+    # ---- top app bars and navigation bars (Step 6) ---------------------------
+
+    def _build_app_bars(self):
+        self._heading("TopAppBar")
+        self._bar_result = m3.Text(text="Top app bar: (nothing clicked yet)")
+        for title, kwargs in (
+            ("Small", dict(title="Inbox", navigation_icon="mi:menu")),
+            ("Small, centred, with subtitle", dict(
+                title="Photos", subtitle="1,204 items", centered=True,
+                navigation_icon="mi:arrow_back",
+            )),
+            ("Medium", dict(size="medium", title="Settings",
+                            navigation_icon="mi:arrow_back")),
+            ("Large, with subtitle", dict(size="large", title="Recipes",
+                                          subtitle="Saturday dinner",
+                                          navigation_icon="mi:arrow_back")),
+        ):
+            self.add_component(m3.Text(text=title, style="label"))
+            bar = m3.TopAppBar(sticky=False, navigation_label="Navigation", **kwargs)
+            bar.add_event_handler("navigation_click", self._on_bar_navigation)
+            for icon in ("mi:search", "mi:more_vert"):
+                action = m3.IconButton(icon=icon, tooltip=icon[3:])
+                action.add_event_handler(
+                    "click",
+                    lambda icon=icon, **e: self._bar_event(f"{icon[3:]} clicked"),
+                )
+                bar.add_component(action)
+            card = m3.Card(appearance="outlined")
+            card.add_component(bar)
+            self.add_component(card)
+        self.add_component(self._bar_result)
+
+    def _on_bar_navigation(self, sender, **event_args):
+        self._bar_event(f"navigation icon of '{sender.title}' clicked")
+
+    def _bar_event(self, text):
+        self._bar_result.text = f"Top app bar: {text}"
+
+    def _build_navigation_bars(self):
+        self._heading("NavigationBar")
+        self._nav_result = m3.Text(text="Navigation bar: Home selected")
+        bar = m3.NavigationBar(
+            items=["Home", "Messages", "Calendar", "Profile"],
+            icons=["mi:home", "mi:chat", "mi:calendar_month", "mi:person"],
+            badges=[None, 3, 0, None],
+        )
+        bar.add_event_handler("change", self._on_navigation_change)
+        card = m3.Card(appearance="outlined")
+        card.add_component(bar)
+        self.add_component(card)
+        self.add_component(self._nav_result)
+
+    def _on_navigation_change(self, sender, **event_args):
+        self._nav_result.text = f"Navigation bar: {sender.selected_text} selected"
 
     # ---- token reference (Step 5) --------------------------------------------
 

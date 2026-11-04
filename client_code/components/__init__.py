@@ -22,6 +22,7 @@ from .._Components.LinearProgressIndicator import LinearProgressIndicator
 from .._Components.Link import Link
 from .._Components.ListItem import ListItem
 from .._Components.MenuItem import MenuItem
+from .._Components.NavigationBar import NavigationBar
 from .._Components.NavigationLink import NavigationLink
 from .._Components.RadioButton import RadioButton
 from .._Components.RadioGroupPanel import RadioGroup, RadioGroupPanel
@@ -33,4 +34,5 @@ from .._Components.Text import Text
 from .._Components.TextInput.TextArea import TextArea
 from .._Components.TextInput.TextBox import TextBox
 from .._Components.ToggleIconButton import ToggleIconButton
+from .._Components.TopAppBar import TopAppBar
 from .._utils.m3x_snackbar import Snackbar

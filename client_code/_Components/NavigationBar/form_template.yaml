@@ -1,0 +1,22 @@
+components: []
+container:
+  properties: {html: '<nav anvil-name="m3x-navigation-bar" class="m3x-navigation-bar"></nav>'}
+  type: HtmlTemplate
+custom_component: true
+events:
+- {default_event: true, description: When the user selects a different destination., name: change}
+- {description: When the navigation bar is shown on the screen., name: show}
+- {description: When the navigation bar is removed from the screen., name: hide}
+is_package: true
+properties:
+- {default_value: [Home, Search, Profile], description: 'The label of each destination, one per line. Use three to five destinations.', group: Key Properties, important: true, name: items, type: 'text[]'}
+- {default_value: ['mi:home', 'mi:search', 'mi:person'], description: 'One icon per destination, in the same order as the items, one per line, for example mi:home.', group: Key Properties, important: true, name: icons, type: 'text[]'}
+- {default_binding_prop: true, default_value: 0, description: 'The position of the selected destination, counting from 0.', group: Key Properties, important: true, name: selected_index, type: number}
+- {description: 'Optional: one badge per destination, as a list. None means no badge, 0 means a small dot, a number shows that number. For example [None, 3, 0].', group: Key Properties, important: false, name: badges, type: object}
+- {default_value: false, description: 'If True, the bar is fixed to the bottom edge of the window.', group: Layout, important: true, name: fixed, type: boolean}
+- {default_value: true, description: 'If True, the component will be displayed.', designer_hint: visible, group: Look and Feel, important: true, name: visible, type: boolean}
+- {default_value: '', description: A style for this component defined in CSS and added to Roles., group: Look and Feel, name: role, type: themeRole}
+- {description: Use this property to store any extra data for the component., group: Other, important: false, name: tag, type: object}
+toolbox_item:
+  hidden: true
+  icon: {dark: 'asset:designer_icons/navigation_bar_dark.svg', light: 'asset:designer_icons/navigation_bar.svg'}
