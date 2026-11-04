@@ -648,8 +648,12 @@ class Form1(Form1Template):
                  leading_icon="mi:block", clickable=True, enabled=False),
             dict(overline="Overline", headline="Three lines",
                  supporting_text="The supporting text of a three-line item can run "
-                 "onto a second line before it is cut off with an ellipsis, as it "
-                 "does here.", three_line=True, leading_icon="mi:article"),
+                 "onto a second line. Text that is longer than two lines is cut off "
+                 "at the end of the second line with three dots. This sentence is "
+                 "long on purpose, so that it is cut off even on a wide screen: it "
+                 "keeps going well past the end of the second line, and the rest of "
+                 "it is never shown in the list.", three_line=True,
+                 leading_icon="mi:article"),
         )
         for kwargs in items:
             item = m3.ListItem(**kwargs)
