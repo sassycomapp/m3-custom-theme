@@ -183,6 +183,7 @@ class Form1(Form1Template):
         self._build_progress()
         self._build_dividers()
         self._build_dialogs()
+        self._build_chips()
         self._build_tokens()
 
     # ---- helpers -------------------------------------------------------
@@ -428,6 +429,58 @@ class Form1(Form1Template):
         )
         dialog.add_action("Save", value="saved")
         return dialog
+
+    # ---- chips (Step 6) ------------------------------------------------------
+
+    def _build_chips(self):
+        rows = (
+            ("Chip: assist", [
+                dict(text="Assist"),
+                dict(text="With icon", leading_icon="mi:event"),
+                dict(text="Elevated", elevated=True, leading_icon="mi:event"),
+                dict(text="Disabled", enabled=False),
+                dict(text="Disabled elevated", elevated=True, enabled=False),
+            ]),
+            ("Chip: filter", [
+                dict(text="Filter"),
+                dict(text="Selected", selected=True),
+                dict(text="Elevated", elevated=True),
+                dict(text="Elevated selected", elevated=True, selected=True),
+                dict(text="Disabled", enabled=False),
+                dict(text="Disabled selected", enabled=False, selected=True),
+            ]),
+            ("Chip: input", [
+                dict(text="Input", removable=True),
+                dict(text="With icon", leading_icon="mi:person", removable=True),
+                dict(text="Selected", selected=True, removable=True),
+                dict(text="Disabled", enabled=False, removable=True),
+            ]),
+            ("Chip: suggestion", [
+                dict(text="Suggestion"),
+                dict(text="With icon", leading_icon="mi:lightbulb"),
+                dict(text="Elevated", elevated=True),
+                dict(text="Disabled", enabled=False),
+            ]),
+        )
+        for title, variants in rows:
+            chip_type = title.split(": ")[1]
+            row = self._section(title)
+            for kwargs in variants:
+                chip = m3.Chip(type=chip_type, **kwargs)
+                chip.add_event_handler("click", self._on_chip_event)
+                chip.add_event_handler("change", self._on_chip_event)
+                chip.add_event_handler("remove", self._on_chip_event)
+                row.add_component(chip)
+        self._chip_result = m3.Text(text="Last chip event: (none yet)")
+        self.add_component(self._chip_result)
+
+    def _on_chip_event(self, sender, event_name, **event_args):
+        self._chip_result.text = (
+            f"Last chip event: {event_name} on '{sender.text}' ({sender.type}), "
+            f"selected={sender.selected}"
+        )
+        if event_name == "remove":
+            sender.remove_from_parent()
 
     # ---- token reference (Step 5) --------------------------------------------
 

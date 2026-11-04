@@ -1,0 +1,207 @@
+/* Chip (m3._Components.Chip). See docs/components/Chip.md.
+   One component for the four M3 chip types. The type class sets the colours
+   through --m3x-chip-label-color, --m3x-chip-icon-color and
+   --m3x-chip-trailing-icon-color; every other rule reads only those. */
+
+.m3x-chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: var(--m3x-chip-height);
+  vertical-align: middle;
+  border: var(--m3x-chip-outline-width) solid var(--m3x-chip-outline-color);
+  border-radius: var(--m3x-chip-shape);
+  background-color: transparent;
+  color: var(--m3x-chip-label-color);
+  font-family: var(--m3x-typescale-label-large-font);
+  font-size: var(--m3x-typescale-label-large-size);
+  line-height: var(--m3x-typescale-label-large-line-height);
+  letter-spacing: var(--m3x-typescale-label-large-tracking);
+  font-weight: var(--m3x-typescale-label-large-weight);
+  transition:
+    background-color var(--m3x-motion-duration-short4) var(--m3x-motion-easing-standard),
+    box-shadow var(--m3x-motion-duration-short4) var(--m3x-motion-easing-standard);
+}
+
+/* Colours per type */
+.m3x-chip-assist {
+  --m3x-chip-label-color: var(--m3x-color-on-surface);
+  --m3x-chip-icon-color: var(--m3x-color-primary);
+  --m3x-chip-trailing-icon-color: var(--m3x-color-on-surface-variant);
+}
+
+.m3x-chip-filter,
+.m3x-chip-suggestion {
+  --m3x-chip-label-color: var(--m3x-color-on-surface-variant);
+  --m3x-chip-icon-color: var(--m3x-color-primary);
+  --m3x-chip-trailing-icon-color: var(--m3x-color-on-surface-variant);
+}
+
+.m3x-chip-input {
+  --m3x-chip-label-color: var(--m3x-color-on-surface-variant);
+  --m3x-chip-icon-color: var(--m3x-color-on-surface-variant);
+  --m3x-chip-trailing-icon-color: var(--m3x-color-on-surface-variant);
+}
+
+.m3x-chip-filter.m3x-chip-selected {
+  --m3x-chip-label-color: var(--m3x-chip-selected-label-color);
+  --m3x-chip-icon-color: var(--m3x-chip-selected-label-color);
+  --m3x-chip-trailing-icon-color: var(--m3x-chip-selected-label-color);
+}
+
+.m3x-chip-input.m3x-chip-selected {
+  --m3x-chip-label-color: var(--m3x-chip-selected-label-color);
+  --m3x-chip-icon-color: var(--m3x-color-primary);
+  --m3x-chip-trailing-icon-color: var(--m3x-chip-selected-label-color);
+}
+
+/* Elevated and selected containers */
+.m3x-chip-elevated {
+  border-color: transparent;
+  background-color: var(--m3x-chip-elevated-container-color);
+  box-shadow: var(--m3x-chip-elevated-container-elevation);
+}
+
+.m3x-chip-elevated:hover {
+  box-shadow: var(--m3x-chip-elevated-hover-container-elevation);
+}
+
+.m3x-chip-selected {
+  border-color: transparent;
+  background-color: var(--m3x-chip-selected-container-color);
+}
+
+.m3x-chip-filter.m3x-chip-selected:hover {
+  box-shadow: var(--m3x-chip-selected-hover-container-elevation);
+}
+
+/* State layer: the label colour at the state opacity */
+.m3x-chip::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-color: var(--m3x-chip-label-color);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--m3x-motion-duration-short2) var(--m3x-motion-easing-standard);
+}
+
+.m3x-chip:hover::before {
+  opacity: var(--m3x-state-hover-opacity);
+}
+
+.m3x-chip:has(.m3x-chip-action:focus-visible)::before {
+  opacity: var(--m3x-state-focus-opacity);
+}
+
+.m3x-chip:has(.m3x-chip-action:active)::before {
+  opacity: var(--m3x-state-pressed-opacity);
+}
+
+.m3x-chip:has(.m3x-chip-action:focus-visible) {
+  outline: var(--m3x-focus-indicator-thickness) solid var(--m3x-focus-indicator-color);
+  outline-offset: var(--m3x-focus-indicator-outer-offset);
+}
+
+/* The clickable area: icon and label */
+.m3x-chip-action {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--m3x-chip-gap);
+  height: 100%;
+  margin: 0;
+  padding: 0 var(--m3x-chip-padding);
+  border: none;
+  border-radius: inherit;
+  background: none;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  cursor: pointer;
+  outline: none;
+}
+
+/* The 48 px touch target, taller than the chip */
+.m3x-chip-action::after {
+  content: "";
+  position: absolute;
+  top: calc((var(--m3x-chip-height) - var(--m3x-touch-target-size)) / 2);
+  bottom: calc((var(--m3x-chip-height) - var(--m3x-touch-target-size)) / 2);
+  left: 0;
+  right: 0;
+}
+
+.m3x-chip-has-leading-icon .m3x-chip-action {
+  padding-left: var(--m3x-chip-padding-beside-icon);
+}
+
+.m3x-chip-icon {
+  font-size: var(--m3x-chip-icon-size);
+  line-height: 1;
+}
+
+.m3x-chip-leading-icon {
+  color: var(--m3x-chip-icon-color);
+}
+
+/* The remove icon of removable chips */
+.m3x-chip-remove {
+  display: none;
+}
+
+.m3x-chip-removable .m3x-chip-action {
+  padding-right: var(--m3x-chip-padding-beside-icon);
+}
+
+.m3x-chip-removable .m3x-chip-remove {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 var(--m3x-chip-padding-beside-icon) 0 0;
+  padding: 0;
+  border: none;
+  border-radius: var(--m3x-shape-corner-full);
+  background: none;
+  color: var(--m3x-chip-trailing-icon-color);
+  cursor: pointer;
+}
+
+.m3x-chip-remove:focus-visible {
+  outline: var(--m3x-focus-indicator-thickness) solid var(--m3x-focus-indicator-color);
+  outline-offset: var(--m3x-focus-indicator-outer-offset);
+}
+
+/* Disabled */
+.m3x-chip.m3x-chip-disabled {
+  --m3x-chip-label-color: color-mix(in srgb, var(--m3x-color-on-surface) var(--m3x-disabled-content-opacity), transparent);
+  --m3x-chip-icon-color: var(--m3x-chip-label-color);
+  --m3x-chip-trailing-icon-color: var(--m3x-chip-label-color);
+  border-color: color-mix(in srgb, var(--m3x-color-on-surface) var(--m3x-disabled-container-opacity), transparent);
+  box-shadow: var(--m3x-elevation-level0);
+}
+
+.m3x-chip-disabled.m3x-chip-elevated,
+.m3x-chip-disabled.m3x-chip-selected {
+  border-color: transparent;
+  background-color: color-mix(in srgb, var(--m3x-color-on-surface) var(--m3x-disabled-container-opacity), transparent);
+}
+
+.m3x-chip-disabled::before {
+  display: none;
+}
+
+.m3x-chip-disabled .m3x-chip-action,
+.m3x-chip-disabled .m3x-chip-remove {
+  cursor: default;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .m3x-chip,
+  .m3x-chip::before {
+    transition: none;
+  }
+}

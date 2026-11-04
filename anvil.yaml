@@ -79,6 +79,9 @@ toolbox_sections:
   - component: {type: m3._Components.ToggleIconButton}
     icon: {dark: 'asset:designer_icons/toggle_icon_button_dark.svg', light: 'asset:designer_icons/toggle_icon_button.svg'}
     title: ToggleIconButton
+  - component: {type: m3._Components.Chip}
+    icon: {dark: 'asset:designer_icons/chip_dark.svg', light: 'asset:designer_icons/chip.svg'}
+    title: Chip
   packageName: m3
   title: Buttons
 - description: Display components help display content on the page

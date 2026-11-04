@@ -1,0 +1,33 @@
+components: []
+container:
+  properties: {html: '<span anvil-name="m3x-chip" class="m3x-chip m3x-chip-assist"><button anvil-name="m3x-chip-action" class="m3x-chip-action" type="button"><i anvil-name="m3x-chip-leading-icon" class="m3x-chip-icon m3x-chip-leading-icon material-symbols-outlined" aria-hidden="true" style="display: none;"></i><span anvil-name="m3x-chip-label" class="m3x-chip-label"></span></button><button anvil-name="m3x-chip-remove" class="m3x-chip-remove" type="button" aria-label="Remove"><i class="m3x-chip-icon material-symbols-outlined" aria-hidden="true">close</i></button></span>'}
+  type: HtmlTemplate
+custom_component: true
+events:
+- {default_event: true, description: When the Chip is clicked., name: click}
+- {description: When a filter or input Chip is selected or unselected by a click., name: change}
+- {description: When the remove icon of a removable Chip is clicked., name: remove}
+- {description: When the Chip is shown on the screen., name: show}
+- {description: When the Chip is removed from the screen., name: hide}
+is_package: true
+properties:
+- {default_binding_prop: true, default_value: Chip, description: The text displayed on the Chip., group: Key Properties, important: true, name: text, type: string}
+- default_value: assist
+  description: 'The kind of Chip: assist (a smart action), filter (a toggled choice), input (a piece of entered information) or suggestion (a suggested reply or search).'
+  group: Key Properties
+  important: true
+  name: type
+  options: [assist, filter, input, suggestion]
+  type: enum
+- {default_value: false, description: 'If True, a filter or input Chip is selected.', group: Key Properties, important: true, name: selected, type: boolean}
+- {default_value: '', description: An icon shown before the text., group: Key Properties, iconsets: [material-icons], important: true, name: leading_icon, type: icon}
+- {default_value: false, description: 'If True, an assist, filter or suggestion Chip is raised with a shadow instead of an outline.', group: Look and Feel, important: true, name: elevated, type: boolean}
+- {default_value: false, description: 'If True, the Chip shows a remove icon, which raises the remove event. Meant for input Chips.', group: Interaction, important: true, name: removable, type: boolean}
+- {default_value: true, description: 'If True, the Chip can be clicked.', group: Interaction, important: true, name: enabled, type: boolean}
+- {default_value: true, description: 'If True, the component will be displayed.', designer_hint: visible, group: Look and Feel, important: true, name: visible, type: boolean}
+- {default_value: '', description: A style for this component defined in CSS and added to Roles., group: Look and Feel, name: role, type: themeRole}
+- {default_value: '', description: The text to display when the mouse is hovered over this component., group: Interaction, name: tooltip, type: string}
+- {description: Use this property to store any extra data for the component., group: Other, important: false, name: tag, type: object}
+toolbox_item:
+  hidden: true
+  icon: {dark: 'asset:designer_icons/chip_dark.svg', light: 'asset:designer_icons/chip.svg'}

@@ -327,4 +327,25 @@
   --m3x-dialog-full-screen-headline-color: var(--m3x-color-on-surface);
   --m3x-dialog-full-screen-close-icon-color: var(--m3x-color-on-surface);
   --m3x-touch-target-size: 48px;
+
+  /* Disabled state (M3: content at 38 %, containers and outlines at 12 %) */
+  --m3x-disabled-content-opacity: 38%;
+  --m3x-disabled-container-opacity: 12%;
+
+  /* Component: Chip (AssistChipTokens, FilterChipTokens, InputChipTokens,
+     SuggestionChipTokens 7_0_1) */
+  --m3x-chip-height: 32px;
+  --m3x-chip-shape: var(--m3x-shape-corner-small);
+  --m3x-chip-outline-width: 1px;
+  --m3x-chip-outline-color: var(--m3x-color-outline-variant);
+  --m3x-chip-icon-size: 18px;
+  --m3x-chip-padding: var(--m3x-space-16);
+  --m3x-chip-padding-beside-icon: var(--m3x-space-8);
+  --m3x-chip-gap: var(--m3x-space-8);
+  --m3x-chip-elevated-container-color: var(--m3x-color-surface-container-low);
+  --m3x-chip-elevated-container-elevation: var(--m3x-elevation-level1);
+  --m3x-chip-elevated-hover-container-elevation: var(--m3x-elevation-level2);
+  --m3x-chip-selected-container-color: var(--m3x-color-secondary-container);
+  --m3x-chip-selected-label-color: var(--m3x-color-on-secondary-container);
+  --m3x-chip-selected-hover-container-elevation: var(--m3x-elevation-level1);
 }

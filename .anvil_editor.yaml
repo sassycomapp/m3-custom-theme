@@ -33,6 +33,8 @@ unique_ids:
     designer_icons/card_dark.svg: '1702476700597342692354862.98456'
     designer_icons/checkbox.svg: '1702400309384165269919129.87256'
     designer_icons/checkbox_dark.svg: '1702400322560236680041912.2963'
+    designer_icons/chip.svg: '1793782030363542526657128.6165'
+    designer_icons/chip_dark.svg: '1793782030363804755203785.4443'
     designer_icons/circular_progress_indicator.svg: '1702402034850681412746905.4847'
     designer_icons/circular_progress_indicator_dark.svg: '1702402088080472149609476.13837'
     designer_icons/dialog.svg: '1793776541119183954935624.3040'
@@ -77,6 +79,7 @@ unique_ids:
     designer_icons/textfield_dark.svg: '1702402307460382509534197.2156'
     designer_icons/toggle_icon_button.svg: X3PPQYH2PRT3SVAH6IEOB7A5JEZD5QBO
     designer_icons/toggle_icon_button_dark.svg: 7DAFFO5P4PSMHDQ73R2FXYVFP4ARD7VN
+    m3x/chip.css: '1793782030363255586183702.1009'
     m3x/components.css: '1793776541119942650629231.8394'
     m3x/dialog.css: '1793776541119306859875451.2970'
     m3x/palettes.css: '1793702553869665498540454.4127'
@@ -93,6 +96,7 @@ unique_ids:
     _Components.Card: '1700072210669648729275536.3859'
     _Components.Card.CardContentContainer: '1700075961119309945930609.30084'
     _Components.Checkbox: '1689946549679795138453587.0414'
+    _Components.Chip: '1793782030363652878231308.2531'
     _Components.CircularProgressIndicator: '1699018314168927111586741.3076'
     _Components.Dialog: '1793776541119182237756670.5774'
     _Components.Divider: '1688573262607740872083563.6951'
