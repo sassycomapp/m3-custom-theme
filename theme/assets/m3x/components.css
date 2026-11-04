@@ -1,0 +1,3 @@
+/* The CSS of every m3x component, one file per component.
+   theme.css imports this file. Paths are relative to this file. */
+@import 'dialog.css';

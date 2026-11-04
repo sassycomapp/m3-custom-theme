@@ -6,6 +6,7 @@ from .._Components.Card import Card
 from .._Components.Card.CardContentContainer import CardContentContainer
 from .._Components.Checkbox import Checkbox
 from .._Components.CircularProgressIndicator import CircularProgressIndicator
+from .._Components.Dialog import Dialog
 from .._Components.Divider import Divider
 from .._Components.DropdownMenu import DropdownMenu
 from .._Components.FileLoader import FileLoader

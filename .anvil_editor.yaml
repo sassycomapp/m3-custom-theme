@@ -35,6 +35,8 @@ unique_ids:
     designer_icons/checkbox_dark.svg: '1702400322560236680041912.2963'
     designer_icons/circular_progress_indicator.svg: '1702402034850681412746905.4847'
     designer_icons/circular_progress_indicator_dark.svg: '1702402088080472149609476.13837'
+    designer_icons/dialog.svg: '1793776541119183954935624.3040'
+    designer_icons/dialog_dark.svg: '1793776541119143611782920.4399'
     designer_icons/divider.svg: '1702399955480171372973951.63232'
     designer_icons/divider_dark.svg: '1702400004965244117368359.85986'
     designer_icons/dropdown_menu.svg: '1702402191558888896893366.5889'
@@ -75,6 +77,8 @@ unique_ids:
     designer_icons/textfield_dark.svg: '1702402307460382509534197.2156'
     designer_icons/toggle_icon_button.svg: X3PPQYH2PRT3SVAH6IEOB7A5JEZD5QBO
     designer_icons/toggle_icon_button_dark.svg: 7DAFFO5P4PSMHDQ73R2FXYVFP4ARD7VN
+    m3x/components.css: '1793776541119942650629231.8394'
+    m3x/dialog.css: '1793776541119306859875451.2970'
     m3x/palettes.css: '1793702553869665498540454.4127'
     m3x/tokens.css: '1793772802328879318670730.8713'
     theme.css: ETNISNSUVCSJYUF6AOQQTK6JLIO7LPER
@@ -90,6 +94,7 @@ unique_ids:
     _Components.Card.CardContentContainer: '1700075961119309945930609.30084'
     _Components.Checkbox: '1689946549679795138453587.0414'
     _Components.CircularProgressIndicator: '1699018314168927111586741.3076'
+    _Components.Dialog: '1793776541119182237756670.5774'
     _Components.Divider: '1688573262607740872083563.6951'
     _Components.DropdownMenu: '1704966695378970651888987.607'
     _Components.FileLoader: '1699022411615532112102446.622'

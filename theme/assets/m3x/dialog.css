@@ -1,0 +1,198 @@
+/* Dialog (m3._Components.Dialog). See docs/components/Dialog.md.
+   Dialog.show() opens the Dialog through Anvil's alert() with the Role
+   m3x-dialog or m3x-dialog-full-screen. Anvil puts that Role on its dialog
+   window as the class anvil-role-m3x-dialog(-full-screen). */
+
+/* Anvil's dialog window holds the Dialog: no frame of its own, M3 widths. */
+.anvil-role-m3x-dialog.anvil-modal-dialog {
+  width: calc(100% - 2 * var(--m3x-space-24));
+  min-width: var(--m3x-dialog-min-width);
+  max-width: var(--m3x-dialog-max-width);
+  margin: var(--m3x-space-48) auto;
+}
+
+.anvil-role-m3x-dialog-full-screen.anvil-modal-dialog {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  margin: 0;
+}
+
+.anvil-role-m3x-dialog .anvil-modal-content,
+.anvil-role-m3x-dialog-full-screen .anvil-modal-content {
+  background: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+}
+
+.anvil-role-m3x-dialog .anvil-modal-body,
+.anvil-role-m3x-dialog-full-screen .anvil-modal-body {
+  padding: 0;
+}
+
+.anvil-role-m3x-dialog-full-screen .anvil-modal-content,
+.anvil-role-m3x-dialog-full-screen .anvil-modal-body {
+  height: 100%;
+}
+
+/* The scrim behind the Dialog */
+.m3x-dialog-scrim.anvil-modal-backdrop {
+  background-color: var(--m3x-color-scrim);
+}
+
+.m3x-dialog-scrim.anvil-modal-backdrop.anvil-in {
+  opacity: var(--m3x-dialog-scrim-opacity);
+}
+
+/* Basic dialog */
+.m3x-dialog {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: var(--m3x-dialog-padding);
+  background: var(--m3x-dialog-container-color);
+  border-radius: var(--m3x-dialog-container-shape);
+  box-shadow: var(--m3x-dialog-container-elevation);
+  color: var(--m3x-dialog-supporting-text-color);
+}
+
+.m3x-dialog-icon {
+  align-self: center;
+  margin-bottom: var(--m3x-space-16);
+  font-size: var(--m3x-dialog-icon-size);
+  color: var(--m3x-dialog-icon-color);
+}
+
+.m3x-dialog-headline {
+  margin: 0 0 var(--m3x-space-16);
+  font-family: var(--m3x-typescale-headline-small-font);
+  font-size: var(--m3x-typescale-headline-small-size);
+  line-height: var(--m3x-typescale-headline-small-line-height);
+  letter-spacing: var(--m3x-typescale-headline-small-tracking);
+  font-weight: var(--m3x-typescale-headline-small-weight);
+  color: var(--m3x-dialog-headline-color);
+}
+
+.m3x-dialog-has-icon .m3x-dialog-headline {
+  text-align: center;
+}
+
+.m3x-dialog-supporting-text {
+  font-family: var(--m3x-typescale-body-medium-font);
+  font-size: var(--m3x-typescale-body-medium-size);
+  line-height: var(--m3x-typescale-body-medium-line-height);
+  letter-spacing: var(--m3x-typescale-body-medium-tracking);
+  font-weight: var(--m3x-typescale-body-medium-weight);
+  color: var(--m3x-dialog-supporting-text-color);
+}
+
+.m3x-dialog-content {
+  margin-top: var(--m3x-space-16);
+}
+
+.m3x-dialog-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--m3x-space-8);
+  margin-top: var(--m3x-space-24);
+}
+
+.m3x-dialog-content:empty,
+.m3x-dialog-actions:empty,
+.m3x-dialog-close {
+  display: none;
+}
+
+/* Full-screen dialog: a top bar with close button, headline and actions */
+.m3x-dialog.m3x-dialog-full-screen {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-content: start;
+  align-items: center;
+  column-gap: var(--m3x-space-8);
+  height: 100%;
+  padding: 0 var(--m3x-space-16) var(--m3x-space-24);
+  overflow-y: auto;
+  background: var(--m3x-dialog-full-screen-container-color);
+  border-radius: var(--m3x-shape-corner-none);
+  box-shadow: var(--m3x-elevation-level0);
+}
+
+.m3x-dialog-full-screen > * {
+  grid-column: 1 / -1;
+}
+
+.m3x-dialog-full-screen .m3x-dialog-close {
+  grid-column: 1;
+  grid-row: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--m3x-touch-target-size);
+  height: var(--m3x-touch-target-size);
+  padding: 0;
+  border: none;
+  border-radius: var(--m3x-shape-corner-full);
+  background: none;
+  color: var(--m3x-dialog-full-screen-close-icon-color);
+  cursor: pointer;
+}
+
+.m3x-dialog-close::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--m3x-dialog-full-screen-close-icon-color);
+  opacity: 0;
+  transition: opacity var(--m3x-motion-duration-short2) var(--m3x-motion-easing-standard);
+}
+
+.m3x-dialog-close:hover::before {
+  opacity: var(--m3x-state-hover-opacity);
+}
+
+.m3x-dialog-close:active::before {
+  opacity: var(--m3x-state-pressed-opacity);
+}
+
+.m3x-dialog-close:focus-visible {
+  outline: var(--m3x-focus-indicator-thickness) solid var(--m3x-focus-indicator-color);
+  outline-offset: var(--m3x-focus-indicator-outer-offset);
+}
+
+.m3x-dialog-full-screen .m3x-dialog-headline {
+  grid-column: 2;
+  grid-row: 1;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  min-height: var(--m3x-dialog-full-screen-header-height);
+  text-align: left;
+  font-family: var(--m3x-typescale-title-large-font);
+  font-size: var(--m3x-typescale-title-large-size);
+  line-height: var(--m3x-typescale-title-large-line-height);
+  letter-spacing: var(--m3x-typescale-title-large-tracking);
+  font-weight: var(--m3x-typescale-title-large-weight);
+  color: var(--m3x-dialog-full-screen-headline-color);
+}
+
+.m3x-dialog-full-screen .m3x-dialog-actions {
+  grid-column: 3;
+  grid-row: 1;
+  margin: 0;
+}
+
+.m3x-dialog-full-screen .m3x-dialog-icon {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .m3x-dialog-close::before {
+    transition: none;
+  }
+}

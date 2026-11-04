@@ -304,4 +304,27 @@
   --m3x-space-32: 32px;
   --m3x-space-48: 48px;
   --m3x-space-64: 64px;
+
+  /* Focus indicator (M3: 3 px, 2 px outside the component, secondary colour) */
+  --m3x-focus-indicator-color: var(--m3x-color-secondary);
+  --m3x-focus-indicator-thickness: 3px;
+  --m3x-focus-indicator-outer-offset: 2px;
+
+  /* Component: Dialog (DialogTokens v0_210, M3 dialog specification) */
+  --m3x-dialog-container-color: var(--m3x-color-surface-container-high);
+  --m3x-dialog-container-shape: var(--m3x-shape-corner-extra-large);
+  --m3x-dialog-container-elevation: var(--m3x-elevation-level3);
+  --m3x-dialog-headline-color: var(--m3x-color-on-surface);
+  --m3x-dialog-supporting-text-color: var(--m3x-color-on-surface-variant);
+  --m3x-dialog-icon-color: var(--m3x-color-secondary);
+  --m3x-dialog-icon-size: 24px;
+  --m3x-dialog-padding: var(--m3x-space-24);
+  --m3x-dialog-min-width: 280px;
+  --m3x-dialog-max-width: 560px;
+  --m3x-dialog-scrim-opacity: 0.32;
+  --m3x-dialog-full-screen-container-color: var(--m3x-color-surface);
+  --m3x-dialog-full-screen-header-height: 56px;
+  --m3x-dialog-full-screen-headline-color: var(--m3x-color-on-surface);
+  --m3x-dialog-full-screen-close-icon-color: var(--m3x-color-on-surface);
+  --m3x-touch-target-size: 48px;
 }

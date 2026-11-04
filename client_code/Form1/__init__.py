@@ -182,6 +182,7 @@ class Form1(Form1Template):
         self._build_cards()
         self._build_progress()
         self._build_dividers()
+        self._build_dialogs()
         self._build_tokens()
 
     # ---- helpers -------------------------------------------------------
@@ -343,6 +344,90 @@ class Form1(Form1Template):
         self._heading("Divider")
         self.add_component(m3.Divider(type="full_width"))
         self.add_component(m3.Divider(type="inset"))
+
+    # ---- dialogs (Step 6) ----------------------------------------------------
+
+    def _build_dialogs(self):
+        row = self._section("Dialog")
+        for text, opener in (
+            ("Basic", self._dialog_basic),
+            ("With icon", self._dialog_icon),
+            ("With content", self._dialog_content),
+            ("Not dismissible", self._dialog_not_dismissible),
+            ("Full screen", self._dialog_full_screen),
+        ):
+            button = m3.Button(text=text, appearance="outlined")
+            button.add_event_handler(
+                "click", lambda opener=opener, **event_args: self._open_dialog(opener)
+            )
+            row.add_component(button)
+        self._dialog_result = m3.Text(text="Last result: (none yet)")
+        self.add_component(self._dialog_result)
+        self._heading("Dialog as placed in a form (not opened)")
+        self.add_component(self._dialog_icon())
+
+    def _open_dialog(self, opener):
+        result = opener().show()
+        self._dialog_result.text = f"Last result: {result!r}"
+
+    def _dialog_basic(self):
+        dialog = m3.Dialog(
+            headline="Discard draft?",
+            supporting_text="The draft will be deleted. This cannot be undone.",
+        )
+        dialog.add_action("Cancel", value="cancel")
+        dialog.add_action("Discard", value="discard")
+        return dialog
+
+    def _dialog_icon(self):
+        dialog = m3.Dialog(
+            icon="mi:delete",
+            headline="Delete 3 files?",
+            supporting_text="The files move to the bin and are deleted after 30 days.",
+        )
+        dialog.add_action("Cancel", value="cancel")
+        dialog.add_action("Delete", value="delete")
+        return dialog
+
+    def _dialog_content(self):
+        dialog = m3.Dialog(
+            headline="Choose a ringtone",
+            supporting_text="The choice applies to every call.",
+        )
+        group = m3.RadioGroupPanel()
+        for name in ("Chime", "Bell", "Marimba"):
+            group.add_component(
+                m3.RadioButton(text=name, value=name, selected=name == "Chime")
+            )
+        dialog.add_component(group)
+        dialog.add_action("Cancel", value=None)
+        # An action that returns a value from the content: a Button of its own.
+        ok = m3.Button(text="OK", appearance="text")
+        ok.add_event_handler(
+            "click", lambda **event_args: dialog.close(group.selected_value)
+        )
+        dialog.add_component(ok, slot="dialog-actions-slot")
+        return dialog
+
+    def _dialog_not_dismissible(self):
+        dialog = m3.Dialog(
+            headline="Terms updated",
+            supporting_text="Clicking outside or pressing Escape does not close "
+            "this dialog. Only the button does.",
+            dismissible=False,
+        )
+        dialog.add_action("I agree", value="agreed")
+        return dialog
+
+    def _dialog_full_screen(self):
+        dialog = m3.Dialog(headline="New event", full_screen=True)
+        dialog.add_component(m3.TextBox(label="Title", appearance="outlined"))
+        dialog.add_component(m3.TextBox(label="Location", appearance="outlined"))
+        dialog.add_component(
+            m3.TextArea(label="Description", appearance="outlined")
+        )
+        dialog.add_action("Save", value="saved")
+        return dialog
 
     # ---- token reference (Step 5) --------------------------------------------
 

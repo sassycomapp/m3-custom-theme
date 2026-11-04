@@ -16,6 +16,8 @@
 @import '_/theme/m3x/palettes.css';
 /* m3x: design tokens (Step 5), see docs/upstream-edits.md */
 @import '_/theme/m3x/tokens.css';
+/* m3x: component styles (Step 6 onwards), see docs/upstream-edits.md */
+@import '_/theme/m3x/components.css';
 
 /* m3x: every %color:...% token below this block was replaced by the matching
    var(--anvil-m3-...) so that palettes and dark mode reach the whole theme. */
