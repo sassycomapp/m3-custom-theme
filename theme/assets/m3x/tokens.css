@@ -328,6 +328,13 @@
   --m3x-dialog-full-screen-close-icon-color: var(--m3x-color-on-surface);
   --m3x-touch-target-size: 48px;
 
+  /* Outer margin of components with a shadow, focus ring or touch target that
+     reaches outside their box. Anvil's containers cut off anything outside a
+     component's margin box, so the margin holds it. Same as the base theme's
+     buttons (8 px above and below, 4 px at the sides). */
+  --m3x-component-outer-margin-block: var(--m3x-space-8);
+  --m3x-component-outer-margin-inline: var(--m3x-space-4);
+
   /* Disabled state (M3: content at 38 %, containers and outlines at 12 %) */
   --m3x-disabled-content-opacity: 38%;
   --m3x-disabled-container-opacity: 12%;

@@ -552,7 +552,13 @@ class Form1(Form1Template):
             f"level {level}</div>"
             for level in range(6)
         )
-        self._html(f'<div style="display:flex;flex-wrap:wrap;gap:24px;">{cells}</div>')
+        # The padding leaves room for the deepest shadow, which Anvil's containers
+        # would otherwise cut off.
+        self._html(
+            '<div style="display:flex;flex-wrap:wrap;gap:24px;'
+            'padding:var(--m3x-space-8) var(--m3x-space-8) var(--m3x-space-24);">'
+            f"{cells}</div>"
+        )
 
         self._heading("State layers")
         cells = "".join(

@@ -9,6 +9,7 @@
   align-items: center;
   box-sizing: border-box;
   height: var(--m3x-chip-height);
+  margin: var(--m3x-component-outer-margin-block) var(--m3x-component-outer-margin-inline);
   vertical-align: middle;
   border: var(--m3x-chip-outline-width) solid var(--m3x-chip-outline-color);
   border-radius: var(--m3x-chip-shape);
