@@ -355,4 +355,30 @@
   --m3x-chip-selected-container-color: var(--m3x-color-secondary-container);
   --m3x-chip-selected-label-color: var(--m3x-color-on-secondary-container);
   --m3x-chip-selected-hover-container-elevation: var(--m3x-elevation-level1);
+
+  /* Component: Snackbar (SnackbarTokens v0_103, Compose Snackbar layout) */
+  --m3x-snackbar-container-color: var(--m3x-color-inverse-surface);
+  --m3x-snackbar-container-shape: var(--m3x-shape-corner-extra-small);
+  --m3x-snackbar-container-elevation: var(--m3x-elevation-level3);
+  --m3x-snackbar-text-color: var(--m3x-color-inverse-on-surface);
+  --m3x-snackbar-action-color: var(--m3x-color-inverse-primary);
+  --m3x-snackbar-icon-color: var(--m3x-color-inverse-on-surface);
+  --m3x-snackbar-icon-size: 24px;
+  --m3x-snackbar-min-height: 48px;
+  --m3x-snackbar-max-width: 600px;
+  --m3x-snackbar-padding: var(--m3x-space-16);
+  --m3x-snackbar-padding-beside-button: var(--m3x-space-8);
+  --m3x-snackbar-text-padding-block: 14px;
+  --m3x-snackbar-action-height: 40px;
+  --m3x-snackbar-action-padding: var(--m3x-space-12);
+  --m3x-snackbar-margin: var(--m3x-space-16);
+  --m3x-snackbar-z-index: 1060;
+
+  /* Component: Badge (BadgeTokens v0_103, Compose Badge layout) */
+  --m3x-badge-color: var(--m3x-color-error);
+  --m3x-badge-label-color: var(--m3x-color-on-error);
+  --m3x-badge-shape: var(--m3x-shape-corner-full);
+  --m3x-badge-small-size: 6px;
+  --m3x-badge-large-size: 16px;
+  --m3x-badge-large-padding: var(--m3x-space-4);
 }

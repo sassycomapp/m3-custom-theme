@@ -184,6 +184,8 @@ class Form1(Form1Template):
         self._build_dividers()
         self._build_dialogs()
         self._build_chips()
+        self._build_badges()
+        self._build_snackbars()
         self._build_tokens()
 
     # ---- helpers -------------------------------------------------------
@@ -481,6 +483,72 @@ class Form1(Form1Template):
         )
         if event_name == "remove":
             sender.remove_from_parent()
+
+    # ---- badges and snackbars (Step 6) --------------------------------------
+
+    def _build_badges(self):
+        row = self._section("Badge")
+        for count in (None, 3, 42, 1000):
+            label = "dot" if count is None else str(count)
+            row.add_component(m3.Text(text=f"Badge {label}:"))
+            row.add_component(m3.Badge(count=count))
+
+    def _build_snackbars(self):
+        row = self._section("Snackbar")
+        for text, opener in (
+            ("Short", self._snackbar_short),
+            ("With action", self._snackbar_action),
+            ("With close", self._snackbar_close),
+            ("Two lines", self._snackbar_two_lines),
+            ("Queue of three", self._snackbar_queue),
+        ):
+            button = m3.Button(text=text, appearance="outlined")
+            button.add_event_handler(
+                "click", lambda opener=opener, **event_args: opener()
+            )
+            row.add_component(button)
+        self._snackbar_result = m3.Text(text="Last snackbar event: (none yet)")
+        self.add_component(self._snackbar_result)
+
+    def _snackbar_event(self, text):
+        self._snackbar_result.text = f"Last snackbar event: {text}"
+
+    def _snackbar_short(self):
+        m3.Snackbar(
+            "Message sent.",
+            on_dismiss=lambda: self._snackbar_event("'Message sent.' closed"),
+        ).show()
+
+    def _snackbar_action(self):
+        m3.Snackbar(
+            "Photo deleted.",
+            action_text="Undo",
+            on_action=lambda: self._snackbar_event("Undo clicked"),
+            duration="long",
+        ).show()
+
+    def _snackbar_close(self):
+        m3.Snackbar(
+            "Connection lost. Changes are saved on this device.",
+            show_close=True,
+            duration="indefinite",
+            on_dismiss=lambda: self._snackbar_event("closed with the close button"),
+        ).show()
+
+    def _snackbar_two_lines(self):
+        m3.Snackbar(
+            "Your booking for Saturday has been confirmed. A confirmation email is "
+            "on its way to your inbox.",
+            action_text="View",
+            on_action=lambda: self._snackbar_event("View clicked"),
+        ).show()
+
+    def _snackbar_queue(self):
+        for n in (1, 2, 3):
+            m3.Snackbar(
+                f"Message {n} of 3",
+                on_dismiss=lambda n=n: self._snackbar_event(f"message {n} closed"),
+            ).show()
 
     # ---- token reference (Step 5) --------------------------------------------
 

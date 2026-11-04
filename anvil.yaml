@@ -122,6 +122,9 @@ toolbox_sections:
   - component: {type: m3._Components.Dialog}
     icon: {dark: 'asset:designer_icons/dialog_dark.svg', light: 'asset:designer_icons/dialog.svg'}
     title: Dialog
+  - component: {type: m3._Components.Badge}
+    icon: {dark: 'asset:designer_icons/badge_dark.svg', light: 'asset:designer_icons/badge.svg'}
+    title: Badge
   packageName: m3
   title: Display
 - description: Use Form Input containers to get data from the user

@@ -1,0 +1,30 @@
+/* Badge (m3._Components.Badge). See docs/components/Badge.md.
+   Small: a 6 px dot. Large: a 16 px pill holding a count. */
+
+.m3x-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  vertical-align: middle;
+  border-radius: var(--m3x-badge-shape);
+  background-color: var(--m3x-badge-color);
+  color: var(--m3x-badge-label-color);
+}
+
+.m3x-badge-small {
+  width: var(--m3x-badge-small-size);
+  min-width: var(--m3x-badge-small-size);
+  height: var(--m3x-badge-small-size);
+}
+
+.m3x-badge-large {
+  min-width: var(--m3x-badge-large-size);
+  height: var(--m3x-badge-large-size);
+  padding: 0 var(--m3x-badge-large-padding);
+  font-family: var(--m3x-typescale-label-small-font);
+  font-size: var(--m3x-typescale-label-small-size);
+  line-height: var(--m3x-badge-large-size);
+  letter-spacing: var(--m3x-typescale-label-small-tracking);
+  font-weight: var(--m3x-typescale-label-small-weight);
+}

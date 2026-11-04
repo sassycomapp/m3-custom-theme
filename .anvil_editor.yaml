@@ -23,6 +23,8 @@ unique_ids:
     designer_icons/avatar_dark.svg: YTZJWG6FCKGUTPAWM3OVRCYO4CRJU57N
     designer_icons/avatar_menu.svg: '1742556759223937850640942.0288'
     designer_icons/avatar_menu_dark.svg: '1742556766861632206594010.7172'
+    designer_icons/badge.svg: '1793786137233585634688723.6066'
+    designer_icons/badge_dark.svg: '1793786137233200908767329.7673'
     designer_icons/button.svg: '1702402255403425630787410.6227'
     designer_icons/button_dark.svg: '1702402268626506072666642.36383'
     designer_icons/button_menu.svg: '1702402127292566312913641.6511'
@@ -79,10 +81,12 @@ unique_ids:
     designer_icons/textfield_dark.svg: '1702402307460382509534197.2156'
     designer_icons/toggle_icon_button.svg: X3PPQYH2PRT3SVAH6IEOB7A5JEZD5QBO
     designer_icons/toggle_icon_button_dark.svg: 7DAFFO5P4PSMHDQ73R2FXYVFP4ARD7VN
+    m3x/badge.css: '1793786137233757254971509.2125'
     m3x/chip.css: '1793782030363255586183702.1009'
     m3x/components.css: '1793776541119942650629231.8394'
     m3x/dialog.css: '1793776541119306859875451.2970'
     m3x/palettes.css: '1793702553869665498540454.4127'
+    m3x/snackbar.css: '1793786137233447633605966.7864'
     m3x/tokens.css: '1793772802328879318670730.8713'
     theme.css: ETNISNSUVCSJYUF6AOQQTK6JLIO7LPER
   forms:
@@ -91,6 +95,7 @@ unique_ids:
     Layouts.NavigationRailLayout: '1687425784458804083712790.1608'
     _Components.Avatar: '1741282249949412196160697.6512'
     _Components.AvatarMenu: '1742479956734337046373000.8493'
+    _Components.Badge: '1793786137233568838822182.9681'
     _Components.Button: '1688638796100476667734674.68195'
     _Components.ButtonMenu: '1691491348095506750812828.60736'
     _Components.Card: '1700072210669648729275536.3859'
@@ -129,6 +134,7 @@ unique_ids:
     _utils: NG7DBGUUSPXECPDER2G65KMIKCVG4GRL
     _utils.fui: '1701404784306666394613830.7113'
     _utils.m3x_presets: '1793772802328980671971297.2922'
+    _utils.m3x_snackbar: '1793786137233523261377819.8365'
     _utils.m3x_theming: '1793702553874683304788471.3342'
     _utils.properties: Y3NC6AD7NRD45BWEUOKRSS7YEKY553LE
     components: '172372848777778606650063.94086'

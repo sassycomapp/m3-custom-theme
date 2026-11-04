@@ -2,3 +2,5 @@
    theme.css imports this file. Paths are relative to this file. */
 @import 'dialog.css';
 @import 'chip.css';
+@import 'snackbar.css';
+@import 'badge.css';
