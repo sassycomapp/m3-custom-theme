@@ -1,0 +1,45 @@
+components: []
+container:
+  properties: {html: '<div anvil-name="m3x-button-group" class="m3x-button-group m3x-button-group-connected m3x-button-group-filled" role="group"></div>'}
+  type: HtmlTemplate
+custom_component: true
+events:
+- {default_event: true, description: 'When the selection changes. Only raised when selection is single or multiple.', name: change}
+- {description: 'When any button in the group is clicked. The event has an index argument: the position of the button, counting from 0.', name: click}
+- {description: When the group is shown on the screen., name: show}
+- {description: When the group is removed from the screen., name: hide}
+is_package: true
+properties:
+- {default_value: [Day, Week, Month], description: 'The label of each button, one per line.', group: Key Properties, important: true, name: items, type: 'text[]'}
+- {default_value: [], description: 'Optional: one icon per button, in the same order as the items, one per line, for example mi:list.', group: Key Properties, important: true, name: icons, type: 'text[]'}
+- default_value: connected
+  description: 'connected: the buttons are joined into one bar, for choosing between options. standard: the buttons stand apart, for related actions.'
+  group: Key Properties
+  important: true
+  name: type
+  options: [connected, standard]
+  type: enum
+- default_value: single
+  description: 'none: the buttons are actions. single: exactly one button is selected. multiple: any number of buttons can be selected.'
+  group: Key Properties
+  important: true
+  name: selection
+  options: [none, single, multiple]
+  type: enum
+- {default_binding_prop: true, description: 'The position of the selected button, counting from 0 (single selection; empty selects the first button). With multiple selection, the first selected button.', group: Key Properties, important: true, name: selected_index, type: number}
+- {description: 'The positions of all selected buttons, as a list (multiple selection).', group: Key Properties, important: false, name: selected_indices, type: object}
+- default_value: filled
+  description: 'The colours of the buttons: filled, tonal or outlined.'
+  group: Look and Feel
+  important: true
+  name: appearance
+  options: [filled, tonal, outlined]
+  type: enum
+- {default_value: false, description: 'If True, the group fills the width of its container and the buttons share it equally.', group: Layout, important: false, name: full_width, type: boolean}
+- {default_value: true, description: 'If True, the buttons can be clicked.', group: Interaction, important: true, name: enabled, type: boolean}
+- {default_value: true, description: 'If True, the component will be displayed.', designer_hint: visible, group: Look and Feel, important: true, name: visible, type: boolean}
+- {default_value: '', description: A style for this component defined in CSS and added to Roles., group: Look and Feel, name: role, type: themeRole}
+- {description: Use this property to store any extra data for the component., group: Other, important: false, name: tag, type: object}
+toolbox_item:
+  hidden: true
+  icon: {dark: 'asset:designer_icons/button_group_dark.svg', light: 'asset:designer_icons/button_group.svg'}

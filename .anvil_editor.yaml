@@ -27,6 +27,8 @@ unique_ids:
     designer_icons/badge_dark.svg: '1793786137233200908767329.7673'
     designer_icons/button.svg: '1702402255403425630787410.6227'
     designer_icons/button_dark.svg: '1702402268626506072666642.36383'
+    designer_icons/button_group.svg: '1793789676067196233290508.6853'
+    designer_icons/button_group_dark.svg: '1793789676067610442954500.4674'
     designer_icons/button_menu.svg: '1702402127292566312913641.6511'
     designer_icons/button_menu_dark.svg: '1702402154939774877876599.7355'
     designer_icons/card.svg: '1702476695777933171902784.5498'
@@ -61,6 +63,8 @@ unique_ids:
     designer_icons/linear_progress_indicator_dark.svg: '1702400058154478037195884.5384'
     designer_icons/link.svg: '1702400136690393819879768.86304'
     designer_icons/link_dark.svg: '1702400172115635452910352.8741'
+    designer_icons/list_item.svg: '1793789676067750646680509.6172'
+    designer_icons/list_item_dark.svg: '1793789676067535156292901.8246'
     designer_icons/menu_item.svg: APFON2PYUF4I5B5PREK6CBTLGV7Q3L7V
     designer_icons/menu_item_dark.svg: AM743QNDECF3AMBK2WHSPTH3EUFFOWY5
     designer_icons/navigation-drawer-thumb.png: '1721205138041911113351274.6746'
@@ -86,10 +90,12 @@ unique_ids:
     designer_icons/toggle_icon_button.svg: X3PPQYH2PRT3SVAH6IEOB7A5JEZD5QBO
     designer_icons/toggle_icon_button_dark.svg: 7DAFFO5P4PSMHDQ73R2FXYVFP4ARD7VN
     m3x/badge.css: '1793786137233757254971509.2125'
+    m3x/button-group.css: '1793789676067973711042690.9848'
     m3x/chip.css: '1793782030363255586183702.1009'
     m3x/components.css: '1793776541119942650629231.8394'
     m3x/dialog.css: '1793776541119306859875451.2970'
     m3x/fab.css: '1793787621769108362548878.4574'
+    m3x/list-item.css: '1793789676067249304169321.1004'
     m3x/palettes.css: '1793702553869665498540454.4127'
     m3x/snackbar.css: '1793786137233447633605966.7864'
     m3x/tabs.css: '1793787621769170289223825.9857'
@@ -103,6 +109,7 @@ unique_ids:
     _Components.AvatarMenu: '1742479956734337046373000.8493'
     _Components.Badge: '1793786137233568838822182.9681'
     _Components.Button: '1688638796100476667734674.68195'
+    _Components.ButtonGroup: '1793789676067240550566747.8968'
     _Components.ButtonMenu: '1691491348095506750812828.60736'
     _Components.Card: '1700072210669648729275536.3859'
     _Components.Card.CardContentContainer: '1700075961119309945930609.30084'
@@ -119,6 +126,7 @@ unique_ids:
     _Components.IconButtonMenu: '1744204841486144204805125.58'
     _Components.LinearProgressIndicator: '169900965150797501169878.6904'
     _Components.Link: '169174463576231955159881.56439'
+    _Components.ListItem: '1793789676067950767764844.5503'
     _Components.Menu: '1691484055779239355188821.15225'
     _Components.MenuItem: '1691072927249332240116307.56104'
     _Components.NavigationLink: '1687431782226411358777892.8858'

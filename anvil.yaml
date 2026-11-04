@@ -85,6 +85,9 @@ toolbox_sections:
   - component: {type: m3._Components.FloatingActionButton}
     icon: {dark: 'asset:designer_icons/fab_dark.svg', light: 'asset:designer_icons/fab.svg'}
     title: FloatingActionButton
+  - component: {type: m3._Components.ButtonGroup}
+    icon: {dark: 'asset:designer_icons/button_group_dark.svg', light: 'asset:designer_icons/button_group.svg'}
+    title: ButtonGroup
   packageName: m3
   title: Buttons
 - description: Display components help display content on the page
@@ -128,6 +131,9 @@ toolbox_sections:
   - component: {type: m3._Components.Badge}
     icon: {dark: 'asset:designer_icons/badge_dark.svg', light: 'asset:designer_icons/badge.svg'}
     title: Badge
+  - component: {type: m3._Components.ListItem}
+    icon: {dark: 'asset:designer_icons/list_item_dark.svg', light: 'asset:designer_icons/list_item.svg'}
+    title: ListItem
   packageName: m3
   title: Display
 - description: Use Form Input containers to get data from the user

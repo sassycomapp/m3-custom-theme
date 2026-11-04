@@ -1,0 +1,31 @@
+components: []
+container:
+  properties: {html: '<div anvil-name="m3x-list-item" class="m3x-list-item" role="listitem"><div anvil-name="m3x-list-item-leading" class="m3x-list-item-leading" style="display: none;"><i anvil-name="m3x-list-item-leading-icon" class="m3x-list-item-leading-icon material-symbols-outlined" aria-hidden="true" style="display: none;"></i><span anvil-name="m3x-list-item-avatar" class="m3x-list-item-avatar" aria-hidden="true" style="display: none;"></span><img anvil-name="m3x-list-item-image" class="m3x-list-item-image" alt="" style="display: none;"></div><div class="m3x-list-item-text"><div anvil-name="m3x-list-item-overline" class="m3x-list-item-overline" style="display: none;"></div><div anvil-name="m3x-list-item-headline" class="m3x-list-item-headline"></div><div anvil-name="m3x-list-item-supporting-text" class="m3x-list-item-supporting-text" style="display: none;"></div></div><div anvil-name="m3x-list-item-trailing-text" class="m3x-list-item-trailing-text" style="display: none;"></div><i anvil-name="m3x-list-item-trailing-icon" class="m3x-list-item-trailing-icon material-symbols-outlined" aria-hidden="true" style="display: none;"></i><div anvil-slot="list-item-trailing-slot" class="m3x-list-item-trailing-slot"></div></div>'}
+  type: HtmlTemplate
+custom_component: true
+custom_component_container: true
+events:
+- {default_event: true, description: When a clickable ListItem is clicked., name: click}
+- {description: When the ListItem is shown on the screen., name: show}
+- {description: When the ListItem is removed from the screen., name: hide}
+is_package: true
+properties:
+- {default_binding_prop: true, default_value: List item, description: The main text of the item., group: Key Properties, important: true, name: headline, type: string}
+- {default_value: '', description: A second line of text below the headline., group: Key Properties, important: true, name: supporting_text, type: string}
+- {default_value: '', description: A small line of text above the headline., group: Key Properties, important: false, name: overline, type: string}
+- {default_value: false, description: 'If True, the supporting text may take two lines and the item is 88 px high.', group: Key Properties, important: false, name: three_line, type: boolean}
+- {default_value: '', description: An icon at the start of the item., group: Leading, iconsets: [material-icons], important: true, name: leading_icon, type: icon}
+- {default_value: '', description: 'Text (usually initials) shown in a round avatar at the start of the item.', group: Leading, important: false, name: leading_avatar_text, type: string}
+- {default_value: '', description: An image shown at the start of the item., group: Leading, important: false, name: leading_image, type: uri}
+- {default_value: '', description: 'A short text at the end of the item, such as a time or a count.', group: Trailing, important: false, name: trailing_text, type: string}
+- {default_value: '', description: An icon at the end of the item., group: Trailing, iconsets: [material-icons], important: false, name: trailing_icon, type: icon}
+- {default_value: false, description: 'If True, the item reacts to the mouse and keyboard and raises the click event.', group: Interaction, important: true, name: clickable, type: boolean}
+- {default_value: false, description: 'If True, the item is shown as selected.', group: Interaction, important: true, name: selected, type: boolean}
+- {default_value: true, description: 'If True, a clickable item can be clicked.', group: Interaction, important: false, name: enabled, type: boolean}
+- {default_value: false, description: 'If True, a thin line is drawn under the item.', group: Look and Feel, important: false, name: divider, type: boolean}
+- {default_value: true, description: 'If True, the component will be displayed.', designer_hint: visible, group: Look and Feel, important: true, name: visible, type: boolean}
+- {default_value: '', description: A style for this component defined in CSS and added to Roles., group: Look and Feel, name: role, type: themeRole}
+- {description: Use this property to store any extra data for the component., group: Other, important: false, name: tag, type: object}
+toolbox_item:
+  hidden: true
+  icon: {dark: 'asset:designer_icons/list_item_dark.svg', light: 'asset:designer_icons/list_item.svg'}

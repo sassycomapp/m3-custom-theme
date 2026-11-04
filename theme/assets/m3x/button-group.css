@@ -1,0 +1,164 @@
+/* Button group (m3._Components.ButtonGroup). See docs/components/ButtonGroup.md.
+   Connected: buttons joined into one bar, outer corners full, inner corners
+   small; a selected button becomes fully round. Standard: buttons apart, all
+   fully round. */
+
+.m3x-button-group {
+  display: inline-flex;
+  align-items: center;
+  margin: var(--m3x-component-outer-margin-block) var(--m3x-component-outer-margin-inline);
+  vertical-align: middle;
+}
+
+.m3x-button-group-connected {
+  gap: var(--m3x-button-group-connected-gap);
+}
+
+.m3x-button-group-standard {
+  gap: var(--m3x-button-group-standard-gap);
+}
+
+.m3x-button-group-full-width {
+  display: flex;
+}
+
+.m3x-button-group-full-width .m3x-button-group-button {
+  flex: 1 1 0;
+}
+
+/* Colours per appearance: unselected and selected */
+.m3x-button-group-filled {
+  --m3x-button-group-container: var(--m3x-color-surface-container);
+  --m3x-button-group-content: var(--m3x-color-on-surface-variant);
+  --m3x-button-group-selected-container: var(--m3x-color-primary);
+  --m3x-button-group-selected-content: var(--m3x-color-on-primary);
+  --m3x-button-group-outline: transparent;
+}
+
+.m3x-button-group-tonal {
+  --m3x-button-group-container: var(--m3x-color-secondary-container);
+  --m3x-button-group-content: var(--m3x-color-on-secondary-container);
+  --m3x-button-group-selected-container: var(--m3x-color-secondary);
+  --m3x-button-group-selected-content: var(--m3x-color-on-secondary);
+  --m3x-button-group-outline: transparent;
+}
+
+.m3x-button-group-outlined {
+  --m3x-button-group-container: transparent;
+  --m3x-button-group-content: var(--m3x-color-on-surface-variant);
+  --m3x-button-group-selected-container: var(--m3x-color-inverse-surface);
+  --m3x-button-group-selected-content: var(--m3x-color-inverse-on-surface);
+  --m3x-button-group-outline: var(--m3x-color-outline-variant);
+}
+
+.m3x-button-group-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--m3x-button-group-icon-gap);
+  box-sizing: border-box;
+  height: var(--m3x-button-group-height);
+  margin: 0;
+  padding: 0 var(--m3x-button-group-padding);
+  border: var(--m3x-button-group-outline-width) solid var(--m3x-button-group-outline);
+  border-radius: var(--m3x-button-group-outer-shape);
+  background-color: var(--m3x-button-group-container);
+  color: var(--m3x-button-group-content);
+  font-family: var(--m3x-typescale-label-large-font);
+  font-size: var(--m3x-typescale-label-large-size);
+  line-height: var(--m3x-typescale-label-large-line-height);
+  letter-spacing: var(--m3x-typescale-label-large-tracking);
+  font-weight: var(--m3x-typescale-label-large-weight);
+  white-space: nowrap;
+  cursor: pointer;
+  outline: none;
+  transition:
+    border-radius var(--m3x-motion-duration-medium1) var(--m3x-motion-easing-emphasized),
+    background-color var(--m3x-motion-duration-short4) var(--m3x-motion-easing-standard),
+    color var(--m3x-motion-duration-short4) var(--m3x-motion-easing-standard);
+}
+
+/* Connected: the inner corners of joined buttons are small */
+.m3x-button-group-connected .m3x-button-group-button {
+  border-radius: var(--m3x-button-group-inner-shape);
+}
+
+.m3x-button-group-connected .m3x-button-group-button:first-child {
+  border-top-left-radius: var(--m3x-button-group-outer-shape);
+  border-bottom-left-radius: var(--m3x-button-group-outer-shape);
+}
+
+.m3x-button-group-connected .m3x-button-group-button:last-child {
+  border-top-right-radius: var(--m3x-button-group-outer-shape);
+  border-bottom-right-radius: var(--m3x-button-group-outer-shape);
+}
+
+/* Selected */
+.m3x-button-group-button.m3x-button-group-selected {
+  border-color: transparent;
+  background-color: var(--m3x-button-group-selected-container);
+  color: var(--m3x-button-group-selected-content);
+}
+
+.m3x-button-group-connected .m3x-button-group-button.m3x-button-group-selected {
+  border-radius: var(--m3x-button-group-outer-shape);
+}
+
+.m3x-button-group-icon {
+  font-size: var(--m3x-button-group-icon-size);
+  line-height: 1;
+}
+
+/* State layer in the content colour */
+.m3x-button-group-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-color: currentColor;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--m3x-motion-duration-short2) var(--m3x-motion-easing-standard);
+}
+
+.m3x-button-group-button:hover::before {
+  opacity: var(--m3x-state-hover-opacity);
+}
+
+.m3x-button-group-button:focus-visible::before {
+  opacity: var(--m3x-state-focus-opacity);
+}
+
+.m3x-button-group-button:active::before {
+  opacity: var(--m3x-state-pressed-opacity);
+}
+
+.m3x-button-group-button:focus-visible {
+  outline: var(--m3x-focus-indicator-thickness) solid var(--m3x-focus-indicator-color);
+  outline-offset: var(--m3x-focus-indicator-outer-offset);
+  z-index: 1;
+}
+
+/* Disabled */
+.m3x-button-group-button:disabled {
+  border-color: color-mix(in srgb, var(--m3x-color-on-surface) var(--m3x-disabled-container-opacity), transparent);
+  background-color: color-mix(in srgb, var(--m3x-color-on-surface) var(--m3x-disabled-container-opacity), transparent);
+  color: color-mix(in srgb, var(--m3x-color-on-surface) var(--m3x-disabled-content-opacity), transparent);
+  cursor: default;
+}
+
+.m3x-button-group-outlined .m3x-button-group-button:disabled:not(.m3x-button-group-selected) {
+  background-color: transparent;
+}
+
+.m3x-button-group-button:disabled::before {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .m3x-button-group-button,
+  .m3x-button-group-button::before {
+    transition: none;
+  }
+}

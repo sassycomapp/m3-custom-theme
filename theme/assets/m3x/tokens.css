@@ -425,4 +425,41 @@
   --m3x-fab-large-gap: var(--m3x-space-16);
   --m3x-fab-floating-margin: var(--m3x-space-16);
   --m3x-fab-floating-z-index: 1020;
+
+  /* Component: List item (ListTokens 29.0.0) */
+  --m3x-list-item-container-color: var(--m3x-color-surface);
+  --m3x-list-item-one-line-height: 56px;
+  --m3x-list-item-two-line-height: 72px;
+  --m3x-list-item-three-line-height: 88px;
+  --m3x-list-item-padding-inline: var(--m3x-space-16);
+  --m3x-list-item-padding-block: 10px;
+  --m3x-list-item-gap: var(--m3x-space-12);
+  --m3x-list-item-headline-color: var(--m3x-color-on-surface);
+  --m3x-list-item-supporting-text-color: var(--m3x-color-on-surface-variant);
+  --m3x-list-item-overline-color: var(--m3x-color-on-surface-variant);
+  --m3x-list-item-trailing-text-color: var(--m3x-color-on-surface-variant);
+  --m3x-list-item-icon-color: var(--m3x-color-on-surface-variant);
+  --m3x-list-item-icon-size: 24px;
+  --m3x-list-item-avatar-color: var(--m3x-color-primary-container);
+  --m3x-list-item-avatar-label-color: var(--m3x-color-on-primary-container);
+  --m3x-list-item-avatar-size: 40px;
+  --m3x-list-item-image-size: 56px;
+  --m3x-list-item-image-shape: var(--m3x-shape-corner-small);
+  --m3x-list-item-selected-container-color: var(--m3x-color-secondary-container);
+  --m3x-list-item-selected-content-color: var(--m3x-color-on-secondary-container);
+  --m3x-list-item-selected-shape: var(--m3x-shape-corner-large);
+  --m3x-list-item-divider-color: var(--m3x-color-outline-variant);
+
+  /* Component: Button group (ButtonGroupSmallTokens v0_11_0,
+     ConnectedButtonGroupSmallTokens 14_1_0, ButtonSmallTokens v0_11_0,
+     Filled-, Tonal- and OutlinedButtonTokens) */
+  --m3x-button-group-height: 40px;
+  --m3x-button-group-standard-gap: var(--m3x-space-12);
+  --m3x-button-group-connected-gap: 2px;
+  --m3x-button-group-outer-shape: var(--m3x-shape-corner-full);
+  --m3x-button-group-inner-shape: var(--m3x-shape-corner-small);
+  --m3x-button-group-padding: var(--m3x-space-16);
+  --m3x-button-group-icon-gap: var(--m3x-space-8);
+  --m3x-button-group-icon-size: 20px;
+  --m3x-button-group-outline-width: 1px;
 }

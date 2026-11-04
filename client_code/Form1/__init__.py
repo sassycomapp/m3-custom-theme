@@ -188,6 +188,8 @@ class Form1(Form1Template):
         self._build_snackbars()
         self._build_tabs()
         self._build_fabs()
+        self._build_list_items()
+        self._build_button_groups()
         self._build_tokens()
 
     # ---- helpers -------------------------------------------------------
@@ -625,6 +627,75 @@ class Form1(Form1Template):
 
     def _on_floating_change(self, **event_args):
         self._floating_fab.visible = self._floating_switch.selected
+
+    # ---- list items and button groups (Step 6) -------------------------------
+
+    def _build_list_items(self):
+        self._heading("ListItem")
+        self._list_result = m3.Text(text="Last list item clicked: (none yet)")
+        card = m3.Card(appearance="outlined")
+        items = (
+            dict(headline="One line"),
+            dict(headline="With icon", leading_icon="mi:inbox", trailing_text="24"),
+            dict(headline="Ada Lovelace", supporting_text="Two lines, with an avatar",
+                 leading_avatar_text="AL", trailing_icon="mi:chevron_right",
+                 clickable=True, divider=True),
+            dict(headline="Clickable", supporting_text="Click me",
+                 leading_icon="mi:touch_app", clickable=True, divider=True),
+            dict(headline="Selected", supporting_text="Shown as selected",
+                 leading_icon="mi:check_circle", clickable=True, selected=True),
+            dict(headline="Disabled", supporting_text="Cannot be clicked",
+                 leading_icon="mi:block", clickable=True, enabled=False),
+            dict(overline="Overline", headline="Three lines",
+                 supporting_text="The supporting text of a three-line item can run "
+                 "onto a second line before it is cut off with an ellipsis, as it "
+                 "does here.", three_line=True, leading_icon="mi:article"),
+        )
+        for kwargs in items:
+            item = m3.ListItem(**kwargs)
+            item.add_event_handler("click", self._on_list_item_click)
+            card.add_component(item)
+        switch_item = m3.ListItem(headline="With a switch", leading_icon="mi:wifi")
+        switch_item.add_component(m3.Switch(selected=True))
+        card.add_component(switch_item)
+        self.add_component(card)
+        self.add_component(self._list_result)
+
+    def _on_list_item_click(self, sender, **event_args):
+        self._list_result.text = f"Last list item clicked: {sender.headline}"
+
+    def _build_button_groups(self):
+        self._heading("ButtonGroup")
+        self._group_result = m3.Text(text="Button group: (no change yet)")
+        for title, kwargs in (
+            ("Connected, single selection", dict()),
+            ("Connected, multiple selection, tonal", dict(
+                selection="multiple", appearance="tonal",
+                items=["Bold", "Italic", "Underline"],
+                icons=["mi:format_bold", "mi:format_italic", "mi:format_underlined"],
+            )),
+            ("Connected, outlined, full width", dict(
+                appearance="outlined", full_width=True,
+                items=["Walk", "Cycle", "Drive", "Transit"],
+            )),
+            ("Standard, actions (no selection)", dict(
+                type="standard", selection="none",
+                items=["Share", "Save", "Print"],
+                icons=["mi:share", "mi:bookmark", "mi:print"],
+            )),
+            ("Disabled", dict(enabled=False, selected_index=1)),
+        ):
+            self.add_component(m3.Text(text=title, style="label"))
+            group = m3.ButtonGroup(**kwargs)
+            group.add_event_handler("click", self._on_group_click)
+            self.add_component(group)
+        self.add_component(self._group_result)
+
+    def _on_group_click(self, sender, index, **event_args):
+        name = list(sender.items)[index]
+        self._group_result.text = (
+            f"Button group: clicked '{name}', selected {sender.selected_indices}"
+        )
 
     # ---- token reference (Step 5) --------------------------------------------
 

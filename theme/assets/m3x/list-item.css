@@ -1,0 +1,214 @@
+/* List item (m3._Components.ListItem). See docs/components/ListItem.md. */
+
+.m3x-list-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--m3x-list-item-gap);
+  box-sizing: border-box;
+  min-height: var(--m3x-list-item-one-line-height);
+  padding: var(--m3x-list-item-padding-block) var(--m3x-list-item-padding-inline);
+  background-color: var(--m3x-list-item-container-color);
+  color: var(--m3x-list-item-headline-color);
+  outline: none;
+}
+
+.m3x-list-item-two-line,
+.m3x-list-item-has-overline {
+  min-height: var(--m3x-list-item-two-line-height);
+}
+
+.m3x-list-item-three-line {
+  min-height: var(--m3x-list-item-three-line-height);
+  align-items: flex-start;
+}
+
+.m3x-list-item-divider::after {
+  content: "";
+  position: absolute;
+  left: var(--m3x-list-item-padding-inline);
+  right: var(--m3x-list-item-padding-inline);
+  bottom: 0;
+  height: 1px;
+  background-color: var(--m3x-list-item-divider-color);
+}
+
+/* Leading element */
+.m3x-list-item-leading {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--m3x-list-item-icon-color);
+}
+
+.m3x-list-item-leading-icon,
+.m3x-list-item-trailing-icon {
+  font-size: var(--m3x-list-item-icon-size);
+  line-height: 1;
+  color: var(--m3x-list-item-icon-color);
+}
+
+.m3x-list-item-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--m3x-list-item-avatar-size);
+  height: var(--m3x-list-item-avatar-size);
+  border-radius: var(--m3x-shape-corner-full);
+  background-color: var(--m3x-list-item-avatar-color);
+  color: var(--m3x-list-item-avatar-label-color);
+  font-family: var(--m3x-typescale-title-medium-font);
+  font-size: var(--m3x-typescale-title-medium-size);
+  line-height: var(--m3x-typescale-title-medium-line-height);
+  letter-spacing: var(--m3x-typescale-title-medium-tracking);
+  font-weight: var(--m3x-typescale-title-medium-weight);
+}
+
+.m3x-list-item-image {
+  width: var(--m3x-list-item-image-size);
+  height: var(--m3x-list-item-image-size);
+  border-radius: var(--m3x-list-item-image-shape);
+  object-fit: cover;
+}
+
+/* Text */
+.m3x-list-item-text {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.m3x-list-item-overline {
+  color: var(--m3x-list-item-overline-color);
+  font-family: var(--m3x-typescale-label-small-font);
+  font-size: var(--m3x-typescale-label-small-size);
+  line-height: var(--m3x-typescale-label-small-line-height);
+  letter-spacing: var(--m3x-typescale-label-small-tracking);
+  font-weight: var(--m3x-typescale-label-small-weight);
+}
+
+.m3x-list-item-headline {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--m3x-typescale-body-large-font);
+  font-size: var(--m3x-typescale-body-large-size);
+  line-height: var(--m3x-typescale-body-large-line-height);
+  letter-spacing: var(--m3x-typescale-body-large-tracking);
+  font-weight: var(--m3x-typescale-body-large-weight);
+}
+
+.m3x-list-item-supporting-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--m3x-list-item-supporting-text-color);
+  font-family: var(--m3x-typescale-body-medium-font);
+  font-size: var(--m3x-typescale-body-medium-size);
+  line-height: var(--m3x-typescale-body-medium-line-height);
+  letter-spacing: var(--m3x-typescale-body-medium-tracking);
+  font-weight: var(--m3x-typescale-body-medium-weight);
+}
+
+/* Three-line items: the supporting text takes up to two lines */
+.m3x-list-item-three-line .m3x-list-item-supporting-text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  white-space: normal;
+}
+
+/* Trailing elements */
+.m3x-list-item-trailing-text {
+  flex: 0 0 auto;
+  color: var(--m3x-list-item-trailing-text-color);
+  font-family: var(--m3x-typescale-label-small-font);
+  font-size: var(--m3x-typescale-label-small-size);
+  line-height: var(--m3x-typescale-label-small-line-height);
+  letter-spacing: var(--m3x-typescale-label-small-tracking);
+  font-weight: var(--m3x-typescale-label-small-weight);
+}
+
+.m3x-list-item-trailing-icon {
+  flex: 0 0 auto;
+}
+
+.m3x-list-item-trailing-slot {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.m3x-list-item-trailing-slot:empty {
+  display: none;
+}
+
+/* Selected */
+.m3x-list-item-selected {
+  --m3x-list-item-container-color: var(--m3x-list-item-selected-container-color);
+  --m3x-list-item-headline-color: var(--m3x-list-item-selected-content-color);
+  --m3x-list-item-supporting-text-color: var(--m3x-list-item-selected-content-color);
+  --m3x-list-item-overline-color: var(--m3x-list-item-selected-content-color);
+  --m3x-list-item-trailing-text-color: var(--m3x-list-item-selected-content-color);
+  --m3x-list-item-icon-color: var(--m3x-list-item-selected-content-color);
+  border-radius: var(--m3x-list-item-selected-shape);
+}
+
+/* Clickable: state layer in the headline colour, focus ring inside */
+.m3x-list-item-clickable {
+  cursor: pointer;
+}
+
+.m3x-list-item-clickable::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-color: var(--m3x-list-item-headline-color);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--m3x-motion-duration-short2) var(--m3x-motion-easing-standard);
+}
+
+.m3x-list-item-clickable:hover::before {
+  opacity: var(--m3x-state-hover-opacity);
+}
+
+.m3x-list-item-clickable:focus-visible::before {
+  opacity: var(--m3x-state-focus-opacity);
+}
+
+.m3x-list-item-clickable:active::before {
+  opacity: var(--m3x-state-pressed-opacity);
+}
+
+.m3x-list-item-clickable:has(.m3x-list-item-trailing-slot:hover)::before,
+.m3x-list-item-clickable:has(.m3x-list-item-trailing-slot:active)::before {
+  opacity: 0;
+}
+
+.m3x-list-item-clickable:focus-visible {
+  outline: var(--m3x-focus-indicator-thickness) solid var(--m3x-focus-indicator-color);
+  outline-offset: calc(-1 * var(--m3x-focus-indicator-thickness));
+}
+
+/* Disabled */
+.m3x-list-item.m3x-list-item-disabled {
+  --m3x-list-item-headline-color: color-mix(in srgb, var(--m3x-color-on-surface) var(--m3x-disabled-content-opacity), transparent);
+  --m3x-list-item-supporting-text-color: var(--m3x-list-item-headline-color);
+  --m3x-list-item-overline-color: var(--m3x-list-item-headline-color);
+  --m3x-list-item-trailing-text-color: var(--m3x-list-item-headline-color);
+  --m3x-list-item-icon-color: var(--m3x-list-item-headline-color);
+  cursor: default;
+}
+
+.m3x-list-item-disabled::before {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .m3x-list-item-clickable::before {
+    transition: none;
+  }
+}
