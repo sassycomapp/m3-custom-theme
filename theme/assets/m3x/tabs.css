@@ -1,0 +1,156 @@
+/* Tabs (m3._Components.Tabs). See docs/components/Tabs.md. */
+
+.m3x-tabs {
+  position: relative;
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: var(--m3x-tabs-container-color);
+  border-bottom: var(--m3x-tabs-divider-height) solid var(--m3x-tabs-divider-color);
+}
+
+.m3x-tabs-primary {
+  --m3x-tabs-active-color: var(--m3x-tabs-primary-active-color);
+}
+
+.m3x-tabs-secondary {
+  --m3x-tabs-active-color: var(--m3x-tabs-secondary-active-color);
+}
+
+.m3x-tab {
+  position: relative;
+  flex: 1 1 0;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  min-width: 0;
+  height: var(--m3x-tabs-height);
+  margin: 0;
+  padding: 0 var(--m3x-tabs-padding);
+  border: none;
+  background: none;
+  color: var(--m3x-tabs-inactive-color);
+  font-family: var(--m3x-typescale-title-small-font);
+  font-size: var(--m3x-typescale-title-small-size);
+  line-height: var(--m3x-typescale-title-small-line-height);
+  letter-spacing: var(--m3x-typescale-title-small-tracking);
+  font-weight: var(--m3x-typescale-title-small-weight);
+  white-space: nowrap;
+  cursor: pointer;
+  outline: none;
+}
+
+.m3x-tabs-with-icons .m3x-tab {
+  height: var(--m3x-tabs-height-with-icons);
+}
+
+.m3x-tab.m3x-tab-selected {
+  color: var(--m3x-tabs-active-color);
+}
+
+/* State layer in the tab's label colour */
+.m3x-tab::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: currentColor;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--m3x-motion-duration-short2) var(--m3x-motion-easing-standard);
+}
+
+.m3x-tab:hover::before {
+  opacity: var(--m3x-state-hover-opacity);
+}
+
+.m3x-tab:focus-visible::before {
+  opacity: var(--m3x-state-focus-opacity);
+}
+
+.m3x-tab:active::before {
+  opacity: var(--m3x-state-pressed-opacity);
+}
+
+.m3x-tab:focus-visible {
+  outline: var(--m3x-focus-indicator-thickness) solid var(--m3x-focus-indicator-color);
+  outline-offset: calc(-1 * var(--m3x-focus-indicator-thickness));
+}
+
+/* The icon and label, stacked when there is an icon */
+.m3x-tab-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+.m3x-tab-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.m3x-tab-icon {
+  font-size: var(--m3x-tabs-icon-size);
+  line-height: 1;
+}
+
+/* The active indicator. Primary tabs: under the content, rounded on top.
+   Secondary tabs: the full width of the tab. */
+.m3x-tab-indicator {
+  position: absolute;
+  bottom: 0;
+  background-color: var(--m3x-tabs-primary-active-color);
+  opacity: 0;
+  transform: scaleX(0);
+  transition:
+    opacity var(--m3x-motion-duration-short4) var(--m3x-motion-easing-standard),
+    transform var(--m3x-motion-duration-medium2) var(--m3x-motion-easing-emphasized);
+}
+
+.m3x-tabs-primary .m3x-tab-indicator {
+  left: 50%;
+  width: max(100%, var(--m3x-tabs-primary-indicator-min-width));
+  height: var(--m3x-tabs-primary-indicator-height);
+  margin-left: calc(-0.5 * max(100%, var(--m3x-tabs-primary-indicator-min-width)));
+  border-radius: var(--m3x-tabs-primary-indicator-shape);
+}
+
+.m3x-tabs-secondary .m3x-tab-content {
+  position: static;
+}
+
+.m3x-tabs-secondary .m3x-tab-indicator {
+  left: 0;
+  right: 0;
+  height: var(--m3x-tabs-secondary-indicator-height);
+  background-color: var(--m3x-tabs-secondary-indicator-color);
+}
+
+.m3x-tab-selected .m3x-tab-indicator {
+  opacity: 1;
+  transform: none;
+}
+
+/* Scrollable tabs: natural widths, sideways scrolling, no visible scrollbar */
+.m3x-tabs-scrollable {
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 0 var(--m3x-tabs-scrollable-edge-padding);
+}
+
+.m3x-tabs-scrollable::-webkit-scrollbar {
+  display: none;
+}
+
+.m3x-tabs-scrollable .m3x-tab {
+  flex: 0 0 auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .m3x-tab::before,
+  .m3x-tab-indicator {
+    transition: none;
+  }
+}

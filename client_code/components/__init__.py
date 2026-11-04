@@ -12,6 +12,7 @@ from .._Components.Dialog import Dialog
 from .._Components.Divider import Divider
 from .._Components.DropdownMenu import DropdownMenu
 from .._Components.FileLoader import FileLoader
+from .._Components.FloatingActionButton import FloatingActionButton
 from .._Components.Heading import Heading
 from .._Components.IconButton import IconButton
 from .._Components.IconButtonMenu import IconButtonMenu
@@ -25,6 +26,7 @@ from .._Components.RadioGroupPanel import RadioGroup, RadioGroupPanel
 from .._Components.SidesheetContent import SidesheetContent
 from .._Components.Slider import Slider
 from .._Components.Switch import Switch
+from .._Components.Tabs import Tabs
 from .._Components.Text import Text
 from .._Components.TextInput.TextArea import TextArea
 from .._Components.TextInput.TextBox import TextBox

@@ -1,0 +1,28 @@
+components: []
+container:
+  properties: {html: '<div anvil-name="m3x-tabs" class="m3x-tabs m3x-tabs-primary" role="tablist"></div>'}
+  type: HtmlTemplate
+custom_component: true
+events:
+- {default_event: true, description: When the user selects a different tab., name: change}
+- {description: When the Tabs are shown on the screen., name: show}
+- {description: When the Tabs are removed from the screen., name: hide}
+is_package: true
+properties:
+- {default_value: [Tab 1, Tab 2, Tab 3], description: 'The label of each tab, one per line.', group: Key Properties, important: true, name: items, type: 'text[]'}
+- {default_value: [], description: 'Optional: one icon per tab, in the same order as the items, one per line, for example mi:home. Leave empty for tabs without icons.', group: Key Properties, important: true, name: icons, type: 'text[]'}
+- {default_binding_prop: true, default_value: 0, description: 'The position of the selected tab, counting from 0.', group: Key Properties, important: true, name: selected_index, type: number}
+- default_value: primary
+  description: 'primary tabs sit at the top of a page and switch its main views. secondary tabs sit inside a part of a page and switch its content.'
+  group: Key Properties
+  important: true
+  name: type
+  options: [primary, secondary]
+  type: enum
+- {default_value: false, description: 'If True, tabs keep their natural width and the row scrolls sideways. If False, the tabs share the width equally.', group: Layout, important: true, name: scrollable, type: boolean}
+- {default_value: true, description: 'If True, the component will be displayed.', designer_hint: visible, group: Look and Feel, important: true, name: visible, type: boolean}
+- {default_value: '', description: A style for this component defined in CSS and added to Roles., group: Look and Feel, name: role, type: themeRole}
+- {description: Use this property to store any extra data for the component., group: Other, important: false, name: tag, type: object}
+toolbox_item:
+  hidden: true
+  icon: {dark: 'asset:designer_icons/tabs_dark.svg', light: 'asset:designer_icons/tabs.svg'}

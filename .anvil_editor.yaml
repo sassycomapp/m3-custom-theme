@@ -45,6 +45,8 @@ unique_ids:
     designer_icons/divider_dark.svg: '1702400004965244117368359.85986'
     designer_icons/dropdown_menu.svg: '1702402191558888896893366.5889'
     designer_icons/dropdown_menu_dark.svg: '1702402210966816716478880.0514'
+    designer_icons/fab.svg: '1793787621769230813547512.7811'
+    designer_icons/fab_dark.svg: '1793787621769297348771277.3338'
     designer_icons/file_loader.svg: '1702400079490109842744197.72899'
     designer_icons/file_loader_dark.svg: '170240009488622243761193.770916'
     designer_icons/heading.svg: '1702400423890529650884483.46576'
@@ -75,6 +77,8 @@ unique_ids:
     designer_icons/slider_dark.svg: '170602243338530759371294.256653'
     designer_icons/switch.svg: '1702400792497881053389888.2365'
     designer_icons/switch_dark.svg: '1702400809019398541961546.3368'
+    designer_icons/tabs.svg: '1793787621769775643415992.8901'
+    designer_icons/tabs_dark.svg: '1793787621769943951571339.7374'
     designer_icons/text.svg: '1702400867244965436925556.7903'
     designer_icons/text_dark.svg: '1702400882367394079289989.5229'
     designer_icons/textfield.svg: '1702402292135309100614551.32196'
@@ -85,8 +89,10 @@ unique_ids:
     m3x/chip.css: '1793782030363255586183702.1009'
     m3x/components.css: '1793776541119942650629231.8394'
     m3x/dialog.css: '1793776541119306859875451.2970'
+    m3x/fab.css: '1793787621769108362548878.4574'
     m3x/palettes.css: '1793702553869665498540454.4127'
     m3x/snackbar.css: '1793786137233447633605966.7864'
+    m3x/tabs.css: '1793787621769170289223825.9857'
     m3x/tokens.css: '1793772802328879318670730.8713'
     theme.css: ETNISNSUVCSJYUF6AOQQTK6JLIO7LPER
   forms:
@@ -107,6 +113,7 @@ unique_ids:
     _Components.Divider: '1688573262607740872083563.6951'
     _Components.DropdownMenu: '1704966695378970651888987.607'
     _Components.FileLoader: '1699022411615532112102446.622'
+    _Components.FloatingActionButton: '1793787621769919576695565.5822'
     _Components.Heading: '1691584734618253051882422.0236'
     _Components.IconButton: '1697644295380308163730017.08105'
     _Components.IconButtonMenu: '1744204841486144204805125.58'
@@ -120,6 +127,7 @@ unique_ids:
     _Components.SidesheetContent: '170237973749020977740327.216663'
     _Components.Slider: '1691053810024905428539432.8257'
     _Components.Switch: NX6RIMTQ7UKHD7G77KDTDIWQJZ7COLZ3
+    _Components.Tabs: '1793787621769350453779943.9558'
     _Components.Text: '1691572000604659329611163.5563'
     _Components.TextInput: '1704278444641904756062672.2582'
   modules:

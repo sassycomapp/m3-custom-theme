@@ -381,4 +381,48 @@
   --m3x-badge-small-size: 6px;
   --m3x-badge-large-size: 16px;
   --m3x-badge-large-padding: var(--m3x-space-4);
+
+  /* Outer margin of components with a shadow of level 3 or higher */
+  --m3x-component-outer-margin-elevated: var(--m3x-space-16);
+
+  /* Component: Tabs (PrimaryNavigationTabTokens, SecondaryNavigationTabTokens
+     v0_162) */
+  --m3x-tabs-container-color: var(--m3x-color-surface);
+  --m3x-tabs-height: 48px;
+  --m3x-tabs-height-with-icons: 64px;
+  --m3x-tabs-divider-color: var(--m3x-color-surface-variant);
+  --m3x-tabs-divider-height: 1px;
+  --m3x-tabs-icon-size: 24px;
+  --m3x-tabs-inactive-color: var(--m3x-color-on-surface-variant);
+  --m3x-tabs-primary-active-color: var(--m3x-color-primary);
+  --m3x-tabs-primary-indicator-height: 3px;
+  --m3x-tabs-primary-indicator-shape: 3px 3px 0 0;
+  --m3x-tabs-primary-indicator-min-width: 24px;
+  --m3x-tabs-secondary-active-color: var(--m3x-color-on-surface);
+  --m3x-tabs-secondary-indicator-color: var(--m3x-color-primary);
+  --m3x-tabs-secondary-indicator-height: 2px;
+  --m3x-tabs-padding: var(--m3x-space-16);
+  --m3x-tabs-scrollable-edge-padding: var(--m3x-space-16);
+
+  /* Component: Floating action button (FabBaselineTokens, FabMediumTokens,
+     FabLargeTokens, ExtendedFab*Tokens, FabPrimaryContainerTokens v0_14_0) */
+  --m3x-fab-container-elevation: var(--m3x-elevation-level3);
+  --m3x-fab-hover-container-elevation: var(--m3x-elevation-level4);
+  --m3x-fab-regular-size: 56px;
+  --m3x-fab-regular-shape: var(--m3x-shape-corner-large);
+  --m3x-fab-regular-icon-size: 24px;
+  --m3x-fab-regular-padding: var(--m3x-space-16);
+  --m3x-fab-regular-gap: var(--m3x-space-8);
+  --m3x-fab-medium-size: 80px;
+  --m3x-fab-medium-shape: var(--m3x-shape-corner-large-increased);
+  --m3x-fab-medium-icon-size: 28px;
+  --m3x-fab-medium-padding: 26px;
+  --m3x-fab-medium-gap: var(--m3x-space-12);
+  --m3x-fab-large-size: 96px;
+  --m3x-fab-large-shape: var(--m3x-shape-corner-extra-large);
+  --m3x-fab-large-icon-size: 36px;
+  --m3x-fab-large-padding: 28px;
+  --m3x-fab-large-gap: var(--m3x-space-16);
+  --m3x-fab-floating-margin: var(--m3x-space-16);
+  --m3x-fab-floating-z-index: 1020;
 }

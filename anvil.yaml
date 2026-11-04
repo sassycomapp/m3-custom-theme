@@ -82,6 +82,9 @@ toolbox_sections:
   - component: {type: m3._Components.Chip}
     icon: {dark: 'asset:designer_icons/chip_dark.svg', light: 'asset:designer_icons/chip.svg'}
     title: Chip
+  - component: {type: m3._Components.FloatingActionButton}
+    icon: {dark: 'asset:designer_icons/fab_dark.svg', light: 'asset:designer_icons/fab.svg'}
+    title: FloatingActionButton
   packageName: m3
   title: Buttons
 - description: Display components help display content on the page
@@ -172,6 +175,9 @@ toolbox_sections:
   - component: {type: m3._Components.NavigationLink}
     icon: {dark: 'asset:designer_icons/navigation_link_dark.svg', light: 'asset:designer_icons/navigation_link.svg'}
     title: NavigationLink
+  - component: {type: m3._Components.Tabs}
+    icon: {dark: 'asset:designer_icons/tabs_dark.svg', light: 'asset:designer_icons/tabs.svg'}
+    title: Tabs
   packageName: m3
   title: Navigation
 - description: Use menus to hold other components and display them as a list of options

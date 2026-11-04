@@ -1,0 +1,170 @@
+/* Floating action button (m3._Components.FloatingActionButton).
+   See docs/components/FloatingActionButton.md. */
+
+.m3x-fab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: var(--m3x-component-outer-margin-elevated);
+  padding: 0;
+  border: none;
+  background-color: var(--m3x-fab-container-color);
+  color: var(--m3x-fab-content-color);
+  box-shadow: var(--m3x-fab-container-elevation);
+  cursor: pointer;
+  vertical-align: middle;
+  outline: none;
+  transition: box-shadow var(--m3x-motion-duration-short4) var(--m3x-motion-easing-standard);
+}
+
+.m3x-fab:hover {
+  box-shadow: var(--m3x-fab-hover-container-elevation);
+}
+
+/* Colours */
+.m3x-fab-primary-container {
+  --m3x-fab-container-color: var(--m3x-color-primary-container);
+  --m3x-fab-content-color: var(--m3x-color-on-primary-container);
+}
+
+.m3x-fab-secondary-container {
+  --m3x-fab-container-color: var(--m3x-color-secondary-container);
+  --m3x-fab-content-color: var(--m3x-color-on-secondary-container);
+}
+
+.m3x-fab-tertiary-container {
+  --m3x-fab-container-color: var(--m3x-color-tertiary-container);
+  --m3x-fab-content-color: var(--m3x-color-on-tertiary-container);
+}
+
+.m3x-fab-primary {
+  --m3x-fab-container-color: var(--m3x-color-primary);
+  --m3x-fab-content-color: var(--m3x-color-on-primary);
+}
+
+.m3x-fab-secondary {
+  --m3x-fab-container-color: var(--m3x-color-secondary);
+  --m3x-fab-content-color: var(--m3x-color-on-secondary);
+}
+
+.m3x-fab-tertiary {
+  --m3x-fab-container-color: var(--m3x-color-tertiary);
+  --m3x-fab-content-color: var(--m3x-color-on-tertiary);
+}
+
+/* Sizes */
+.m3x-fab-regular {
+  --m3x-fab-size: var(--m3x-fab-regular-size);
+  --m3x-fab-icon-size: var(--m3x-fab-regular-icon-size);
+  --m3x-fab-padding: var(--m3x-fab-regular-padding);
+  --m3x-fab-gap: var(--m3x-fab-regular-gap);
+  border-radius: var(--m3x-fab-regular-shape);
+  font-family: var(--m3x-typescale-title-medium-font);
+  font-size: var(--m3x-typescale-title-medium-size);
+  line-height: var(--m3x-typescale-title-medium-line-height);
+  letter-spacing: var(--m3x-typescale-title-medium-tracking);
+  font-weight: var(--m3x-typescale-title-medium-weight);
+}
+
+.m3x-fab-medium {
+  --m3x-fab-size: var(--m3x-fab-medium-size);
+  --m3x-fab-icon-size: var(--m3x-fab-medium-icon-size);
+  --m3x-fab-padding: var(--m3x-fab-medium-padding);
+  --m3x-fab-gap: var(--m3x-fab-medium-gap);
+  border-radius: var(--m3x-fab-medium-shape);
+  font-family: var(--m3x-typescale-title-large-font);
+  font-size: var(--m3x-typescale-title-large-size);
+  line-height: var(--m3x-typescale-title-large-line-height);
+  letter-spacing: var(--m3x-typescale-title-large-tracking);
+  font-weight: var(--m3x-typescale-title-large-weight);
+}
+
+.m3x-fab-large {
+  --m3x-fab-size: var(--m3x-fab-large-size);
+  --m3x-fab-icon-size: var(--m3x-fab-large-icon-size);
+  --m3x-fab-padding: var(--m3x-fab-large-padding);
+  --m3x-fab-gap: var(--m3x-fab-large-gap);
+  border-radius: var(--m3x-fab-large-shape);
+  font-family: var(--m3x-typescale-headline-small-font);
+  font-size: var(--m3x-typescale-headline-small-size);
+  line-height: var(--m3x-typescale-headline-small-line-height);
+  letter-spacing: var(--m3x-typescale-headline-small-tracking);
+  font-weight: var(--m3x-typescale-headline-small-weight);
+}
+
+.m3x-fab {
+  width: var(--m3x-fab-size);
+  height: var(--m3x-fab-size);
+}
+
+.m3x-fab.m3x-fab-extended {
+  width: auto;
+  min-width: var(--m3x-fab-size);
+  gap: var(--m3x-fab-gap);
+  padding: 0 var(--m3x-fab-padding);
+}
+
+.m3x-fab-icon {
+  font-size: var(--m3x-fab-icon-size);
+  line-height: 1;
+}
+
+/* State layer in the content colour */
+.m3x-fab::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-color: var(--m3x-fab-content-color);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--m3x-motion-duration-short2) var(--m3x-motion-easing-standard);
+}
+
+.m3x-fab:hover::before {
+  opacity: var(--m3x-state-hover-opacity);
+}
+
+.m3x-fab:focus-visible::before {
+  opacity: var(--m3x-state-focus-opacity);
+}
+
+.m3x-fab:active::before {
+  opacity: var(--m3x-state-pressed-opacity);
+}
+
+.m3x-fab:focus-visible {
+  outline: var(--m3x-focus-indicator-thickness) solid var(--m3x-focus-indicator-color);
+  outline-offset: var(--m3x-focus-indicator-outer-offset);
+}
+
+/* Disabled: M3 has no disabled FAB; Anvil components can be disabled, so the
+   standard disabled colours apply. */
+.m3x-fab:disabled {
+  --m3x-fab-container-color: color-mix(in srgb, var(--m3x-color-on-surface) var(--m3x-disabled-container-opacity), transparent);
+  --m3x-fab-content-color: color-mix(in srgb, var(--m3x-color-on-surface) var(--m3x-disabled-content-opacity), transparent);
+  box-shadow: var(--m3x-elevation-level0);
+  cursor: default;
+}
+
+.m3x-fab:disabled::before {
+  display: none;
+}
+
+/* Floating: fixed in the bottom right corner of the window */
+.m3x-fab.m3x-fab-floating {
+  position: fixed;
+  right: var(--m3x-fab-floating-margin);
+  bottom: var(--m3x-fab-floating-margin);
+  z-index: var(--m3x-fab-floating-z-index);
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .m3x-fab,
+  .m3x-fab::before {
+    transition: none;
+  }
+}

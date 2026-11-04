@@ -186,6 +186,8 @@ class Form1(Form1Template):
         self._build_chips()
         self._build_badges()
         self._build_snackbars()
+        self._build_tabs()
+        self._build_fabs()
         self._build_tokens()
 
     # ---- helpers -------------------------------------------------------
@@ -549,6 +551,80 @@ class Form1(Form1Template):
                 f"Message {n} of 3",
                 on_dismiss=lambda n=n: self._snackbar_event(f"message {n} closed"),
             ).show()
+
+    # ---- tabs and floating action buttons (Step 6) ---------------------------
+
+    def _build_tabs(self):
+        self._heading("Tabs")
+        self._tabs_result = m3.Text(text="Selected tab: (none yet)")
+        for title, kwargs in (
+            ("Primary tabs", dict(items=["Flights", "Trips", "Explore"])),
+            ("Primary tabs with icons", dict(
+                items=["Flights", "Trips", "Explore"],
+                icons=["mi:flight", "mi:luggage", "mi:explore"],
+            )),
+            ("Secondary tabs", dict(
+                type="secondary", items=["Overview", "Specifications", "Reviews"]
+            )),
+            ("Scrollable tabs", dict(scrollable=True, items=[
+                "Monday", "Tuesday", "Wednesday", "Thursday", "Friday",
+                "Saturday", "Sunday", "Next week", "Last week",
+            ])),
+        ):
+            self.add_component(m3.Text(text=title, style="label"))
+            tabs = m3.Tabs(**kwargs)
+            tabs.add_event_handler("change", self._on_tabs_change)
+            self.add_component(tabs)
+        self.add_component(self._tabs_result)
+
+    def _on_tabs_change(self, sender, **event_args):
+        self._tabs_result.text = (
+            f"Selected tab: {sender.selected_text} "
+            f"(position {sender.selected_index})"
+        )
+
+    def _build_fabs(self):
+        self._fab_result = m3.Text(text="Last button clicked: (none yet)")
+        row = self._section("FloatingActionButton: sizes")
+        for size in ("regular", "medium", "large"):
+            row.add_component(self._fab(size=size, tooltip=f"Create ({size})"))
+        row = self._section("FloatingActionButton: colours")
+        for appearance in (
+            "primary_container", "secondary_container", "tertiary_container",
+            "primary", "secondary", "tertiary",
+        ):
+            row.add_component(
+                self._fab(appearance=appearance, icon="mi:edit", tooltip=appearance)
+            )
+        row = self._section("FloatingActionButton: extended")
+        for size in ("regular", "medium", "large"):
+            row.add_component(self._fab(size=size, text="Compose", icon="mi:edit"))
+        row.add_component(
+            self._fab(text="Disabled", icon="mi:edit", enabled=False)
+        )
+        self.add_component(self._fab_result)
+        self._floating_switch = m3.Switch()
+        self._floating_switch.add_event_handler("change", self._on_floating_change)
+        row = FlowPanel(spacing="medium")
+        row.add_component(m3.Text(text="Show a floating button in the corner:"))
+        row.add_component(self._floating_switch)
+        self.add_component(row)
+        self._floating_fab = self._fab(
+            floating=True, icon="mi:add", tooltip="Floating", visible=False
+        )
+        self.add_component(self._floating_fab)
+
+    def _fab(self, **kwargs):
+        fab = m3.FloatingActionButton(**kwargs)
+        fab.add_event_handler("click", self._on_fab_click)
+        return fab
+
+    def _on_fab_click(self, sender, **event_args):
+        name = sender.text or sender.tooltip
+        self._fab_result.text = f"Last button clicked: {name}"
+
+    def _on_floating_change(self, **event_args):
+        self._floating_fab.visible = self._floating_switch.selected
 
     # ---- token reference (Step 5) --------------------------------------------
 
