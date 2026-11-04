@@ -14,6 +14,8 @@
 @import '_/theme/anvil-m3/avatar.css';
 /* m3x: palettes and dark mode (Step 4). Generated file, see docs/upstream-edits.md */
 @import '_/theme/m3x/palettes.css';
+/* m3x: design tokens (Step 5), see docs/upstream-edits.md */
+@import '_/theme/m3x/tokens.css';
 
 /* m3x: every %color:...% token below this block was replaced by the matching
    var(--anvil-m3-...) so that palettes and dark mode reach the whole theme. */
@@ -64,6 +66,27 @@
   --anvil-m3-on-surface-variant-overlay-2: %color:On Surface Variant Overlay 2%;
   --anvil-m3-inverse-on-surface-overlay-1: %color:Inverse On Surface Overlay 1%;
   --anvil-m3-inverse-on-surface-overlay-2: %color:Inverse On Surface Overlay 2%;
+  /* m3x: M3 colour roles the base theme does not hold (Step 5) */
+  --m3x-color-error-container: %color:Error Container%;
+  --m3x-color-inverse-primary: %color:Inverse Primary%;
+  --m3x-color-surface-tint: %color:Surface Tint%;
+  --m3x-color-surface-dim: %color:Surface Dim%;
+  --m3x-color-surface-bright: %color:Surface Bright%;
+  --m3x-color-surface-container-lowest: %color:Surface Container Lowest%;
+  --m3x-color-scrim: %color:Scrim%;
+  --m3x-color-shadow: %color:Shadow%;
+  --m3x-color-primary-fixed: %color:Primary Fixed%;
+  --m3x-color-primary-fixed-dim: %color:Primary Fixed Dim%;
+  --m3x-color-on-primary-fixed: %color:On Primary Fixed%;
+  --m3x-color-on-primary-fixed-variant: %color:On Primary Fixed Variant%;
+  --m3x-color-secondary-fixed: %color:Secondary Fixed%;
+  --m3x-color-secondary-fixed-dim: %color:Secondary Fixed Dim%;
+  --m3x-color-on-secondary-fixed: %color:On Secondary Fixed%;
+  --m3x-color-on-secondary-fixed-variant: %color:On Secondary Fixed Variant%;
+  --m3x-color-tertiary-fixed: %color:Tertiary Fixed%;
+  --m3x-color-tertiary-fixed-dim: %color:Tertiary Fixed Dim%;
+  --m3x-color-on-tertiary-fixed: %color:On Tertiary Fixed%;
+  --m3x-color-on-tertiary-fixed-variant: %color:On Tertiary Fixed Variant%;
 
 }
 

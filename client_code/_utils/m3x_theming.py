@@ -3,23 +3,20 @@
 The theme's colours are CSS variables. Two attributes on the page's root element
 choose which values apply (see theme/assets/m3x/palettes.css):
 
-    data-m3x-palette   one of PALETTES. No attribute = the base theme's colours.
+    data-m3x-palette   one of PALETTES.
     data-m3x-theme     "light", "dark" or "system" (follow the device).
-                       No attribute = light.
 
-An app sets these once at start-up, for example from a per-client setting, and
-may offer them to the user. The choice is remembered in the browser.
+The colour preset chosen in Anvil's Theme editor sets the app's starting palette
+and mode. An app may change them at start-up, for example from a per-client
+setting, and may offer them to the user. A choice made through set_palette or
+set_mode is remembered in the browser and wins over the editor preset.
 See m3-custom-theme.md, Step 4.
 """
+import anvil
 from anvil.js import window
 
-PALETTES = (
-    "default",
-    "professional_blue",
-    "warm_coral",
-    "calm_teal",
-    "sophisticated_purple",
-)
+from .m3x_presets import BY_PRIMARY, PALETTES
+
 MODES = ("light", "dark", "system")
 
 _PALETTE_ATTRIBUTE = "data-m3x-palette"
@@ -46,20 +43,29 @@ def _recall(key):
         return None
 
 
+def editor_preset():
+    """The (palette, mode) of the colour preset chosen in Anvil's Theme editor.
+
+    A colour scheme that matches no preset counts as ("default", "light").
+    """
+    try:
+        primary = str(anvil.app.theme_colors["Primary"]).strip().upper()
+    except Exception:
+        return ("default", "light")
+    return BY_PRIMARY.get(primary, ("default", "light"))
+
+
 def get_palette():
     """The palette in use: one of PALETTES."""
     value = _root().getAttribute(_PALETTE_ATTRIBUTE)
-    return value if value in PALETTES else "default"
+    return value if value in PALETTES else editor_preset()[0]
 
 
 def set_palette(name, remember=True):
-    """Switch palette. name is one of PALETTES; "default" is the base colours."""
+    """Switch palette. name is one of PALETTES."""
     if name not in PALETTES:
         raise ValueError(f"Unknown palette {name!r}. Choose one of {PALETTES}")
-    if name == "default":
-        _root().removeAttribute(_PALETTE_ATTRIBUTE)
-    else:
-        _root().setAttribute(_PALETTE_ATTRIBUTE, name)
+    _root().setAttribute(_PALETTE_ATTRIBUTE, name)
     if remember:
         _remember(_PALETTE_KEY, name)
 
@@ -67,13 +73,16 @@ def set_palette(name, remember=True):
 def get_mode():
     """The mode chosen: "light", "dark" or "system"."""
     value = _root().getAttribute(_MODE_ATTRIBUTE)
-    return value if value in MODES else "light"
+    return value if value in MODES else editor_preset()[1]
 
 
 def set_mode(mode, remember=True):
     """Switch mode. mode is "light", "dark" or "system" (follow the device)."""
     if mode not in MODES:
         raise ValueError(f"Unknown mode {mode!r}. Choose one of {MODES}")
+    # The dark colours belong to a palette, so a palette is always set with a mode.
+    if _root().getAttribute(_PALETTE_ATTRIBUTE) not in PALETTES:
+        set_palette(get_palette(), remember=False)
     _root().setAttribute(_MODE_ATTRIBUTE, mode)
     if remember:
         _remember(_MODE_KEY, mode)
@@ -88,10 +97,11 @@ def is_dark():
 
 
 def apply_saved():
-    """Re-apply the palette and mode this browser last used. Call at start-up."""
-    palette = _recall(_PALETTE_KEY)
-    if palette in PALETTES:
-        set_palette(palette, remember=False)
-    mode = _recall(_MODE_KEY)
-    if mode in MODES:
-        set_mode(mode, remember=False)
+    """Apply the palette and mode this browser last chose, or else the editor
+    preset's. Call once at start-up."""
+    palette, mode = editor_preset()
+    saved_palette = _recall(_PALETTE_KEY)
+    saved_mode = _recall(_MODE_KEY)
+    set_palette(saved_palette if saved_palette in PALETTES else palette,
+                remember=False)
+    set_mode(saved_mode if saved_mode in MODES else mode, remember=False)

@@ -7,7 +7,9 @@ component here, in every variant and state, before merging it.
 from anvil import *
 import m3.components as m3
 
+from anvil.js import get_dom_node
 from m3._utils import m3x_theming
+from m3._utils.properties import theme_color_to_css
 
 from ._anvil_designer import Form1Template
 
@@ -17,6 +19,39 @@ CARD_APPEARANCES = ["elevated", "filled", "outlined"]
 AVATAR_APPEARANCES = ["filled", "tonal", "outlined"]
 TEXT_INPUT_APPEARANCES = ["filled", "outlined"]
 SCALES = ["small", "medium", "large"]
+
+# Token reference (Step 5). Every value comes from theme/assets/m3x/tokens.css.
+COLOUR_ROLES = [
+    "primary", "on-primary", "primary-container", "on-primary-container",
+    "inverse-primary", "primary-fixed", "primary-fixed-dim", "on-primary-fixed",
+    "on-primary-fixed-variant", "secondary", "on-secondary",
+    "secondary-container", "on-secondary-container", "secondary-fixed",
+    "secondary-fixed-dim", "on-secondary-fixed", "on-secondary-fixed-variant",
+    "tertiary", "on-tertiary", "tertiary-container", "on-tertiary-container",
+    "tertiary-fixed", "tertiary-fixed-dim", "on-tertiary-fixed",
+    "on-tertiary-fixed-variant", "error", "on-error", "error-container",
+    "on-error-container", "background", "on-background", "surface",
+    "on-surface", "surface-variant", "on-surface-variant", "surface-dim",
+    "surface-bright", "surface-container-lowest", "surface-container-low",
+    "surface-container", "surface-container-high", "surface-container-highest",
+    "surface-tint", "inverse-surface", "inverse-on-surface", "outline",
+    "outline-variant", "scrim", "shadow",
+]
+TYPE_STYLES = [
+    f"{group}-{size}"
+    for group in ("display", "headline", "title", "body", "label")
+    for size in ("large", "medium", "small")
+]
+SHAPES = [
+    "none", "extra-small", "small", "medium", "large", "large-increased",
+    "extra-large", "extra-large-increased", "extra-extra-large", "full",
+]
+EASINGS = [
+    "emphasized", "emphasized-decelerate", "emphasized-accelerate", "standard",
+    "standard-decelerate", "standard-accelerate", "legacy", "legacy-decelerate",
+    "legacy-accelerate", "linear",
+]
+SPACES = [4, 8, 12, 16, 24, 32, 48, 64]
 
 # Each section: (title, component class, list of keyword-argument dicts).
 SECTIONS = [
@@ -147,6 +182,7 @@ class Form1(Form1Template):
         self._build_cards()
         self._build_progress()
         self._build_dividers()
+        self._build_tokens()
 
     # ---- helpers -------------------------------------------------------
 
@@ -307,3 +343,120 @@ class Form1(Form1Template):
         self._heading("Divider")
         self.add_component(m3.Divider(type="full_width"))
         self.add_component(m3.Divider(type="inset"))
+
+    # ---- token reference (Step 5) --------------------------------------------
+
+    def _html(self, html):
+        self.add_component(HtmlTemplate(html=html))
+
+    def _build_tokens(self):
+        self._heading("Tokens", "headline", "medium")
+        text = "color: var(--m3x-color-on-surface);"
+
+        self._heading("Designer colour")
+        self.add_component(
+            m3.Text(
+                text="This box is coloured theme:Tertiary. It must follow the palette.",
+                background_color="theme:Tertiary",
+                text_color="theme:On Tertiary",
+            )
+        )
+        palette, mode = m3x_theming.editor_preset()
+        self.add_component(
+            m3.Text(
+                text="theme:Tertiary resolves to: "
+                + theme_color_to_css("theme:Tertiary")
+            )
+        )
+        self.add_component(m3.Text(text=f"Editor preset: {palette} {mode}"))
+
+        self._heading("Colour roles")
+        cells = "".join(
+            f'<div style="width:136px;{text}font-size:11px;">'
+            f'<div style="height:40px;background:var(--m3x-color-{role});'
+            "border:1px solid var(--m3x-color-outline-variant);"
+            'border-radius:var(--m3x-shape-corner-small);"></div>'
+            f"{role}</div>"
+            for role in COLOUR_ROLES
+        )
+        self._html(f'<div style="display:flex;flex-wrap:wrap;gap:8px;">{cells}</div>')
+
+        for emphasis in ("", "-emphasized"):
+            self._heading("Type scale" + (", emphasised" if emphasis else ""))
+            rows = "".join(
+                f'<div style="{text}'
+                f"font-family:var(--m3x-typescale-{name}{emphasis}-font);"
+                f"font-size:var(--m3x-typescale-{name}{emphasis}-size);"
+                f"line-height:var(--m3x-typescale-{name}{emphasis}-line-height);"
+                f"letter-spacing:var(--m3x-typescale-{name}{emphasis}-tracking);"
+                f'font-weight:var(--m3x-typescale-{name}{emphasis}-weight);">'
+                f"{name}{emphasis}</div>"
+                for name in TYPE_STYLES
+            )
+            self._html(rows)
+
+        self._heading("Shape")
+        cells = "".join(
+            f'<div style="width:96px;{text}font-size:11px;">'
+            '<div style="width:80px;height:56px;'
+            "background:var(--m3x-color-primary-container);"
+            f'border-radius:var(--m3x-shape-corner-{shape});"></div>{shape}</div>'
+            for shape in SHAPES
+        )
+        self._html(f'<div style="display:flex;flex-wrap:wrap;gap:8px;">{cells}</div>')
+
+        self._heading("Elevation")
+        cells = "".join(
+            f'<div style="width:96px;height:56px;{text}font-size:11px;'
+            "background:var(--m3x-color-surface-container-low);"
+            "border-radius:var(--m3x-shape-corner-medium);"
+            f'box-shadow:var(--m3x-elevation-level{level});padding:4px;">'
+            f"level {level}</div>"
+            for level in range(6)
+        )
+        self._html(f'<div style="display:flex;flex-wrap:wrap;gap:24px;">{cells}</div>')
+
+        self._heading("State layers")
+        cells = "".join(
+            f'<div style="width:96px;{text}font-size:11px;">'
+            '<div style="width:80px;height:40px;background:var(--m3x-color-primary);'
+            f'opacity:var(--m3x-state-{state}-opacity);"></div>{state}</div>'
+            for state in ("hover", "focus", "pressed", "dragged")
+        )
+        self._html(f'<div style="display:flex;flex-wrap:wrap;gap:8px;">{cells}</div>')
+
+        self._heading("Spacing")
+        rows = "".join(
+            f'<div style="{text}font-size:11px;">{space} px'
+            f'<div style="width:var(--m3x-space-{space});height:12px;'
+            'background:var(--m3x-color-tertiary);"></div></div>'
+            for space in SPACES
+        )
+        self._html(rows)
+
+        self._heading("Motion: easing curves")
+        rows = "".join(
+            f'<div style="{text}font-size:11px;">{easing}'
+            '<div style="width:100%;height:16px;'
+            "background:var(--m3x-color-surface-container-high);"
+            'border-radius:var(--m3x-shape-corner-full);">'
+            '<div data-m3x-bar style="width:16px;height:16px;'
+            "background:var(--m3x-color-primary);"
+            "border-radius:var(--m3x-shape-corner-full);"
+            "transition:transform var(--m3x-motion-duration-long2) "
+            f'var(--m3x-motion-easing-{easing});"></div></div></div>'
+            for easing in EASINGS
+        )
+        self._motion = HtmlTemplate(html=rows)
+        play = m3.Button(text="Play", appearance="filled", icon="mi:play_arrow")
+        play.add_event_handler("click", self._on_play)
+        self.add_component(play)
+        self.add_component(self._motion)
+        self._played = False
+
+    def _on_play(self, **event_args):
+        node = get_dom_node(self._motion)
+        width = node.getBoundingClientRect().width - 16
+        self._played = not self._played
+        for bar in node.querySelectorAll("[data-m3x-bar]"):
+            bar.style.transform = f"translateX({width if self._played else 0}px)"
