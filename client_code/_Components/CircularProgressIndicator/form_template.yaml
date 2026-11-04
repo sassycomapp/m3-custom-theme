@@ -20,6 +20,7 @@ properties:
   options: [determinate, indeterminate]
   type: enum
 - {default_value: 0, description: The percentage of progress for the determinate type indicator. This property is irrelevant for the indeterminate type., group: Key Properties, important: true, name: progress, type: number}
+- {default_value: false, description: 'If True, the indicator is drawn as an M3 Expressive wave.', group: Key Properties, important: true, name: wavy, type: boolean}
 - default_value: left
   description: The position of this component in the available space.
   designer_hint: align-horizontal

@@ -216,6 +216,9 @@ toolbox_sections:
   - component: {type: m3._Components.CircularProgressIndicator}
     icon: {dark: 'asset:designer_icons/circular_progress_indicator_dark.svg', light: 'asset:designer_icons/circular_progress_indicator.svg'}
     title: CircularProgressIndicator
+  - component: {type: m3._Components.LoadingIndicator}
+    icon: {dark: 'asset:designer_icons/loading_indicator_dark.svg', light: 'asset:designer_icons/loading_indicator.svg'}
+    title: LoadingIndicator
   packageName: m3
   title: Feedback
 - description: Integrations allow you to connect to other platforms and services

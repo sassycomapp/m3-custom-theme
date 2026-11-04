@@ -1,0 +1,190 @@
+/* Wavy variant of LinearProgressIndicator and CircularProgressIndicator
+   (m3._utils.m3x_wavy). See docs/components/WavyProgress.md.
+   The wave is a repeating SVG mask over a block of the indicator colour, so the
+   colour always comes from the theme. */
+
+/* The base drawing is hidden while the wavy one is shown */
+.m3x-progress-wavy > svg {
+  display: none;
+}
+
+.m3x-wavy-linear {
+  --m3x-wavy-active-color: var(--m3x-progress-active-color);
+  --m3x-wavy-track-color: var(--m3x-progress-track-color);
+  position: relative;
+  flex: 1 1 auto;
+  height: var(--m3x-progress-linear-wave-height);
+  overflow: hidden;
+}
+
+.m3x-wavy-linear-active,
+.m3x-wavy-linear-track,
+.m3x-wavy-linear-stop {
+  position: absolute;
+  top: calc((var(--m3x-progress-linear-wave-height) - var(--m3x-progress-thickness)) / 2);
+  height: var(--m3x-progress-thickness);
+  border-radius: var(--m3x-shape-corner-full);
+}
+
+.m3x-wavy-linear-track {
+  left: min(100%, calc(var(--m3x-wavy-progress) + var(--m3x-progress-gap)));
+  right: 0;
+  background-color: var(--m3x-wavy-track-color);
+}
+
+.m3x-wavy-linear-stop {
+  right: 0;
+  width: var(--m3x-progress-stop-size);
+  background-color: var(--m3x-wavy-active-color);
+}
+
+.m3x-wavy-linear-active {
+  left: 0;
+  top: 0;
+  width: var(--m3x-wavy-progress);
+  height: var(--m3x-progress-linear-wave-height);
+  border-radius: 0;
+  background-color: var(--m3x-wavy-active-color);
+  -webkit-mask-image: var(--m3x-progress-linear-wave);
+  mask-image: var(--m3x-progress-linear-wave);
+  -webkit-mask-repeat: repeat-x;
+  mask-repeat: repeat-x;
+  -webkit-mask-size: var(--m3x-progress-linear-wavelength) var(--m3x-progress-linear-wave-height);
+  mask-size: var(--m3x-progress-linear-wavelength) var(--m3x-progress-linear-wave-height);
+  animation: m3x-wavy-travel 1s linear infinite;
+  transition: width var(--m3x-motion-duration-medium2) var(--m3x-motion-easing-standard);
+}
+
+.m3x-wavy-linear-active-2 {
+  display: none;
+}
+
+/* Flat below 10 % and from 95 % of the progress */
+.m3x-wavy-flat .m3x-wavy-linear-active {
+  top: calc((var(--m3x-progress-linear-wave-height) - var(--m3x-progress-thickness)) / 2);
+  height: var(--m3x-progress-thickness);
+  border-radius: var(--m3x-shape-corner-full);
+  -webkit-mask-image: none;
+  mask-image: none;
+  animation: none;
+}
+
+@keyframes m3x-wavy-travel {
+  from { -webkit-mask-position: 0 0; mask-position: 0 0; }
+  to { -webkit-mask-position: var(--m3x-progress-linear-wavelength) 0; mask-position: var(--m3x-progress-linear-wavelength) 0; }
+}
+
+/* Indeterminate: two wavy segments run along the full track */
+.m3x-wavy-indeterminate .m3x-wavy-linear-track {
+  left: 0;
+}
+
+.m3x-wavy-indeterminate .m3x-wavy-linear-stop {
+  display: none;
+}
+
+.m3x-wavy-indeterminate .m3x-wavy-linear-active {
+  display: block;
+  width: auto;
+  -webkit-mask-image: var(--m3x-progress-linear-indeterminate-wave);
+  mask-image: var(--m3x-progress-linear-indeterminate-wave);
+  -webkit-mask-size: var(--m3x-progress-linear-indeterminate-wavelength) var(--m3x-progress-linear-wave-height);
+  mask-size: var(--m3x-progress-linear-indeterminate-wavelength) var(--m3x-progress-linear-wave-height);
+  animation:
+    m3x-wavy-segment-1 2s infinite linear,
+    m3x-wavy-travel-short 1s linear infinite;
+  transition: none;
+}
+
+.m3x-wavy-indeterminate .m3x-wavy-linear-active-2 {
+  animation:
+    m3x-wavy-segment-2 2s infinite linear,
+    m3x-wavy-travel-short 1s linear infinite;
+}
+
+@keyframes m3x-wavy-travel-short {
+  from { -webkit-mask-position: 0 0; mask-position: 0 0; }
+  to { -webkit-mask-position: var(--m3x-progress-linear-indeterminate-wavelength) 0; mask-position: var(--m3x-progress-linear-indeterminate-wavelength) 0; }
+}
+
+@keyframes m3x-wavy-segment-1 {
+  0% { left: -35%; right: 100%; }
+  60% { left: 100%; right: -90%; }
+  100% { left: 100%; right: -90%; }
+}
+
+@keyframes m3x-wavy-segment-2 {
+  0% { left: -200%; right: 100%; }
+  60% { left: 107%; right: -8%; }
+  100% { left: 107%; right: -8%; }
+}
+
+/* Circular */
+.m3x-wavy-circular {
+  --m3x-wavy-active-color: var(--m3x-progress-active-color);
+  --m3x-wavy-track-color: var(--m3x-progress-track-color);
+  width: var(--m3x-progress-circular-size);
+  height: var(--m3x-progress-circular-size);
+  transform: rotate(-90deg);
+}
+
+.m3x-wavy-circular-track,
+.m3x-wavy-circular-active {
+  fill: none;
+  stroke-width: var(--m3x-progress-thickness);
+  stroke-linecap: round;
+}
+
+.m3x-wavy-circular-track {
+  stroke: var(--m3x-wavy-track-color);
+}
+
+.m3x-wavy-circular-active {
+  stroke: var(--m3x-wavy-active-color);
+  transition: stroke-dasharray var(--m3x-motion-duration-medium2) var(--m3x-motion-easing-standard);
+}
+
+.m3x-wavy-circular.m3x-wavy-indeterminate {
+  animation: m3x-wavy-spin 1.4s linear infinite;
+}
+
+.m3x-wavy-indeterminate .m3x-wavy-circular-track {
+  display: none;
+}
+
+.m3x-wavy-indeterminate .m3x-wavy-circular-active {
+  animation: m3x-wavy-arc 1.4s var(--m3x-motion-easing-standard) infinite;
+  transition: none;
+}
+
+@keyframes m3x-wavy-spin {
+  from { transform: rotate(-90deg); }
+  to { transform: rotate(270deg); }
+}
+
+@keyframes m3x-wavy-arc {
+  0% { stroke-dasharray: 10 100; stroke-dashoffset: 0; }
+  50% { stroke-dasharray: 65 100; stroke-dashoffset: -15; }
+  100% { stroke-dasharray: 10 100; stroke-dashoffset: -100; }
+}
+
+/* Reduced motion: the wave stands still; indeterminate indicators keep moving,
+   because their movement is what says "busy". */
+.m3x-wavy-still .m3x-wavy-linear-active {
+  animation: none;
+}
+
+.m3x-wavy-still.m3x-wavy-indeterminate .m3x-wavy-linear-active {
+  animation: m3x-wavy-segment-1 2s infinite linear;
+}
+
+.m3x-wavy-still.m3x-wavy-indeterminate .m3x-wavy-linear-active-2 {
+  animation: m3x-wavy-segment-2 2s infinite linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .m3x-wavy-linear-active,
+  .m3x-wavy-circular-active {
+    transition: none;
+  }
+}

@@ -21,6 +21,7 @@ from .._Components.InteractiveCard import InteractiveCard
 from .._Components.LinearProgressIndicator import LinearProgressIndicator
 from .._Components.Link import Link
 from .._Components.ListItem import ListItem
+from .._Components.LoadingIndicator import LoadingIndicator
 from .._Components.MenuItem import MenuItem
 from .._Components.NavigationBar import NavigationBar
 from .._Components.NavigationLink import NavigationLink

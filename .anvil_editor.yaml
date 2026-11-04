@@ -65,6 +65,8 @@ unique_ids:
     designer_icons/link_dark.svg: '1702400172115635452910352.8741'
     designer_icons/list_item.svg: '1793789676067750646680509.6172'
     designer_icons/list_item_dark.svg: '1793789676067535156292901.8246'
+    designer_icons/loading_indicator.svg: '1793795033408191594838443.2792'
+    designer_icons/loading_indicator_dark.svg: '1793795033408541472099310.9430'
     designer_icons/menu_item.svg: APFON2PYUF4I5B5PREK6CBTLGV7Q3L7V
     designer_icons/menu_item_dark.svg: AM743QNDECF3AMBK2WHSPTH3EUFFOWY5
     designer_icons/navigation_bar.svg: '1793791871305339674384688.5049'
@@ -100,12 +102,14 @@ unique_ids:
     m3x/dialog.css: '1793776541119306859875451.2970'
     m3x/fab.css: '1793787621769108362548878.4574'
     m3x/list-item.css: '1793789676067249304169321.1004'
+    m3x/loading-indicator.css: '1793795033408132415704938.8300'
     m3x/navigation-bar.css: '1793791871305481469909517.5095'
     m3x/palettes.css: '1793702553869665498540454.4127'
     m3x/snackbar.css: '1793786137233447633605966.7864'
     m3x/tabs.css: '1793787621769170289223825.9857'
     m3x/tokens.css: '1793772802328879318670730.8713'
     m3x/top-app-bar.css: '1793791871305909316756209.5971'
+    m3x/wavy-progress.css: '1793795033408263500015698.8630'
     theme.css: ETNISNSUVCSJYUF6AOQQTK6JLIO7LPER
   forms:
     Form1: '1793626054416316229045705.0675'
@@ -133,6 +137,7 @@ unique_ids:
     _Components.LinearProgressIndicator: '169900965150797501169878.6904'
     _Components.Link: '169174463576231955159881.56439'
     _Components.ListItem: '1793789676067950767764844.5503'
+    _Components.LoadingIndicator: '1793795033408857578884890.8477'
     _Components.Menu: '1691484055779239355188821.15225'
     _Components.MenuItem: '1691072927249332240116307.56104'
     _Components.NavigationBar: '1793791871305538999465829.3499'
@@ -157,9 +162,11 @@ unique_ids:
     _Components.ToggleIconButton: '1698221918450299392855785.47437'
     _utils: NG7DBGUUSPXECPDER2G65KMIKCVG4GRL
     _utils.fui: '1701404784306666394613830.7113'
+    _utils.m3x_loading: '1793795033408271029897532.1882'
     _utils.m3x_presets: '1793772802328980671971297.2922'
     _utils.m3x_snackbar: '1793786137233523261377819.8365'
     _utils.m3x_theming: '1793702553874683304788471.3342'
+    _utils.m3x_wavy: '1793795033408927167545009.9186'
     _utils.properties: Y3NC6AD7NRD45BWEUOKRSS7YEKY553LE
     components: '172372848777778606650063.94086'
   scripts: {}

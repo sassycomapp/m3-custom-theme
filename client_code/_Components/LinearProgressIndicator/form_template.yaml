@@ -20,6 +20,7 @@ properties:
   options: [determinate, indeterminate]
   type: enum
 - {default_value: 0, description: The percentage of progress for the determinate type indicator. This property is irrelevant for the indeterminate type., group: Key Properties, important: true, name: progress, type: number}
+- {default_value: false, description: 'If True, the indicator is drawn as an M3 Expressive wave.', group: Key Properties, important: true, name: wavy, type: boolean}
 - {description: The margin (pixels) of the component., group: Layout, important: true, name: margin, type: margin}
 - {default_value: '', description: The text to display when the mouse is hovered over this component., group: Other, important: true, name: tooltip, type: string}
 - {default_value: '', description: The color of the progress bar., group: Look and Feel, important: false, name: progress_color, type: color}

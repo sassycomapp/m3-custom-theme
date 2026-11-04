@@ -192,6 +192,8 @@ class Form1(Form1Template):
         self._build_button_groups()
         self._build_app_bars()
         self._build_navigation_bars()
+        self._build_wavy_progress()
+        self._build_loading_indicators()
         self._build_tokens()
 
     # ---- helpers -------------------------------------------------------
@@ -757,6 +759,43 @@ class Form1(Form1Template):
 
     def _on_navigation_change(self, sender, **event_args):
         self._nav_result.text = f"Navigation bar: {sender.selected_text} selected"
+
+    # ---- wavy progress and loading indicators (Step 7) -----------------------
+
+    def _build_wavy_progress(self):
+        self._heading("Wavy progress indicators")
+        self._wavy = [
+            m3.LinearProgressIndicator(type="determinate", progress=60, wavy=True),
+            m3.CircularProgressIndicator(type="determinate", progress=60, wavy=True),
+        ]
+        self.add_component(self._wavy[0])
+        row = FlowPanel(spacing="medium")
+        row.add_component(self._wavy[1])
+        row.add_component(
+            m3.CircularProgressIndicator(type="indeterminate", wavy=True)
+        )
+        self.add_component(row)
+        self.add_component(m3.Text(text="Indeterminate:", style="label"))
+        self.add_component(
+            m3.LinearProgressIndicator(type="indeterminate", wavy=True)
+        )
+        self._wavy_value = m3.Text(text="Progress: 60 %")
+        slider = m3.Slider(min=0, max=100, step=1, value=60)
+        slider.add_event_handler("change", self._on_wavy_slider)
+        self.add_component(self._wavy_value)
+        self.add_component(slider)
+
+    def _on_wavy_slider(self, sender, **event_args):
+        for indicator in self._wavy:
+            indicator.progress = sender.value
+        self._wavy_value.text = f"Progress: {int(sender.value)} %"
+
+    def _build_loading_indicators(self):
+        row = self._section("LoadingIndicator")
+        row.add_component(m3.Text(text="Plain:"))
+        row.add_component(m3.LoadingIndicator())
+        row.add_component(m3.Text(text="Contained:"))
+        row.add_component(m3.LoadingIndicator(contained=True))
 
     # ---- token reference (Step 5) --------------------------------------------
 

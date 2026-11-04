@@ -12,6 +12,7 @@ from ..._utils.properties import (
     theme_color_to_css,
     tooltip_property,
 )
+from ..._utils import m3x_wavy  # m3x: wavy variant (Step 7, E3)
 from ._anvil_designer import CircularProgressIndicatorTemplate
 
 
@@ -45,6 +46,7 @@ class CircularProgressIndicator(CircularProgressIndicatorTemplate):
         self.dom_nodes['anvil-m3-progressindicator-arc-indeterminate'].style[
             'stroke'
         ] = value
+        m3x_wavy.update_circular(self)  # m3x: wavy variant (Step 7, E3)
 
     @anvil_prop
     @property
@@ -57,6 +59,7 @@ class CircularProgressIndicator(CircularProgressIndicatorTemplate):
         self.dom_nodes['anvil-m3-progressindicator-determinate'].classList.toggle(
             'anvil-m3-progressindicator-hidden', not v
         )
+        m3x_wavy.update_circular(self)  # m3x: wavy variant (Step 7, E3)
 
     @anvil_prop
     @property
@@ -64,6 +67,14 @@ class CircularProgressIndicator(CircularProgressIndicatorTemplate):
         """The progress of the CircularProgressIndicator."""
         v = max(min(value or 0, 100), 0)
         self._draw_path(v)
+        m3x_wavy.update_circular(self)  # m3x: wavy variant (Step 7, E3)
+
+    # m3x: wavy variant (Step 7, E3)
+    @anvil_prop
+    @property
+    def wavy(self, value) -> bool:
+        """If True, the indicator is drawn as an M3 Expressive wave."""
+        m3x_wavy.update_circular(self)  # m3x: wavy variant (Step 7, E3)
 
     def _draw_path(self, percent):
         cx, cy = 24, 24  # center of circle
@@ -113,6 +124,7 @@ class CircularProgressIndicator(CircularProgressIndicatorTemplate):
         fS = 1 if delta > 0 else 0
         return f"M {sX} {sY} A {rx} {ry} {(phi / (2 * pi)) * 360} {fA} {fS} {eX} {eY}"
 
+    #!componentProp(m3.CircularProgressIndicator)!1: {name:"wavy",type:"boolean",description:"If True, the indicator is drawn as an M3 Expressive wave."}
     #!componentProp(m3.CircularProgressIndicator)!1: {name:"color",type:"color",description:"The colour of the progress bar"}
     #!componentProp(m3.CircularProgressIndicator)!1: {name:"visible",type:"boolean",description:"If True, the component will be displayed."}
     #!componentProp(m3.CircularProgressIndicator)!1: {name:"role",type:"themeRole",description:"A style for this component defined in CSS and added to Roles"}

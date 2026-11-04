@@ -1,0 +1,51 @@
+/* Loading indicator (m3._Components.LoadingIndicator).
+   See docs/components/LoadingIndicator.md. The shape morphs through SVG
+   animation; the whole indicator also turns once every 4666 ms. */
+
+.m3x-loading-indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--m3x-loading-indicator-size);
+  height: var(--m3x-loading-indicator-size);
+  margin: var(--m3x-component-outer-margin-block) var(--m3x-component-outer-margin-inline);
+  border-radius: var(--m3x-shape-corner-full);
+  color: var(--m3x-loading-indicator-active-color);
+}
+
+.m3x-loading-indicator-contained {
+  background-color: var(--m3x-loading-indicator-contained-container-color);
+  color: var(--m3x-loading-indicator-contained-active-color);
+}
+
+.m3x-loading-indicator-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.m3x-loading-indicator-shape {
+  fill: currentColor;
+}
+
+.m3x-loading-indicator-spin {
+  transform-origin: 50% 50%;
+  transform-box: view-box;
+  animation: m3x-loading-spin var(--m3x-loading-indicator-rotation-duration) linear infinite;
+}
+
+/* The contained shape is smaller, leaving a rim of container colour */
+.m3x-loading-indicator-contained .m3x-loading-indicator-svg {
+  width: 79%;
+  height: 79%;
+}
+
+@keyframes m3x-loading-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .m3x-loading-indicator-spin {
+    animation: none;
+  }
+}
