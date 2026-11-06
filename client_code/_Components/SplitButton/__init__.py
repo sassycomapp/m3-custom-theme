@@ -55,10 +55,15 @@ class SplitButton(SplitButtonTemplate):
             self._open_menu(focus_first=event.detail == 0)  # 0: from the keyboard.
 
     def _on_trailing_key(self, event):
-        if event.key in ("ArrowDown", "ArrowUp") and not self._open:
-            event.preventDefault()
-            self._open_menu(focus_first=True,
-                            index=-1 if event.key == "ArrowUp" else 0)
+        if event.key not in ("ArrowDown", "ArrowUp"):
+            return
+        event.preventDefault()  # The arrow keys never scroll the page here.
+        index = -1 if event.key == "ArrowUp" else 0
+        if self._open:
+            # The menu was opened with the mouse: the keys move into it.
+            self._focus(index)
+        else:
+            self._open_menu(focus_first=True, index=index)
 
     def _render_menu(self):
         menu = self._menu
