@@ -948,9 +948,11 @@ class Form1(Form1Template):
             bar.add_component(button)
         if toggle:
             button = m3.ToggleIconButton(icon=f"mi:{toggle}", selected=True)
+            # The toggle button switches itself; the demo only reports it.
             button.add_event_handler(
-                "click", lambda sender, **e: setattr(sender, "selected",
-                                                     not sender.selected))
+                "click", lambda sender, **e: setattr(
+                    self._toolbar_result, "text",
+                    f"Toolbar: star {'on' if sender.selected else 'off'}"))
             bar.add_component(button)
         if fab:
             bar.add_component(
