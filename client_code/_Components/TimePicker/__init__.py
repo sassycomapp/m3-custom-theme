@@ -62,11 +62,12 @@ class TimePicker(m3x_picker.PickerFieldMixin, TimePickerTemplate):
 
     @property
     def _HINT(self):
-        return "HH:MM" if self.format_24h else "H:MM AM"
+        """An example of a time as the field expects it."""
+        return self._format(datetime.time(14, 30))
 
     @property
     def _ERROR(self):
-        return f"Enter a time as {self._HINT}."
+        return f"Enter a time like {self._HINT}."
 
     def _format(self, value):
         if self.format_24h:

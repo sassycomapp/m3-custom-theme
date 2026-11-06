@@ -133,6 +133,15 @@
   color: var(--m3x-date-picker-selected-label-color);
 }
 
+.m3x-date-picker-icon-button:disabled {
+  color: color-mix(in srgb, var(--m3x-color-on-surface) var(--m3x-disabled-content-opacity), transparent);
+  cursor: default;
+}
+
+.m3x-date-picker-icon-button:disabled::before {
+  display: none;
+}
+
 .m3x-date-picker-day:disabled {
   color: color-mix(in srgb, var(--m3x-color-on-surface) var(--m3x-disabled-content-opacity), transparent);
   cursor: default;

@@ -39,7 +39,7 @@ class PickerFieldMixin:
         if getattr(self, "_field", None) is None:
             return
         self._field.text = self._format(self._value) if self._value else ""
-        self._field.placeholder = self._HINT
+        self._field.placeholder = f"e.g. {self._HINT}"
         self._set_error(False)
 
     def _set_error(self, on):

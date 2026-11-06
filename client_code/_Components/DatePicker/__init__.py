@@ -77,15 +77,20 @@ class DatePicker(m3x_picker.PickerFieldMixin, DatePickerTemplate):
 
     @property
     def _HINT(self):
-        hint = self.format or "%d/%m/%Y"
-        for code, text in (("%d", "DD"), ("%m", "MM"), ("%Y", "YYYY"),
-                           ("%y", "YY"), ("%B", "Month"), ("%b", "Mon")):
-            hint = hint.replace(code, text)
-        return hint
+        """An example of a date as the field expects it: today's date."""
+        return self._format(datetime.date.today())
 
     @property
     def _ERROR(self):
-        return f"Enter a date as {self._HINT}, within the allowed range."
+        low, high = self._clean(self.min_date), self._clean(self.max_date)
+        message = f"Enter a date like {self._HINT}."
+        if low and high:
+            message += f" Choose from {self._format(low)} to {self._format(high)}."
+        elif low:
+            message += f" Choose {self._format(low)} or later."
+        elif high:
+            message += f" Choose {self._format(high)} or earlier."
+        return message
 
     def _format(self, day):
         out = self.format or "%d/%m/%Y"
@@ -132,6 +137,15 @@ class DatePicker(m3x_picker.PickerFieldMixin, DatePickerTemplate):
             return value.date()
         return value if isinstance(value, datetime.date) else None
 
+    def _in_range(self, month):
+        """The month itself, or the nearest month that has allowed days."""
+        low, high = self._clean(self.min_date), self._clean(self.max_date)
+        if low and month.replace(day=_days_in_month(month)) < low:
+            return _first_of_month(low)
+        if high and month > high:
+            return _first_of_month(high)
+        return month
+
     def _allowed(self, day):
         low, high = self._clean(self.min_date), self._clean(self.max_date)
         return not ((low and day < low) or (high and day > high))
@@ -157,8 +171,18 @@ class DatePicker(m3x_picker.PickerFieldMixin, DatePickerTemplate):
         self._input.add_event_handler("change", self._on_input_change)
         panel.add_component(self._input, slot="input")
         nodes = panel.dom_nodes
-        nodes["previous"].addEventListener("click", lambda e: self._move_month(-1))
-        nodes["next"].addEventListener("click", lambda e: self._move_month(1))
+        self._repeat_timer = None
+        self._pointer_used = False
+        for name, step in (("previous", -1), ("next", 1)):
+            button = nodes[name]
+            button.addEventListener(
+                "pointerdown", lambda e, step=step: self._start_repeat(e, step))
+            button.addEventListener("pointerup", lambda e: self._stop_repeat())
+            for end in ("pointerleave", "pointercancel"):
+                # No click follows a press that leaves the button.
+                button.addEventListener(end, lambda e: self._stop_repeat(True))
+            button.addEventListener(
+                "click", lambda e, step=step: self._on_arrow_click(step))
         nodes["month-year"].addEventListener("click", lambda e: self._toggle_years())
         nodes["mode"].addEventListener("click", lambda e: self._toggle_mode())
         nodes["body"].addEventListener("click", self._on_body_click)
@@ -196,8 +220,9 @@ class DatePicker(m3x_picker.PickerFieldMixin, DatePickerTemplate):
         nodes["month-year"].appendChild(label)
         nodes["month-year"].appendChild(arrow)
         nodes["month-year"].setAttribute("aria-expanded", "true" if years else "false")
-        for name in ("previous", "next"):
+        for name, months in (("previous", -1), ("next", 1)):
             nodes[name].style.visibility = "hidden" if years else ""
+            nodes[name].disabled = not self._can_move(months)
         body = nodes["body"]
         body.innerHTML = ""
         if years:
@@ -276,7 +301,48 @@ class DatePicker(m3x_picker.PickerFieldMixin, DatePickerTemplate):
 
     # ---- interaction ---------------------------------------------------------
 
+    def _can_move(self, months):
+        """True if the month the arrows would show has any allowed day."""
+        target = _add_months(self._view, months)
+        low, high = self._clean(self.min_date), self._clean(self.max_date)
+        last = target.replace(day=_days_in_month(target))
+        return not ((low and last < low) or (high and target > high))
+
+    def _on_arrow_click(self, months):
+        # A mouse or touch press already moved the month on pointerdown; a
+        # keyboard press (Enter or Space) arrives only as a click.
+        if self._pointer_used:
+            self._pointer_used = False
+            return
+        self._move_month(months)
+
+    def _start_repeat(self, event, months):
+        if event.button != 0 or not self._can_move(months):
+            return
+        self._pointer_used = True
+        self._move_month(months)
+        # Held down: wait 400 ms, then move a month every 120 ms.
+        self._repeat_timer = window.setTimeout(
+            lambda: self._repeat(months, 120), 400)
+
+    def _repeat(self, months, interval):
+        if not self._can_move(months):
+            self._stop_repeat()
+            return
+        self._move_month(months)
+        self._repeat_timer = window.setTimeout(
+            lambda: self._repeat(months, interval), interval)
+
+    def _stop_repeat(self, cancelled=False):
+        if cancelled:
+            self._pointer_used = False
+        if self._repeat_timer is not None:
+            window.clearTimeout(self._repeat_timer)
+            self._repeat_timer = None
+
     def _move_month(self, months):
+        if not self._can_move(months):
+            return
         self._view = _add_months(self._view, months)
         day = min(self._focus_day.day, _days_in_month(self._view))
         self._focus_day = datetime.date(self._view.year, self._view.month, day)
@@ -294,8 +360,8 @@ class DatePicker(m3x_picker.PickerFieldMixin, DatePickerTemplate):
         target = event.target
         year = target.closest("[data-year]")
         if year:
-            self._view = datetime.date(int(year.getAttribute("data-year")),
-                                       self._view.month, 1)
+            self._view = self._in_range(datetime.date(
+                int(year.getAttribute("data-year")), self._view.month, 1))
             self._mode = "calendar"
             self._render(focus=True)
             return
@@ -327,7 +393,12 @@ class DatePicker(m3x_picker.PickerFieldMixin, DatePickerTemplate):
         self._render(focus=True)
 
     def _on_input_change(self, **event_args):
-        day = self._parse(self._input.text or "")
+        text = (self._input.text or "").strip()
+        if not text:
+            self._input.error = False
+            self._input.supporting_text = ""
+            return
+        day = self._parse(text)
         ok = day is not None and self._allowed(day)
         self._input.error = not ok
         self._input.supporting_text = "" if ok else self._ERROR
