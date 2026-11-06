@@ -639,4 +639,14 @@
   --m3x-fab-menu-item-stagger: 30ms;
   --m3x-fab-menu-duration: var(--m3x-motion-duration-medium2);
   --m3x-fab-menu-z-index: 1025;
+
+  /* Component: Carousel (CarouselDefaults; M3 carousel specification) */
+  --m3x-carousel-item-shape: var(--m3x-shape-corner-extra-large);
+  --m3x-carousel-item-container-color: var(--m3x-color-surface-container-highest);
+  --m3x-carousel-padding: 16px;
+  --m3x-carousel-gap: 8px;
+  /* gap and small widths are read by Carousel._read_tokens() */
+  --m3x-carousel-small-item-width: 56px;
+  --m3x-carousel-small-item-min-width: 40px;
+  --m3x-carousel-duration: var(--m3x-motion-duration-medium2);
 }

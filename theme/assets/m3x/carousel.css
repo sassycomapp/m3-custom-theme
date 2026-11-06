@@ -1,0 +1,113 @@
+/* M3 carousel (C20). See docs/components/Carousel.md.
+   Contained layouts: keyline widths set by Carousel._arrange();
+   items change width smoothly as the carousel moves. Uncontained: items of one
+   width in a row that scrolls freely. */
+
+.m3x-carousel {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 var(--m3x-carousel-padding);
+  overflow: hidden;
+  outline: none;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.m3x-carousel:focus-visible {
+  outline: var(--m3x-focus-indicator-thickness) solid var(--m3x-focus-indicator-color);
+  outline-offset: calc(-1 * var(--m3x-focus-indicator-thickness));
+  border-radius: var(--m3x-carousel-item-shape);
+}
+
+.m3x-carousel-track {
+  display: flex;
+  align-items: stretch;
+  height: var(--m3x-carousel-item-height, 220px);
+}
+
+.m3x-carousel-item {
+  position: relative;
+  flex: none;
+  box-sizing: border-box;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--m3x-carousel-item-shape);
+  background-color: var(--m3x-carousel-item-container-color);
+  cursor: pointer;
+  transition:
+    width var(--m3x-carousel-duration) var(--m3x-motion-easing-emphasized),
+    margin var(--m3x-carousel-duration) var(--m3x-motion-easing-emphasized);
+}
+
+.m3x-carousel-item-hidden {
+  visibility: hidden;
+}
+
+/* The item's content fills it; images are cropped to the item, centred. */
+/* !important: Anvil's Image sets its own height inline. */
+.m3x-carousel-item > *,
+.m3x-carousel-item img {
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+}
+
+.m3x-carousel-item img {
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+
+/* State layer */
+.m3x-carousel-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-color: var(--m3x-color-on-surface);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--m3x-motion-duration-short2) var(--m3x-motion-easing-standard);
+}
+
+.m3x-carousel-item:hover::after {
+  opacity: var(--m3x-state-hover-opacity);
+}
+
+.m3x-carousel-item:active::after {
+  opacity: var(--m3x-state-pressed-opacity);
+}
+
+.m3x-carousel-dragging,
+.m3x-carousel-dragging .m3x-carousel-item {
+  cursor: grabbing;
+}
+
+/* Uncontained: free scrolling, no padding at the end */
+.m3x-carousel-uncontained {
+  padding-right: 0;
+}
+
+.m3x-carousel-uncontained .m3x-carousel-track {
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.m3x-carousel-uncontained .m3x-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* Full width: the item takes the carousel's whole width */
+.m3x-carousel-full_width {
+  padding: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .m3x-carousel-item,
+  .m3x-carousel-item::after {
+    transition: none;
+  }
+}

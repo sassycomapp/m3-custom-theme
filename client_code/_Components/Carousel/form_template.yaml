@@ -1,0 +1,24 @@
+components: []
+container:
+  properties: {html: '<div anvil-name="m3x-carousel" class="m3x-carousel m3x-carousel-multi_browse" role="region" aria-roledescription="carousel" tabindex="0"><div anvil-slot="carousel-slot" anvil-name="m3x-carousel-track" class="m3x-carousel-track"></div></div>'}
+  type: HtmlTemplate
+custom_component: true
+custom_component_container: true
+events:
+- {default_event: true, description: 'When an item is clicked. The event has the arguments index (the item''s position, from 0) and component (the item).', name: item_click}
+- {description: 'When the carousel moves to another item. The event has the argument index.', name: change}
+- {description: When the carousel is shown on the screen., name: show}
+- {description: When the carousel is removed from the screen., name: hide}
+is_package: true
+properties:
+- {default_value: multi_browse, description: 'multi_browse: large, medium and small items. hero: one large and one small item. center_hero: one large item between two small ones. uncontained: items of one size that scroll freely. full_width: one item at a time, the full width.', group: Key Properties, important: true, name: layout, options: [multi_browse, hero, center_hero, uncontained, full_width], type: enum}
+- {default_value: 186, description: 'The width in pixels that large items aim for (multi_browse), or that every item has (uncontained).', group: Key Properties, important: true, name: item_width, type: number}
+- {default_value: 220, description: The height of the items in pixels., group: Look and Feel, important: true, name: item_height, type: number}
+- {default_value: 0, description: 'The position of the first large item (from 0). Set it to move the carousel.', group: Key Properties, important: false, name: index, type: number}
+- {default_value: Carousel, description: A name for the carousel that screen readers announce., group: Key Properties, important: false, name: label, type: string}
+- {default_value: true, description: 'If True, the component will be displayed.', designer_hint: visible, group: Look and Feel, important: true, name: visible, type: boolean}
+- {default_value: '', description: A style for this component defined in CSS and added to Roles., group: Look and Feel, name: role, type: themeRole}
+- {description: Use this property to store any extra data for the component., group: Other, important: false, name: tag, type: object}
+toolbox_item:
+  hidden: true
+  icon: {dark: 'asset:designer_icons/carousel_dark.svg', light: 'asset:designer_icons/carousel.svg'}

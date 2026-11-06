@@ -7,6 +7,7 @@ from .._Components.ButtonGroup import ButtonGroup
 from .._Components.ButtonMenu import ButtonMenu
 from .._Components.Card import Card
 from .._Components.Card.CardContentContainer import CardContentContainer
+from .._Components.Carousel import Carousel
 from .._Components.Checkbox import Checkbox
 from .._Components.Chip import Chip
 from .._Components.CircularProgressIndicator import CircularProgressIndicator

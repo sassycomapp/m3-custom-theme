@@ -203,6 +203,7 @@ class Form1(Form1Template):
         self._build_toolbars()
         self._build_split_buttons()
         self._build_fab_menus()
+        self._build_carousels()
         self._build_tokens()
 
     # ---- helpers -------------------------------------------------------
@@ -1059,20 +1060,55 @@ class Form1(Form1Template):
             floating.visible = not floating.visible
             show.text = ("Remove the floating FAB menu" if floating.visible
                          else "Show a floating FAB menu")
-            if floating.visible:
-                # Report where the button landed, measured from the window's
-                # bottom right corner (expected: 16 and 16).
-                from anvil.js import window
-                box = get_dom_node(floating).querySelector(
-                    ".m3x-fab-menu").getBoundingClientRect()
-                self._fab_menu_result.text = (
-                    f"FAB menu: floating button is {int(window.innerWidth - box.right)}"
-                    f" px from the right, {int(window.innerHeight - box.bottom)} px"
-                    f" from the bottom, size {int(box.width)} x {int(box.height)}")
         show.add_event_handler("click", flip)
         self.add_component(show)
         self.add_component(floating)
         self.add_component(self._fab_menu_result)
+
+    # ---- carousels (Step 6) ---------------------------------------------------
+
+    _CAROUSEL_COLOURS = (("#6750A4", "#EADDFF"), ("#7D5260", "#FFD8E4"),
+                         ("#625B71", "#E8DEF8"), ("#386A20", "#B7F397"),
+                         ("#00639B", "#CDE5FF"), ("#8C4A00", "#FFDCC2"))
+
+    def _picture(self, number):
+        """A generated picture: a diagonal two-colour gradient with a number."""
+        dark, light = self._CAROUSEL_COLOURS[number % len(self._CAROUSEL_COLOURS)]
+        svg = (
+            "<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300'>"
+            "<defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>"
+            f"<stop offset='0' stop-color='{light}'/>"
+            f"<stop offset='1' stop-color='{dark}'/></linearGradient></defs>"
+            "<rect width='400' height='300' fill='url(#g)'/>"
+            "<text x='200' y='170' font-family='sans-serif' font-size='64' "
+            f"text-anchor='middle' fill='white'>{number + 1}</text></svg>")
+        uri = "data:image/svg+xml;charset=utf-8," + svg.replace("#", "%23")
+        return Image(source=uri, display_mode="zoom_to_fill")
+
+    def _carousel(self, title, count, **props):
+        self._heading(title, style="title", scale="medium")
+        carousel = m3.Carousel(label=title, **props)
+        for number in range(count):
+            carousel.add_component(self._picture(number))
+        carousel.add_event_handler(
+            "item_click", lambda index, **e: setattr(
+                self._carousel_result, "text",
+                f"Carousel: {title}, item {index + 1} clicked"))
+        carousel.add_event_handler(
+            "change", lambda index, **e: setattr(
+                self._carousel_result, "text",
+                f"Carousel: {title}, moved to position {index}"))
+        self.add_component(carousel)
+
+    def _build_carousels(self):
+        self._heading("Carousel")
+        self._carousel_result = m3.Text(text="Carousel: (nothing done yet)")
+        self.add_component(self._carousel_result)
+        self._carousel("Multi-browse", 10, layout="multi_browse")
+        self._carousel("Hero", 6, layout="hero")
+        self._carousel("Center-aligned hero", 6, layout="center_hero")
+        self._carousel("Uncontained", 8, layout="uncontained", item_height=160)
+        self._carousel("Full width", 5, layout="full_width", item_height=260)
 
     # ---- token reference (Step 5) --------------------------------------------
 

@@ -37,6 +37,8 @@ unique_ids:
     designer_icons/card_content_container.svg: KTHHU6LAYSCQUV42OKIDVDV56IEH2I4U
     designer_icons/card_content_container_dark.svg: 7DLBRHI4XJDIOW46JEBS75VVF36TEA5Y
     designer_icons/card_dark.svg: '1702476700597342692354862.98456'
+    designer_icons/carousel.svg: '1793970323392518583073036.2911'
+    designer_icons/carousel_dark.svg: '1793970323392706881677139.2934'
     designer_icons/checkbox.svg: '1702400309384165269919129.87256'
     designer_icons/checkbox_dark.svg: '1702400322560236680041912.2963'
     designer_icons/chip.svg: '1793782030363542526657128.6165'
@@ -112,6 +114,7 @@ unique_ids:
     m3x/badge.css: '1793786137233757254971509.2125'
     m3x/bottom-sheet.css: '1793960076101572151751801.4259'
     m3x/button-group.css: '1793789676067973711042690.9848'
+    m3x/carousel.css: '1793970323392455034080902.5234'
     m3x/chip.css: '1793782030363255586183702.1009'
     m3x/components.css: '1793776541119942650629231.8394'
     m3x/date-picker.css: '1793943569747411170352433.8024'
@@ -146,6 +149,7 @@ unique_ids:
     _Components.ButtonMenu: '1691491348095506750812828.60736'
     _Components.Card: '1700072210669648729275536.3859'
     _Components.Card.CardContentContainer: '1700075961119309945930609.30084'
+    _Components.Carousel: '1793970323392524308072422.3662'
     _Components.Checkbox: '1689946549679795138453587.0414'
     _Components.Chip: '1793782030363652878231308.2531'
     _Components.CircularProgressIndicator: '1699018314168927111586741.3076'
