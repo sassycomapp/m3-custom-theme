@@ -1,0 +1,339 @@
+/* M3 split button (C18). See docs/components/SplitButton.md.
+   Two buttons joined by a 2 px gap: outer corners full, inner corners small.
+   While the menu is open the arrow button becomes fully round and the arrow
+   turns over. */
+
+.m3x-split {
+  display: inline-flex;
+  align-items: stretch;
+  gap: var(--m3x-split-between-space);
+  margin: var(--m3x-component-outer-margin-block) var(--m3x-component-outer-margin-inline);
+  vertical-align: middle;
+}
+
+/* ---- sizes ---------------------------------------------------------------- */
+
+.m3x-split-xsmall {
+  --m3x-split-height: 32px;
+  --m3x-split-leading-start: 12px;
+  --m3x-split-leading-end: 10px;
+  --m3x-split-trailing-padding: 13px;
+  --m3x-split-trailing-icon-size: 22px;
+  --m3x-split-inner-shape: var(--m3x-shape-corner-extra-small);
+  --m3x-split-inner-pressed-shape: var(--m3x-shape-corner-small);
+  --m3x-split-icon-size: 20px;
+  --m3x-split-icon-gap: 8px;
+  --m3x-split-font: var(--m3x-typescale-label-large-font);
+  --m3x-split-font-size: var(--m3x-typescale-label-large-size);
+  --m3x-split-line-height: var(--m3x-typescale-label-large-line-height);
+  --m3x-split-tracking: var(--m3x-typescale-label-large-tracking);
+  --m3x-split-weight: var(--m3x-typescale-label-large-weight);
+}
+
+.m3x-split-small {
+  --m3x-split-height: 40px;
+  --m3x-split-leading-start: 16px;
+  --m3x-split-leading-end: 12px;
+  --m3x-split-trailing-padding: 13px;
+  --m3x-split-trailing-icon-size: 22px;
+  --m3x-split-inner-shape: var(--m3x-shape-corner-extra-small);
+  --m3x-split-inner-pressed-shape: var(--m3x-shape-corner-medium);
+  --m3x-split-icon-size: 20px;
+  --m3x-split-icon-gap: 8px;
+  --m3x-split-font: var(--m3x-typescale-label-large-font);
+  --m3x-split-font-size: var(--m3x-typescale-label-large-size);
+  --m3x-split-line-height: var(--m3x-typescale-label-large-line-height);
+  --m3x-split-tracking: var(--m3x-typescale-label-large-tracking);
+  --m3x-split-weight: var(--m3x-typescale-label-large-weight);
+}
+
+.m3x-split-medium {
+  --m3x-split-height: 56px;
+  --m3x-split-leading-start: 24px;
+  --m3x-split-leading-end: 24px;
+  --m3x-split-trailing-padding: 15px;
+  --m3x-split-trailing-icon-size: 26px;
+  --m3x-split-inner-shape: var(--m3x-shape-corner-extra-small);
+  --m3x-split-inner-pressed-shape: var(--m3x-shape-corner-medium);
+  --m3x-split-icon-size: 24px;
+  --m3x-split-icon-gap: 8px;
+  --m3x-split-font: var(--m3x-typescale-title-medium-font);
+  --m3x-split-font-size: var(--m3x-typescale-title-medium-size);
+  --m3x-split-line-height: var(--m3x-typescale-title-medium-line-height);
+  --m3x-split-tracking: var(--m3x-typescale-title-medium-tracking);
+  --m3x-split-weight: var(--m3x-typescale-title-medium-weight);
+}
+
+.m3x-split-large {
+  --m3x-split-height: 96px;
+  --m3x-split-leading-start: 48px;
+  --m3x-split-leading-end: 48px;
+  --m3x-split-trailing-padding: 29px;
+  --m3x-split-trailing-icon-size: 38px;
+  --m3x-split-inner-shape: var(--m3x-shape-corner-small);
+  --m3x-split-inner-pressed-shape: var(--m3x-shape-corner-large-increased);
+  --m3x-split-icon-size: 32px;
+  --m3x-split-icon-gap: 12px;
+  --m3x-split-font: var(--m3x-typescale-headline-small-font);
+  --m3x-split-font-size: var(--m3x-typescale-headline-small-size);
+  --m3x-split-line-height: var(--m3x-typescale-headline-small-line-height);
+  --m3x-split-tracking: var(--m3x-typescale-headline-small-tracking);
+  --m3x-split-weight: var(--m3x-typescale-headline-small-weight);
+}
+
+.m3x-split-xlarge {
+  --m3x-split-height: 136px;
+  --m3x-split-leading-start: 64px;
+  --m3x-split-leading-end: 64px;
+  --m3x-split-trailing-padding: 43px;
+  --m3x-split-trailing-icon-size: 50px;
+  --m3x-split-inner-shape: var(--m3x-shape-corner-medium);
+  --m3x-split-inner-pressed-shape: var(--m3x-shape-corner-large-increased);
+  --m3x-split-icon-size: 40px;
+  --m3x-split-icon-gap: 16px;
+  --m3x-split-font: var(--m3x-typescale-headline-large-font);
+  --m3x-split-font-size: var(--m3x-typescale-headline-large-size);
+  --m3x-split-line-height: var(--m3x-typescale-headline-large-line-height);
+  --m3x-split-tracking: var(--m3x-typescale-headline-large-tracking);
+  --m3x-split-weight: var(--m3x-typescale-headline-large-weight);
+}
+
+/* ---- colours -------------------------------------------------------------- */
+
+.m3x-split-filled {
+  --m3x-split-container: var(--m3x-color-primary);
+  --m3x-split-content: var(--m3x-color-on-primary);
+  --m3x-split-outline: transparent;
+  --m3x-split-elevation: none;
+  --m3x-split-hover-elevation: var(--m3x-elevation-level1);
+}
+
+.m3x-split-tonal {
+  --m3x-split-container: var(--m3x-color-secondary-container);
+  --m3x-split-content: var(--m3x-color-on-secondary-container);
+  --m3x-split-outline: transparent;
+  --m3x-split-elevation: none;
+  --m3x-split-hover-elevation: var(--m3x-elevation-level1);
+}
+
+.m3x-split-elevated {
+  --m3x-split-container: var(--m3x-color-surface-container-low);
+  --m3x-split-content: var(--m3x-color-primary);
+  --m3x-split-outline: transparent;
+  --m3x-split-elevation: var(--m3x-elevation-level1);
+  --m3x-split-hover-elevation: var(--m3x-elevation-level2);
+}
+
+.m3x-split-outlined {
+  --m3x-split-container: transparent;
+  --m3x-split-content: var(--m3x-color-on-surface-variant);
+  --m3x-split-outline: var(--m3x-color-outline-variant);
+  --m3x-split-elevation: none;
+  --m3x-split-hover-elevation: none;
+}
+
+/* ---- the two buttons ------------------------------------------------------ */
+
+.m3x-split-leading,
+.m3x-split-trailing {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: var(--m3x-split-height);
+  margin: 0;
+  border: var(--m3x-split-outline-width) solid var(--m3x-split-outline);
+  background-color: var(--m3x-split-container);
+  color: var(--m3x-split-content);
+  box-shadow: var(--m3x-split-elevation);
+  cursor: pointer;
+  outline: none;
+  transition:
+    border-radius var(--m3x-motion-duration-medium1) var(--m3x-motion-easing-emphasized),
+    box-shadow var(--m3x-motion-duration-short4) var(--m3x-motion-easing-standard);
+}
+
+.m3x-split-leading {
+  gap: var(--m3x-split-icon-gap);
+  padding: 0 var(--m3x-split-leading-end) 0 var(--m3x-split-leading-start);
+  border-radius: var(--m3x-shape-corner-full) var(--m3x-split-inner-shape) var(--m3x-split-inner-shape) var(--m3x-shape-corner-full);
+  font-family: var(--m3x-split-font);
+  font-size: var(--m3x-split-font-size);
+  line-height: var(--m3x-split-line-height);
+  letter-spacing: var(--m3x-split-tracking);
+  font-weight: var(--m3x-split-weight);
+  white-space: nowrap;
+}
+
+.m3x-split-trailing {
+  padding: 0 var(--m3x-split-trailing-padding);
+  border-radius: var(--m3x-split-inner-shape) var(--m3x-shape-corner-full) var(--m3x-shape-corner-full) var(--m3x-split-inner-shape);
+}
+
+.m3x-split-leading:hover:not(:disabled),
+.m3x-split-trailing:hover:not(:disabled) {
+  box-shadow: var(--m3x-split-hover-elevation);
+}
+
+/* Pressing a button rounds its inner corners a little more. */
+.m3x-split-leading:active:not(:disabled) {
+  border-top-right-radius: var(--m3x-split-inner-pressed-shape);
+  border-bottom-right-radius: var(--m3x-split-inner-pressed-shape);
+}
+
+.m3x-split-trailing:active:not(:disabled) {
+  border-top-left-radius: var(--m3x-split-inner-pressed-shape);
+  border-bottom-left-radius: var(--m3x-split-inner-pressed-shape);
+}
+
+/* Menu open: the arrow button is fully round and the arrow points up. */
+.m3x-split-selected .m3x-split-trailing {
+  border-radius: var(--m3x-shape-corner-full);
+}
+
+.m3x-split-icon {
+  font-size: var(--m3x-split-icon-size);
+  line-height: 1;
+}
+
+.m3x-split-chevron {
+  font-size: var(--m3x-split-trailing-icon-size);
+  line-height: 1;
+  transition: transform var(--m3x-motion-duration-medium1) var(--m3x-motion-easing-emphasized);
+}
+
+.m3x-split-selected .m3x-split-chevron {
+  transform: rotate(180deg);
+}
+
+/* State layer in the content colour */
+.m3x-split-leading::before,
+.m3x-split-trailing::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-color: currentColor;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--m3x-motion-duration-short2) var(--m3x-motion-easing-standard);
+}
+
+.m3x-split-leading:hover::before,
+.m3x-split-trailing:hover::before {
+  opacity: var(--m3x-state-hover-opacity);
+}
+
+.m3x-split-leading:focus-visible::before,
+.m3x-split-trailing:focus-visible::before {
+  opacity: var(--m3x-state-focus-opacity);
+}
+
+.m3x-split-leading:active::before,
+.m3x-split-trailing:active::before,
+.m3x-split-selected .m3x-split-trailing::before {
+  opacity: var(--m3x-state-pressed-opacity);
+}
+
+.m3x-split-leading:focus-visible,
+.m3x-split-trailing:focus-visible {
+  outline: var(--m3x-focus-indicator-thickness) solid var(--m3x-focus-indicator-color);
+  outline-offset: var(--m3x-focus-indicator-outer-offset);
+  z-index: 1;
+}
+
+/* Disabled */
+.m3x-split-leading:disabled,
+.m3x-split-trailing:disabled {
+  border-color: transparent;
+  background-color: color-mix(in srgb, var(--m3x-color-on-surface) var(--m3x-disabled-container-opacity), transparent);
+  color: color-mix(in srgb, var(--m3x-color-on-surface) var(--m3x-disabled-content-opacity), transparent);
+  box-shadow: none;
+  cursor: default;
+}
+
+.m3x-split-leading:disabled::before,
+.m3x-split-trailing:disabled::before {
+  opacity: 0;
+}
+
+.m3x-split-outlined .m3x-split-leading:disabled,
+.m3x-split-outlined .m3x-split-trailing:disabled {
+  border-color: color-mix(in srgb, var(--m3x-color-on-surface) var(--m3x-disabled-container-opacity), transparent);
+  background-color: transparent;
+}
+
+/* ---- the menu ------------------------------------------------------------- */
+
+.m3x-split-menu {
+  display: none;
+}
+
+.m3x-split-menu.m3x-split-menu-open {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--m3x-split-menu-z-index);
+  display: block;
+  box-sizing: border-box;
+  min-width: var(--m3x-split-menu-min-width);
+  max-width: var(--m3x-split-menu-max-width);
+  padding: var(--m3x-space-8) 0;
+  overflow-y: auto;
+  border-radius: var(--m3x-split-menu-shape);
+  background-color: var(--m3x-split-menu-container-color);
+  box-shadow: var(--m3x-split-menu-elevation);
+}
+
+.m3x-split-menu-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: var(--m3x-split-menu-item-height);
+  padding: 0 var(--m3x-split-menu-item-padding);
+  color: var(--m3x-split-menu-item-color);
+  font-family: var(--m3x-typescale-label-large-font);
+  font-size: var(--m3x-typescale-label-large-size);
+  line-height: var(--m3x-typescale-label-large-line-height);
+  letter-spacing: var(--m3x-typescale-label-large-tracking);
+  font-weight: var(--m3x-typescale-label-large-weight);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  outline: none;
+}
+
+.m3x-split-menu-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--m3x-split-menu-item-color);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.m3x-split-menu-item:hover::before {
+  opacity: var(--m3x-state-hover-opacity);
+}
+
+.m3x-split-menu-item:focus-visible::before,
+.m3x-split-menu-item:focus::before {
+  opacity: var(--m3x-state-focus-opacity);
+}
+
+.m3x-split-menu-item:active::before {
+  opacity: var(--m3x-state-pressed-opacity);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .m3x-split-leading,
+  .m3x-split-trailing,
+  .m3x-split-chevron,
+  .m3x-split-leading::before,
+  .m3x-split-trailing::before {
+    transition: none;
+  }
+}

@@ -32,6 +32,7 @@ from .._Components.RadioGroupPanel import RadioGroup, RadioGroupPanel
 from .._Components.SearchBar import SearchBar
 from .._Components.SidesheetContent import SidesheetContent
 from .._Components.Slider import Slider
+from .._Components.SplitButton import SplitButton
 from .._Components.Switch import Switch
 from .._Components.Tabs import Tabs
 from .._Components.Text import Text

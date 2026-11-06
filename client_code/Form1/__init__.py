@@ -201,6 +201,7 @@ class Form1(Form1Template):
         self._build_search()
         self._build_bottom_sheets()
         self._build_toolbars()
+        self._build_split_buttons()
         self._build_tokens()
 
     # ---- helpers -------------------------------------------------------
@@ -1001,6 +1002,33 @@ class Form1(Form1Template):
         self.add_component(show)
         self.add_component(pinned)
         self.add_component(self._toolbar_result)
+
+    # ---- split buttons (Step 6) ----------------------------------------------
+
+    def _split(self, **props):
+        button = m3.SplitButton(
+            menu_items=["Save as draft", "Save a copy", "Save and close"], **props)
+        button.add_event_handler(
+            "click", lambda sender, **e: setattr(
+                self._split_result, "text", f"Split button: {sender.text} clicked"))
+        button.add_event_handler(
+            "item_click", lambda item, index, **e: setattr(
+                self._split_result, "text",
+                f"Split button: menu option {index}, {item}"))
+        return button
+
+    def _build_split_buttons(self):
+        self._split_result = m3.Text(text="Split button: (nothing clicked yet)")
+        row = self._section("SplitButton")
+        for appearance in ("filled", "tonal", "elevated", "outlined"):
+            row.add_component(self._split(text=appearance.title(), icon="mi:save",
+                                          appearance=appearance))
+        row.add_component(self._split(text="Disabled", enabled=False))
+        row = FlowPanel(spacing="medium")
+        for size in ("xsmall", "small", "medium", "large", "xlarge"):
+            row.add_component(self._split(text="Save", size=size))
+        self.add_component(row)
+        self.add_component(self._split_result)
 
     # ---- token reference (Step 5) --------------------------------------------
 

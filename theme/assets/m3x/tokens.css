@@ -611,4 +611,18 @@
   --m3x-toolbar-docked-min-spacing: 4px;
   --m3x-toolbar-docked-shape: 0;
   --m3x-toolbar-z-index: 1010;
+
+  /* Component: Split button (SplitButtonXSmall/Small/Medium/Large/XLargeTokens,
+     Button*Tokens); per-size values are in split-button.css. Menu (MenuTokens) */
+  --m3x-split-between-space: 2px;
+  --m3x-split-outline-width: 1px;
+  --m3x-split-menu-container-color: var(--m3x-color-surface-container);
+  --m3x-split-menu-shape: var(--m3x-shape-corner-extra-small);
+  --m3x-split-menu-elevation: var(--m3x-elevation-level2);
+  --m3x-split-menu-item-height: 48px;
+  --m3x-split-menu-item-padding: var(--m3x-space-12);
+  --m3x-split-menu-item-color: var(--m3x-color-on-surface);
+  --m3x-split-menu-min-width: 112px;
+  --m3x-split-menu-max-width: 280px;
+  --m3x-split-menu-z-index: 1050;
 }
