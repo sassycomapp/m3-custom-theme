@@ -20,7 +20,13 @@ properties:
   options: [small, medium, large]
   type: enum
 - {default_value: false, description: 'If True, the title of a small bar is centred.', group: Key Properties, important: false, name: centered, type: boolean}
-- {default_value: '', description: 'An icon button at the start of the bar, such as mi:menu or mi:arrow_back. It raises the navigation_click event.', group: Key Properties, iconsets: [material-icons], important: true, name: navigation_icon, type: icon}
+- default_value: ''
+  description: An icon button at the start of the bar, such as mi:menu or mi:arrow_back. It raises the navigation_click event.
+  group: Key Properties
+  iconsets: [material-icons]
+  important: true
+  name: navigation_icon
+  type: icon
 - {default_value: '', description: 'The name of the navigation icon for screen readers, such as Open menu or Back.', group: Key Properties, important: false, name: navigation_label, type: string}
 - {default_value: true, description: 'If True, the bar stays at the top of the window when the page scrolls, and takes a slightly darker colour while the page is scrolled.', group: Layout, important: true, name: sticky, type: boolean}
 - {default_value: true, description: 'If True, the component will be displayed.', designer_hint: visible, group: Look and Feel, important: true, name: visible, type: boolean}

@@ -1,6 +1,6 @@
 components: []
 container:
-  properties: {html: '<div anvil-name="m3x-search" class="m3x-search"><div class="m3x-search-bar"><button anvil-name="m3x-search-back" class="m3x-search-icon-button m3x-search-back" type="button" aria-label="Close search"><i class="material-symbols-outlined" aria-hidden="true">arrow_back</i></button><i anvil-name="m3x-search-leading" class="m3x-search-leading material-symbols-outlined" aria-hidden="true">search</i><input anvil-name="m3x-search-input" class="m3x-search-input" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" autocomplete="off" enterkeyhint="search"><button anvil-name="m3x-search-clear" class="m3x-search-icon-button m3x-search-clear" type="button" aria-label="Clear search"><i class="material-symbols-outlined" aria-hidden="true">close</i></button><div anvil-slot="search-trailing-slot" class="m3x-search-trailing"></div></div><div anvil-name="m3x-search-view" class="m3x-search-view" role="listbox"></div></div>'}
+  properties: {html: <div anvil-name="m3x-search" class="m3x-search"><div class="m3x-search-bar"><button anvil-name="m3x-search-back" class="m3x-search-icon-button m3x-search-back" type="button" aria-label="Close search"><i class="material-symbols-outlined" aria-hidden="true">arrow_back</i></button><i anvil-name="m3x-search-leading" class="m3x-search-leading material-symbols-outlined" aria-hidden="true">search</i><input anvil-name="m3x-search-input" class="m3x-search-input" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" autocomplete="off" enterkeyhint="search"><button anvil-name="m3x-search-clear" class="m3x-search-icon-button m3x-search-clear" type="button" aria-label="Clear search"><i class="material-symbols-outlined" aria-hidden="true">close</i></button><div anvil-slot="search-trailing-slot" class="m3x-search-trailing"></div></div><div anvil-name="m3x-search-view" class="m3x-search-view" role="listbox"></div></div>}
   type: HtmlTemplate
 custom_component: true
 custom_component_container: true
@@ -13,7 +13,12 @@ is_package: true
 properties:
 - {default_binding_prop: true, default_value: '', description: The text in the search bar., group: Key Properties, important: true, name: text, type: string}
 - {default_value: Search, description: The text shown in the empty search bar., group: Key Properties, important: true, name: placeholder, type: string}
-- {default_value: [], description: 'Suggestions shown below the bar while the user types, one per line. The list shows the suggestions that contain the typed text.', group: Key Properties, important: true, name: suggestions, type: 'text[]'}
+- default_value: []
+  description: Suggestions shown below the bar while the user types, one per line. The list shows the suggestions that contain the typed text.
+  group: Key Properties
+  important: true
+  name: suggestions
+  type: text[]
 - {default_value: 8, description: The largest number of suggestions shown at once., group: Key Properties, important: false, name: max_suggestions, type: number}
 - {default_value: true, description: 'If True, the user can type in the search bar.', group: Interaction, important: true, name: enabled, type: boolean}
 - {default_value: true, description: 'If True, the component will be displayed.', designer_hint: visible, group: Look and Feel, important: true, name: visible, type: boolean}

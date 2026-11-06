@@ -1,6 +1,6 @@
 components: []
 container:
-  properties: {html: '<div anvil-name="m3x-date-picker" class="m3x-date-picker" anvil-slot="default"></div>'}
+  properties: {html: <div anvil-name="m3x-date-picker" class="m3x-date-picker" anvil-slot="default"></div>}
   type: HtmlTemplate
 custom_component: true
 events:

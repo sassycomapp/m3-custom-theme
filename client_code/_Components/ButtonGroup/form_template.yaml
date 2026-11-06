@@ -1,17 +1,27 @@
 components: []
 container:
-  properties: {html: '<div anvil-name="m3x-button-group" class="m3x-button-group m3x-button-group-connected m3x-button-group-filled" role="group"></div>'}
+  properties: {html: <div anvil-name="m3x-button-group" class="m3x-button-group m3x-button-group-connected m3x-button-group-filled" role="group"></div>}
   type: HtmlTemplate
 custom_component: true
 events:
-- {default_event: true, description: 'When the selection changes. Only raised when selection is single or multiple.', name: change}
+- {default_event: true, description: When the selection changes. Only raised when selection is single or multiple., name: change}
 - {description: 'When any button in the group is clicked. The event has an index argument: the position of the button, counting from 0.', name: click}
 - {description: When the group is shown on the screen., name: show}
 - {description: When the group is removed from the screen., name: hide}
 is_package: true
 properties:
-- {default_value: [Day, Week, Month], description: 'The label of each button, one per line.', group: Key Properties, important: true, name: items, type: 'text[]'}
-- {default_value: [], description: 'Optional: one icon per button, in the same order as the items, one per line, for example mi:list.', group: Key Properties, important: true, name: icons, type: 'text[]'}
+- default_value: [Day, Week, Month]
+  description: The label of each button, one per line.
+  group: Key Properties
+  important: true
+  name: items
+  type: text[]
+- default_value: []
+  description: 'Optional: one icon per button, in the same order as the items, one per line, for example mi:list.'
+  group: Key Properties
+  important: true
+  name: icons
+  type: text[]
 - default_value: connected
   description: 'connected: the buttons are joined into one bar, for choosing between options. standard: the buttons stand apart, for related actions.'
   group: Key Properties

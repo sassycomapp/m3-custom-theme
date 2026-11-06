@@ -9,7 +9,13 @@ events:
 - {description: When the button is removed from the screen., name: hide}
 is_package: true
 properties:
-- {default_value: 'mi:add', description: The icon on the button., group: Key Properties, iconsets: [material-icons], important: true, name: icon, type: icon}
+- default_value: mi:add
+  description: The icon on the button.
+  group: Key Properties
+  iconsets: [material-icons]
+  important: true
+  name: icon
+  type: icon
 - {default_binding_prop: true, default_value: '', description: 'A label after the icon. With a label, the button is an extended FAB.', group: Key Properties, important: true, name: text, type: string}
 - default_value: regular
   description: 'The size: regular (56 px), medium (80 px) or large (96 px).'
@@ -26,7 +32,7 @@ properties:
   options: [primary_container, secondary_container, tertiary_container, primary, secondary, tertiary]
   type: enum
 - {default_value: false, description: 'If True, the button floats in the bottom right corner of the window, above the page.', group: Layout, important: true, name: floating, type: boolean}
-- {default_value: '', description: 'A description of the action for screen readers. Needed when the button has no label.', group: Interaction, important: true, name: tooltip, type: string}
+- {default_value: '', description: A description of the action for screen readers. Needed when the button has no label., group: Interaction, important: true, name: tooltip, type: string}
 - {default_value: true, description: 'If True, the button can be clicked.', group: Interaction, important: true, name: enabled, type: boolean}
 - {default_value: true, description: 'If True, the component will be displayed.', designer_hint: visible, group: Look and Feel, important: true, name: visible, type: boolean}
 - {default_value: '', description: A style for this component defined in CSS and added to Roles., group: Look and Feel, name: role, type: themeRole}

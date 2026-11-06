@@ -1,6 +1,6 @@
 components: []
 container:
-  properties: {html: '<div anvil-name="m3x-tabs" class="m3x-tabs m3x-tabs-primary" role="tablist"></div>'}
+  properties: {html: <div anvil-name="m3x-tabs" class="m3x-tabs m3x-tabs-primary" role="tablist"></div>}
   type: HtmlTemplate
 custom_component: true
 events:
@@ -9,11 +9,21 @@ events:
 - {description: When the Tabs are removed from the screen., name: hide}
 is_package: true
 properties:
-- {default_value: [Tab 1, Tab 2, Tab 3], description: 'The label of each tab, one per line.', group: Key Properties, important: true, name: items, type: 'text[]'}
-- {default_value: [], description: 'Optional: one icon per tab, in the same order as the items, one per line, for example mi:home. Leave empty for tabs without icons.', group: Key Properties, important: true, name: icons, type: 'text[]'}
+- default_value: [Tab 1, Tab 2, Tab 3]
+  description: The label of each tab, one per line.
+  group: Key Properties
+  important: true
+  name: items
+  type: text[]
+- default_value: []
+  description: 'Optional: one icon per tab, in the same order as the items, one per line, for example mi:home. Leave empty for tabs without icons.'
+  group: Key Properties
+  important: true
+  name: icons
+  type: text[]
 - {default_binding_prop: true, default_value: 0, description: 'The position of the selected tab, counting from 0.', group: Key Properties, important: true, name: selected_index, type: number}
 - default_value: primary
-  description: 'primary tabs sit at the top of a page and switch its main views. secondary tabs sit inside a part of a page and switch its content.'
+  description: primary tabs sit at the top of a page and switch its main views. secondary tabs sit inside a part of a page and switch its content.
   group: Key Properties
   important: true
   name: type

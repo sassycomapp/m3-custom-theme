@@ -20,7 +20,13 @@ properties:
   options: [assist, filter, input, suggestion]
   type: enum
 - {default_value: false, description: 'If True, a filter or input Chip is selected.', group: Key Properties, important: true, name: selected, type: boolean}
-- {default_value: '', description: An icon shown before the text., group: Key Properties, iconsets: [material-icons], important: true, name: leading_icon, type: icon}
+- default_value: ''
+  description: An icon shown before the text.
+  group: Key Properties
+  iconsets: [material-icons]
+  important: true
+  name: leading_icon
+  type: icon
 - {default_value: false, description: 'If True, an assist, filter or suggestion Chip is raised with a shadow instead of an outline.', group: Look and Feel, important: true, name: elevated, type: boolean}
 - {default_value: false, description: 'If True, the Chip shows a remove icon, which raises the remove event. Meant for input Chips.', group: Interaction, important: true, name: removable, type: boolean}
 - {default_value: true, description: 'If True, the Chip can be clicked.', group: Interaction, important: true, name: enabled, type: boolean}

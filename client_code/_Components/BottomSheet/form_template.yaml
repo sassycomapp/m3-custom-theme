@@ -1,6 +1,6 @@
 components: []
 container:
-  properties: {html: '<div anvil-name="m3x-bottom-sheet-host" class="m3x-bottom-sheet-host"><div anvil-name="m3x-bottom-sheet-scrim" class="m3x-bottom-sheet-scrim"></div><div anvil-name="m3x-bottom-sheet" class="m3x-bottom-sheet" role="dialog" aria-modal="true" tabindex="-1"><button anvil-name="m3x-bottom-sheet-handle" class="m3x-bottom-sheet-handle" type="button" aria-label="Close the sheet"><span class="m3x-bottom-sheet-handle-bar"></span></button><div anvil-slot="bottom-sheet-content-slot" class="m3x-bottom-sheet-content"></div></div></div>'}
+  properties: {html: <div anvil-name="m3x-bottom-sheet-host" class="m3x-bottom-sheet-host"><div anvil-name="m3x-bottom-sheet-scrim" class="m3x-bottom-sheet-scrim"></div><div anvil-name="m3x-bottom-sheet" class="m3x-bottom-sheet" role="dialog" aria-modal="true" tabindex="-1"><button anvil-name="m3x-bottom-sheet-handle" class="m3x-bottom-sheet-handle" type="button" aria-label="Close the sheet"><span class="m3x-bottom-sheet-handle-bar"></span></button><div anvil-slot="bottom-sheet-content-slot" class="m3x-bottom-sheet-content"></div></div></div>}
   type: HtmlTemplate
 custom_component: true
 custom_component_container: true

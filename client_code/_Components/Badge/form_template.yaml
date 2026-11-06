@@ -1,6 +1,6 @@
 components: []
 container:
-  properties: {html: '<span anvil-name="m3x-badge" class="m3x-badge m3x-badge-small"></span>'}
+  properties: {html: <span anvil-name="m3x-badge" class="m3x-badge m3x-badge-small"></span>}
   type: HtmlTemplate
 custom_component: true
 events:
@@ -8,7 +8,7 @@ events:
 - {description: When the Badge is removed from the screen., name: hide}
 is_package: true
 properties:
-- {default_binding_prop: true, description: 'The number shown. Leave empty for a small dot without a number.', group: Key Properties, important: true, name: count, type: number}
+- {default_binding_prop: true, description: The number shown. Leave empty for a small dot without a number., group: Key Properties, important: true, name: count, type: number}
 - {default_value: 999, description: 'Counts above this number show as the number with a plus, for example 999+.', group: Key Properties, important: false, name: max_count, type: number}
 - {default_value: true, description: 'If True, the component will be displayed.', designer_hint: visible, group: Look and Feel, important: true, name: visible, type: boolean}
 - {default_value: '', description: A style for this component defined in CSS and added to Roles., group: Look and Feel, name: role, type: themeRole}

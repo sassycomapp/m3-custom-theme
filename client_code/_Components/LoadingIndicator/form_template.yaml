@@ -1,6 +1,6 @@
 components: []
 container:
-  properties: {html: '<span anvil-name="m3x-loading-indicator" class="m3x-loading-indicator" role="progressbar" aria-label="Loading"><svg anvil-name="m3x-loading-indicator-svg" class="m3x-loading-indicator-svg" viewBox="0 0 48 48" aria-hidden="true"><g class="m3x-loading-indicator-spin"><path anvil-name="m3x-loading-indicator-shape" class="m3x-loading-indicator-shape"></path></g></svg></span>'}
+  properties: {html: <span anvil-name="m3x-loading-indicator" class="m3x-loading-indicator" role="progressbar" aria-label="Loading"><svg anvil-name="m3x-loading-indicator-svg" class="m3x-loading-indicator-svg" viewBox="0 0 48 48" aria-hidden="true"><g class="m3x-loading-indicator-spin"><path anvil-name="m3x-loading-indicator-shape" class="m3x-loading-indicator-shape"></path></g></svg></span>}
   type: HtmlTemplate
 custom_component: true
 events:
