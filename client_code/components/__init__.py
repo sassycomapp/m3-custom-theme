@@ -14,6 +14,7 @@ from .._Components.DatePicker import DatePicker
 from .._Components.Dialog import Dialog
 from .._Components.Divider import Divider
 from .._Components.DropdownMenu import DropdownMenu
+from .._Components.FabMenu import FabMenu
 from .._Components.FileLoader import FileLoader
 from .._Components.FloatingActionButton import FloatingActionButton
 from .._Components.Heading import Heading

@@ -625,4 +625,18 @@
   --m3x-split-menu-min-width: 112px;
   --m3x-split-menu-max-width: 280px;
   --m3x-split-menu-z-index: 1050;
+
+  /* Component: FAB menu (FabMenuBaselineTokens) */
+  --m3x-fab-menu-close-size: 56px;
+  --m3x-fab-menu-close-icon-size: 20px;
+  --m3x-fab-menu-item-height: 56px;
+  --m3x-fab-menu-item-padding: 24px;
+  --m3x-fab-menu-item-icon-size: 24px;
+  --m3x-fab-menu-item-icon-gap: 8px;
+  --m3x-fab-menu-item-gap: 4px;
+  --m3x-fab-menu-item-elevation: var(--m3x-elevation-level3);
+  --m3x-fab-menu-item-offset: 16px;
+  --m3x-fab-menu-item-stagger: 30ms;
+  --m3x-fab-menu-duration: var(--m3x-motion-duration-medium2);
+  --m3x-fab-menu-z-index: 1025;
 }

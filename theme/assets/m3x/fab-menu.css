@@ -1,0 +1,255 @@
+/* M3 FAB menu (C19). See docs/components/FabMenu.md.
+   Closed: a FAB (X Container). Open: a 56 px round close button (X) with a
+   stack of pill-shaped actions (X Container) above it, right-aligned. */
+
+.m3x-fab-menu {
+  /* The button's closed size is kept, so the page does not move when the
+     button shrinks to the close button. */
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  width: var(--m3x-fab-menu-initial-size);
+  height: var(--m3x-fab-menu-initial-size);
+  margin: var(--m3x-component-outer-margin-elevated);
+  vertical-align: middle;
+}
+
+.m3x-fab-menu-floating {
+  position: fixed;
+  right: var(--m3x-fab-floating-margin);
+  bottom: var(--m3x-fab-floating-margin);
+  z-index: var(--m3x-fab-floating-z-index);
+  margin: 0;
+}
+
+/* ---- sizes of the closed button ------------------------------------------- */
+
+.m3x-fab-menu-regular {
+  --m3x-fab-menu-initial-size: var(--m3x-fab-regular-size);
+  --m3x-fab-menu-initial-shape: var(--m3x-shape-corner-large);
+  --m3x-fab-menu-initial-icon-size: var(--m3x-fab-regular-icon-size);
+}
+
+.m3x-fab-menu-medium {
+  --m3x-fab-menu-initial-size: var(--m3x-fab-medium-size);
+  --m3x-fab-menu-initial-shape: var(--m3x-shape-corner-large-increased);
+  --m3x-fab-menu-initial-icon-size: var(--m3x-fab-medium-icon-size);
+}
+
+.m3x-fab-menu-large {
+  --m3x-fab-menu-initial-size: var(--m3x-fab-large-size);
+  --m3x-fab-menu-initial-shape: var(--m3x-shape-corner-extra-large);
+  --m3x-fab-menu-initial-icon-size: var(--m3x-fab-large-icon-size);
+}
+
+/* ---- colour sets ------------------------------------------------------------ */
+
+.m3x-fab-menu-primary {
+  --m3x-fab-menu-container: var(--m3x-color-primary-container);
+  --m3x-fab-menu-content: var(--m3x-color-on-primary-container);
+  --m3x-fab-menu-open-container: var(--m3x-color-primary);
+  --m3x-fab-menu-open-content: var(--m3x-color-on-primary);
+}
+
+.m3x-fab-menu-secondary {
+  --m3x-fab-menu-container: var(--m3x-color-secondary-container);
+  --m3x-fab-menu-content: var(--m3x-color-on-secondary-container);
+  --m3x-fab-menu-open-container: var(--m3x-color-secondary);
+  --m3x-fab-menu-open-content: var(--m3x-color-on-secondary);
+}
+
+.m3x-fab-menu-tertiary {
+  --m3x-fab-menu-container: var(--m3x-color-tertiary-container);
+  --m3x-fab-menu-content: var(--m3x-color-on-tertiary-container);
+  --m3x-fab-menu-open-container: var(--m3x-color-tertiary);
+  --m3x-fab-menu-open-content: var(--m3x-color-on-tertiary);
+}
+
+/* ---- the toggle button ------------------------------------------------------ */
+
+.m3x-fab-menu-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  box-sizing: border-box;
+  width: var(--m3x-fab-menu-initial-size);
+  height: var(--m3x-fab-menu-initial-size);
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: var(--m3x-fab-menu-initial-shape);
+  background-color: var(--m3x-fab-menu-container);
+  color: var(--m3x-fab-menu-content);
+  box-shadow: var(--m3x-fab-container-elevation);
+  cursor: pointer;
+  outline: none;
+  transition:
+    width var(--m3x-fab-menu-duration) var(--m3x-motion-easing-emphasized),
+    height var(--m3x-fab-menu-duration) var(--m3x-motion-easing-emphasized),
+    border-radius var(--m3x-fab-menu-duration) var(--m3x-motion-easing-emphasized),
+    background-color var(--m3x-fab-menu-duration) var(--m3x-motion-easing-standard),
+    color var(--m3x-fab-menu-duration) var(--m3x-motion-easing-standard),
+    box-shadow var(--m3x-motion-duration-short4) var(--m3x-motion-easing-standard);
+}
+
+.m3x-fab-menu-toggle:hover:not(:disabled) {
+  box-shadow: var(--m3x-fab-hover-container-elevation);
+}
+
+.m3x-fab-menu-expanded .m3x-fab-menu-toggle {
+  width: var(--m3x-fab-menu-close-size);
+  height: var(--m3x-fab-menu-close-size);
+  border-radius: var(--m3x-shape-corner-full);
+  background-color: var(--m3x-fab-menu-open-container);
+  color: var(--m3x-fab-menu-open-content);
+}
+
+/* The FAB's icon turns and fades into the close icon. */
+.m3x-fab-menu-icon,
+.m3x-fab-menu-close {
+  position: absolute;
+  line-height: 1;
+  transition:
+    opacity var(--m3x-fab-menu-duration) var(--m3x-motion-easing-standard),
+    transform var(--m3x-fab-menu-duration) var(--m3x-motion-easing-emphasized),
+    font-size var(--m3x-fab-menu-duration) var(--m3x-motion-easing-emphasized);
+}
+
+.m3x-fab-menu-icon {
+  font-size: var(--m3x-fab-menu-initial-icon-size);
+}
+
+.m3x-fab-menu-close {
+  font-size: var(--m3x-fab-menu-close-icon-size);
+  opacity: 0;
+  transform: rotate(-90deg);
+}
+
+.m3x-fab-menu-expanded .m3x-fab-menu-icon {
+  font-size: var(--m3x-fab-menu-close-icon-size);
+  opacity: 0;
+  transform: rotate(90deg);
+}
+
+.m3x-fab-menu-expanded .m3x-fab-menu-close {
+  opacity: 1;
+  transform: none;
+}
+
+/* State layer in the content colour */
+.m3x-fab-menu-toggle::before,
+.m3x-fab-menu-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-color: currentColor;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--m3x-motion-duration-short2) var(--m3x-motion-easing-standard);
+}
+
+.m3x-fab-menu-toggle:hover::before,
+.m3x-fab-menu-item:hover::before {
+  opacity: var(--m3x-state-hover-opacity);
+}
+
+.m3x-fab-menu-toggle:focus-visible::before,
+.m3x-fab-menu-item:focus-visible::before {
+  opacity: var(--m3x-state-focus-opacity);
+}
+
+.m3x-fab-menu-toggle:active::before,
+.m3x-fab-menu-item:active::before {
+  opacity: var(--m3x-state-pressed-opacity);
+}
+
+.m3x-fab-menu-toggle:focus-visible,
+.m3x-fab-menu-item:focus-visible {
+  outline: var(--m3x-focus-indicator-thickness) solid var(--m3x-focus-indicator-color);
+  outline-offset: var(--m3x-focus-indicator-outer-offset);
+}
+
+.m3x-fab-menu-toggle:disabled {
+  background-color: color-mix(in srgb, var(--m3x-color-on-surface) var(--m3x-disabled-container-opacity), transparent);
+  color: color-mix(in srgb, var(--m3x-color-on-surface) var(--m3x-disabled-content-opacity), transparent);
+  box-shadow: none;
+  cursor: default;
+}
+
+/* ---- the list of actions (drawn on the page body while open) --------------- */
+
+.m3x-fab-menu-list {
+  display: none;
+}
+
+.m3x-fab-menu-list.m3x-fab-menu-list-open {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--m3x-fab-menu-z-index);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--m3x-fab-menu-item-gap);
+  pointer-events: none;
+}
+
+.m3x-fab-menu-item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--m3x-fab-menu-item-icon-gap);
+  box-sizing: border-box;
+  height: var(--m3x-fab-menu-item-height);
+  margin: 0;
+  padding: 0 var(--m3x-fab-menu-item-padding);
+  border: none;
+  border-radius: var(--m3x-shape-corner-full);
+  background-color: var(--m3x-fab-menu-container);
+  color: var(--m3x-fab-menu-content);
+  box-shadow: var(--m3x-fab-menu-item-elevation);
+  font-family: var(--m3x-typescale-title-medium-font);
+  font-size: var(--m3x-typescale-title-medium-size);
+  line-height: var(--m3x-typescale-title-medium-line-height);
+  letter-spacing: var(--m3x-typescale-title-medium-tracking);
+  font-weight: var(--m3x-typescale-title-medium-weight);
+  white-space: nowrap;
+  cursor: pointer;
+  outline: none;
+  pointer-events: auto;
+  opacity: 0;
+  transform: translateY(var(--m3x-fab-menu-item-offset)) scale(0.9);
+  transform-origin: right center;
+  transition:
+    opacity var(--m3x-motion-duration-short2) var(--m3x-motion-easing-standard),
+    transform var(--m3x-motion-duration-short4) var(--m3x-motion-easing-emphasized-accelerate);
+}
+
+.m3x-fab-menu-list-shown .m3x-fab-menu-item {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity var(--m3x-motion-duration-short4) var(--m3x-motion-easing-standard),
+    transform var(--m3x-fab-menu-duration) var(--m3x-motion-easing-emphasized-decelerate);
+  /* The action nearest the button first, then upwards. */
+  transition-delay: calc(var(--m3x-fab-menu-item-order, 0) * var(--m3x-fab-menu-item-stagger));
+}
+
+.m3x-fab-menu-item-icon {
+  font-size: var(--m3x-fab-menu-item-icon-size);
+  line-height: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .m3x-fab-menu-toggle,
+  .m3x-fab-menu-icon,
+  .m3x-fab-menu-close,
+  .m3x-fab-menu-item,
+  .m3x-fab-menu-list-shown .m3x-fab-menu-item {
+    transition: none;
+    transform: none;
+  }
+}

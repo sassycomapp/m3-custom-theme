@@ -85,6 +85,9 @@ toolbox_sections:
   - component: {type: m3._Components.FloatingActionButton}
     icon: {dark: 'asset:designer_icons/fab_dark.svg', light: 'asset:designer_icons/fab.svg'}
     title: FloatingActionButton
+  - component: {type: m3._Components.FabMenu}
+    icon: {dark: 'asset:designer_icons/fab_menu_dark.svg', light: 'asset:designer_icons/fab_menu.svg'}
+    title: FabMenu
   - component: {type: m3._Components.ButtonGroup}
     icon: {dark: 'asset:designer_icons/button_group_dark.svg', light: 'asset:designer_icons/button_group.svg'}
     title: ButtonGroup

@@ -202,6 +202,7 @@ class Form1(Form1Template):
         self._build_bottom_sheets()
         self._build_toolbars()
         self._build_split_buttons()
+        self._build_fab_menus()
         self._build_tokens()
 
     # ---- helpers -------------------------------------------------------
@@ -1029,6 +1030,39 @@ class Form1(Form1Template):
             row.add_component(self._split(text="Save", size=size))
         self.add_component(row)
         self.add_component(self._split_result)
+
+    # ---- FAB menus (Step 6) ---------------------------------------------------
+
+    def _fab_menu(self, **props):
+        menu = m3.FabMenu(
+            items=["Share", "Add to list", "Duplicate", "Delete"],
+            item_icons=["mi:share", "mi:playlist_add", "mi:content_copy", "mi:delete"],
+            **props)
+        menu.add_event_handler(
+            "item_click", lambda item, index, **e: setattr(
+                self._fab_menu_result, "text", f"FAB menu: {index}, {item}"))
+        return menu
+
+    def _build_fab_menus(self):
+        self._fab_menu_result = m3.Text(text="FAB menu: (nothing chosen yet)")
+        row = self._section("FabMenu")
+        row.add_component(self._fab_menu(color="primary", label="Primary"))
+        row.add_component(self._fab_menu(color="secondary", size="medium",
+                                         icon="mi:edit", label="Secondary"))
+        row.add_component(self._fab_menu(color="tertiary", size="large",
+                                         icon="mi:more_horiz", label="Tertiary"))
+        floating = self._fab_menu(floating=True, visible=False, label="Floating")
+        show = m3.Button(text="Show a floating FAB menu", appearance="outlined")
+
+        def flip(**e):
+            floating.close()
+            floating.visible = not floating.visible
+            show.text = ("Remove the floating FAB menu" if floating.visible
+                         else "Show a floating FAB menu")
+        show.add_event_handler("click", flip)
+        self.add_component(show)
+        self.add_component(floating)
+        self.add_component(self._fab_menu_result)
 
     # ---- token reference (Step 5) --------------------------------------------
 
