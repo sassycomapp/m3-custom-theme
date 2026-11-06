@@ -197,6 +197,8 @@ class Form1(Form1Template):
         self._build_wavy_progress()
         self._build_loading_indicators()
         self._build_pickers()
+        self._build_tooltips()
+        self._build_search()
         self._build_tokens()
 
     # ---- helpers -------------------------------------------------------
@@ -830,6 +832,52 @@ class Form1(Form1Template):
     def _on_picker_change(self, sender, **event_args):
         value = sender.date if isinstance(sender, m3.DatePicker) else sender.time
         self._picker_result.text = f"Picker: {sender.label} = {value}"
+
+    # ---- rich tooltips and search (Step 6) -----------------------------------
+
+    def _build_tooltips(self):
+        row = self._section("Tooltips")
+        self._tooltip_result = m3.Text(text="Tooltip: (no action yet)")
+        plain = m3.Button(text="Plain tooltip", appearance="outlined",
+                          tooltip="Saves the draft")
+        hover = m3.Button(text="Rich tooltip (hover)", appearance="outlined")
+        click = m3.Button(text="Rich tooltip (click)", appearance="outlined")
+        for button in (plain, hover, click):
+            row.add_component(button)
+        m3.RichTooltip(
+            "Shared drafts can be edited by everyone in the team.",
+            subhead="Shared drafts",
+        ).attach(hover)
+        m3.RichTooltip(
+            "Grant access to your calendar so that bookings appear there "
+            "automatically.",
+            subhead="Calendar access",
+            action_text="Learn more",
+            on_action=lambda: setattr(
+                self._tooltip_result, "text", "Tooltip: Learn more clicked"),
+            persistent=True,
+        ).attach(click)
+        self.add_component(self._tooltip_result)
+
+    def _build_search(self):
+        self._heading("SearchBar")
+        self._search_result = m3.Text(text="Search: (nothing searched yet)")
+        search = m3.SearchBar(
+            placeholder="Search recipes",
+            suggestions=[
+                "Apple crumble", "Banana bread", "Beef stew", "Chicken curry",
+                "Chocolate cake", "Fish pie", "Lemon tart", "Mushroom risotto",
+                "Pancakes", "Pumpkin soup", "Roast chicken", "Tomato soup",
+            ],
+        )
+        search.add_component(m3.Avatar(user_name="David M"))
+        search.add_event_handler(
+            "search",
+            lambda query, **e: setattr(
+                self._search_result, "text", f"Search: {query}"),
+        )
+        self.add_component(search)
+        self.add_component(self._search_result)
 
     # ---- token reference (Step 5) --------------------------------------------
 

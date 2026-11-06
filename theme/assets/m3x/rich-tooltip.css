@@ -1,0 +1,92 @@
+/* Rich tooltip (m3._utils.m3x_tooltip, exported as m3.RichTooltip).
+   See docs/components/RichTooltip.md. The plain tooltip is the base theme's
+   .anvil-m3-tooltip. */
+
+.m3x-rich-tooltip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: var(--m3x-rich-tooltip-z-index);
+  box-sizing: border-box;
+  max-width: var(--m3x-rich-tooltip-max-width);
+  padding: var(--m3x-rich-tooltip-padding-block) var(--m3x-rich-tooltip-padding-inline) var(--m3x-space-8);
+  border-radius: var(--m3x-rich-tooltip-container-shape);
+  background-color: var(--m3x-rich-tooltip-container-color);
+  box-shadow: var(--m3x-rich-tooltip-container-elevation);
+  opacity: 0;
+  transition: opacity var(--m3x-motion-duration-short4) var(--m3x-motion-easing-standard);
+}
+
+.m3x-rich-tooltip.m3x-rich-tooltip-shown {
+  opacity: 1;
+}
+
+.m3x-rich-tooltip-subhead {
+  margin-bottom: var(--m3x-space-4);
+  color: var(--m3x-rich-tooltip-subhead-color);
+  font-family: var(--m3x-typescale-title-small-font);
+  font-size: var(--m3x-typescale-title-small-size);
+  line-height: var(--m3x-typescale-title-small-line-height);
+  letter-spacing: var(--m3x-typescale-title-small-tracking);
+  font-weight: var(--m3x-typescale-title-small-weight);
+}
+
+.m3x-rich-tooltip-text {
+  padding-bottom: var(--m3x-space-4);
+  color: var(--m3x-rich-tooltip-text-color);
+  font-family: var(--m3x-typescale-body-medium-font);
+  font-size: var(--m3x-typescale-body-medium-size);
+  line-height: var(--m3x-typescale-body-medium-line-height);
+  letter-spacing: var(--m3x-typescale-body-medium-tracking);
+  font-weight: var(--m3x-typescale-body-medium-weight);
+}
+
+.m3x-rich-tooltip-actions {
+  display: flex;
+  margin-left: calc(-1 * var(--m3x-space-12));
+}
+
+.m3x-rich-tooltip-action {
+  position: relative;
+  height: var(--m3x-rich-tooltip-action-height);
+  margin: 0;
+  padding: 0 var(--m3x-space-12);
+  border: none;
+  border-radius: var(--m3x-shape-corner-full);
+  background: none;
+  color: var(--m3x-rich-tooltip-action-color);
+  font-family: var(--m3x-typescale-label-large-font);
+  font-size: var(--m3x-typescale-label-large-size);
+  letter-spacing: var(--m3x-typescale-label-large-tracking);
+  font-weight: var(--m3x-typescale-label-large-weight);
+  cursor: pointer;
+}
+
+.m3x-rich-tooltip-action::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-color: currentColor;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.m3x-rich-tooltip-action:hover::before {
+  opacity: var(--m3x-state-hover-opacity);
+}
+
+.m3x-rich-tooltip-action:active::before {
+  opacity: var(--m3x-state-pressed-opacity);
+}
+
+.m3x-rich-tooltip-action:focus-visible {
+  outline: var(--m3x-focus-indicator-thickness) solid var(--m3x-focus-indicator-color);
+  outline-offset: var(--m3x-focus-indicator-outer-offset);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .m3x-rich-tooltip {
+    transition: none;
+  }
+}

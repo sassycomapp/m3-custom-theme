@@ -83,6 +83,8 @@ unique_ids:
     designer_icons/radio_group_panel_dark.svg: '1730151059008948262392472.5455'
     designer_icons/sidesheet.svg: '1702402337578243909380282.08374'
     designer_icons/sidesheet_dark.svg: '1702402350995637969552697.4349'
+    designer_icons/search_bar.svg: '1793949870964889088148085.1476'
+    designer_icons/search_bar_dark.svg: '1793949870964531102338264.4307'
     designer_icons/slider.svg: '1706022423394816379717204.4287'
     designer_icons/slider_dark.svg: '170602243338530759371294.256653'
     designer_icons/switch.svg: '1702400792497881053389888.2365'
@@ -110,6 +112,8 @@ unique_ids:
     m3x/loading-indicator.css: '1793795033408132415704938.8300'
     m3x/navigation-bar.css: '1793791871305481469909517.5095'
     m3x/palettes.css: '1793702553869665498540454.4127'
+    m3x/rich-tooltip.css: '1793949870964533698749381.6568'
+    m3x/search.css: '1793949870964955582601470.1046'
     m3x/snackbar.css: '1793786137233447633605966.7864'
     m3x/tabs.css: '1793787621769170289223825.9857'
     m3x/time-picker.css: '1793943569747765019552441.1594'
@@ -151,6 +155,7 @@ unique_ids:
     _Components.NavigationLink: '1687431782226411358777892.8858'
     _Components.RadioButton: '1690464716172125967535572.36772'
     _Components.RadioGroupPanel: '1727362393798473362724136.38293'
+    _Components.SearchBar: '1793949870964411500817558.1497'
     _Components.SidesheetContent: '170237973749020977740327.216663'
     _Components.Slider: '1691053810024905428539432.8257'
     _Components.Switch: NX6RIMTQ7UKHD7G77KDTDIWQJZ7COLZ3
@@ -175,6 +180,7 @@ unique_ids:
     _utils.m3x_presets: '1793772802328980671971297.2922'
     _utils.m3x_snackbar: '1793786137233523261377819.8365'
     _utils.m3x_theming: '1793702553874683304788471.3342'
+    _utils.m3x_tooltip: '1793949870964719496115457.8687'
     _utils.m3x_wavy: '1793795033408927167545009.9186'
     _utils.properties: Y3NC6AD7NRD45BWEUOKRSS7YEKY553LE
     components: '172372848777778606650063.94086'

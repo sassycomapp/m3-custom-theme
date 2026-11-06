@@ -28,6 +28,7 @@ from .._Components.NavigationBar import NavigationBar
 from .._Components.NavigationLink import NavigationLink
 from .._Components.RadioButton import RadioButton
 from .._Components.RadioGroupPanel import RadioGroup, RadioGroupPanel
+from .._Components.SearchBar import SearchBar
 from .._Components.SidesheetContent import SidesheetContent
 from .._Components.Slider import Slider
 from .._Components.Switch import Switch
@@ -39,3 +40,4 @@ from .._Components.TimePicker import TimePicker
 from .._Components.ToggleIconButton import ToggleIconButton
 from .._Components.TopAppBar import TopAppBar
 from .._utils.m3x_snackbar import Snackbar
+from .._utils.m3x_tooltip import RichTooltip

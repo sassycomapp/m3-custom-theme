@@ -156,6 +156,9 @@ toolbox_sections:
   - component: {type: m3._Components.TimePicker}
     icon: {dark: 'asset:designer_icons/time_picker_dark.svg', light: 'asset:designer_icons/time_picker.svg'}
     title: TimePicker
+  - component: {type: m3._Components.SearchBar}
+    icon: {dark: 'asset:designer_icons/search_bar_dark.svg', light: 'asset:designer_icons/search_bar.svg'}
+    title: SearchBar
   - component: {type: m3._Components.DropdownMenu}
     icon: {dark: 'asset:designer_icons/dropdown_menu_dark.svg', light: 'asset:designer_icons/dropdown_menu.svg'}
     title: DropdownMenu

@@ -547,4 +547,32 @@
   --m3x-time-picker-dial-label-color: var(--m3x-color-on-surface);
   --m3x-time-picker-dial-selector-color: var(--m3x-color-primary);
   --m3x-time-picker-dial-selected-label-color: var(--m3x-color-on-primary);
+
+  /* Component: Rich tooltip (RichTooltipTokens) */
+  --m3x-rich-tooltip-container-color: var(--m3x-color-surface-container);
+  --m3x-rich-tooltip-container-shape: var(--m3x-shape-corner-medium);
+  --m3x-rich-tooltip-container-elevation: var(--m3x-elevation-level2);
+  --m3x-rich-tooltip-subhead-color: var(--m3x-color-on-surface-variant);
+  --m3x-rich-tooltip-text-color: var(--m3x-color-on-surface-variant);
+  --m3x-rich-tooltip-action-color: var(--m3x-color-primary);
+  --m3x-rich-tooltip-max-width: 320px;
+  --m3x-rich-tooltip-padding-block: var(--m3x-space-12);
+  --m3x-rich-tooltip-padding-inline: var(--m3x-space-16);
+  --m3x-rich-tooltip-z-index: 1061;
+  --m3x-rich-tooltip-action-height: 40px;
+
+  /* Component: Search (SearchBarTokens, SearchViewTokens) */
+  --m3x-search-container-color: var(--m3x-color-surface-container-high);
+  --m3x-search-height: 56px;
+  --m3x-search-full-screen-header-height: 72px;
+  --m3x-search-shape: var(--m3x-shape-corner-full);
+  --m3x-search-view-docked-shape: var(--m3x-shape-corner-extra-large);
+  --m3x-search-input-color: var(--m3x-color-on-surface);
+  --m3x-search-placeholder-color: var(--m3x-color-on-surface-variant);
+  --m3x-search-leading-icon-color: var(--m3x-color-on-surface);
+  --m3x-search-trailing-icon-color: var(--m3x-color-on-surface-variant);
+  --m3x-search-divider-color: var(--m3x-color-outline);
+  --m3x-search-view-max-height: 400px;
+  --m3x-search-z-index: 1030;
+  --m3x-search-icon-size: 24px;
 }
