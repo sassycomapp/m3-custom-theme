@@ -1,6 +1,6 @@
 components: []
 container:
-  properties: {html: '<div anvil-name="m3x-split" class="m3x-split m3x-split-filled m3x-split-small"><button anvil-name="m3x-split-leading" class="m3x-split-leading" type="button"><i anvil-name="m3x-split-icon" class="m3x-split-icon material-symbols-outlined" aria-hidden="true"></i><span anvil-name="m3x-split-label" class="m3x-split-label"></span></button><button anvil-name="m3x-split-trailing" class="m3x-split-trailing" type="button" aria-haspopup="menu" aria-expanded="false" aria-label="More options"><i class="m3x-split-chevron material-symbols-outlined" aria-hidden="true">keyboard_arrow_down</i></button><div anvil-name="m3x-split-menu" class="m3x-split-menu" role="menu"></div></div>'}
+  properties: {html: <div anvil-name="m3x-split" class="m3x-split m3x-split-filled m3x-split-small"><button anvil-name="m3x-split-leading" class="m3x-split-leading" type="button"><i anvil-name="m3x-split-icon" class="m3x-split-icon material-symbols-outlined" aria-hidden="true"></i><span anvil-name="m3x-split-label" class="m3x-split-label"></span></button><button anvil-name="m3x-split-trailing" class="m3x-split-trailing" type="button" aria-haspopup="menu" aria-expanded="false" aria-label="More options"><i class="m3x-split-chevron material-symbols-outlined" aria-hidden="true">keyboard_arrow_down</i></button><div anvil-name="m3x-split-menu" class="m3x-split-menu" role="menu"></div></div>}
   type: HtmlTemplate
 custom_component: true
 events:
@@ -19,9 +19,26 @@ properties:
   include_none_option: true
   name: icon
   type: icon
-- {default_value: [], description: 'The options in the menu that the arrow opens, one per line.', group: Key Properties, important: true, name: menu_items, type: 'text[]'}
-- {default_value: filled, description: The colours of the button., group: Look and Feel, important: true, name: appearance, options: [filled, tonal, elevated, outlined], type: enum}
-- {default_value: small, description: The size of the button., group: Look and Feel, important: true, name: size, options: [xsmall, small, medium, large, xlarge], type: enum}
+- default_value: []
+  description: The options in the menu that the arrow opens, one per line.
+  group: Key Properties
+  important: true
+  name: menu_items
+  type: text[]
+- default_value: filled
+  description: The colours of the button.
+  group: Look and Feel
+  important: true
+  name: appearance
+  options: [filled, tonal, elevated, outlined]
+  type: enum
+- default_value: small
+  description: The size of the button.
+  group: Look and Feel
+  important: true
+  name: size
+  options: [xsmall, small, medium, large, xlarge]
+  type: enum
 - {default_value: true, description: 'If True, the button can be clicked.', group: Interaction, important: true, name: enabled, type: boolean}
 - {default_value: true, description: 'If True, the component will be displayed.', designer_hint: visible, group: Look and Feel, important: true, name: visible, type: boolean}
 - {default_value: '', description: A style for this component defined in CSS and added to Roles., group: Look and Feel, name: role, type: themeRole}

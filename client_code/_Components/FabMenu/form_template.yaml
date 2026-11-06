@@ -1,6 +1,6 @@
 components: []
 container:
-  properties: {html: '<div anvil-name="m3x-fab-menu" class="m3x-fab-menu m3x-fab-menu-primary m3x-fab-menu-regular"><button anvil-name="m3x-fab-menu-toggle" class="m3x-fab-menu-toggle" type="button" aria-haspopup="menu" aria-expanded="false"><i anvil-name="m3x-fab-menu-icon" class="m3x-fab-menu-icon material-symbols-outlined" aria-hidden="true">add</i><i class="m3x-fab-menu-close material-symbols-outlined" aria-hidden="true">close</i></button><div anvil-name="m3x-fab-menu-list" class="m3x-fab-menu-list" role="menu"></div></div>'}
+  properties: {html: <div anvil-name="m3x-fab-menu" class="m3x-fab-menu m3x-fab-menu-primary m3x-fab-menu-regular"><button anvil-name="m3x-fab-menu-toggle" class="m3x-fab-menu-toggle" type="button" aria-haspopup="menu" aria-expanded="false"><i anvil-name="m3x-fab-menu-icon" class="m3x-fab-menu-icon material-symbols-outlined" aria-hidden="true">add</i><i class="m3x-fab-menu-close material-symbols-outlined" aria-hidden="true">close</i></button><div anvil-name="m3x-fab-menu-list" class="m3x-fab-menu-list" role="menu"></div></div>}
   type: HtmlTemplate
 custom_component: true
 events:
@@ -18,10 +18,32 @@ properties:
   important: true
   name: icon
   type: icon
-- {default_value: [], description: 'The actions in the menu, one per line, from top to bottom.', group: Key Properties, important: true, name: items, type: 'text[]'}
-- {default_value: [], description: 'Optional: one icon per action, such as mi:mail, one per line in the same order as items.', group: Key Properties, important: true, name: item_icons, type: 'text[]'}
-- {default_value: primary, description: 'The colour set: the button is X Container while closed and X while open; the actions are X Container.', group: Look and Feel, important: true, name: color, options: [primary, secondary, tertiary], type: enum}
-- {default_value: regular, description: The size of the button while the menu is closed. It is always 56 px while open., group: Look and Feel, important: true, name: size, options: [regular, medium, large], type: enum}
+- default_value: []
+  description: The actions in the menu, one per line, from top to bottom.
+  group: Key Properties
+  important: true
+  name: items
+  type: text[]
+- default_value: []
+  description: 'Optional: one icon per action, such as mi:mail, one per line in the same order as items.'
+  group: Key Properties
+  important: true
+  name: item_icons
+  type: text[]
+- default_value: primary
+  description: 'The colour set: the button is X Container while closed and X while open; the actions are X Container.'
+  group: Look and Feel
+  important: true
+  name: color
+  options: [primary, secondary, tertiary]
+  type: enum
+- default_value: regular
+  description: The size of the button while the menu is closed. It is always 56 px while open.
+  group: Look and Feel
+  important: true
+  name: size
+  options: [regular, medium, large]
+  type: enum
 - {default_value: false, description: 'If True, the button floats in the bottom right corner of the window.', group: Look and Feel, important: true, name: floating, type: boolean}
 - {default_value: Actions, description: A name for the button and its menu that screen readers announce., group: Key Properties, important: false, name: label, type: string}
 - {default_value: true, description: 'If True, the button can be clicked.', group: Interaction, important: true, name: enabled, type: boolean}
