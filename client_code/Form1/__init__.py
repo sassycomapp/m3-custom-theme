@@ -1059,6 +1059,16 @@ class Form1(Form1Template):
             floating.visible = not floating.visible
             show.text = ("Remove the floating FAB menu" if floating.visible
                          else "Show a floating FAB menu")
+            if floating.visible:
+                # Report where the button landed, measured from the window's
+                # bottom right corner (expected: 16 and 16).
+                from anvil.js import window
+                box = get_dom_node(floating).querySelector(
+                    ".m3x-fab-menu").getBoundingClientRect()
+                self._fab_menu_result.text = (
+                    f"FAB menu: floating button is {int(window.innerWidth - box.right)}"
+                    f" px from the right, {int(window.innerHeight - box.bottom)} px"
+                    f" from the bottom, size {int(box.width)} x {int(box.height)}")
         show.add_event_handler("click", flip)
         self.add_component(show)
         self.add_component(floating)

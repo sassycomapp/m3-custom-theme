@@ -38,6 +38,7 @@ class SplitButton(SplitButtonTemplate):
         self._menu.addEventListener("click", self._on_menu_click)
         self._menu.addEventListener("keydown", self._on_menu_key)
         self._outside = self._on_document_pointer
+        self._escape = self._on_document_key
         self.add_event_handler("x-anvil-page-removed", lambda **e: self._close())
 
     # ---- main action -----------------------------------------------------------
@@ -95,6 +96,8 @@ class SplitButton(SplitButtonTemplate):
             self.dom_nodes["m3x-split"], self._menu,
             placement="bottom-end", strategy="fixed", offset=4)
         window.document.addEventListener("pointerdown", self._outside, True)
+        # Escape closes the menu wherever the focus is.
+        window.document.addEventListener("keydown", self._escape, True)
         if focus_first:
             items = self._items()
             self._focus(index % len(items))
@@ -108,6 +111,7 @@ class SplitButton(SplitButtonTemplate):
             self._cleanup()
             self._cleanup = None
         window.document.removeEventListener("pointerdown", self._outside, True)
+        window.document.removeEventListener("keydown", self._escape, True)
         self._menu.classList.remove("m3x-split-menu-open")
         self.dom_nodes["m3x-split"].classList.remove("m3x-split-selected")
         self.dom_nodes["m3x-split-trailing"].setAttribute("aria-expanded", "false")
@@ -150,10 +154,14 @@ class SplitButton(SplitButtonTemplate):
         elif key in ("Enter", " "):
             event.preventDefault()
             self._choose(self._active)
-        elif key in ("Escape", "Tab"):
-            if key == "Escape":
-                event.preventDefault()
-            self._close(refocus=key == "Escape")
+        elif key == "Tab":
+            self._close()
+
+    def _on_document_key(self, event):
+        if event.key == "Escape":
+            event.preventDefault()
+            event.stopPropagation()
+            self._close(refocus=True)
 
     def _on_document_pointer(self, event):
         root = self.dom_nodes["m3x-split"]

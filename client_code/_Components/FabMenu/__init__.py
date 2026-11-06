@@ -41,6 +41,7 @@ class FabMenu(FabMenuTemplate):
         self._list.addEventListener("click", self._on_list_click)
         self._list.addEventListener("keydown", self._on_list_key)
         self._outside = self._on_document_pointer
+        self._escape = self._on_document_key
         self.add_event_handler("x-anvil-page-removed", lambda **e: self._finish_close())
 
     # ---- opening and closing -------------------------------------------------
@@ -114,6 +115,9 @@ class FabMenu(FabMenuTemplate):
         self._list.offsetHeight  # Start the items' entrance from hidden.
         self._list.classList.add("m3x-fab-menu-list-shown")
         window.document.addEventListener("pointerdown", self._outside, True)
+        # Escape closes the menu wherever the focus is: a menu opened with the
+        # mouse leaves the focus on the button, outside the list.
+        window.document.addEventListener("keydown", self._escape, True)
         if focus_index is not None:
             self._focus(focus_index)
         self.raise_event("opened")
@@ -124,6 +128,7 @@ class FabMenu(FabMenuTemplate):
         self._open = False
         self._active = -1
         window.document.removeEventListener("pointerdown", self._outside, True)
+        window.document.removeEventListener("keydown", self._escape, True)
         self._list.classList.remove("m3x-fab-menu-list-shown")
         self.dom_nodes["m3x-fab-menu"].classList.remove("m3x-fab-menu-expanded")
         self.dom_nodes["m3x-fab-menu-toggle"].setAttribute("aria-expanded", "false")
@@ -138,6 +143,7 @@ class FabMenu(FabMenuTemplate):
             # The form was removed while the menu was open.
             self._open = False
             window.document.removeEventListener("pointerdown", self._outside, True)
+            window.document.removeEventListener("keydown", self._escape, True)
             self.dom_nodes["m3x-fab-menu"].classList.remove("m3x-fab-menu-expanded")
         if self._cleanup:
             self._cleanup()
@@ -183,11 +189,14 @@ class FabMenu(FabMenuTemplate):
         elif key == "End":
             event.preventDefault()
             self._focus(len(self._items()) - 1)
-        elif key == "Escape":
-            event.preventDefault()
-            self._close()
         elif key == "Tab":
             self._close(refocus=False)
+
+    def _on_document_key(self, event):
+        if event.key == "Escape":
+            event.preventDefault()
+            event.stopPropagation()
+            self._close()
 
     def _on_document_pointer(self, event):
         inside = (self.dom_nodes["m3x-fab-menu"].contains(event.target)
