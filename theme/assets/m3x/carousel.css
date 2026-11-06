@@ -100,11 +100,6 @@
   display: none;
 }
 
-/* Full width: the item takes the carousel's whole width */
-.m3x-carousel-full_width {
-  padding: 0;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .m3x-carousel-item,
   .m3x-carousel-item::after {
