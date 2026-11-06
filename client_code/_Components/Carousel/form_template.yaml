@@ -18,7 +18,12 @@ properties:
   name: layout
   options: [multi_browse, hero, center_hero, uncontained, full_width]
   type: enum
-- {default_value: [], description: 'Pictures to show, one per line: an asset path such as _/theme/photo.jpg (a file uploaded to Assets), or a web address. Each becomes an item, cropped to fill it.', group: Key Properties, important: true, name: images, type: 'text[]'}
+- default_value: []
+  description: 'Pictures to show, one per line: an asset path such as _/theme/photo.jpg (a file uploaded to Assets), or a web address. Each becomes an item, cropped to fill it.'
+  group: Key Properties
+  important: true
+  name: images
+  type: text[]
 - {default_value: 186, description: 'The width in pixels that large items aim for (multi_browse), or that every item has (uncontained).', group: Key Properties, important: true, name: item_width, type: number}
 - {default_value: 220, description: The height of the items in pixels., group: Look and Feel, important: true, name: item_height, type: number}
 - {default_value: 0, description: The position of the first large item (from 0). Set it to move the carousel., group: Key Properties, important: false, name: index, type: number}
