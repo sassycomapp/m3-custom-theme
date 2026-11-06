@@ -1,0 +1,167 @@
+/* M3 toolbars (C17). See docs/components/Toolbar.md.
+   Floating: a rounded bar with an optional FAB beside it, horizontal or vertical.
+   Docked: a full-width bar; it replaces the bottom app bar. */
+
+.m3x-toolbar {
+  box-sizing: border-box;
+  align-items: center;
+  margin: var(--m3x-component-outer-margin-block) var(--m3x-component-outer-margin-inline);
+}
+
+.m3x-toolbar-items {
+  display: flex;
+  align-items: center;
+  gap: var(--m3x-toolbar-between-space);
+}
+
+/* Icons in a toolbar take its content colour (not the base On Surface Variant). */
+.m3x-toolbar .anvil-m3-iconbutton-icon:not(.anvil-m3-filled):not(.anvil-m3-tonal):not(.anvil-m3-selected) {
+  color: var(--m3x-toolbar-content-color);
+}
+
+/* ---- floating ---------------------------------------------------------- */
+
+.m3x-toolbar-floating {
+  display: inline-flex;
+  gap: var(--m3x-toolbar-fab-gap);
+}
+
+.m3x-toolbar-floating .m3x-toolbar-bar {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: var(--m3x-toolbar-floating-height);
+  padding: 0 var(--m3x-toolbar-floating-edge-space);
+  border-radius: var(--m3x-toolbar-floating-shape);
+  background-color: var(--m3x-toolbar-container-color);
+  box-shadow: var(--m3x-toolbar-floating-elevation);
+}
+
+.m3x-toolbar-floating.m3x-toolbar-has-fab .m3x-toolbar-bar {
+  box-shadow: var(--m3x-toolbar-floating-elevation-with-fab);
+}
+
+.m3x-toolbar-floating.m3x-toolbar-vertical {
+  flex-direction: column;
+}
+
+.m3x-toolbar-floating.m3x-toolbar-vertical .m3x-toolbar-bar {
+  height: auto;
+  width: var(--m3x-toolbar-floating-height);
+  padding: var(--m3x-toolbar-floating-edge-space) 0;
+}
+
+.m3x-toolbar-floating.m3x-toolbar-vertical .m3x-toolbar-items {
+  flex-direction: column;
+}
+
+.m3x-toolbar-fab {
+  display: flex;
+  align-items: center;
+}
+
+.m3x-toolbar-fab:empty {
+  display: none;
+}
+
+/* The toolbar spaces the FAB itself (8 px), so the FAB's own outer margin goes. */
+.m3x-toolbar-fab .m3x-fab {
+  margin: 0;
+}
+
+/* ---- docked ------------------------------------------------------------ */
+
+.m3x-toolbar-docked {
+  display: flex;
+  gap: var(--m3x-toolbar-docked-min-spacing);
+  height: var(--m3x-toolbar-docked-height);
+  padding: 0 var(--m3x-toolbar-docked-edge-space);
+  border-radius: var(--m3x-toolbar-docked-shape);
+  background-color: var(--m3x-toolbar-container-color);
+}
+
+.m3x-toolbar-docked .m3x-toolbar-bar {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.m3x-toolbar-docked .m3x-toolbar-items {
+  justify-content: space-between;
+  gap: var(--m3x-toolbar-docked-min-spacing);
+}
+
+/* ---- colours ------------------------------------------------------------ */
+
+.m3x-toolbar {
+  --m3x-toolbar-container-color: var(--m3x-toolbar-standard-container-color);
+  --m3x-toolbar-content-color: var(--m3x-toolbar-standard-content-color);
+}
+
+.m3x-toolbar-vibrant {
+  --m3x-toolbar-container-color: var(--m3x-toolbar-vibrant-container-color);
+  --m3x-toolbar-content-color: var(--m3x-toolbar-vibrant-content-color);
+}
+
+/* A selected toggle icon button in a vibrant toolbar */
+.m3x-toolbar-vibrant .anvil-m3-iconbutton-container.anvil-m3-toggle.anvil-m3-selected:not(.anvil-m3-filled):not(.anvil-m3-tonal):not(.anvil-m3-outlined) {
+  background-color: var(--m3x-toolbar-vibrant-selected-container-color);
+}
+
+.m3x-toolbar-vibrant .anvil-m3-iconbutton-icon.anvil-m3-toggle.anvil-m3-selected:not(.anvil-m3-filled):not(.anvil-m3-tonal):not(.anvil-m3-outlined) {
+  color: var(--m3x-toolbar-vibrant-selected-content-color);
+}
+
+/* ---- pinned to the window ------------------------------------------------ */
+
+.m3x-toolbar-pinned {
+  position: fixed;
+  z-index: var(--m3x-toolbar-z-index);
+  margin: 0;
+  transition: transform var(--m3x-motion-duration-medium2) var(--m3x-motion-easing-emphasized);
+}
+
+.m3x-toolbar-pinned.m3x-toolbar-docked {
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.m3x-toolbar-pinned.m3x-toolbar-floating {
+  left: 50%;
+  bottom: var(--m3x-toolbar-floating-screen-offset);
+  transform: translateX(-50%);
+}
+
+.m3x-toolbar-pinned.m3x-toolbar-floating.m3x-toolbar-vertical {
+  left: auto;
+  right: var(--m3x-toolbar-floating-screen-offset);
+  bottom: auto;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Slid away while the user scrolls down */
+.m3x-toolbar-pinned.m3x-toolbar-docked.m3x-toolbar-hidden {
+  transform: translateY(100%);
+}
+
+.m3x-toolbar-pinned.m3x-toolbar-floating.m3x-toolbar-hidden {
+  transform: translate(-50%, calc(100% + var(--m3x-toolbar-floating-screen-offset)));
+}
+
+.m3x-toolbar-pinned.m3x-toolbar-floating.m3x-toolbar-vertical.m3x-toolbar-hidden {
+  transform: translate(calc(100% + var(--m3x-toolbar-floating-screen-offset)), -50%);
+}
+
+/* In the Anvil designer the toolbar is drawn in place. */
+.m3x-toolbar-pinned.m3x-toolbar-in-designer {
+  position: static;
+  transform: none;
+  margin: var(--m3x-component-outer-margin-block) var(--m3x-component-outer-margin-inline);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .m3x-toolbar-pinned {
+    transition: none;
+  }
+}

@@ -590,4 +590,25 @@
   --m3x-bottom-sheet-padding-bottom: var(--m3x-space-24);
   --m3x-bottom-sheet-scrim-opacity: 0.32;
   --m3x-bottom-sheet-z-index: 1040;
+
+  /* Component: Toolbar (FloatingToolbarTokens, DockedToolbarTokens, FloatingToolbarDefaults) */
+  --m3x-toolbar-standard-container-color: var(--m3x-color-surface-container);
+  --m3x-toolbar-standard-content-color: var(--m3x-color-on-surface);
+  --m3x-toolbar-vibrant-container-color: var(--m3x-color-primary-container);
+  --m3x-toolbar-vibrant-content-color: var(--m3x-color-on-primary-container);
+  --m3x-toolbar-vibrant-selected-container-color: var(--m3x-color-surface-container);
+  --m3x-toolbar-vibrant-selected-content-color: var(--m3x-color-on-surface);
+  --m3x-toolbar-between-space: 4px;
+  --m3x-toolbar-fab-gap: 8px;
+  --m3x-toolbar-floating-height: 64px;
+  --m3x-toolbar-floating-edge-space: 8px;
+  --m3x-toolbar-floating-shape: var(--m3x-shape-corner-full);
+  --m3x-toolbar-floating-elevation: none;
+  --m3x-toolbar-floating-elevation-with-fab: var(--m3x-elevation-level1);
+  --m3x-toolbar-floating-screen-offset: 16px;
+  --m3x-toolbar-docked-height: 64px;
+  --m3x-toolbar-docked-edge-space: 16px;
+  --m3x-toolbar-docked-min-spacing: 4px;
+  --m3x-toolbar-docked-shape: 0;
+  --m3x-toolbar-z-index: 1010;
 }

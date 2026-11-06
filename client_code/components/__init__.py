@@ -39,6 +39,7 @@ from .._Components.TextInput.TextArea import TextArea
 from .._Components.TextInput.TextBox import TextBox
 from .._Components.TimePicker import TimePicker
 from .._Components.ToggleIconButton import ToggleIconButton
+from .._Components.Toolbar import Toolbar
 from .._Components.TopAppBar import TopAppBar
 from .._utils.m3x_snackbar import Snackbar
 from .._utils.m3x_tooltip import RichTooltip

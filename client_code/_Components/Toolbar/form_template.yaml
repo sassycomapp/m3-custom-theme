@@ -1,0 +1,23 @@
+components: []
+container:
+  properties: {html: '<div anvil-name="m3x-toolbar" class="m3x-toolbar m3x-toolbar-floating"><div anvil-name="m3x-toolbar-bar" class="m3x-toolbar-bar" role="toolbar"><div anvil-slot="toolbar-slot" class="m3x-toolbar-items"></div></div><div anvil-slot="toolbar-fab-slot" class="m3x-toolbar-fab"></div></div>'}
+  type: HtmlTemplate
+custom_component: true
+custom_component_container: true
+events:
+- {description: When the toolbar is shown on the screen., name: show}
+- {description: When the toolbar is removed from the screen., name: hide}
+is_package: true
+properties:
+- {default_value: floating, description: 'floating: a rounded bar that floats over the content. docked: a full-width bar along the bottom (replaces the bottom app bar).', group: Key Properties, important: true, name: variant, options: [floating, docked], type: enum}
+- {default_value: standard, description: 'standard: a quiet surface colour. vibrant: the primary container colour, for more emphasis.', group: Look and Feel, important: true, name: color_style, options: [standard, vibrant], type: enum}
+- {default_value: false, description: 'If True, a floating toolbar is a vertical column. Docked toolbars are always horizontal.', group: Look and Feel, important: true, name: vertical, type: boolean}
+- {default_value: false, description: 'If True, the toolbar is fixed to the window: a docked toolbar along the bottom edge; a floating toolbar 16 px above the bottom centre, or 16 px from the right edge when vertical.', group: Key Properties, important: true, name: pin_to_screen, type: boolean}
+- {default_value: false, description: 'If True, a toolbar pinned to the screen slides away while the user scrolls down and comes back when the user scrolls up.', group: Interaction, important: false, name: hide_on_scroll, type: boolean}
+- {default_value: Toolbar, description: A name for the toolbar that screen readers announce., group: Key Properties, important: false, name: label, type: string}
+- {default_value: true, description: 'If True, the component will be displayed.', designer_hint: visible, group: Look and Feel, important: true, name: visible, type: boolean}
+- {default_value: '', description: A style for this component defined in CSS and added to Roles., group: Look and Feel, name: role, type: themeRole}
+- {description: Use this property to store any extra data for the component., group: Other, important: false, name: tag, type: object}
+toolbox_item:
+  hidden: true
+  icon: {dark: 'asset:designer_icons/toolbar_dark.svg', light: 'asset:designer_icons/toolbar.svg'}

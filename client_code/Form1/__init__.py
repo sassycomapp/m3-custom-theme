@@ -200,6 +200,7 @@ class Form1(Form1Template):
         self._build_tooltips()
         self._build_search()
         self._build_bottom_sheets()
+        self._build_toolbars()
         self._build_tokens()
 
     # ---- helpers -------------------------------------------------------
@@ -934,6 +935,70 @@ class Form1(Form1Template):
 
     def _sheet_note(self, note):
         self._sheet_result.text = f"Sheet: {note}"
+
+    # ---- toolbars (Step 6) ---------------------------------------------------
+
+    def _toolbar(self, icons, toggle=None, fab=None, **props):
+        bar = m3.Toolbar(**props)
+        for icon in icons:
+            button = m3.IconButton(icon=f"mi:{icon}", tooltip=icon.replace("_", " "))
+            button.add_event_handler(
+                "click", lambda icon=icon, **e: setattr(
+                    self._toolbar_result, "text", f"Toolbar: {icon} clicked"))
+            bar.add_component(button)
+        if toggle:
+            button = m3.ToggleIconButton(icon=f"mi:{toggle}", selected=True)
+            button.add_event_handler(
+                "click", lambda sender, **e: setattr(sender, "selected",
+                                                     not sender.selected))
+            bar.add_component(button)
+        if fab:
+            bar.add_component(
+                m3.FloatingActionButton(icon="mi:add", appearance=fab),
+                slot="toolbar-fab-slot")
+        return bar
+
+    def _build_toolbars(self):
+        self._heading("Toolbar")
+        self._toolbar_result = m3.Text(text="Toolbar: (nothing clicked yet)")
+        edit = ("undo", "redo", "format_bold", "share")
+        row = FlowPanel(spacing="medium")
+        row.add_component(self._toolbar(edit, label="Floating standard"))
+        row.add_component(self._toolbar(edit, fab="primary_container",
+                                        label="Floating standard with FAB"))
+        self.add_component(row)
+        row = FlowPanel(spacing="medium")
+        row.add_component(self._toolbar(edit, toggle="star", color_style="vibrant",
+                                        fab="tertiary_container",
+                                        label="Floating vibrant with FAB"))
+        row.add_component(self._toolbar(("edit", "share", "delete"), vertical=True,
+                                        label="Floating vertical"))
+        row.add_component(self._toolbar(("edit", "share", "delete"), vertical=True,
+                                        color_style="vibrant",
+                                        fab="tertiary_container",
+                                        label="Floating vertical vibrant"))
+        self.add_component(row)
+        self.add_component(self._toolbar(
+            ("arrow_back", "arrow_forward", "home", "bookmark", "more_vert"),
+            variant="docked", label="Docked"))
+        self.add_component(self._toolbar(
+            ("arrow_back", "arrow_forward", "home", "bookmark"),
+            variant="docked", color_style="vibrant", fab="tertiary_container",
+            label="Docked vibrant with FAB"))
+
+        pinned = self._toolbar(edit, color_style="vibrant", fab="tertiary_container",
+                               pin_to_screen=True, hide_on_scroll=True,
+                               visible=False, label="Pinned")
+        show = m3.Button(text="Pin a toolbar to the screen", appearance="outlined")
+
+        def flip(**e):
+            pinned.visible = not pinned.visible
+            show.text = ("Remove the pinned toolbar" if pinned.visible
+                         else "Pin a toolbar to the screen")
+        show.add_event_handler("click", flip)
+        self.add_component(show)
+        self.add_component(pinned)
+        self.add_component(self._toolbar_result)
 
     # ---- token reference (Step 5) --------------------------------------------
 

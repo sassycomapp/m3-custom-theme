@@ -199,6 +199,9 @@ toolbox_sections:
   - component: {type: m3._Components.TopAppBar}
     icon: {dark: 'asset:designer_icons/top_app_bar_dark.svg', light: 'asset:designer_icons/top_app_bar.svg'}
     title: TopAppBar
+  - component: {type: m3._Components.Toolbar}
+    icon: {dark: 'asset:designer_icons/toolbar_dark.svg', light: 'asset:designer_icons/toolbar.svg'}
+    title: Toolbar
   packageName: m3
   title: Navigation
 - description: Use menus to hold other components and display them as a list of options
