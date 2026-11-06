@@ -1,6 +1,7 @@
 from .._Components.Avatar import Avatar
 from .._Components.AvatarMenu import AvatarMenu
 from .._Components.Badge import Badge
+from .._Components.BottomSheet import BottomSheet
 from .._Components.Button import Button
 from .._Components.ButtonGroup import ButtonGroup
 from .._Components.ButtonMenu import ButtonMenu

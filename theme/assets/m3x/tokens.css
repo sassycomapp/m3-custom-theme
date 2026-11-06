@@ -574,4 +574,20 @@
   --m3x-search-divider-color: var(--m3x-color-outline);
   --m3x-search-z-index: 1030;
   --m3x-search-icon-size: 24px;
+
+  /* Component: Bottom sheet (SheetBottomTokens, ScrimTokens, BottomSheetDefaults) */
+  --m3x-bottom-sheet-container-color: var(--m3x-color-surface-container-low);
+  --m3x-bottom-sheet-container-shape: var(--m3x-shape-corner-extra-large);
+  --m3x-bottom-sheet-elevation: var(--m3x-elevation-level1);
+  --m3x-bottom-sheet-drag-handle-color: var(--m3x-color-on-surface-variant);
+  --m3x-bottom-sheet-drag-handle-width: 32px;
+  --m3x-bottom-sheet-drag-handle-height: 4px;
+  --m3x-bottom-sheet-drag-handle-padding-block: 22px;
+  --m3x-bottom-sheet-drag-handle-target: 48px;
+  --m3x-bottom-sheet-max-width: 640px;
+  --m3x-bottom-sheet-top-gap: 72px;
+  --m3x-bottom-sheet-padding-inline: var(--m3x-space-16);
+  --m3x-bottom-sheet-padding-bottom: var(--m3x-space-24);
+  --m3x-bottom-sheet-scrim-opacity: 0.32;
+  --m3x-bottom-sheet-z-index: 1040;
 }

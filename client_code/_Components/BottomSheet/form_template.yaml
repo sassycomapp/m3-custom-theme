@@ -1,0 +1,23 @@
+components: []
+container:
+  properties: {html: '<div anvil-name="m3x-bottom-sheet-host" class="m3x-bottom-sheet-host"><div anvil-name="m3x-bottom-sheet-scrim" class="m3x-bottom-sheet-scrim"></div><div anvil-name="m3x-bottom-sheet" class="m3x-bottom-sheet" role="dialog" aria-modal="true" tabindex="-1"><button anvil-name="m3x-bottom-sheet-handle" class="m3x-bottom-sheet-handle" type="button" aria-label="Close the sheet"><span class="m3x-bottom-sheet-handle-bar"></span></button><div anvil-slot="bottom-sheet-content-slot" class="m3x-bottom-sheet-content"></div></div></div>'}
+  type: HtmlTemplate
+custom_component: true
+custom_component_container: true
+events:
+- {default_event: true, description: When the sheet has opened., name: opened}
+- {description: 'When the sheet has closed: by the close method, or by the user dragging it down, tapping the scrim or pressing Escape.', name: closed}
+- {description: When the component is shown on the screen., name: show}
+- {description: When the component is removed from the screen., name: hide}
+is_package: true
+properties:
+- {default_value: true, description: 'If True, a scrim covers the page while the sheet is open and the page cannot be used. If False, the page stays usable (standard sheet).', group: Key Properties, important: true, name: modal, type: boolean}
+- {default_value: true, description: 'If True, the user can close the sheet by dragging it down, tapping the scrim, tapping the drag handle or pressing Escape.', group: Interaction, important: true, name: dismissible, type: boolean}
+- {default_value: true, description: 'If True, a drag handle is shown at the top of the sheet.', group: Look and Feel, important: true, name: show_drag_handle, type: boolean}
+- {default_value: Sheet, description: A name for the sheet that screen readers announce., group: Key Properties, important: false, name: label, type: string}
+- {default_value: true, description: 'If True, the component will be displayed.', designer_hint: visible, group: Look and Feel, important: true, name: visible, type: boolean}
+- {default_value: '', description: A style for this component defined in CSS and added to Roles., group: Look and Feel, name: role, type: themeRole}
+- {description: Use this property to store any extra data for the component., group: Other, important: false, name: tag, type: object}
+toolbox_item:
+  hidden: true
+  icon: {dark: 'asset:designer_icons/bottom_sheet_dark.svg', light: 'asset:designer_icons/bottom_sheet.svg'}

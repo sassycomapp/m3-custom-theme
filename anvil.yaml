@@ -300,6 +300,9 @@ toolbox_sections:
       - {data_key: column_3, id: OJLQEN, title: Column 3}
     title: Data Grid
     url: /docs/client/components/data-grids
+  - component: {type: m3._Components.BottomSheet}
+    icon: {dark: 'asset:designer_icons/bottom_sheet_dark.svg', light: 'asset:designer_icons/bottom_sheet.svg'}
+    title: BottomSheet
   packageName: m3
   title: Containers
 - items:

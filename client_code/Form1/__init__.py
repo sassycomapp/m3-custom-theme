@@ -199,6 +199,7 @@ class Form1(Form1Template):
         self._build_pickers()
         self._build_tooltips()
         self._build_search()
+        self._build_bottom_sheets()
         self._build_tokens()
 
     # ---- helpers -------------------------------------------------------
@@ -878,6 +879,61 @@ class Form1(Form1Template):
         )
         self.add_component(search)
         self.add_component(self._search_result)
+
+    # ---- bottom sheets (Step 6) ----------------------------------------------
+
+    def _build_bottom_sheets(self):
+        row = self._section("BottomSheet")
+        self._sheet_result = m3.Text(text="Sheet: (nothing chosen yet)")
+
+        modal = m3.BottomSheet(label="Share")
+        for icon, text in (("mi:share", "Share"), ("mi:link", "Copy link"),
+                           ("mi:edit", "Rename"), ("mi:delete", "Delete")):
+            item = m3.ListItem(headline=text, leading_icon=icon, clickable=True)
+            item.add_event_handler("click", self._on_sheet_choice)
+            modal.add_component(item)
+        modal.add_event_handler(
+            "closed", lambda **e: self._sheet_note("modal sheet closed"))
+
+        standard = m3.BottomSheet(modal=False, label="Now playing")
+        standard.add_component(m3.Heading(text="Now playing", style="title",
+                                          scale="large"))
+        standard.add_component(m3.Text(
+            text="A standard sheet: the page above it stays usable. Scroll the "
+                 "page or click its buttons while this sheet is open."))
+        close = m3.Button(text="Close", appearance="filled")
+        close.add_event_handler("click", lambda **e: standard.close())
+        standard.add_component(close)
+        standard.add_event_handler(
+            "closed", lambda **e: self._sheet_note("standard sheet closed"))
+
+        fixed = m3.BottomSheet(dismissible=False, label="Terms")
+        fixed.add_component(m3.Text(
+            text="This sheet cannot be dragged away or closed with the scrim or "
+                 "Escape. Use the button."))
+        accept = m3.Button(text="I agree", appearance="filled")
+        accept.add_event_handler("click", lambda **e: fixed.close())
+        fixed.add_component(accept)
+        fixed.add_event_handler(
+            "closed", lambda **e: self._sheet_note("agreed"))
+
+        for text, sheet in (("Open modal sheet", modal),
+                            ("Open standard sheet", standard),
+                            ("Open sheet that must be answered", fixed)):
+            button = m3.Button(text=text, appearance="outlined")
+            button.add_event_handler(
+                "click", lambda sheet=sheet, **e: sheet.open())
+            row.add_component(button)
+            row.add_component(sheet)
+        self._modal_sheet = modal
+        self.add_component(self._sheet_result)
+
+    def _on_sheet_choice(self, sender, **event_args):
+        self._modal_sheet.close()
+        self._sheet_result.text = f"Sheet: {sender.headline} chosen"
+
+    def _sheet_note(self, note):
+        self._sheet_result.text = f"Sheet: {note}"
 
     # ---- token reference (Step 5) --------------------------------------------
 
