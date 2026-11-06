@@ -117,15 +117,16 @@
   display: none;
 }
 
-.m3x-search-open.m3x-search-has-items .m3x-search-view {
-  position: absolute;
-  top: var(--m3x-search-height);
-  left: 0;
-  right: 0;
+/* The docked view: drawn on the page body, placed under the bar by
+   SearchBar._place(), and resizable with the handle in its bottom right corner */
+.m3x-search-view.m3x-search-view-docked {
+  position: fixed;
   z-index: var(--m3x-search-z-index);
   display: block;
-  max-height: var(--m3x-search-view-max-height);
+  box-sizing: border-box;
+  min-height: var(--m3x-search-height);
   overflow-y: auto;
+  resize: vertical;
   padding: var(--m3x-space-8) 0;
   border-top: 1px solid var(--m3x-search-divider-color);
   border-radius: 0 0 var(--m3x-search-view-docked-shape) var(--m3x-search-view-docked-shape);
@@ -182,16 +183,18 @@
     border-radius: 0;
   }
 
-  .m3x-search.m3x-search-open .m3x-search-view {
-    position: fixed;
-    top: var(--m3x-search-full-screen-header-height);
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: var(--m3x-search-z-index);
-    display: block;
-    max-height: none;
-    border-radius: 0;
-    box-shadow: none;
-  }
+}
+
+/* The full-screen view on narrow screens, below the 72 px header */
+.m3x-search-view.m3x-search-view-full {
+  position: fixed;
+  top: var(--m3x-search-full-screen-header-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--m3x-search-z-index);
+  display: block;
+  overflow-y: auto;
+  border-top: 1px solid var(--m3x-search-divider-color);
+  background-color: var(--m3x-search-container-color);
 }

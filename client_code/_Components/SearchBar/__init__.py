@@ -11,6 +11,8 @@ from ..._utils.properties import ComponentTag, anvil_prop, role_property
 from ._anvil_designer import SearchBarTemplate
 
 _SLOT = "search-trailing-slot"
+_PHONE = "(max-width: 599px)"
+_BOTTOM_GAP = 16
 _counter = [0]
 
 
@@ -34,9 +36,14 @@ class SearchBar(SearchBarTemplate):
         nodes["m3x-search-back"].addEventListener("click", lambda e: self._close_view())
         nodes["m3x-search-view"].addEventListener("click", self._on_view_click)
         # Pressing on a suggestion would blur the input before the click; keep focus.
-        nodes["m3x-search-view"].addEventListener(
-            "pointerdown", lambda e: e.preventDefault())
+        # Only on suggestions, so the resize handle in the corner still drags.
+        nodes["m3x-search-view"].addEventListener("pointerdown", self._on_view_pointer)
         self._outside = self._on_document_pointer
+        self._place_handler = lambda e: self._place()
+        self._resize_handler = self._on_resize
+        self._phone = False
+        # A view left open on the page body is put back when the form goes away.
+        self.add_event_handler("x-anvil-page-removed", lambda **e: self._close_view())
         self._update_clear()
 
     def add_component(self, component, slot=_SLOT, **layout_props):
@@ -76,6 +83,10 @@ class SearchBar(SearchBarTemplate):
         has_items = bool(self._shown) and self._open
         self.dom_nodes["m3x-search"].classList.toggle(
             "m3x-search-has-items", has_items)
+        view.classList.toggle("m3x-search-view-docked", has_items and not self._phone)
+        view.classList.toggle("m3x-search-view-full", self._open and self._phone)
+        if has_items and not self._phone:
+            self._place()
         input_node = self.dom_nodes["m3x-search-input"]
         input_node.setAttribute("aria-expanded", "true" if has_items else "false")
         if 0 <= self._active < len(self._shown):
@@ -89,8 +100,16 @@ class SearchBar(SearchBarTemplate):
             return
         self._open = True
         self._active = -1
+        self._phone = bool(window.matchMedia(_PHONE).matches)
         self.dom_nodes["m3x-search"].classList.add("m3x-search-open")
+        # The view is drawn on the page body, outside Anvil's containers, which
+        # cut off and scroll anything that reaches outside a component.
+        view = self.dom_nodes["m3x-search-view"]
+        view.style.height = ""
+        window.document.body.appendChild(view)
         window.document.addEventListener("pointerdown", self._outside, True)
+        window.addEventListener("scroll", self._place_handler, True)
+        window.addEventListener("resize", self._resize_handler)
         self._render_view()
 
     def _close_view(self):
@@ -100,11 +119,40 @@ class SearchBar(SearchBarTemplate):
         self._active = -1
         self.dom_nodes["m3x-search"].classList.remove("m3x-search-open")
         window.document.removeEventListener("pointerdown", self._outside, True)
+        window.removeEventListener("scroll", self._place_handler, True)
+        window.removeEventListener("resize", self._resize_handler)
         self._render_view()
+        self.dom_nodes["m3x-search"].appendChild(self.dom_nodes["m3x-search-view"])
         self.dom_nodes["m3x-search-input"].blur()
 
+    def _place(self):
+        """Put the docked view directly under the bar, as wide as the bar, and
+        let it grow down to the bottom of the window."""
+        if not self._open or self._phone:
+            return
+        rect = self.dom_nodes["m3x-search"].querySelector(
+            ".m3x-search-bar").getBoundingClientRect()
+        view = self.dom_nodes["m3x-search-view"]
+        view.style.top = f"{rect.bottom}px"
+        view.style.left = f"{rect.left}px"
+        view.style.width = f"{rect.width}px"
+        room = max(160, window.innerHeight - rect.bottom - _BOTTOM_GAP)
+        view.style.maxHeight = f"{room}px"
+
+    def _on_view_pointer(self, event):
+        if event.target.closest(".m3x-search-item"):
+            event.preventDefault()
+
+    def _on_resize(self, event):
+        if bool(window.matchMedia(_PHONE).matches) != self._phone:
+            self._close_view()  # The screen changed between phone and wide.
+        else:
+            self._place()
+
     def _on_document_pointer(self, event):
-        if not self.dom_nodes["m3x-search"].contains(event.target):
+        inside_bar = self.dom_nodes["m3x-search"].contains(event.target)
+        inside_view = self.dom_nodes["m3x-search-view"].contains(event.target)
+        if not (inside_bar or inside_view):
             self._close_view()
 
     # ---- interaction ---------------------------------------------------------

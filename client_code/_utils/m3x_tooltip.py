@@ -45,8 +45,10 @@ class RichTooltip:
         self._anchor = anchor
         _counter[0] += 1
         self._id = f"m3x-rich-tooltip-{_counter[0]}"
+        # Capture phase: base components such as Button stop the click from
+        # reaching their outer element, so the tooltip listens on the way in.
         if self.persistent:
-            self._listen(anchor, "click", self._on_anchor_click)
+            self._listen(anchor, "click", self._on_anchor_click, True)
             anchor.setAttribute("aria-haspopup", "dialog")
         else:
             for event in ("mouseenter", "focusin"):
@@ -59,17 +61,17 @@ class RichTooltip:
     def detach(self):
         """Remove the tooltip from its component."""
         self.hide()
-        for node, event, handler in self._listeners:
-            node.removeEventListener(event, handler)
+        for node, event, handler, capture in self._listeners:
+            node.removeEventListener(event, handler, capture)
         self._listeners = []
         if self._anchor is not None:
             self._anchor.removeAttribute("aria-describedby")
             self._anchor.removeAttribute("aria-haspopup")
             self._anchor = None
 
-    def _listen(self, node, event, handler):
-        node.addEventListener(event, handler)
-        self._listeners.append((node, event, handler))
+    def _listen(self, node, event, handler, capture=False):
+        node.addEventListener(event, handler, capture)
+        self._listeners.append((node, event, handler, capture))
 
     # ---- showing -------------------------------------------------------------
 

@@ -572,7 +572,6 @@
   --m3x-search-leading-icon-color: var(--m3x-color-on-surface);
   --m3x-search-trailing-icon-color: var(--m3x-color-on-surface-variant);
   --m3x-search-divider-color: var(--m3x-color-outline);
-  --m3x-search-view-max-height: 400px;
   --m3x-search-z-index: 1030;
   --m3x-search-icon-size: 24px;
 }
