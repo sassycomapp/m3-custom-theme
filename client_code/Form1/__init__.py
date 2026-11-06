@@ -4,6 +4,8 @@ Shows every existing component in each of its variants and states. It is the
 test harness for every later step (see m3-custom-theme.md, Step 3). Add each new
 component here, in every variant and state, before merging it.
 """
+import datetime
+
 from anvil import *
 import m3.components as m3
 
@@ -194,6 +196,7 @@ class Form1(Form1Template):
         self._build_navigation_bars()
         self._build_wavy_progress()
         self._build_loading_indicators()
+        self._build_pickers()
         self._build_tokens()
 
     # ---- helpers -------------------------------------------------------
@@ -796,6 +799,37 @@ class Form1(Form1Template):
         row.add_component(m3.LoadingIndicator())
         row.add_component(m3.Text(text="Contained:"))
         row.add_component(m3.LoadingIndicator(contained=True))
+
+    # ---- date and time pickers (Step 6) --------------------------------------
+
+    def _build_pickers(self):
+        self._heading("DatePicker and TimePicker")
+        self._picker_result = m3.Text(text="Picker: (no change yet)")
+        pickers = (
+            m3.DatePicker(label="Date of birth", supporting_text="DD/MM/YYYY"),
+            m3.DatePicker(
+                label="Delivery date",
+                date=datetime.date.today(),
+                min_date=datetime.date.today(),
+                max_date=datetime.date.today() + datetime.timedelta(days=60),
+                format="%d %b %Y",
+                appearance="filled",
+                supporting_text="Within the next 60 days",
+            ),
+            m3.TimePicker(label="Start time (24-hour)"),
+            m3.TimePicker(
+                label="Pick-up time (12-hour)", format_24h=False,
+                time=datetime.time(14, 30),
+            ),
+        )
+        for picker in pickers:
+            picker.add_event_handler("change", self._on_picker_change)
+            self.add_component(picker)
+        self.add_component(self._picker_result)
+
+    def _on_picker_change(self, sender, **event_args):
+        value = sender.date if isinstance(sender, m3.DatePicker) else sender.time
+        self._picker_result.text = f"Picker: {sender.label} = {value}"
 
     # ---- token reference (Step 5) --------------------------------------------
 

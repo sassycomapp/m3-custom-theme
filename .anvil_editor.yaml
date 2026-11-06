@@ -41,6 +41,8 @@ unique_ids:
     designer_icons/chip_dark.svg: '1793782030363804755203785.4443'
     designer_icons/circular_progress_indicator.svg: '1702402034850681412746905.4847'
     designer_icons/circular_progress_indicator_dark.svg: '1702402088080472149609476.13837'
+    designer_icons/date_picker.svg: '1793943569747790769353958.4512'
+    designer_icons/date_picker_dark.svg: '1793943569747209572532264.2575'
     designer_icons/dialog.svg: '1793776541119183954935624.3040'
     designer_icons/dialog_dark.svg: '1793776541119143611782920.4399'
     designer_icons/divider.svg: '1702399955480171372973951.63232'
@@ -91,6 +93,8 @@ unique_ids:
     designer_icons/text_dark.svg: '1702400882367394079289989.5229'
     designer_icons/textfield.svg: '1702402292135309100614551.32196'
     designer_icons/textfield_dark.svg: '1702402307460382509534197.2156'
+    designer_icons/time_picker.svg: '1793943569747561425745922.1634'
+    designer_icons/time_picker_dark.svg: '1793943569747443595792689.9645'
     designer_icons/toggle_icon_button.svg: X3PPQYH2PRT3SVAH6IEOB7A5JEZD5QBO
     designer_icons/toggle_icon_button_dark.svg: 7DAFFO5P4PSMHDQ73R2FXYVFP4ARD7VN
     designer_icons/top_app_bar.svg: '1793791871305637130464435.6680'
@@ -99,6 +103,7 @@ unique_ids:
     m3x/button-group.css: '1793789676067973711042690.9848'
     m3x/chip.css: '1793782030363255586183702.1009'
     m3x/components.css: '1793776541119942650629231.8394'
+    m3x/date-picker.css: '1793943569747411170352433.8024'
     m3x/dialog.css: '1793776541119306859875451.2970'
     m3x/fab.css: '1793787621769108362548878.4574'
     m3x/list-item.css: '1793789676067249304169321.1004'
@@ -107,6 +112,7 @@ unique_ids:
     m3x/palettes.css: '1793702553869665498540454.4127'
     m3x/snackbar.css: '1793786137233447633605966.7864'
     m3x/tabs.css: '1793787621769170289223825.9857'
+    m3x/time-picker.css: '1793943569747765019552441.1594'
     m3x/tokens.css: '1793772802328879318670730.8713'
     m3x/top-app-bar.css: '1793791871305909316756209.5971'
     m3x/wavy-progress.css: '1793795033408263500015698.8630'
@@ -126,6 +132,7 @@ unique_ids:
     _Components.Checkbox: '1689946549679795138453587.0414'
     _Components.Chip: '1793782030363652878231308.2531'
     _Components.CircularProgressIndicator: '1699018314168927111586741.3076'
+    _Components.DatePicker: '1793943569747847310558140.1522'
     _Components.Dialog: '1793776541119182237756670.5774'
     _Components.Divider: '1688573262607740872083563.6951'
     _Components.DropdownMenu: '1704966695378970651888987.607'
@@ -150,6 +157,7 @@ unique_ids:
     _Components.Tabs: '1793787621769350453779943.9558'
     _Components.Text: '1691572000604659329611163.5563'
     _Components.TextInput: '1704278444641904756062672.2582'
+    _Components.TimePicker: '1793943569748470111111909.6074'
     _Components.TopAppBar: '1793791871305154576237593.3758'
   modules:
     InitModule: '1729773387629974098018934.2618'
@@ -163,6 +171,7 @@ unique_ids:
     _utils: NG7DBGUUSPXECPDER2G65KMIKCVG4GRL
     _utils.fui: '1701404784306666394613830.7113'
     _utils.m3x_loading: '1793795033408271029897532.1882'
+    _utils.m3x_picker: '1793943569748327478434410.4052'
     _utils.m3x_presets: '1793772802328980671971297.2922'
     _utils.m3x_snackbar: '1793786137233523261377819.8365'
     _utils.m3x_theming: '1793702553874683304788471.3342'

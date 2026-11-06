@@ -1,0 +1,196 @@
+/* Date picker (m3._Components.DatePicker). See docs/components/DatePicker.md.
+   The field is the base theme's TextBox. The calendar sits in an m3x Dialog,
+   whose padding gives the outer 24 px. */
+
+.m3x-date-picker {
+  display: block;
+}
+
+.m3x-date-picker-dialog {
+  --m3x-dialog-min-width: calc(var(--m3x-date-picker-width) + 2 * var(--m3x-dialog-padding));
+}
+
+.m3x-date-picker-panel {
+  width: var(--m3x-date-picker-width);
+  max-width: 100%;
+  margin: calc(-1 * var(--m3x-space-16)) auto 0;
+}
+
+.m3x-date-picker-supporting {
+  color: var(--m3x-date-picker-headline-color);
+  font-family: var(--m3x-typescale-label-large-font);
+  font-size: var(--m3x-typescale-label-large-size);
+  line-height: var(--m3x-typescale-label-large-line-height);
+  letter-spacing: var(--m3x-typescale-label-large-tracking);
+  font-weight: var(--m3x-typescale-label-large-weight);
+}
+
+.m3x-date-picker-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--m3x-space-12) 0;
+}
+
+.m3x-date-picker-headline {
+  color: var(--m3x-date-picker-headline-color);
+  font-family: var(--m3x-typescale-headline-large-font);
+  font-size: var(--m3x-typescale-headline-large-size);
+  line-height: var(--m3x-typescale-headline-large-line-height);
+  letter-spacing: var(--m3x-typescale-headline-large-tracking);
+  font-weight: var(--m3x-typescale-headline-large-weight);
+}
+
+.m3x-date-picker-divider {
+  height: 1px;
+  margin: 0 calc(-1 * var(--m3x-dialog-padding));
+  background-color: var(--m3x-date-picker-divider-color);
+}
+
+.m3x-date-picker-nav {
+  display: flex;
+  align-items: center;
+  padding: var(--m3x-space-4) 0;
+}
+
+.m3x-date-picker-nav-space {
+  flex: 1 1 auto;
+}
+
+.m3x-date-picker-month-year,
+.m3x-date-picker-icon-button,
+.m3x-date-picker-day,
+.m3x-date-picker-year {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--m3x-color-on-surface-variant);
+  cursor: pointer;
+}
+
+.m3x-date-picker-month-year {
+  height: var(--m3x-touch-target-size);
+  padding: 0 var(--m3x-space-8);
+  border-radius: var(--m3x-shape-corner-full);
+  font-family: var(--m3x-typescale-label-large-font);
+  font-size: var(--m3x-typescale-label-large-size);
+  letter-spacing: var(--m3x-typescale-label-large-tracking);
+  font-weight: var(--m3x-typescale-label-large-weight);
+}
+
+.m3x-date-picker-icon-button {
+  width: var(--m3x-touch-target-size);
+  height: var(--m3x-touch-target-size);
+  border-radius: var(--m3x-shape-corner-full);
+}
+
+.m3x-date-picker-body {
+  min-height: calc(7 * var(--m3x-touch-target-size));
+}
+
+.m3x-date-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(7, var(--m3x-date-picker-cell-width));
+  justify-content: center;
+  row-gap: var(--m3x-space-4);
+}
+
+.m3x-date-picker-weekday {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--m3x-date-picker-date-size);
+  color: var(--m3x-color-on-surface);
+  font-family: var(--m3x-typescale-body-large-font);
+  font-size: var(--m3x-typescale-body-large-size);
+}
+
+.m3x-date-picker-day {
+  justify-self: center;
+  width: var(--m3x-date-picker-date-size);
+  height: var(--m3x-date-picker-date-size);
+  border-radius: var(--m3x-shape-corner-full);
+  color: var(--m3x-color-on-surface);
+  font-family: var(--m3x-typescale-body-large-font);
+  font-size: var(--m3x-typescale-body-large-size);
+  letter-spacing: var(--m3x-typescale-body-large-tracking);
+}
+
+.m3x-date-picker-day.m3x-date-picker-today {
+  border: 1px solid var(--m3x-date-picker-today-color);
+  color: var(--m3x-date-picker-today-color);
+}
+
+.m3x-date-picker-day.m3x-date-picker-selected,
+.m3x-date-picker-year.m3x-date-picker-selected {
+  border: none;
+  background-color: var(--m3x-date-picker-selected-color);
+  color: var(--m3x-date-picker-selected-label-color);
+}
+
+.m3x-date-picker-day:disabled {
+  color: color-mix(in srgb, var(--m3x-color-on-surface) var(--m3x-disabled-content-opacity), transparent);
+  cursor: default;
+}
+
+.m3x-date-picker-years {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  row-gap: var(--m3x-space-8);
+  max-height: calc(7 * var(--m3x-touch-target-size));
+  overflow-y: auto;
+}
+
+.m3x-date-picker-year {
+  width: var(--m3x-date-picker-year-width);
+  height: var(--m3x-date-picker-year-height);
+  border-radius: var(--m3x-shape-corner-full);
+  font-family: var(--m3x-typescale-body-large-font);
+  font-size: var(--m3x-typescale-body-large-size);
+}
+
+/* State layers and focus */
+.m3x-date-picker-month-year::before,
+.m3x-date-picker-icon-button::before,
+.m3x-date-picker-day::before,
+.m3x-date-picker-year::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-color: currentColor;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.m3x-date-picker-month-year:hover::before,
+.m3x-date-picker-icon-button:hover::before,
+.m3x-date-picker-day:not(:disabled):hover::before,
+.m3x-date-picker-year:hover::before {
+  opacity: var(--m3x-state-hover-opacity);
+}
+
+.m3x-date-picker-month-year:active::before,
+.m3x-date-picker-icon-button:active::before,
+.m3x-date-picker-day:not(:disabled):active::before,
+.m3x-date-picker-year:active::before {
+  opacity: var(--m3x-state-pressed-opacity);
+}
+
+.m3x-date-picker-month-year:focus-visible,
+.m3x-date-picker-icon-button:focus-visible,
+.m3x-date-picker-day:focus-visible,
+.m3x-date-picker-year:focus-visible {
+  outline: var(--m3x-focus-indicator-thickness) solid var(--m3x-focus-indicator-color);
+  outline-offset: var(--m3x-focus-indicator-outer-offset);
+}
+
+.m3x-date-picker-input {
+  padding-top: var(--m3x-space-16);
+}

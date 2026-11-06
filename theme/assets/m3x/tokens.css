@@ -514,4 +514,37 @@
   --m3x-loading-indicator-contained-container-color: var(--m3x-color-primary-container);
   --m3x-loading-indicator-contained-active-color: var(--m3x-color-on-primary-container);
   --m3x-loading-indicator-rotation-duration: 4666ms;
+
+  /* Component: Date picker, modal (DatePickerModalTokens) */
+  --m3x-date-picker-width: 312px;
+  --m3x-date-picker-headline-color: var(--m3x-color-on-surface-variant);
+  --m3x-date-picker-date-size: 40px;
+  --m3x-date-picker-cell-width: 44px;
+  --m3x-date-picker-selected-color: var(--m3x-color-primary);
+  --m3x-date-picker-selected-label-color: var(--m3x-color-on-primary);
+  --m3x-date-picker-today-color: var(--m3x-color-primary);
+  --m3x-date-picker-year-width: 72px;
+  --m3x-date-picker-year-height: 36px;
+  --m3x-date-picker-divider-color: var(--m3x-color-outline-variant);
+
+  /* Component: Time picker (TimePickerTokens) */
+  --m3x-time-picker-width: 312px;
+  --m3x-time-picker-box-width: 96px;
+  --m3x-time-picker-box-width-24h: 114px;
+  --m3x-time-picker-box-height: 80px;
+  --m3x-time-picker-box-shape: var(--m3x-shape-corner-small);
+  --m3x-time-picker-box-color: var(--m3x-color-surface-container-highest);
+  --m3x-time-picker-box-label-color: var(--m3x-color-on-surface);
+  --m3x-time-picker-box-selected-color: var(--m3x-color-primary-container);
+  --m3x-time-picker-box-selected-label-color: var(--m3x-color-on-primary-container);
+  --m3x-time-picker-period-width: 52px;
+  --m3x-time-picker-period-outline: var(--m3x-color-outline);
+  --m3x-time-picker-period-selected-color: var(--m3x-color-tertiary-container);
+  --m3x-time-picker-period-selected-label-color: var(--m3x-color-on-tertiary-container);
+  --m3x-time-picker-period-label-color: var(--m3x-color-on-surface-variant);
+  --m3x-time-picker-dial-size: 256px;
+  --m3x-time-picker-dial-color: var(--m3x-color-surface-container-highest);
+  --m3x-time-picker-dial-label-color: var(--m3x-color-on-surface);
+  --m3x-time-picker-dial-selector-color: var(--m3x-color-primary);
+  --m3x-time-picker-dial-selected-label-color: var(--m3x-color-on-primary);
 }

@@ -1,0 +1,29 @@
+components: []
+container:
+  properties: {html: '<div anvil-name="m3x-time-picker" class="m3x-time-picker" anvil-slot="default"></div>'}
+  type: HtmlTemplate
+custom_component: true
+events:
+- {default_event: true, description: When the user changes the time., name: change}
+- {description: When the time picker is shown on the screen., name: show}
+- {description: When the time picker is removed from the screen., name: hide}
+is_package: true
+properties:
+- {default_binding_prop: true, description: 'The chosen time, as a datetime.time. None when empty.', group: Key Properties, important: true, name: time, type: object}
+- {default_value: Time, description: The label of the field., group: Key Properties, important: true, name: label, type: string}
+- {default_value: true, description: 'If True, the time uses the 24-hour clock (14:30). If False, the 12-hour clock with AM and PM (2:30 PM).', group: Key Properties, important: true, name: format_24h, type: boolean}
+- default_value: outlined
+  description: The look of the field.
+  group: Look and Feel
+  important: true
+  name: appearance
+  options: [filled, outlined]
+  type: enum
+- {default_value: '', description: A line of help text below the field., group: Key Properties, important: false, name: supporting_text, type: string}
+- {default_value: true, description: 'If True, the time can be changed.', group: Interaction, important: true, name: enabled, type: boolean}
+- {default_value: true, description: 'If True, the component will be displayed.', designer_hint: visible, group: Look and Feel, important: true, name: visible, type: boolean}
+- {default_value: '', description: A style for this component defined in CSS and added to Roles., group: Look and Feel, name: role, type: themeRole}
+- {description: Use this property to store any extra data for the component., group: Other, important: false, name: tag, type: object}
+toolbox_item:
+  hidden: true
+  icon: {dark: 'asset:designer_icons/time_picker_dark.svg', light: 'asset:designer_icons/time_picker.svg'}

@@ -1,0 +1,211 @@
+/* Time picker (m3._Components.TimePicker). See docs/components/TimePicker.md.
+   The field is the base theme's TextBox. The dial sits in an m3x Dialog. */
+
+.m3x-time-picker {
+  display: block;
+}
+
+.m3x-time-picker-dialog {
+  --m3x-dialog-min-width: calc(var(--m3x-time-picker-width) + 2 * var(--m3x-dialog-padding));
+}
+
+.m3x-time-picker-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: var(--m3x-time-picker-width);
+  max-width: 100%;
+  margin: calc(-1 * var(--m3x-space-16)) auto 0;
+}
+
+.m3x-time-picker-supporting {
+  align-self: flex-start;
+  margin-bottom: var(--m3x-space-16);
+  color: var(--m3x-color-on-surface-variant);
+  font-family: var(--m3x-typescale-label-medium-font);
+  font-size: var(--m3x-typescale-label-medium-size);
+  line-height: var(--m3x-typescale-label-medium-line-height);
+  letter-spacing: var(--m3x-typescale-label-medium-tracking);
+  font-weight: var(--m3x-typescale-label-medium-weight);
+}
+
+.m3x-time-picker-selectors {
+  display: flex;
+  align-items: center;
+  gap: var(--m3x-space-12);
+  margin-bottom: var(--m3x-space-24);
+}
+
+.m3x-time-picker-box {
+  box-sizing: border-box;
+  width: var(--m3x-time-picker-box-width);
+  height: var(--m3x-time-picker-box-height);
+  margin: 0;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: var(--m3x-time-picker-box-shape);
+  background-color: var(--m3x-time-picker-box-color);
+  color: var(--m3x-time-picker-box-label-color);
+  text-align: center;
+  font-family: var(--m3x-typescale-display-large-font);
+  font-size: var(--m3x-typescale-display-large-size);
+  line-height: var(--m3x-typescale-display-large-line-height);
+  letter-spacing: var(--m3x-typescale-display-large-tracking);
+  font-weight: var(--m3x-typescale-display-large-weight);
+  cursor: pointer;
+  outline: none;
+}
+
+.m3x-time-picker-24h .m3x-time-picker-box {
+  width: var(--m3x-time-picker-box-width-24h);
+}
+
+.m3x-time-picker-box.m3x-time-picker-selected {
+  background-color: var(--m3x-time-picker-box-selected-color);
+  color: var(--m3x-time-picker-box-selected-label-color);
+}
+
+.m3x-time-picker-box:not([readonly]) {
+  cursor: text;
+}
+
+.m3x-time-picker-box:not([readonly]):focus {
+  border-color: var(--m3x-color-primary);
+  background-color: var(--m3x-time-picker-box-selected-color);
+  color: var(--m3x-time-picker-box-selected-label-color);
+}
+
+.m3x-time-picker-box.m3x-time-picker-error {
+  border-color: var(--m3x-color-error);
+}
+
+.m3x-time-picker-box:focus-visible {
+  outline: var(--m3x-focus-indicator-thickness) solid var(--m3x-focus-indicator-color);
+  outline-offset: var(--m3x-focus-indicator-outer-offset);
+}
+
+.m3x-time-picker-separator {
+  color: var(--m3x-color-on-surface);
+  font-family: var(--m3x-typescale-display-large-font);
+  font-size: var(--m3x-typescale-display-large-size);
+  line-height: var(--m3x-typescale-display-large-line-height);
+}
+
+.m3x-time-picker-period {
+  display: flex;
+  flex-direction: column;
+  width: var(--m3x-time-picker-period-width);
+  height: var(--m3x-time-picker-box-height);
+  box-sizing: border-box;
+  border: 1px solid var(--m3x-time-picker-period-outline);
+  border-radius: var(--m3x-shape-corner-small);
+  overflow: hidden;
+}
+
+.m3x-time-picker-period button {
+  flex: 1 1 0;
+  margin: 0;
+  border: none;
+  background: none;
+  color: var(--m3x-time-picker-period-label-color);
+  font-family: var(--m3x-typescale-title-medium-font);
+  font-size: var(--m3x-typescale-title-medium-size);
+  font-weight: var(--m3x-typescale-title-medium-weight);
+  cursor: pointer;
+}
+
+.m3x-time-picker-period button + button {
+  border-top: 1px solid var(--m3x-time-picker-period-outline);
+}
+
+.m3x-time-picker-period button.m3x-time-picker-selected {
+  background-color: var(--m3x-time-picker-period-selected-color);
+  color: var(--m3x-time-picker-period-selected-label-color);
+}
+
+.m3x-time-picker-dial {
+  width: var(--m3x-time-picker-dial-size);
+  height: var(--m3x-time-picker-dial-size);
+  max-width: 100%;
+  border-radius: var(--m3x-shape-corner-full);
+  background-color: var(--m3x-time-picker-dial-color);
+  touch-action: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.m3x-time-picker-dial:focus-visible {
+  outline: var(--m3x-focus-indicator-thickness) solid var(--m3x-focus-indicator-color);
+  outline-offset: var(--m3x-focus-indicator-outer-offset);
+}
+
+.m3x-time-picker-dial-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.m3x-time-picker-hand {
+  stroke: var(--m3x-time-picker-dial-selector-color);
+  stroke-width: 2;
+}
+
+.m3x-time-picker-centre,
+.m3x-time-picker-handle {
+  fill: var(--m3x-time-picker-dial-selector-color);
+}
+
+.m3x-time-picker-label {
+  fill: var(--m3x-time-picker-dial-label-color);
+  text-anchor: middle;
+  dominant-baseline: central;
+  font-family: var(--m3x-typescale-body-large-font);
+  font-size: var(--m3x-typescale-body-large-size);
+  pointer-events: none;
+  user-select: none;
+}
+
+.m3x-time-picker-label.m3x-time-picker-label-selected {
+  fill: var(--m3x-time-picker-dial-selected-label-color);
+}
+
+.m3x-time-picker-mode {
+  align-self: flex-start;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--m3x-touch-target-size);
+  height: var(--m3x-touch-target-size);
+  z-index: 1;
+  margin: var(--m3x-space-16) 0 calc(-1 * var(--m3x-touch-target-size) - var(--m3x-space-24));
+  padding: 0;
+  border: none;
+  border-radius: var(--m3x-shape-corner-full);
+  background: none;
+  color: var(--m3x-color-on-surface-variant);
+  cursor: pointer;
+}
+
+.m3x-time-picker-mode::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-color: currentColor;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.m3x-time-picker-mode:hover::before {
+  opacity: var(--m3x-state-hover-opacity);
+}
+
+.m3x-time-picker-mode:active::before {
+  opacity: var(--m3x-state-pressed-opacity);
+}
+
+.m3x-time-picker-mode:focus-visible {
+  outline: var(--m3x-focus-indicator-thickness) solid var(--m3x-focus-indicator-color);
+  outline-offset: var(--m3x-focus-indicator-outer-offset);
+}

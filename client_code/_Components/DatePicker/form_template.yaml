@@ -1,0 +1,38 @@
+components: []
+container:
+  properties: {html: '<div anvil-name="m3x-date-picker" class="m3x-date-picker" anvil-slot="default"></div>'}
+  type: HtmlTemplate
+custom_component: true
+events:
+- {default_event: true, description: When the user changes the date., name: change}
+- {description: When the date picker is shown on the screen., name: show}
+- {description: When the date picker is removed from the screen., name: hide}
+is_package: true
+properties:
+- {default_binding_prop: true, description: 'The chosen date, as a datetime.date. None when empty.', group: Key Properties, important: true, name: date, type: object}
+- {default_value: Date, description: The label of the field., group: Key Properties, important: true, name: label, type: string}
+- {default_value: '%d/%m/%Y', description: 'How the date is written in the field, using %d (day), %m (month number), %b (short month name), %B (month name), %Y (year) and %y (two-digit year).', group: Key Properties, important: true, name: format, type: string}
+- {description: 'The earliest date that can be chosen, as a datetime.date. None for no limit.', group: Key Properties, important: false, name: min_date, type: object}
+- {description: 'The latest date that can be chosen, as a datetime.date. None for no limit.', group: Key Properties, important: false, name: max_date, type: object}
+- default_value: monday
+  description: The first day of the week in the calendar.
+  group: Key Properties
+  important: false
+  name: week_starts_on
+  options: [monday, sunday]
+  type: enum
+- default_value: outlined
+  description: The look of the field.
+  group: Look and Feel
+  important: true
+  name: appearance
+  options: [filled, outlined]
+  type: enum
+- {default_value: '', description: A line of help text below the field., group: Key Properties, important: false, name: supporting_text, type: string}
+- {default_value: true, description: 'If True, the date can be changed.', group: Interaction, important: true, name: enabled, type: boolean}
+- {default_value: true, description: 'If True, the component will be displayed.', designer_hint: visible, group: Look and Feel, important: true, name: visible, type: boolean}
+- {default_value: '', description: A style for this component defined in CSS and added to Roles., group: Look and Feel, name: role, type: themeRole}
+- {description: Use this property to store any extra data for the component., group: Other, important: false, name: tag, type: object}
+toolbox_item:
+  hidden: true
+  icon: {dark: 'asset:designer_icons/date_picker_dark.svg', light: 'asset:designer_icons/date_picker.svg'}

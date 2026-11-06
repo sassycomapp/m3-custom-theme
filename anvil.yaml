@@ -150,6 +150,12 @@ toolbox_sections:
   - component: {type: m3._Components.TextInput.TextArea}
     icon: {dark: 'asset:designer_icons/textfield_dark.svg', light: 'asset:designer_icons/textfield.svg'}
     title: TextArea
+  - component: {type: m3._Components.DatePicker}
+    icon: {dark: 'asset:designer_icons/date_picker_dark.svg', light: 'asset:designer_icons/date_picker.svg'}
+    title: DatePicker
+  - component: {type: m3._Components.TimePicker}
+    icon: {dark: 'asset:designer_icons/time_picker_dark.svg', light: 'asset:designer_icons/time_picker.svg'}
+    title: TimePicker
   - component: {type: m3._Components.DropdownMenu}
     icon: {dark: 'asset:designer_icons/dropdown_menu_dark.svg', light: 'asset:designer_icons/dropdown_menu.svg'}
     title: DropdownMenu
