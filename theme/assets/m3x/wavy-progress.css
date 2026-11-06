@@ -3,8 +3,9 @@
    The wave is a repeating SVG mask over a block of the indicator colour, so the
    colour always comes from the theme. */
 
-/* The base drawing is hidden while the wavy one is shown */
-.m3x-progress-wavy > svg {
+/* The base drawing is hidden while the wavy one is shown. The wavy circular
+   indicator is itself an svg, so it is excluded by its class. */
+.m3x-progress-wavy > svg:not(.m3x-wavy-circular) {
   display: none;
 }
 
