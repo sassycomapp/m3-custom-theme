@@ -1,0 +1,199 @@
+/* M3 Expressive buttons (E1), added to the base Button through its m3x
+   properties size, shape, toggle and selected. See docs/components/Button.md.
+   size "standard" with shape "round" and toggle off is the base button,
+   untouched by this file. Values: Jetpack Compose ButtonXSmall/Small/Medium/
+   Large/XLargeTokens and the Filled, Tonal and Outlined button tokens. */
+
+/* ---- sizes ------------------------------------------------------------------ */
+
+.anvil-m3-button.m3x-button-xsmall {
+  --m3x-button-height: 32px;
+  --m3x-button-padding: 16px;
+  --m3x-button-icon-size: 20px;
+  --m3x-button-icon-gap: 8px;
+  --m3x-button-square-shape: var(--m3x-shape-corner-medium);
+  --m3x-button-pressed-shape: var(--m3x-shape-corner-small);
+  --m3x-button-outline-width: 1px;
+  --m3x-button-font: var(--m3x-typescale-label-large-font);
+  --m3x-button-font-size: var(--m3x-typescale-label-large-size);
+  --m3x-button-tracking: var(--m3x-typescale-label-large-tracking);
+}
+
+.anvil-m3-button.m3x-button-small {
+  --m3x-button-height: 40px;
+  --m3x-button-padding: 16px;
+  --m3x-button-icon-size: 20px;
+  --m3x-button-icon-gap: 8px;
+  --m3x-button-square-shape: var(--m3x-shape-corner-medium);
+  --m3x-button-pressed-shape: var(--m3x-shape-corner-small);
+  --m3x-button-outline-width: 1px;
+  --m3x-button-font: var(--m3x-typescale-label-large-font);
+  --m3x-button-font-size: var(--m3x-typescale-label-large-size);
+  --m3x-button-tracking: var(--m3x-typescale-label-large-tracking);
+}
+
+.anvil-m3-button.m3x-button-medium {
+  --m3x-button-height: 56px;
+  --m3x-button-padding: 24px;
+  --m3x-button-icon-size: 24px;
+  --m3x-button-icon-gap: 8px;
+  --m3x-button-square-shape: var(--m3x-shape-corner-large);
+  --m3x-button-pressed-shape: var(--m3x-shape-corner-medium);
+  --m3x-button-outline-width: 1px;
+  --m3x-button-font: var(--m3x-typescale-title-medium-font);
+  --m3x-button-font-size: var(--m3x-typescale-title-medium-size);
+  --m3x-button-tracking: var(--m3x-typescale-title-medium-tracking);
+}
+
+.anvil-m3-button.m3x-button-large {
+  --m3x-button-height: 96px;
+  --m3x-button-padding: 48px;
+  --m3x-button-icon-size: 32px;
+  --m3x-button-icon-gap: 12px;
+  --m3x-button-square-shape: var(--m3x-shape-corner-extra-large);
+  --m3x-button-pressed-shape: var(--m3x-shape-corner-large);
+  --m3x-button-outline-width: 2px;
+  --m3x-button-font: var(--m3x-typescale-headline-small-font);
+  --m3x-button-font-size: var(--m3x-typescale-headline-small-size);
+  --m3x-button-tracking: var(--m3x-typescale-headline-small-tracking);
+}
+
+.anvil-m3-button.m3x-button-xlarge {
+  --m3x-button-height: 136px;
+  --m3x-button-padding: 64px;
+  --m3x-button-icon-size: 40px;
+  --m3x-button-icon-gap: 16px;
+  --m3x-button-square-shape: var(--m3x-shape-corner-extra-large);
+  --m3x-button-pressed-shape: var(--m3x-shape-corner-large);
+  --m3x-button-outline-width: 3px;
+  --m3x-button-font: var(--m3x-typescale-headline-large-font);
+  --m3x-button-font-size: var(--m3x-typescale-headline-large-size);
+  --m3x-button-tracking: var(--m3x-typescale-headline-large-tracking);
+}
+
+/* !important where the base sets padding with !important (icon buttons). */
+.anvil-m3-button.m3x-button-sized {
+  box-sizing: border-box;
+  line-height: var(--m3x-button-height);
+  min-height: var(--m3x-button-height);
+  padding: 0 var(--m3x-button-padding) !important;
+  font-family: var(--m3x-button-font);
+  font-size: var(--m3x-button-font-size);
+  letter-spacing: var(--m3x-button-tracking);
+}
+
+.anvil-m3-button.m3x-button-sized > i {
+  font-size: var(--m3x-button-icon-size);
+  line-height: var(--m3x-button-height);
+  padding-right: var(--m3x-button-icon-gap);
+}
+
+.anvil-m3-button.m3x-button-sized.anvil-m3-right-icon > i {
+  padding-left: var(--m3x-button-icon-gap);
+  padding-right: 0;
+}
+
+.anvil-m3-button.m3x-button-sized.anvil-m3-no-text > i {
+  padding: 0 !important;
+}
+
+.anvil-m3-button.m3x-button-sized.anvil-m3-outlined {
+  border-width: var(--m3x-button-outline-width);
+  border-color: var(--m3x-color-outline-variant);
+}
+
+/* ---- shapes ----------------------------------------------------------------- */
+
+.anvil-m3-button.m3x-button-sized,
+.anvil-m3-button.m3x-button-square,
+.anvil-m3-button.m3x-button-toggle {
+  transition: border-radius var(--m3x-motion-duration-short4) var(--m3x-motion-easing-emphasized);
+}
+
+.anvil-m3-button.m3x-button-square {
+  border-radius: var(--m3x-button-square-shape, var(--m3x-shape-corner-medium));
+}
+
+/* Pressing an Expressive button squares its corners a little more. */
+.anvil-m3-button.m3x-button-sized:active:not(:disabled),
+.anvil-m3-button.m3x-button-square:active:not(:disabled),
+.anvil-m3-button.m3x-button-toggle:active:not(:disabled) {
+  border-radius: var(--m3x-button-pressed-shape, var(--m3x-shape-corner-small));
+}
+
+/* Selected: a round toggle button becomes square, a square one becomes round. */
+.anvil-m3-button.m3x-button-toggle.m3x-button-selected {
+  border-radius: var(--m3x-button-square-shape, var(--m3x-shape-corner-medium));
+}
+
+.anvil-m3-button.m3x-button-toggle.m3x-button-square.m3x-button-selected {
+  border-radius: var(--m3x-shape-corner-full);
+}
+
+/* ---- toggle colours ----------------------------------------------------------- */
+
+.anvil-m3-button.m3x-button-toggle.anvil-m3-filled {
+  --m3x-button-toggle-container: var(--m3x-color-surface-container);
+  --m3x-button-toggle-content: var(--m3x-color-on-surface-variant);
+}
+
+.anvil-m3-button.m3x-button-toggle.anvil-m3-filled.m3x-button-selected,
+.anvil-m3-button.m3x-button-toggle.anvil-m3-elevated.m3x-button-selected {
+  --m3x-button-toggle-container: var(--m3x-color-primary);
+  --m3x-button-toggle-content: var(--m3x-color-on-primary);
+}
+
+.anvil-m3-button.m3x-button-toggle.anvil-m3-tonal {
+  --m3x-button-toggle-container: var(--m3x-color-secondary-container);
+  --m3x-button-toggle-content: var(--m3x-color-on-secondary-container);
+}
+
+.anvil-m3-button.m3x-button-toggle.anvil-m3-tonal.m3x-button-selected {
+  --m3x-button-toggle-container: var(--m3x-color-secondary);
+  --m3x-button-toggle-content: var(--m3x-color-on-secondary);
+}
+
+.anvil-m3-button.m3x-button-toggle.anvil-m3-elevated {
+  --m3x-button-toggle-container: var(--m3x-color-surface-container-low);
+  --m3x-button-toggle-content: var(--m3x-color-primary);
+}
+
+.anvil-m3-button.m3x-button-toggle.anvil-m3-outlined {
+  --m3x-button-toggle-container: transparent;
+  --m3x-button-toggle-content: var(--m3x-color-on-surface-variant);
+  border-color: var(--m3x-color-outline-variant);
+}
+
+.anvil-m3-button.m3x-button-toggle.anvil-m3-outlined.m3x-button-selected {
+  --m3x-button-toggle-container: var(--m3x-color-inverse-surface);
+  --m3x-button-toggle-content: var(--m3x-color-inverse-on-surface);
+  border-color: transparent;
+}
+
+/* The base sets hover, focus and press with background shorthands, so the
+   toggle colours set the whole background, with the state layer mixed in. */
+.anvil-m3-button.m3x-button-toggle:is(.anvil-m3-filled, .anvil-m3-tonal, .anvil-m3-elevated, .anvil-m3-outlined) {
+  background: var(--m3x-button-toggle-container);
+  color: var(--m3x-button-toggle-content);
+}
+
+.anvil-m3-button.m3x-button-toggle:is(.anvil-m3-filled, .anvil-m3-tonal, .anvil-m3-elevated, .anvil-m3-outlined):hover {
+  background: color-mix(in srgb, var(--m3x-button-toggle-content) calc(var(--m3x-state-hover-opacity) * 100%), var(--m3x-button-toggle-container));
+}
+
+.anvil-m3-button.m3x-button-toggle:is(.anvil-m3-filled, .anvil-m3-tonal, .anvil-m3-elevated, .anvil-m3-outlined):is(:focus-visible, :active) {
+  background: color-mix(in srgb, var(--m3x-button-toggle-content) calc(var(--m3x-state-pressed-opacity) * 100%), var(--m3x-button-toggle-container));
+}
+
+.anvil-m3-button.m3x-button-toggle:is(.anvil-m3-filled, .anvil-m3-tonal, .anvil-m3-elevated, .anvil-m3-outlined):disabled {
+  background: color-mix(in srgb, var(--m3x-color-on-surface) var(--m3x-disabled-container-opacity), transparent);
+  color: color-mix(in srgb, var(--m3x-color-on-surface) var(--m3x-disabled-content-opacity), transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anvil-m3-button.m3x-button-sized,
+  .anvil-m3-button.m3x-button-square,
+  .anvil-m3-button.m3x-button-toggle {
+    transition: none;
+  }
+}

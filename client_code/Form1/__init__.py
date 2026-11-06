@@ -204,6 +204,9 @@ class Form1(Form1Template):
         self._build_split_buttons()
         self._build_fab_menus()
         self._build_carousels()
+        self._build_expressive_buttons()
+        self._build_expressive_icon_buttons()
+        self._build_expressive_sliders()
         self._build_tokens()
 
     # ---- helpers -------------------------------------------------------
@@ -1116,6 +1119,67 @@ class Form1(Form1Template):
         self._carousel("Uncontained", 8, layout="uncontained", item_height=160)
         self._carousel("Full width", 5, layout="full_width", item_height=260,
                        use_images=True)
+
+    # ---- Expressive buttons, icon buttons and sliders (Step 7) ---------------
+
+    _SIZES = ("xsmall", "small", "medium", "large", "xlarge")
+
+    def _build_expressive_buttons(self):
+        self._expressive_result = m3.Text(text="Expressive: (nothing clicked yet)")
+        self.add_component(self._expressive_result)
+        row = self._section("Button: Expressive sizes (round)")
+        for size in self._SIZES:
+            row.add_component(m3.Button(text=size.title(), icon="mi:send",
+                                        size=size))
+        row = self._section("Button: Expressive sizes (square)")
+        for size in self._SIZES:
+            row.add_component(m3.Button(text=size.title(), size=size,
+                                        shape="square", appearance="tonal"))
+        row = self._section("Button: toggle buttons (click to select)")
+        for appearance in ("filled", "tonal", "elevated", "outlined"):
+            button = m3.Button(text=appearance.title(), icon="mi:bookmark",
+                               appearance=appearance, size="small", toggle=True)
+            button.add_event_handler(
+                "click", lambda sender, **e: setattr(
+                    self._expressive_result, "text",
+                    f"Expressive: {sender.text} button "
+                    f"{'selected' if sender.selected else 'not selected'}"))
+            row.add_component(button)
+        row.add_component(m3.Button(text="Square toggle", appearance="filled",
+                                    size="medium", shape="square", toggle=True,
+                                    selected=True))
+
+    def _build_expressive_icon_buttons(self):
+        row = self._section("IconButton: Expressive sizes")
+        for size in self._SIZES:
+            row.add_component(m3.IconButton(icon="mi:favorite", size=size,
+                                            appearance="filled"))
+        row = self._section("IconButton: narrow, default and wide; square")
+        for width in ("narrow", "default", "wide"):
+            row.add_component(m3.IconButton(icon="mi:edit", size="medium",
+                                            button_width=width, appearance="tonal"))
+        row.add_component(m3.IconButton(icon="mi:edit", size="medium",
+                                        shape="square", appearance="outlined"))
+        row = self._section("ToggleIconButton: Expressive (click to select)")
+        for appearance in ("standard", "filled", "tonal", "outlined"):
+            button = m3.ToggleIconButton(icon="mi:star", size="medium",
+                                         appearance=appearance)
+            button.add_event_handler(
+                "click", lambda sender, **e: setattr(
+                    self._expressive_result, "text",
+                    f"Expressive: icon toggle "
+                    f"{'selected' if sender.selected else 'not selected'}"))
+            row.add_component(button)
+
+    def _build_expressive_sliders(self):
+        self._heading("Slider: Expressive sizes")
+        for size in ("standard", "small", "medium", "large", "xlarge"):
+            self.add_component(m3.Text(text=f"size = {size}"))
+            self.add_component(m3.Slider(size=size, min=0, max=100, value=40,
+                                         step=1, show_label=True))
+        self.add_component(m3.Text(text="size = medium, with markers"))
+        self.add_component(m3.Slider(size="medium", min=0, max=10, value=4,
+                                     step=1, show_markers=True))
 
     # ---- token reference (Step 5) --------------------------------------------
 

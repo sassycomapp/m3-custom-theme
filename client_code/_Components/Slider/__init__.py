@@ -147,6 +147,29 @@ class Slider(SliderTemplate):
                 markers_container_bg.appendChild(marker_bg)
                 markers_container_progress.appendChild(marker_progress)
 
+    # m3x: Expressive sizes (Step 7, E4). "standard" is the base slider, which
+    # already has the Expressive extra-small look (16 px track, 4 x 44 px handle).
+    _M3X_SIZES = {"small": (24, 44), "medium": (40, 52), "large": (56, 68),
+                  "xlarge": (96, 108)}  # Track height, handle height (px).
+
+    @anvil_prop(default_value="standard")
+    @property
+    def size(self, value) -> str:
+        """standard (extra small), or an Expressive size: small, medium, large
+        or xlarge."""
+        node = self.dom_nodes["anvil-m3-slider"]
+        for name in self._M3X_SIZES:
+            node.classList.toggle(f"m3x-slider-{name}", name == value)
+        node.classList.toggle("m3x-slider-sized", value in self._M3X_SIZES)
+        track, handle = self._M3X_SIZES.get(value, (16, 44))
+        # The value label sits on the page body, outside the slider, so its
+        # height above the track is set here.
+        self.label_container.style.marginTop = (
+            f"-{(handle - track) // 2 + 48}px" if value in self._M3X_SIZES else "")
+        if self._mounted:
+            self._on_window_resize()
+
+    #!componentProp(m3.Slider)!1: {name:"size",type:"enum",options:["standard", "small", "medium", "large", "xlarge"],description:"standard (extra small), or an Expressive size."}
     #!componentProp(m3.Slider)!1: {name:"show_label",type:"boolean",description:"If True, display a label above the thumb with the current value."}
     #!componentProp(m3.Slider)!1: {name:"progress_color",type:"color",description:"The colour of the progress bar"}
     #!componentProp(m3.Slider)!1: {name:"visible",type:"boolean",description:"If True, the component will be displayed."}

@@ -108,5 +108,39 @@ class IconButton(IconButtonTemplate):
                 f'anvil-m3-{value}', True
             )
 
+    # m3x: Expressive sizes, widths and shapes (Step 7, E2). The defaults keep
+    # the base look: size "standard", width "default", shape "round".
+    @anvil_prop(default_value="standard")
+    @property
+    def size(self, value) -> str:
+        """standard (the base icon button), or an Expressive size: xsmall,
+        small, medium, large or xlarge."""
+        sized = value not in (None, "", "standard")
+        for key in ('anvil-m3-iconbutton-component-container',
+                    'anvil-m3-iconbutton-container'):
+            node = self.dom_nodes[key]
+            for name in ("xsmall", "small", "medium", "large", "xlarge"):
+                node.classList.toggle(f"m3x-iconbutton-{name}", name == value)
+            node.classList.toggle("m3x-iconbutton-sized", sized)
+
+    @anvil_prop(default_value="default")
+    @property
+    def button_width(self, value) -> str:
+        """narrow, default or wide: the space beside the icon (Expressive sizes)."""
+        node = self.dom_nodes['anvil-m3-iconbutton-container']
+        for name in ("narrow", "wide"):
+            node.classList.toggle(f"m3x-iconbutton-{name}", name == value)
+
+    @anvil_prop(default_value="round")
+    @property
+    def shape(self, value) -> str:
+        """round (a circle or pill) or square (rounded corners)."""
+        self.dom_nodes['anvil-m3-iconbutton-container'].classList.toggle(
+            "m3x-iconbutton-square", value == "square")
+
+    #!componentProp(m3.IconButton)!1: {name:"size",type:"enum",options:["standard", "xsmall", "small", "medium", "large", "xlarge"],description:"standard (the base icon button), or an Expressive size."}
+    #!componentProp(m3.IconButton)!1: {name:"button_width",type:"enum",options:["narrow", "default", "wide"],description:"The space beside the icon."}
+    #!componentProp(m3.IconButton)!1: {name:"shape",type:"enum",options:["round", "square"],description:"round or square."}
+
 
 #!defClass(m3,IconButton,anvil.Component)!:

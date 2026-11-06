@@ -138,6 +138,9 @@ class ToggleIconButton(IconButton):
         self.selected = not self.selected
         anvil.designer.update_component_properties(self, {'selected': self.selected})
 
+    #!componentProp(m3.ToggleIconButton)!1: {name:"size",type:"enum",options:["standard", "xsmall", "small", "medium", "large", "xlarge"],description:"standard (the base icon button), or an Expressive size."}
+    #!componentProp(m3.ToggleIconButton)!1: {name:"button_width",type:"enum",options:["narrow", "default", "wide"],description:"The space beside the icon."}
+    #!componentProp(m3.ToggleIconButton)!1: {name:"shape",type:"enum",options:["round", "square"],description:"round or square; selected switches the shape."}
     #!componentProp(m3.ToggleIconButton)!1: {name:"align",type:"enum",options:["left", "right", "center"],description:"The position of this component in the available space."}
     #!componentProp(m3.ToggleIconButton)!1: {name:"appearance",type:"enum",options:["standard", "filled", "tonal", "outlined"],description:"A predefined style for this component."}
     #!componentProp(m3.ToggleIconButton)!1: {name:"visible",type:"boolean",description:"If True, the component will be displayed."}

@@ -37,6 +37,9 @@ class Button(ButtonTemplate):
         event.preventDefault()
         event.stopPropagation()
         if self.enabled:
+            # m3x: Expressive toggle button (Step 7, E1): a click switches selected.
+            if self.toggle and self.appearance != "text":
+                self.selected = not self.selected
             self.raise_event(
                 "click",
                 event=event,
@@ -179,6 +182,49 @@ class Button(ButtonTemplate):
         if value and value != 'text':
             button.classList.add(f"anvil-m3-{value}")
 
+    # m3x: Expressive sizes, shapes and toggle (Step 7, E1). The defaults keep
+    # the base look: size "standard", shape "round", toggle False.
+    @anvil_prop(default_value="standard")
+    @property
+    def size(self, value) -> str:
+        """standard (the base button), or an Expressive size: xsmall, small,
+        medium, large or xlarge."""
+        button = self.dom_nodes['anvil-m3-button']
+        for name in ("xsmall", "small", "medium", "large", "xlarge"):
+            button.classList.toggle(f"m3x-button-{name}", name == value)
+        button.classList.toggle("m3x-button-sized", value not in (None, "", "standard"))
+
+    @anvil_prop(default_value="round")
+    @property
+    def shape(self, value) -> str:
+        """round (fully rounded ends) or square (rounded corners)."""
+        self.dom_nodes['anvil-m3-button'].classList.toggle(
+            "m3x-button-square", value == "square")
+
+    @anvil_prop(default_value=False)
+    @property
+    def toggle(self, value) -> bool:
+        """If True, the button is a toggle button: a click switches selected."""
+        button = self.dom_nodes['anvil-m3-button']
+        button.classList.toggle("m3x-button-toggle", bool(value))
+        if value:
+            button.setAttribute("aria-pressed", "true" if self.selected else "false")
+        else:
+            button.removeAttribute("aria-pressed")
+
+    @anvil_prop(default_value=False)
+    @property
+    def selected(self, value) -> bool:
+        """If True, a toggle button is shown as selected."""
+        button = self.dom_nodes['anvil-m3-button']
+        button.classList.toggle("m3x-button-selected", bool(value))
+        if self.toggle:
+            button.setAttribute("aria-pressed", "true" if value else "false")
+
+    #!componentProp(m3.Button)!1: {name:"size",type:"enum",options:["standard", "xsmall", "small", "medium", "large", "xlarge"],description:"standard (the base button), or an Expressive size."}
+    #!componentProp(m3.Button)!1: {name:"shape",type:"enum",options:["round", "square"],description:"round or square."}
+    #!componentProp(m3.Button)!1: {name:"toggle",type:"boolean",description:"If True, a click switches selected."}
+    #!componentProp(m3.Button)!1: {name:"selected",type:"boolean",description:"If True, a toggle button is shown as selected."}
     #!componentProp(m3.Button)!1: {name:"align",type:"enum",options:["left", "right", "center"],description:"The position of this component in the available space."}
     #!componentProp(m3.Button)!1: {name:"appearance",type:"enum",options:["filled", "elevated", "tonal", "outlined", "text"],description:"A predefined style for this component."}
     #!componentProp(m3.Button)!1: {name:"visible",type:"boolean",description:"If True, the component will be displayed."}

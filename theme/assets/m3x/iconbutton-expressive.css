@@ -1,0 +1,135 @@
+/* M3 Expressive icon buttons (E2), added to the base IconButton and
+   ToggleIconButton through their m3x properties size, button_width and shape.
+   See docs/components/IconButton.md. size "standard" with shape "round" is the
+   base icon button, untouched by this file. Values: Jetpack Compose
+   XSmall/Small/Medium/Large/XLargeIconButtonTokens. */
+
+/* ---- sizes: height, icon, and the space beside the icon per width ------------ */
+
+.m3x-iconbutton-xsmall {
+  --m3x-iconbutton-height: 32px;
+  --m3x-iconbutton-icon-size: 20px;
+  --m3x-iconbutton-space: 6px;
+  --m3x-iconbutton-space-narrow: 4px;
+  --m3x-iconbutton-space-wide: 10px;
+  --m3x-iconbutton-square-shape: var(--m3x-shape-corner-medium);
+  --m3x-iconbutton-pressed-shape: var(--m3x-shape-corner-small);
+  --m3x-iconbutton-outline-width: 1px;
+}
+
+.m3x-iconbutton-small {
+  --m3x-iconbutton-height: 40px;
+  --m3x-iconbutton-icon-size: 24px;
+  --m3x-iconbutton-space: 8px;
+  --m3x-iconbutton-space-narrow: 4px;
+  --m3x-iconbutton-space-wide: 14px;
+  --m3x-iconbutton-square-shape: var(--m3x-shape-corner-medium);
+  --m3x-iconbutton-pressed-shape: var(--m3x-shape-corner-small);
+  --m3x-iconbutton-outline-width: 1px;
+}
+
+.m3x-iconbutton-medium {
+  --m3x-iconbutton-height: 56px;
+  --m3x-iconbutton-icon-size: 24px;
+  --m3x-iconbutton-space: 16px;
+  --m3x-iconbutton-space-narrow: 12px;
+  --m3x-iconbutton-space-wide: 24px;
+  --m3x-iconbutton-square-shape: var(--m3x-shape-corner-large);
+  --m3x-iconbutton-pressed-shape: var(--m3x-shape-corner-medium);
+  --m3x-iconbutton-outline-width: 1px;
+}
+
+.m3x-iconbutton-large {
+  --m3x-iconbutton-height: 96px;
+  --m3x-iconbutton-icon-size: 32px;
+  --m3x-iconbutton-space: 32px;
+  --m3x-iconbutton-space-narrow: 16px;
+  --m3x-iconbutton-space-wide: 48px;
+  --m3x-iconbutton-square-shape: var(--m3x-shape-corner-extra-large);
+  --m3x-iconbutton-pressed-shape: var(--m3x-shape-corner-large);
+  --m3x-iconbutton-outline-width: 2px;
+}
+
+.m3x-iconbutton-xlarge {
+  --m3x-iconbutton-height: 136px;
+  --m3x-iconbutton-icon-size: 40px;
+  --m3x-iconbutton-space: 48px;
+  --m3x-iconbutton-space-narrow: 32px;
+  --m3x-iconbutton-space-wide: 72px;
+  --m3x-iconbutton-square-shape: var(--m3x-shape-corner-extra-large);
+  --m3x-iconbutton-pressed-shape: var(--m3x-shape-corner-large);
+  --m3x-iconbutton-outline-width: 3px;
+}
+
+/* The touch target grows with the button; small buttons keep 48 px. */
+.anvil-m3-iconbutton-component.m3x-iconbutton-sized {
+  width: auto;
+  height: auto;
+  min-width: var(--m3x-touch-target-size);
+  min-height: var(--m3x-touch-target-size);
+}
+
+.anvil-m3-iconbutton-container.m3x-iconbutton-sized {
+  box-sizing: border-box;
+  width: auto;
+  height: var(--m3x-iconbutton-height);
+  padding: 0 var(--m3x-iconbutton-space);
+}
+
+.anvil-m3-iconbutton-container.m3x-iconbutton-sized.m3x-iconbutton-narrow {
+  padding: 0 var(--m3x-iconbutton-space-narrow);
+}
+
+.anvil-m3-iconbutton-container.m3x-iconbutton-sized.m3x-iconbutton-wide {
+  padding: 0 var(--m3x-iconbutton-space-wide);
+}
+
+/* The icon box is square at the icon size, so the default width makes a
+   button as wide as it is tall. */
+.anvil-m3-iconbutton-container.m3x-iconbutton-sized .anvil-m3-iconbutton-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--m3x-iconbutton-icon-size);
+  height: var(--m3x-iconbutton-icon-size);
+  overflow: hidden;
+  font-size: var(--m3x-iconbutton-icon-size);
+  line-height: 1;
+}
+
+.anvil-m3-iconbutton-container.m3x-iconbutton-sized.anvil-m3-outlined {
+  border-width: var(--m3x-iconbutton-outline-width);
+}
+
+/* ---- shapes -------------------------------------------------------------------- */
+
+.anvil-m3-iconbutton-container.m3x-iconbutton-sized,
+.anvil-m3-iconbutton-container.m3x-iconbutton-square {
+  border-radius: var(--m3x-shape-corner-full);
+  transition: border-radius var(--m3x-motion-duration-short4) var(--m3x-motion-easing-emphasized);
+}
+
+.anvil-m3-iconbutton-container.m3x-iconbutton-square {
+  border-radius: var(--m3x-iconbutton-square-shape, var(--m3x-shape-corner-medium));
+}
+
+.anvil-m3-iconbutton-container.m3x-iconbutton-sized:active:not(:disabled),
+.anvil-m3-iconbutton-container.m3x-iconbutton-square:active:not(:disabled) {
+  border-radius: var(--m3x-iconbutton-pressed-shape, var(--m3x-shape-corner-small));
+}
+
+/* A selected toggle icon button switches shape: round to square, square to round. */
+.anvil-m3-iconbutton-container.m3x-iconbutton-sized.anvil-m3-toggle.anvil-m3-selected {
+  border-radius: var(--m3x-iconbutton-square-shape);
+}
+
+.anvil-m3-iconbutton-container.m3x-iconbutton-square.anvil-m3-toggle.anvil-m3-selected {
+  border-radius: var(--m3x-shape-corner-full);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anvil-m3-iconbutton-container.m3x-iconbutton-sized,
+  .anvil-m3-iconbutton-container.m3x-iconbutton-square {
+    transition: none;
+  }
+}

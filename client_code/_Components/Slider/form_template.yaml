@@ -25,6 +25,13 @@ events:
 - {description: When the component is removed from the screen, name: hide}
 is_package: true
 properties:
+- default_value: standard
+  description: 'm3x: standard (the base slider, M3 Expressive extra small: 16 px track), or an Expressive size: small (24 px track), medium (40 px), large (56 px) or xlarge (96 px).'
+  group: Look and Feel
+  important: true
+  name: size
+  options: [standard, small, medium, large, xlarge]
+  type: enum
 - allow_binding_writeback: true
   binding_writeback_events: [change_end]
   default_value: null

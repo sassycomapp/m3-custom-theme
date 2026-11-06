@@ -1,0 +1,66 @@
+/* M3 Expressive slider sizes (E4), added to the base Slider through its m3x
+   property size. See docs/components/Slider.md. size "standard" is the base
+   slider (the Expressive extra-small size), untouched by this file. Values:
+   the M3 slider specification; extra small matches Jetpack Compose SliderTokens. */
+
+.anvil-m3-slider.m3x-slider-small {
+  --m3x-slider-track-height: 24px;
+  --m3x-slider-handle-height: 44px;
+  --m3x-slider-track-shape: var(--m3x-shape-corner-small);
+}
+
+.anvil-m3-slider.m3x-slider-medium {
+  --m3x-slider-track-height: 40px;
+  --m3x-slider-handle-height: 52px;
+  --m3x-slider-track-shape: var(--m3x-shape-corner-medium);
+}
+
+.anvil-m3-slider.m3x-slider-large {
+  --m3x-slider-track-height: 56px;
+  --m3x-slider-handle-height: 68px;
+  --m3x-slider-track-shape: var(--m3x-shape-corner-large);
+}
+
+.anvil-m3-slider.m3x-slider-xlarge {
+  --m3x-slider-track-height: 96px;
+  --m3x-slider-handle-height: 108px;
+  --m3x-slider-track-shape: var(--m3x-shape-corner-extra-large);
+}
+
+/* Room above and below the track for the taller handle */
+.anvil-m3-slider.m3x-slider-sized {
+  padding: calc((var(--m3x-slider-handle-height) - var(--m3x-slider-track-height)) / 2 + 1px) 0;
+}
+
+.anvil-m3-slider.m3x-slider-sized input,
+.anvil-m3-slider.m3x-slider-sized .anvil-m3-slider-track-container {
+  height: var(--m3x-slider-track-height);
+}
+
+.anvil-m3-slider.m3x-slider-sized input::-webkit-slider-runnable-track {
+  height: var(--m3x-slider-track-height);
+}
+
+.anvil-m3-slider.m3x-slider-sized input::-webkit-slider-thumb {
+  height: var(--m3x-slider-handle-height);
+  margin-top: calc((var(--m3x-slider-track-height) - var(--m3x-slider-handle-height)) / 2);
+}
+
+.anvil-m3-slider.m3x-slider-sized input::-moz-range-thumb {
+  height: var(--m3x-slider-handle-height);
+}
+
+/* Outer ends take the size's corners; the ends beside the handle stay 2 px. */
+.anvil-m3-slider.m3x-slider-sized .anvil-m3-slider-progress {
+  border-radius: var(--m3x-slider-track-shape) 2px 2px var(--m3x-slider-track-shape);
+}
+
+.anvil-m3-slider.m3x-slider-sized .anvil-m3-slider-background {
+  border-radius: 2px var(--m3x-slider-track-shape) var(--m3x-slider-track-shape) 2px;
+}
+
+/* Markers stay centred on the taller track. */
+.anvil-m3-slider.m3x-slider-sized .anvil-m3-slider-markers-container-bg,
+.anvil-m3-slider.m3x-slider-sized .anvil-m3-slider-markers-container-progress {
+  top: calc((var(--m3x-slider-track-height) - 4px) / 2);
+}

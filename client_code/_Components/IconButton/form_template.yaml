@@ -25,6 +25,27 @@ properties:
   options: [standard, filled, tonal, outlined]
   type: enum
 - {description: Use this property to store any extra data for the component., group: Other, important: false, name: tag, type: object}
+- default_value: standard
+  description: 'm3x: standard (the base icon button), or an M3 Expressive size: xsmall (32 px), small (40 px), medium (56 px), large (96 px) or xlarge (136 px).'
+  group: Look and Feel
+  important: true
+  name: size
+  options: [standard, xsmall, small, medium, large, xlarge]
+  type: enum
+- default_value: default
+  description: 'm3x: narrow, default or wide: the space beside the icon, for Expressive sizes.'
+  group: Look and Feel
+  important: false
+  name: button_width
+  options: [narrow, default, wide]
+  type: enum
+- default_value: round
+  description: 'm3x: round (a circle or pill) or square (rounded corners). A selected ToggleIconButton switches to the other shape.'
+  group: Look and Feel
+  important: true
+  name: shape
+  options: [round, square]
+  type: enum
 - default_value: mi:star
   description: Icon to display on button
   group: Key Properties
