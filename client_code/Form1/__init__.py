@@ -1072,7 +1072,8 @@ class Form1(Form1Template):
                          ("#00639B", "#CDE5FF"), ("#8C4A00", "#FFDCC2"))
 
     def _picture(self, number):
-        """A generated picture: a diagonal two-colour gradient with a number."""
+        """A generated picture (as a data address): a diagonal two-colour
+        gradient with a number."""
         dark, light = self._CAROUSEL_COLOURS[number % len(self._CAROUSEL_COLOURS)]
         svg = (
             "<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300'>"
@@ -1082,14 +1083,19 @@ class Form1(Form1Template):
             "<rect width='400' height='300' fill='url(#g)'/>"
             "<text x='200' y='170' font-family='sans-serif' font-size='64' "
             f"text-anchor='middle' fill='white'>{number + 1}</text></svg>")
-        uri = "data:image/svg+xml;charset=utf-8," + svg.replace("#", "%23")
-        return Image(source=uri, display_mode="zoom_to_fill")
+        return "data:image/svg+xml;charset=utf-8," + svg.replace("#", "%23")
 
-    def _carousel(self, title, count, **props):
+    def _carousel(self, title, count, use_images=False, **props):
         self._heading(title, style="title", scale="medium")
-        carousel = m3.Carousel(label=title, **props)
-        for number in range(count):
-            carousel.add_component(self._picture(number))
+        if use_images:
+            # The images property: the carousel makes the Image items itself.
+            carousel = m3.Carousel(label=title, **props,
+                                   images=[self._picture(n) for n in range(count)])
+        else:
+            # Image components added one by one; the carousel sets them to fill.
+            carousel = m3.Carousel(label=title, **props)
+            for number in range(count):
+                carousel.add_component(Image(source=self._picture(number)))
         carousel.add_event_handler(
             "item_click", lambda index, **e: setattr(
                 self._carousel_result, "text",
@@ -1108,7 +1114,8 @@ class Form1(Form1Template):
         self._carousel("Hero", 6, layout="hero")
         self._carousel("Center-aligned hero", 6, layout="center_hero")
         self._carousel("Uncontained", 8, layout="uncontained", item_height=160)
-        self._carousel("Full width", 5, layout="full_width", item_height=260)
+        self._carousel("Full width", 5, layout="full_width", item_height=260,
+                       use_images=True)
 
     # ---- token reference (Step 5) --------------------------------------------
 

@@ -7,7 +7,7 @@ moves: large items in front, a medium and a small item hinting at what comes
 next. The user moves the carousel by dragging, swiping, scrolling sideways with
 a trackpad or the mouse wheel (with Shift), or with the arrow keys.
 """
-from anvil import HtmlTemplate
+from anvil import HtmlTemplate, Image
 from anvil.designer import in_designer
 from anvil.js import get_dom_node, window
 from anvil.js.window import ResizeObserver
@@ -53,6 +53,7 @@ class Carousel(CarouselTemplate):
         self.tag = ComponentTag()
         self._props = properties
         self._width = 0
+        self._generated = []  # Image items made from the images property.
         self._gap, self._padding = 8, 16
         self._small_wide, self._small_narrow = 56, 40
         self._drag = None
@@ -75,6 +76,9 @@ class Carousel(CarouselTemplate):
 
     def add_component(self, component, slot=_SLOT, **layout_props):
         """Add an item (any component, usually an Image) to the carousel."""
+        if isinstance(component, Image):
+            # Pictures always fill their item, cropped, never stretched.
+            component.display_mode = "zoom_to_fill"
         super().add_component(component, slot=slot, **layout_props)
         get_dom_node(component).classList.add("m3x-carousel-item")
         self._arrange()
@@ -317,6 +321,23 @@ class Carousel(CarouselTemplate):
         if hasattr(self, "_width"):
             self._arrange()
 
+    @anvil_prop(default_value=[])
+    @property
+    def images(self, value) -> list:
+        """Pictures to show, one per line: an asset path such as
+        _/theme/photo.jpg, a web address, or (from code) a Media object."""
+        for image in getattr(self, "_generated", []):
+            image.remove_from_parent()
+        self._generated = []
+        for source in value or []:
+            if isinstance(source, str):
+                source = source.strip()
+                if not source:
+                    continue
+            image = Image(source=source)
+            self._generated.append(image)
+            self.add_component(image)
+
     @anvil_prop(default_value=186)
     @property
     def item_width(self, value) -> float:
@@ -353,6 +374,7 @@ class Carousel(CarouselTemplate):
     #!componentEvent(m3.Carousel)!1: {name: "hide", description: "When the carousel is removed from the screen."}
 
     #!componentProp(m3.Carousel)!1: {name:"layout",type:"enum",options:["multi_browse", "hero", "center_hero", "uncontained", "full_width"],description:"How the items are sized and arranged."}
+    #!componentProp(m3.Carousel)!1: {name:"images",type:"text[]",description:"Pictures to show, one per line: an asset path such as _/theme/photo.jpg, or a web address."}
     #!componentProp(m3.Carousel)!1: {name:"item_width",type:"number",description:"The width large items aim for, or every item's width when uncontained."}
     #!componentProp(m3.Carousel)!1: {name:"item_height",type:"number",description:"The height of the items in pixels."}
     #!componentProp(m3.Carousel)!1: {name:"index",type:"number",description:"The position of the first large item, from 0."}
