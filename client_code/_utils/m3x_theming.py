@@ -18,11 +18,13 @@ from anvil.js import window
 from .m3x_presets import BY_PRIMARY, PALETTES
 
 MODES = ("light", "dark", "system")
+MENU_STYLES = ("baseline", "standard", "vibrant")
 
 _PALETTE_ATTRIBUTE = "data-m3x-palette"
 _MODE_ATTRIBUTE = "data-m3x-theme"
 _PALETTE_KEY = "m3x-palette"
 _MODE_KEY = "m3x-theme"
+_MENU_ATTRIBUTE = "data-m3x-menu-style"
 
 
 def _root():
@@ -94,6 +96,32 @@ def is_dark():
     if mode == "system":
         return bool(window.matchMedia("(prefers-color-scheme: dark)").matches)
     return mode == "dark"
+
+
+def get_menu_style():
+    """The menu style in use: "baseline", "standard" or "vibrant"."""
+    value = _root().getAttribute(_MENU_ATTRIBUTE)
+    return value if value in MENU_STYLES else "baseline"
+
+
+def set_menu_style(style):
+    """Choose the look of every menu in the app (button, icon button, avatar and
+    dropdown menus):
+
+        baseline  the base M3 menu (the default).
+        standard  the M3 Expressive menu: rounded, in Surface Container Low;
+                  selected items in Tertiary Container.
+        vibrant   the M3 Expressive menu in Tertiary Container; selected items
+                  in Tertiary.
+
+    Call it once at start-up, like set_palette. See docs/components/Menu.md.
+    """
+    if style not in MENU_STYLES:
+        raise ValueError(f"Unknown menu style {style!r}. Choose one of {MENU_STYLES}")
+    if style == "baseline":
+        _root().removeAttribute(_MENU_ATTRIBUTE)
+    else:
+        _root().setAttribute(_MENU_ATTRIBUTE, style)
 
 
 def apply_saved():

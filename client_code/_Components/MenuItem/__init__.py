@@ -129,6 +129,19 @@ class MenuItem(MenuItemTemplate):
             }
         ]
 
+    # m3x: Expressive selected menu item (Step 7, E6). The default keeps the base look.
+    @anvil_prop(default_value=False)
+    @property
+    def selected(self, value) -> bool:
+        """If True, the item is shown as selected (for example the current choice)."""
+        container = self.dom_nodes["anvil-m3-menuItem-container"]
+        container.classList.toggle("m3x-menuitem-selected", bool(value))
+        if value:
+            container.setAttribute("aria-current", "true")
+        else:
+            container.removeAttribute("aria-current")
+
+    #!componentProp(m3.MenuItem)!1: {name:"selected",type:"boolean",description:"If True, the item is shown as selected."}
     #!componentProp(m3.MenuItem)!1: {name:"visible",type:"boolean",description:"If True, the component will be displayed."}
     #!componentProp(m3.MenuItem)!1: {name:"enabled",type:"boolean",description:"If True, this component allows user interaction."}
     #!componentProp(m3.MenuItem)!1: {name:"role",type:"themeRole",description:"A style for this component defined in CSS and added to Roles"}

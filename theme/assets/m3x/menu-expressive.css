@@ -1,0 +1,123 @@
+/* M3 Expressive menus (E6). One app-wide style, chosen with
+   m3x_theming.set_menu_style("standard" | "vibrant"), which sets
+   data-m3x-menu-style on the page's root element. Without it (baseline) the
+   base menus are untouched, apart from the selected item, which follows the
+   baseline M3 menu tokens. See docs/components/Menu.md. Values: Jetpack Compose
+   MenuTokens, StandardMenuTokens, VibrantMenuTokens and SegmentedMenuTokens. */
+
+/* ---- baseline: a selected item (MenuItem.selected) ---------------------------- */
+
+.anvil-m3-menuItem-container.m3x-menuitem-selected {
+  background: var(--m3x-color-secondary-container);
+}
+
+.anvil-m3-menuItem-container.m3x-menuitem-selected .anvil-m3-menuItem-core,
+.anvil-m3-menuItem-container.m3x-menuitem-selected .anvil-m3-menuItem-aux {
+  color: var(--m3x-color-on-secondary-container);
+}
+
+/* ---- Expressive: shared shape and spacing -------------------------------------- */
+
+:root[data-m3x-menu-style] {
+  --m3x-menu-item-height: 44px;
+  --m3x-menu-item-padding: 16px;
+  --m3x-menu-item-gap: 12px;
+  --m3x-menu-item-icon-size: 20px;
+  --m3x-menu-container-padding: 4px;
+  --m3x-menu-container-shape: var(--m3x-shape-corner-large);
+  --m3x-menu-item-shape: var(--m3x-shape-corner-extra-small);
+  --m3x-menu-item-selected-shape: var(--m3x-shape-corner-medium);
+}
+
+:root[data-m3x-menu-style="standard"] {
+  --m3x-menu-container: var(--m3x-color-surface-container-low);
+  --m3x-menu-label: var(--m3x-color-on-surface);
+  --m3x-menu-icon: var(--m3x-color-on-surface-variant);
+  --m3x-menu-selected-container: var(--m3x-color-tertiary-container);
+  --m3x-menu-selected-content: var(--m3x-color-on-tertiary-container);
+}
+
+:root[data-m3x-menu-style="vibrant"] {
+  --m3x-menu-container: var(--m3x-color-tertiary-container);
+  --m3x-menu-label: var(--m3x-color-on-tertiary-container);
+  --m3x-menu-icon: var(--m3x-color-on-tertiary-container);
+  --m3x-menu-selected-container: var(--m3x-color-tertiary);
+  --m3x-menu-selected-content: var(--m3x-color-on-tertiary);
+}
+
+:root[data-m3x-menu-style] :is(.anvil-m3-menu-items-container, .anvil-m3-buttonMenu-items-container, .anvil-m3-dropdownMenu-items-container) {
+  padding: var(--m3x-menu-container-padding);
+  border-radius: var(--m3x-menu-container-shape);
+  background-color: var(--m3x-menu-container);
+  box-shadow: var(--m3x-elevation-level2);
+}
+
+:root[data-m3x-menu-style] .anvil-m3-menuItem-container {
+  height: var(--m3x-menu-item-height);
+  padding: 0 var(--m3x-menu-item-padding);
+  border-radius: var(--m3x-menu-item-shape);
+  background: transparent;
+  font-family: var(--m3x-typescale-body-large-font);
+  font-size: var(--m3x-typescale-body-large-size);
+  letter-spacing: var(--m3x-typescale-body-large-tracking);
+  transition: border-radius var(--m3x-motion-duration-short4) var(--m3x-motion-easing-emphasized);
+}
+
+:root[data-m3x-menu-style] .anvil-m3-menuItem-leadingIcon {
+  margin-right: var(--m3x-menu-item-gap);
+  font-size: var(--m3x-menu-item-icon-size);
+}
+
+:root[data-m3x-menu-style] .anvil-m3-menuItem-core {
+  color: var(--m3x-menu-label);
+}
+
+:root[data-m3x-menu-style] .anvil-m3-menuItem-aux {
+  color: var(--m3x-menu-icon);
+}
+
+/* Hover and keyboard focus: a state layer in the label colour */
+:root[data-m3x-menu-style] .anvil-m3-menuItem-container:hover,
+:root[data-m3x-menu-style] .anvil-m3-menuItem-container-keyboardHover {
+  background: color-mix(in srgb, var(--m3x-menu-label) calc(var(--m3x-state-hover-opacity) * 100%), transparent);
+  border-radius: var(--m3x-menu-item-selected-shape);
+}
+
+:root[data-m3x-menu-style] .anvil-m3-menuItem-container:hover .anvil-m3-menuItem-core,
+:root[data-m3x-menu-style] .anvil-m3-menuItem-container-keyboardHover .anvil-m3-menuItem-core {
+  color: var(--m3x-menu-label);
+}
+
+:root[data-m3x-menu-style] .anvil-m3-menuItem-container:hover .anvil-m3-menuItem-aux,
+:root[data-m3x-menu-style] .anvil-m3-menuItem-container-keyboardHover .anvil-m3-menuItem-aux {
+  color: var(--m3x-menu-icon);
+}
+
+/* Selected: a rounded item in the selected colours */
+:root[data-m3x-menu-style] .anvil-m3-menuItem-container.m3x-menuitem-selected {
+  background: var(--m3x-menu-selected-container);
+  border-radius: var(--m3x-menu-item-selected-shape);
+}
+
+:root[data-m3x-menu-style] .anvil-m3-menuItem-container.m3x-menuitem-selected:hover {
+  background: color-mix(in srgb, var(--m3x-menu-selected-content) calc(var(--m3x-state-hover-opacity) * 100%), var(--m3x-menu-selected-container));
+}
+
+:root[data-m3x-menu-style] .anvil-m3-menuItem-container.m3x-menuitem-selected :is(.anvil-m3-menuItem-core, .anvil-m3-menuItem-aux) {
+  color: var(--m3x-menu-selected-content);
+}
+
+/* Disabled: the base forces its own background with !important. */
+:root[data-m3x-menu-style] .anvil-m3-menuItem-container.anvil-m3-menuItem-disabled {
+  background: transparent !important;
+}
+
+:root[data-m3x-menu-style] .anvil-m3-menuItem-container.anvil-m3-menuItem-disabled :is(.anvil-m3-menuItem-core, .anvil-m3-menuItem-aux) {
+  color: var(--m3x-menu-label) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root[data-m3x-menu-style] .anvil-m3-menuItem-container {
+    transition: none;
+  }
+}

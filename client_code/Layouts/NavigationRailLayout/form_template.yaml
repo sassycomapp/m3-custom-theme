@@ -9,6 +9,8 @@ container:
         <!-- <div anvil-name="anvil-m3-drawer-close-btn" class="anvil-m3-drawer-close-btn"> -->
           <!-- <span class="material-symbols-outlined">menu_open</span>
         </div> -->
+        <!-- m3x: Expressive rail menu button (Step 7, E5); hidden unless rail_style is expressive -->
+        <button anvil-name="m3x-rail-menu-btn" class="m3x-rail-menu-btn" type="button" aria-expanded="false" aria-label="Expand navigation"><span anvil-name="m3x-rail-menu-icon" class="material-symbols-outlined">menu</span></button>
         <div class="anvil-m3-navigation-rail-content" anvil-slot="anvil-m3-navigation-rail-content">
             <p anvil-if-slot-empty="anvil-m3-navigation-rail-content" class="anvil-designer-only" style="font-style: italic;">Add navigation links here</p>
         </div>
@@ -59,6 +61,13 @@ properties:
   name: navigation_rail_vertical_align
   options: [top, center, bottom]
   type: enum
+- default_value: standard
+  description: 'm3x: standard (the base 80 px rail) or expressive (the M3 Expressive rail: 96 px wide, with a menu button that expands it to 220 px with full labels). Phone widths keep the base behaviour.'
+  important: true
+  name: rail_style
+  options: [standard, expressive]
+  type: enum
+- {default_value: false, description: 'm3x: If True, an expressive rail starts expanded. The menu button at the top of the rail switches it.', important: true, name: rail_expanded, type: boolean}
 - default_value: ['8', '8', '8', '8']
   description: The padding (pixels) around the content of the page
   group: Layout

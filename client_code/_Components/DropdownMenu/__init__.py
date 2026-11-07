@@ -506,6 +506,9 @@ class DropdownMenu(DropdownMenuTemplate):
                 self.selection_field.text = "<Invalid value>"
             else:
                 self.selection_field.text = ""
+        # m3x: the current choice is shown as a selected menu item (Step 7, E6).
+        for child in self._children:
+            child.selected = value is not None and child.tag.value == value
 
     @anvil_prop
     @property

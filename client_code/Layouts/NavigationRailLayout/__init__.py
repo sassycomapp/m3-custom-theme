@@ -29,6 +29,10 @@ class NavigationRailLayout(NavigationRailLayoutTemplate):
         window.document.addEventListener('scroll', self._add_scroll_class)
         self.nav_drawer_open_btn.addEventListener('click', self.open_nav_drawer)
         self.nav_drawer_scrim.addEventListener('click', self.hide_nav_drawer)
+        # m3x: Expressive rail menu button (Step 7, E5).
+        self.dom_nodes['m3x-rail-menu-btn'].addEventListener(
+            'click', lambda e: setattr(self, 'rail_expanded', not self.rail_expanded)
+        )
 
     #!defMethod(_)!2: "Open the navigation drawer." ["open_nav_drawer"]
     def open_nav_drawer(self, e=None):
@@ -162,6 +166,33 @@ class NavigationRailLayout(NavigationRailLayoutTemplate):
         ]:
             self.nav_rail.classList.remove(c)
         self.nav_rail.classList.add(f"anvil-m3-align-{value}")
+
+    # m3x: Expressive rail (Step 7, E5). The defaults keep the base rail.
+    @anvil_prop(default_value="standard")
+    @property
+    def rail_style(self, value) -> str:
+        """standard (the base rail) or expressive (96 px, expandable)."""
+        expressive = value == "expressive"
+        for node in (self.nav_rail, self.content):
+            node.classList.toggle('m3x-rail-expressive', expressive)
+
+    @anvil_prop(default_value=False)
+    @property
+    def rail_expanded(self, value) -> bool:
+        """If True, an expressive rail is expanded, with full labels."""
+        for node in (self.nav_rail, self.content):
+            node.classList.toggle('m3x-rail-expanded', bool(value))
+        button = self.dom_nodes['m3x-rail-menu-btn']
+        button.setAttribute('aria-expanded', 'true' if value else 'false')
+        button.setAttribute(
+            'aria-label', 'Collapse navigation' if value else 'Expand navigation'
+        )
+        self.dom_nodes['m3x-rail-menu-icon'].innerText = (
+            'menu_open' if value else 'menu'
+        )
+
+    #!componentProp(m3.NavigationRailLayout)!1: {name:"rail_style",type:"enum",options:["standard", "expressive"],description:"standard (the base rail) or expressive (96 px, expandable)."}
+    #!componentProp(m3.NavigationRailLayout)!1: {name:"rail_expanded",type:"boolean",description:"If True, an expressive rail is expanded, with full labels."}
 
     @property
     def show_sidesheet(self):

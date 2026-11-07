@@ -649,4 +649,23 @@
   --m3x-carousel-small-item-width: 56px;
   --m3x-carousel-small-item-min-width: 40px;
   --m3x-carousel-duration: var(--m3x-motion-duration-medium2);
+
+  /* Component: Expressive navigation rail (NavigationRailCollapsedTokens,
+     NavigationRailExpandedTokens, NavigationRail*ItemTokens, NavigationRailColorTokens) */
+  --m3x-rail-collapsed-width: 96px;
+  --m3x-rail-expanded-width: 220px;
+  --m3x-rail-container-color: var(--m3x-color-surface);
+  --m3x-rail-menu-top-space: 16px;
+  --m3x-rail-menu-start-space: 24px;
+  --m3x-rail-items-top-space: 20px;
+  --m3x-rail-item-vertical-space: 4px;
+  --m3x-rail-item-bottom-space: 6px;
+  --m3x-rail-indicator-width: 56px;
+  --m3x-rail-icon-label-space: 4px;
+  --m3x-rail-expanded-indicator-height: 56px;
+  --m3x-rail-expanded-item-space: 16px;
+  --m3x-rail-expanded-icon-label-space: 8px;
+  --m3x-rail-active-indicator-color: var(--m3x-color-secondary-container);
+  --m3x-rail-active-label-color: var(--m3x-color-secondary);
+  --m3x-rail-duration: var(--m3x-motion-duration-medium2);
 }

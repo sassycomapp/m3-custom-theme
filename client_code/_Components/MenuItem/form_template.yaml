@@ -16,6 +16,7 @@ events:
 - {default_event: true, description: When the component is clicked, name: click}
 is_package: true
 properties:
+- {default_value: false, description: 'm3x: If True, the item is shown as selected, for example the current choice. Its colours follow the app menu style (m3x_theming.set_menu_style).', group: Key Properties, important: true, name: selected, type: boolean}
 - default_value: ''
   description: The leading icon to display on this component.
   group: Key Properties

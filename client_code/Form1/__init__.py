@@ -207,6 +207,9 @@ class Form1(Form1Template):
         self._build_expressive_buttons()
         self._build_expressive_icon_buttons()
         self._build_expressive_sliders()
+        self._build_expressive_rail()
+        self._build_expressive_menus()
+        self._build_card_check()
         self._build_tokens()
 
     # ---- helpers -------------------------------------------------------
@@ -1180,6 +1183,83 @@ class Form1(Form1Template):
         self.add_component(m3.Text(text="size = medium, with markers"))
         self.add_component(m3.Slider(size="medium", min=0, max=10, value=4,
                                      step=1, show_markers=True))
+
+    # ---- Expressive rail, menus and cards (Step 7) ---------------------------
+
+    def _build_expressive_rail(self):
+        row = self._section("NavigationRailLayout: Expressive rail")
+        button = m3.Button(text="Open the Expressive rail demo", appearance="filled")
+        button.add_event_handler("click", lambda **e: open_form(self._rail_demo()))
+        row.add_component(button)
+
+    def _rail_demo(self):
+        """A NavigationRailLayout with the Expressive rail, built in code."""
+        from ..Layouts.NavigationRailLayout import NavigationRailLayout
+        layout = NavigationRailLayout(
+            rail_style="expressive", rail_expanded=False,
+            navigation_rail_collapse_to="modal_navigation_drawer",
+            navigation_rail_vertical_align="top", show_sidesheet=False,
+            content_padding=["16", "16", "16", "16"])
+        status = m3.Text(text="Rail: Home is selected.")
+        links = []
+
+        def choose(sender, **e):
+            for link in links:
+                link.selected = link is sender
+            status.text = f"Rail: {sender.text} is selected."
+
+        for icon, text, badge in (("home", "Home", False), ("search", "Search", False),
+                                  ("library_books", "Library", True),
+                                  ("settings", "Settings", False)):
+            extra = {"badge": True, "badge_count": 3} if badge else {}
+            link = m3.NavigationLink(icon=f"mi:{icon}", text=text,
+                                     selected=text == "Home", **extra)
+            link.add_event_handler("click", choose)
+            links.append(link)
+            layout.add_component(link, slot="anvil-m3-navigation-rail-content")
+        layout.add_component(m3.Heading(text="Expressive rail demo", style="headline",
+                                        scale="small"), slot="anvil-m3-content")
+        layout.add_component(m3.Text(
+            text="Click the menu button at the top of the rail to expand it to "
+                 "220 px with full labels; click it again to collapse it to 96 px."),
+            slot="anvil-m3-content")
+        layout.add_component(status, slot="anvil-m3-content")
+        back = m3.Button(text="Back to the demo page", appearance="outlined")
+        back.add_event_handler("click", lambda **e: open_form("Form1"))
+        layout.add_component(back, slot="anvil-m3-content")
+        return layout
+
+    def _build_expressive_menus(self):
+        row = self._section("Menus: app-wide menu style (affects every menu on this page)")
+        status = m3.Text(text=f"Menu style: {m3x_theming.get_menu_style()}")
+        for style in m3x_theming.MENU_STYLES:
+            button = m3.Button(text=style.title(), appearance="outlined")
+
+            def pick(style=style, **e):
+                m3x_theming.set_menu_style(style)
+                status.text = f"Menu style: {style}"
+            button.add_event_handler("click", pick)
+            row.add_component(button)
+        self.add_component(status)
+        row = self._section("Menus: a selected item and a dropdown")
+        row.add_component(m3.ButtonMenu(
+            text="Sort by", appearance="tonal",
+            menu_items=[m3.MenuItem(text="Name", leading_icon="mi:sort_by_alpha"),
+                        m3.MenuItem(text="Date", leading_icon="mi:event", selected=True),
+                        m3.MenuItem(text="Size", leading_icon="mi:straighten"),
+                        m3.MenuItem(text="Disabled", enabled=False)]))
+        dropdown = m3.DropdownMenu(label="Fruit", items=["Apple", "Banana", "Cherry"])
+        row.add_component(dropdown)
+        dropdown.selected_value = "Banana"
+
+    def _build_card_check(self):
+        row = self._section("Card: disabled outlined card (Outline border)")
+        card = m3.InteractiveCard(appearance="outlined", enabled=False)
+        card.add_component(m3.Text(text="Disabled outlined card"))
+        row.add_component(card)
+        card = m3.InteractiveCard(appearance="outlined")
+        card.add_component(m3.Text(text="Enabled outlined card"))
+        row.add_component(card)
 
     # ---- token reference (Step 5) --------------------------------------------
 

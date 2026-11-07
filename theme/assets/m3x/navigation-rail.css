@@ -1,0 +1,199 @@
+/* M3 Expressive navigation rail (E5), added to the base NavigationRailLayout
+   through its m3x properties rail_style and rail_expanded. See
+   docs/components/NavigationRail.md. rail_style "standard" is the base rail,
+   untouched by this file. Phone widths (under 600 px) keep the base behaviour
+   (bottom app bar or modal drawer). Values: Jetpack Compose
+   NavigationRailCollapsedTokens, NavigationRailExpandedTokens,
+   NavigationRailVerticalItemTokens, NavigationRailHorizontalItemTokens and
+   NavigationRailColorTokens. */
+
+.m3x-rail-menu-btn {
+  display: none;
+}
+
+@media (min-width: 600px) {
+  .anvil-m3-navigation-rail.m3x-rail-expressive,
+  .anvil-m3-content.m3x-rail-expressive {
+    --m3x-rail-width: var(--m3x-rail-collapsed-width);
+  }
+
+  .anvil-m3-navigation-rail.m3x-rail-expressive.m3x-rail-expanded,
+  .anvil-m3-content.m3x-rail-expressive.m3x-rail-expanded {
+    --m3x-rail-width: var(--m3x-rail-expanded-width);
+  }
+
+  /* !important: the base fixes the rail at 80 px with !important. */
+  .anvil-m3-navigation-rail.m3x-rail-expressive {
+    width: var(--m3x-rail-width) !important;
+    justify-content: flex-start;
+    background: var(--m3x-rail-container-color);
+    transition: width var(--m3x-rail-duration) var(--m3x-motion-easing-emphasized);
+  }
+
+  .anvil-m3-content.anvil-m3-content-navigation-rail.m3x-rail-expressive {
+    left: var(--m3x-rail-width);
+    width: calc(100% - var(--m3x-rail-width));
+    transition:
+      left var(--m3x-rail-duration) var(--m3x-motion-easing-emphasized),
+      width var(--m3x-rail-duration) var(--m3x-motion-easing-emphasized);
+  }
+
+  .anvil-m3-content-navigation-rail.anvil-m3-content.anvil-m3-sidesheet-open.m3x-rail-expressive {
+    width: calc(100% - var(--m3x-rail-width) - 300px);
+  }
+
+  /* The menu button at the top of the rail */
+  .m3x-rail-expressive .m3x-rail-menu-btn {
+    position: relative;
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    width: var(--m3x-touch-target-size);
+    height: var(--m3x-touch-target-size);
+    margin: var(--m3x-rail-menu-top-space) 0 0 var(--m3x-rail-menu-start-space);
+    padding: 0;
+    border: none;
+    border-radius: var(--m3x-shape-corner-full);
+    background: none;
+    color: var(--m3x-color-on-surface-variant);
+    cursor: pointer;
+    outline: none;
+  }
+
+  .m3x-rail-expressive .m3x-rail-menu-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background-color: currentColor;
+    opacity: 0;
+    transition: opacity var(--m3x-motion-duration-short2) var(--m3x-motion-easing-standard);
+  }
+
+  .m3x-rail-expressive .m3x-rail-menu-btn:hover::before {
+    opacity: var(--m3x-state-hover-opacity);
+  }
+
+  .m3x-rail-expressive .m3x-rail-menu-btn:active::before {
+    opacity: var(--m3x-state-pressed-opacity);
+  }
+
+  .m3x-rail-expressive .m3x-rail-menu-btn:focus-visible {
+    outline: var(--m3x-focus-indicator-thickness) solid var(--m3x-focus-indicator-color);
+    outline-offset: var(--m3x-focus-indicator-outer-offset);
+  }
+
+  /* The items: the vertical alignment property still applies. */
+  .m3x-rail-expressive .anvil-m3-navigation-rail-content {
+    width: 100%;
+    margin-top: var(--m3x-rail-items-top-space);
+    gap: var(--m3x-rail-item-vertical-space);
+  }
+
+  .anvil-m3-navigation-rail.m3x-rail-expressive.anvil-m3-align-center .anvil-m3-navigation-rail-content {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .anvil-m3-navigation-rail.m3x-rail-expressive.anvil-m3-align-bottom .anvil-m3-navigation-rail-content {
+    margin-top: auto;
+    margin-bottom: var(--m3x-rail-items-top-space);
+  }
+
+  /* Collapsed: icon in a 56 x 32 indicator, label below */
+  .m3x-rail-expressive .anvil-m3-navigation-link-icon-container {
+    width: var(--m3x-rail-indicator-width);
+  }
+
+  .m3x-rail-expressive .anvil-m3-navigation-link .anvil-m3-navigation-link-text {
+    margin-bottom: var(--m3x-rail-item-bottom-space);
+    padding-top: var(--m3x-rail-icon-label-space);
+    font-family: var(--m3x-typescale-label-medium-font);
+    font-size: var(--m3x-typescale-label-medium-size);
+    line-height: var(--m3x-typescale-label-medium-line-height);
+    letter-spacing: var(--m3x-typescale-label-medium-tracking);
+    font-weight: var(--m3x-typescale-label-medium-weight);
+  }
+
+  .m3x-rail-expressive .anvil-m3-navigation-link.anvil-m3-navigation-link-selected {
+    color: var(--m3x-rail-active-label-color);
+  }
+
+  /* Expanded: icon and label side by side in one full pill */
+  .m3x-rail-expressive.m3x-rail-expanded .anvil-m3-navigation-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--m3x-rail-expanded-item-space);
+    text-align: left;
+  }
+
+  .m3x-rail-expressive.m3x-rail-expanded .anvil-m3-navigation-link-icon-label {
+    position: relative;
+    flex-direction: row;
+    gap: var(--m3x-rail-expanded-icon-label-space);
+    box-sizing: border-box;
+    width: 100%;
+    height: var(--m3x-rail-expanded-indicator-height);
+    padding: 0 var(--m3x-rail-expanded-item-space);
+    border-radius: var(--m3x-shape-corner-full);
+    overflow: hidden;
+    transition: background-color var(--m3x-motion-duration-short4) var(--m3x-motion-easing-standard);
+  }
+
+  .m3x-rail-expressive.m3x-rail-expanded .anvil-m3-navigation-link-icon-container {
+    width: auto;
+    margin: 0;
+  }
+
+  .m3x-rail-expressive.m3x-rail-expanded .anvil-m3-navigation-link [anvil-name=anvil-m3-navigation-link-icon] {
+    width: auto;
+    padding: 0;
+    background: none !important;
+  }
+
+  .m3x-rail-expressive.m3x-rail-expanded .anvil-m3-navigation-link .anvil-m3-navigation-link-text {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-family: var(--m3x-typescale-label-large-font);
+    font-size: var(--m3x-typescale-label-large-size);
+    line-height: var(--m3x-typescale-label-large-line-height);
+    letter-spacing: var(--m3x-typescale-label-large-tracking);
+    font-weight: var(--m3x-typescale-label-large-weight);
+  }
+
+  .m3x-rail-expressive.m3x-rail-expanded .anvil-m3-navigation-link:hover .anvil-m3-navigation-link-icon-label {
+    background-color: color-mix(in srgb, var(--m3x-color-on-surface-variant) calc(var(--m3x-state-hover-opacity) * 100%), transparent);
+  }
+
+  .m3x-rail-expressive.m3x-rail-expanded .anvil-m3-navigation-link.anvil-m3-navigation-link-selected .anvil-m3-navigation-link-icon-label {
+    background-color: var(--m3x-rail-active-indicator-color);
+    color: var(--m3x-color-on-secondary-container);
+  }
+
+  .m3x-rail-expressive.m3x-rail-expanded .anvil-m3-navigation-link.anvil-m3-navigation-link-selected:hover .anvil-m3-navigation-link-icon-label {
+    background-color: color-mix(in srgb, var(--m3x-color-on-secondary-container) calc(var(--m3x-state-hover-opacity) * 100%), var(--m3x-rail-active-indicator-color));
+  }
+
+  /* Badges: a dot or count at the end of the item, as in the drawer */
+  .m3x-rail-expressive.m3x-rail-expanded .anvil-m3-navigation-link.anvil-m3-has-badge .anvil-m3-icon-badge {
+    display: none !important;
+  }
+
+  .m3x-rail-expressive.m3x-rail-expanded .anvil-m3-navigation-link.anvil-m3-has-badge .anvil-m3-navigation-drawer-icon-badge {
+    display: block;
+    position: absolute;
+    right: var(--m3x-rail-expanded-item-space);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anvil-m3-navigation-rail.m3x-rail-expressive,
+  .anvil-m3-content.anvil-m3-content-navigation-rail.m3x-rail-expressive {
+    transition: none;
+  }
+}

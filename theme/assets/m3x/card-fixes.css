@@ -1,0 +1,10 @@
+/* M3 cards (E7): the base Card and InteractiveCard were checked against the
+   current M3 card tokens (Jetpack Compose ElevatedCardTokens, FilledCardTokens,
+   OutlinedCardTokens) and match, apart from the one rule below.
+   See docs/components/Card.md. */
+
+/* A disabled outlined card's outline uses Outline (the base keeps Outline
+   Variant); the base's 38 % opacity on the whole card then applies. */
+.anvil-m3-card.anvil-m3-outlined.anvil-m3-interactive.anvil-m3-disabled {
+  border-color: var(--m3x-color-outline);
+}
