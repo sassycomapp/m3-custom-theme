@@ -1301,6 +1301,8 @@ class Form1(Form1Template):
             button.add_event_handler("click", pick)
             row.add_component(button)
         self.add_component(status)
+        # The fast spatial spring shows the difference between the schemes most
+        # clearly: about 9 % overshoot (expressive) against none (standard).
         row = self._section("Motion: springs (click to move the square)")
         box = m3.Card(appearance="filled")
         box.add_component(m3.Text(text="Spring"))
@@ -1312,7 +1314,7 @@ class Form1(Form1Template):
             m3x_motion.animate(get_dom_node(box),
                                [{"transform": f"translateX({start})"},
                                 {"transform": f"translateX({end})"}],
-                               "spatial-default")
+                               "spatial-fast")
         button = m3.Button(text="Move", appearance="tonal")
         button.add_event_handler("click", move)
         row.add_component(button)
