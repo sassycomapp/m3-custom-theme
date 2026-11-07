@@ -315,6 +315,9 @@ toolbox_sections:
   - component: {type: m3._Components.Carousel}
     icon: {dark: 'asset:designer_icons/carousel_dark.svg', light: 'asset:designer_icons/carousel.svg'}
     title: Carousel
+  - component: {type: m3._Components.PaneLayout}
+    icon: {dark: 'asset:designer_icons/pane_layout_dark.svg', light: 'asset:designer_icons/pane_layout.svg'}
+    title: PaneLayout
   packageName: m3
   title: Containers
 - items:

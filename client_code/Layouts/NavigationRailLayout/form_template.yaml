@@ -67,6 +67,7 @@ properties:
   name: rail_style
   options: [standard, expressive]
   type: enum
+- {default_value: false, description: 'm3x: If True, an expressive rail expands by itself on large and extra-large windows (1200 px and wider) and collapses on smaller ones. The menu button still switches it until the window changes size class.', important: true, name: rail_adaptive, type: boolean}
 - {default_value: false, description: 'm3x: If True, an expressive rail starts expanded. The menu button at the top of the rail switches it.', important: true, name: rail_expanded, type: boolean}
 - default_value: ['8', '8', '8', '8']
   description: The padding (pixels) around the content of the page

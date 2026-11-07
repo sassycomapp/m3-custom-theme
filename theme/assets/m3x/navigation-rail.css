@@ -27,15 +27,15 @@
     width: var(--m3x-rail-width) !important;
     justify-content: flex-start;
     background: var(--m3x-rail-container-color);
-    transition: width var(--m3x-rail-duration) var(--m3x-motion-easing-emphasized);
+    transition: width var(--m3x-motion-spatial-default-duration) var(--m3x-motion-spatial-default-easing);
   }
 
   .anvil-m3-content.anvil-m3-content-navigation-rail.m3x-rail-expressive {
     left: var(--m3x-rail-width);
     width: calc(100% - var(--m3x-rail-width));
     transition:
-      left var(--m3x-rail-duration) var(--m3x-motion-easing-emphasized),
-      width var(--m3x-rail-duration) var(--m3x-motion-easing-emphasized);
+      left var(--m3x-motion-spatial-default-duration) var(--m3x-motion-spatial-default-easing),
+      width var(--m3x-motion-spatial-default-duration) var(--m3x-motion-spatial-default-easing);
   }
 
   .anvil-m3-content-navigation-rail.anvil-m3-content.anvil-m3-sidesheet-open.m3x-rail-expressive {

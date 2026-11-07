@@ -117,7 +117,7 @@
   position: fixed;
   z-index: var(--m3x-toolbar-z-index);
   margin: 0;
-  transition: transform var(--m3x-motion-duration-medium2) var(--m3x-motion-easing-emphasized);
+  transition: transform var(--m3x-motion-spatial-default-duration) var(--m3x-motion-spatial-default-easing);
 }
 
 .m3x-toolbar-pinned.m3x-toolbar-docked {

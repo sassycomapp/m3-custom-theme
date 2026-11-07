@@ -107,7 +107,7 @@
 .anvil-m3-button.m3x-button-sized,
 .anvil-m3-button.m3x-button-square,
 .anvil-m3-button.m3x-button-toggle {
-  transition: border-radius var(--m3x-motion-duration-short4) var(--m3x-motion-easing-emphasized);
+  transition: border-radius var(--m3x-motion-spatial-fast-duration) var(--m3x-motion-spatial-fast-easing);
 }
 
 .anvil-m3-button.m3x-button-square {

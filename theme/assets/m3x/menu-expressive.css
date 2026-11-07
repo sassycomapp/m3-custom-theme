@@ -60,7 +60,7 @@
   font-family: var(--m3x-typescale-body-large-font);
   font-size: var(--m3x-typescale-body-large-size);
   letter-spacing: var(--m3x-typescale-body-large-tracking);
-  transition: border-radius var(--m3x-motion-duration-short4) var(--m3x-motion-easing-emphasized);
+  transition: border-radius var(--m3x-motion-spatial-fast-duration) var(--m3x-motion-spatial-fast-easing);
 }
 
 :root[data-m3x-menu-style] .anvil-m3-menuItem-leadingIcon {

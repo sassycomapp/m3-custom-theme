@@ -1,6 +1,7 @@
 from anvil import *
 from anvil.js import window
 
+from ..._utils import m3x_adaptive  # m3x: Step 9, adaptive rail
 from ..._utils.properties import (
     anvil_prop,
     color_property,
@@ -22,6 +23,7 @@ class NavigationRailLayout(NavigationRailLayoutTemplate):
         self.sidesheet = self.dom_nodes['anvil-m3-sidesheet']
         self.content = self.dom_nodes['anvil-m3-content']
         self.sidesheet_previous_state = False
+        self._m3x_stop_adaptive = None  # m3x: Step 9, adaptive rail
         self.zero_width_timeout = None
         self.shown_timeout = None
         self.init_components(**properties)
@@ -29,6 +31,11 @@ class NavigationRailLayout(NavigationRailLayoutTemplate):
         window.document.addEventListener('scroll', self._add_scroll_class)
         self.nav_drawer_open_btn.addEventListener('click', self.open_nav_drawer)
         self.nav_drawer_scrim.addEventListener('click', self.hide_nav_drawer)
+        # m3x: the adaptive rail listens only while the layout is on the page (Step 9).
+        self.add_event_handler(
+            'x-anvil-page-added', lambda **e: setattr(self, 'rail_adaptive', self.rail_adaptive)
+        )
+        self.add_event_handler('x-anvil-page-removed', lambda **e: self._m3x_stop())
         # m3x: Expressive rail menu button (Step 7, E5).
         self.dom_nodes['m3x-rail-menu-btn'].addEventListener(
             'click', lambda e: setattr(self, 'rail_expanded', not self.rail_expanded)
@@ -191,6 +198,26 @@ class NavigationRailLayout(NavigationRailLayoutTemplate):
             'menu_open' if value else 'menu'
         )
 
+    # m3x: adaptive rail (Step 9). Off by default.
+    @anvil_prop(default_value=False)
+    @property
+    def rail_adaptive(self, value) -> bool:
+        """If True, an expressive rail expands by itself on large and extra-large
+        windows (1200 px and wider) and collapses on smaller ones."""
+        self._m3x_stop()
+        if value:
+            self._m3x_stop_adaptive = m3x_adaptive.on_change(self._m3x_adapt)
+            self._m3x_adapt(m3x_adaptive.width_class())
+
+    def _m3x_stop(self):
+        if self._m3x_stop_adaptive:
+            self._m3x_stop_adaptive()
+            self._m3x_stop_adaptive = None
+
+    def _m3x_adapt(self, width_class):
+        self.rail_expanded = width_class in ("large", "extra_large")
+
+    #!componentProp(m3.NavigationRailLayout)!1: {name:"rail_adaptive",type:"boolean",description:"If True, an expressive rail expands by itself on windows 1200 px and wider."}
     #!componentProp(m3.NavigationRailLayout)!1: {name:"rail_style",type:"enum",options:["standard", "expressive"],description:"standard (the base rail) or expressive (96 px, expandable)."}
     #!componentProp(m3.NavigationRailLayout)!1: {name:"rail_expanded",type:"boolean",description:"If True, an expressive rail is expanded, with full labels."}
 

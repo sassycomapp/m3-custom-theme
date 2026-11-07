@@ -36,8 +36,8 @@
   background-color: var(--m3x-carousel-item-container-color);
   cursor: pointer;
   transition:
-    width var(--m3x-carousel-duration) var(--m3x-motion-easing-emphasized),
-    margin var(--m3x-carousel-duration) var(--m3x-motion-easing-emphasized);
+    width var(--m3x-motion-spatial-default-duration) var(--m3x-motion-spatial-default-easing),
+    margin var(--m3x-motion-spatial-default-duration) var(--m3x-motion-spatial-default-easing);
 }
 
 .m3x-carousel-item-hidden {

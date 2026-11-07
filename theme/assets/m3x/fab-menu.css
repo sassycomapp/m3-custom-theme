@@ -86,11 +86,11 @@
   cursor: pointer;
   outline: none;
   transition:
-    width var(--m3x-fab-menu-duration) var(--m3x-motion-easing-emphasized),
-    height var(--m3x-fab-menu-duration) var(--m3x-motion-easing-emphasized),
-    border-radius var(--m3x-fab-menu-duration) var(--m3x-motion-easing-emphasized),
-    background-color var(--m3x-fab-menu-duration) var(--m3x-motion-easing-standard),
-    color var(--m3x-fab-menu-duration) var(--m3x-motion-easing-standard),
+    width var(--m3x-motion-spatial-default-duration) var(--m3x-motion-spatial-default-easing),
+    height var(--m3x-motion-spatial-default-duration) var(--m3x-motion-spatial-default-easing),
+    border-radius var(--m3x-motion-spatial-default-duration) var(--m3x-motion-spatial-default-easing),
+    background-color var(--m3x-motion-effects-default-duration) var(--m3x-motion-effects-default-easing),
+    color var(--m3x-motion-effects-default-duration) var(--m3x-motion-effects-default-easing),
     box-shadow var(--m3x-motion-duration-short4) var(--m3x-motion-easing-standard);
 }
 
@@ -112,9 +112,9 @@
   position: absolute;
   line-height: 1;
   transition:
-    opacity var(--m3x-fab-menu-duration) var(--m3x-motion-easing-standard),
-    transform var(--m3x-fab-menu-duration) var(--m3x-motion-easing-emphasized),
-    font-size var(--m3x-fab-menu-duration) var(--m3x-motion-easing-emphasized);
+    opacity var(--m3x-motion-effects-default-duration) var(--m3x-motion-effects-default-easing),
+    transform var(--m3x-motion-spatial-default-duration) var(--m3x-motion-spatial-default-easing),
+    font-size var(--m3x-motion-spatial-default-duration) var(--m3x-motion-spatial-default-easing);
 }
 
 .m3x-fab-menu-icon {
@@ -232,8 +232,8 @@
   opacity: 1;
   transform: none;
   transition:
-    opacity var(--m3x-motion-duration-short4) var(--m3x-motion-easing-standard),
-    transform var(--m3x-fab-menu-duration) var(--m3x-motion-easing-emphasized-decelerate);
+    opacity var(--m3x-motion-effects-default-duration) var(--m3x-motion-effects-default-easing),
+    transform var(--m3x-motion-spatial-default-duration) var(--m3x-motion-spatial-default-easing);
   /* The action nearest the button first, then upwards. */
   transition-delay: calc(var(--m3x-fab-menu-item-order, 0) * var(--m3x-fab-menu-item-stagger));
 }

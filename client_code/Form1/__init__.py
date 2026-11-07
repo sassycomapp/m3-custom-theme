@@ -10,7 +10,7 @@ from anvil import *
 import m3.components as m3
 
 from anvil.js import get_dom_node
-from m3._utils import m3x_theming
+from m3._utils import m3x_adaptive, m3x_motion, m3x_theming
 from m3._utils.properties import theme_color_to_css
 
 from ._anvil_designer import Form1Template
@@ -210,6 +210,8 @@ class Form1(Form1Template):
         self._build_expressive_rail()
         self._build_expressive_menus()
         self._build_card_check()
+        self._build_motion()
+        self._build_adaptive()
         self._build_tokens()
 
     # ---- helpers -------------------------------------------------------
@@ -1224,6 +1226,15 @@ class Form1(Form1Template):
                  "220 px with full labels; click it again to collapse it to 96 px."),
             slot="anvil-m3-content")
         layout.add_component(status, slot="anvil-m3-content")
+        adaptive = m3.Button(text="Adapt to the window size", appearance="outlined",
+                             toggle=True, size="small")
+
+        def adapt(sender, **e):
+            layout.rail_adaptive = sender.selected
+            status.text = (f"Rail: adaptive {'on' if sender.selected else 'off'}; "
+                           f"window is {m3x_adaptive.width_class()}.")
+        adaptive.add_event_handler("click", adapt)
+        layout.add_component(adaptive, slot="anvil-m3-content")
         back = m3.Button(text="Back to the demo page", appearance="outlined")
         back.add_event_handler("click", lambda **e: open_form("Form1"))
         layout.add_component(back, slot="anvil-m3-content")
@@ -1260,6 +1271,89 @@ class Form1(Form1Template):
         card = m3.InteractiveCard(appearance="outlined")
         card.add_component(m3.Text(text="Enabled outlined card"))
         row.add_component(card)
+
+    # ---- motion (Step 8) and adaptive layouts (Step 9) ------------------------
+
+    def _build_motion(self):
+        row = self._section("Motion: scheme for the whole app")
+        status = m3.Text(text=f"Motion scheme: {m3x_motion.get_scheme()}")
+        for scheme in m3x_motion.SCHEMES:
+            button = m3.Button(text=scheme.title(), appearance="outlined")
+
+            def pick(scheme=scheme, **e):
+                m3x_motion.set_scheme(scheme)
+                status.text = f"Motion scheme: {scheme}"
+            button.add_event_handler("click", pick)
+            row.add_component(button)
+        self.add_component(status)
+        row = self._section("Motion: springs (click to move the square)")
+        box = m3.Card(appearance="filled")
+        box.add_component(m3.Text(text="Spring"))
+        moved = [False]
+
+        def move(**e):
+            moved[0] = not moved[0]
+            start, end = ("0px", "240px") if moved[0] else ("240px", "0px")
+            m3x_motion.animate(get_dom_node(box),
+                               [{"transform": f"translateX({start})"},
+                                {"transform": f"translateX({end})"}],
+                               "spatial-default")
+        button = m3.Button(text="Move", appearance="tonal")
+        button.add_event_handler("click", move)
+        row.add_component(button)
+        row.add_component(box)
+
+    def _build_adaptive(self):
+        self._heading("Adaptive: window size class")
+        status = m3.Text(text=f"Window size class: {m3x_adaptive.width_class()}")
+        self.add_component(status)
+        m3x_adaptive.on_change(
+            lambda name: setattr(status, "text", f"Window size class: {name}"))
+
+        self._heading("PaneLayout: list and detail")
+        panes = m3.PaneLayout(layout="list_detail")
+        detail_title = m3.Heading(text="Choose a message", style="title",
+                                  scale="large")
+        detail_text = m3.Text(text="The message appears here.")
+        back = m3.Button(text="Back to the list", appearance="text",
+                         icon="mi:arrow_back")
+        back.visible = False
+
+        def show_list(**e):
+            panes.show_secondary = False
+            back.visible = False
+        back.add_event_handler("click", show_list)
+
+        def show_detail(sender, **e):
+            detail_title.text = sender.headline
+            detail_text.text = f"This is the full text of the message \"{sender.headline}\"."
+            panes.show_secondary = True
+            back.visible = panes.is_single_pane
+
+        for subject in ("Lunch on Friday", "Project update", "Invoice 2041",
+                        "Holiday plans", "New recipe"):
+            item = m3.ListItem(headline=subject, leading_icon="mi:mail",
+                               clickable=True)
+            item.add_event_handler("click", show_detail)
+            panes.add_component(item, slot="pane-primary")
+        for component in (back, detail_title, detail_text):
+            panes.add_component(component, slot="pane-secondary")
+        panes.add_event_handler(
+            "width_class_change",
+            lambda width_class, **e: setattr(back, "visible",
+                                             panes.is_single_pane and panes.show_secondary))
+        self.add_component(panes)
+
+        self._heading("PaneLayout: main content with a supporting pane")
+        support = m3.PaneLayout(layout="supporting")
+        support.add_component(m3.Text(
+            text="Main content. On windows 840 px and wider the supporting pane sits "
+                 "on the right, 360 px wide; on narrower windows it moves below."),
+            slot="pane-primary")
+        card = m3.Card(appearance="outlined")
+        card.add_component(m3.Text(text="Supporting pane: related details."))
+        support.add_component(card, slot="pane-secondary")
+        self.add_component(support)
 
     # ---- token reference (Step 5) --------------------------------------------
 

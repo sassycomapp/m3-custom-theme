@@ -59,7 +59,7 @@
 
 .m3x-bottom-sheet-shown .m3x-bottom-sheet {
   transform: translateY(var(--m3x-bottom-sheet-drag, 0px));
-  transition: transform var(--m3x-motion-duration-medium4) var(--m3x-motion-easing-emphasized-decelerate);
+  transition: transform var(--m3x-motion-spatial-default-duration) var(--m3x-motion-spatial-default-easing);
 }
 
 /* The sheet follows the pointer while it is dragged. */

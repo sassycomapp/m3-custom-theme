@@ -1,0 +1,79 @@
+/* M3 canonical pane layouts (Step 9): list-detail and supporting pane.
+   See docs/components/PaneLayout.md. Window size classes: compact < 600 px,
+   medium 600-839, expanded 840-1199, large 1200-1599, extra large 1600+.
+   One pane at a time (or stacked) below 840 px; two panes side by side from
+   840 px. Values: M3 layout specification (pane spacer 24 px, fixed pane
+   360 px). */
+
+.m3x-panes {
+  display: flex;
+  gap: var(--m3x-panes-spacer);
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.m3x-pane {
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+/* ---- compact and medium: one pane at a time, or stacked --------------------- */
+
+.m3x-panes-list_detail .m3x-pane {
+  flex: 1 1 auto;
+}
+
+.m3x-panes-list_detail .m3x-pane-secondary {
+  display: none;
+}
+
+.m3x-panes-list_detail.m3x-panes-show-secondary .m3x-pane-primary {
+  display: none;
+}
+
+.m3x-panes-list_detail.m3x-panes-show-secondary .m3x-pane-secondary {
+  display: block;
+}
+
+.m3x-panes-supporting {
+  flex-direction: column;
+}
+
+/* ---- expanded and wider: two panes side by side ------------------------------ */
+
+@media (min-width: 840px) {
+  .m3x-panes-list_detail .m3x-pane-primary,
+  .m3x-panes-list_detail.m3x-panes-show-secondary .m3x-pane-primary {
+    display: block;
+    flex: 0 0 var(--m3x-panes-fixed-width, 360px);
+  }
+
+  .m3x-panes-list_detail .m3x-pane-secondary {
+    display: block;
+    flex: 1 1 auto;
+  }
+
+  .m3x-panes-supporting {
+    flex-direction: row;
+  }
+
+  .m3x-panes-supporting .m3x-pane-primary {
+    flex: 1 1 auto;
+  }
+
+  .m3x-panes-supporting .m3x-pane-secondary {
+    flex: 0 0 var(--m3x-panes-fixed-width, 360px);
+  }
+}
+
+/* The designer shows both panes side by side, so components can go in either. */
+.m3x-panes.m3x-panes-in-designer {
+  flex-direction: row;
+}
+
+.m3x-panes.m3x-panes-in-designer .m3x-pane {
+  display: block;
+  flex: 1 1 0;
+  min-height: 48px;
+  outline: 1px dashed var(--m3x-color-outline-variant);
+}

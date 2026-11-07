@@ -74,9 +74,9 @@
   cursor: pointer;
   outline: none;
   transition:
-    border-radius var(--m3x-motion-duration-medium1) var(--m3x-motion-easing-emphasized),
-    background-color var(--m3x-motion-duration-short4) var(--m3x-motion-easing-standard),
-    color var(--m3x-motion-duration-short4) var(--m3x-motion-easing-standard);
+    border-radius var(--m3x-motion-spatial-fast-duration) var(--m3x-motion-spatial-fast-easing),
+    background-color var(--m3x-motion-effects-default-duration) var(--m3x-motion-effects-default-easing),
+    color var(--m3x-motion-effects-default-duration) var(--m3x-motion-effects-default-easing);
 }
 
 /* Connected: the inner corners of joined buttons are small */

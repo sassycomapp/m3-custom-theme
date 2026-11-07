@@ -150,7 +150,7 @@
   cursor: pointer;
   outline: none;
   transition:
-    border-radius var(--m3x-motion-duration-medium1) var(--m3x-motion-easing-emphasized),
+    border-radius var(--m3x-motion-spatial-fast-duration) var(--m3x-motion-spatial-fast-easing),
     box-shadow var(--m3x-motion-duration-short4) var(--m3x-motion-easing-standard);
 }
 
@@ -200,7 +200,7 @@
 .m3x-split-chevron {
   font-size: var(--m3x-split-trailing-icon-size);
   line-height: 1;
-  transition: transform var(--m3x-motion-duration-medium1) var(--m3x-motion-easing-emphasized);
+  transition: transform var(--m3x-motion-spatial-fast-duration) var(--m3x-motion-spatial-fast-easing);
 }
 
 .m3x-split-selected .m3x-split-chevron {

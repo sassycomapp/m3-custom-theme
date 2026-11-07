@@ -106,7 +106,7 @@
 .anvil-m3-iconbutton-container.m3x-iconbutton-sized,
 .anvil-m3-iconbutton-container.m3x-iconbutton-square {
   border-radius: var(--m3x-shape-corner-full);
-  transition: border-radius var(--m3x-motion-duration-short4) var(--m3x-motion-easing-emphasized);
+  transition: border-radius var(--m3x-motion-spatial-fast-duration) var(--m3x-motion-spatial-fast-easing);
 }
 
 .anvil-m3-iconbutton-container.m3x-iconbutton-square {

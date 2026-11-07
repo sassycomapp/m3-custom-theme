@@ -29,6 +29,7 @@ from .._Components.LoadingIndicator import LoadingIndicator
 from .._Components.MenuItem import MenuItem
 from .._Components.NavigationBar import NavigationBar
 from .._Components.NavigationLink import NavigationLink
+from .._Components.PaneLayout import PaneLayout
 from .._Components.RadioButton import RadioButton
 from .._Components.RadioGroupPanel import RadioGroup, RadioGroupPanel
 from .._Components.SearchBar import SearchBar

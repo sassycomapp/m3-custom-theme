@@ -1,0 +1,30 @@
+/* M3 side sheets (E8): the base side sheet inside NavigationRailLayout and
+   NavigationDrawerLayout was checked against the M3 side sheet specification
+   (Compose has no side sheet tokens). It matches, apart from the rules below.
+   See docs/components/SideSheet.md.
+   The class is doubled on purpose: the base rules live in theme.css itself,
+   which the browser reads after this imported file, so an override needs a
+   stronger selector (lesson 24). */
+
+/* Padding: 24 px on every side (the base has 16 px on the leading side). */
+.anvil-m3-sidesheet.anvil-m3-sidesheet {
+  padding: var(--m3x-sidesheet-padding);
+  transition-timing-function: var(--m3x-motion-easing-emphasized);
+  transition-duration: var(--m3x-motion-duration-medium2);
+}
+
+/* Modal side sheet (phone widths): Surface Container Low, corner large on the
+   leading edge (the base uses 20 px and an older tinted background). */
+@media (max-width: 600px) {
+  .anvil-m3-sidesheet.anvil-m3-sidesheet {
+    border-radius: var(--m3x-sidesheet-modal-shape) 0 0 var(--m3x-sidesheet-modal-shape);
+    background: var(--m3x-sidesheet-modal-container-color);
+    box-shadow: var(--m3x-elevation-level1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anvil-m3-sidesheet.anvil-m3-sidesheet {
+    transition: none;
+  }
+}
