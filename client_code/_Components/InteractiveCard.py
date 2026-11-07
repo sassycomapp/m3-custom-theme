@@ -8,6 +8,9 @@ enabled_property = {
     "designerHint": "enabled",
     "group": "Interaction",
     "description": "If True, this component allows user interaction.",
+    # m3x: enabled by default, like every other component (Step 7, E7). Without
+    # a default, a card created in code without enabled=True was disabled.
+    "default_value": True,
 }
 click_event = {
     "name": "click",
@@ -28,7 +31,7 @@ class InteractiveCard(Card):
         self.dom_nodes['anvil-m3-card'].classList.toggle('anvil-m3-interactive', True)
         self.dom_nodes['anvil-m3-card'].addEventListener("click", self._handle_click)
 
-    @anvil_prop
+    @anvil_prop(default_value=True)  # m3x: see enabled_property (Step 7, E7).
     @property
     def enabled(self, value) -> bool:
         """If True, this component allows user interaction."""
