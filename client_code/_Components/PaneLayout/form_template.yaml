@@ -1,16 +1,22 @@
 components: []
 container:
-  properties: {html: '<div anvil-name="m3x-panes" class="m3x-panes m3x-panes-list_detail"><div anvil-slot="pane-primary" anvil-name="m3x-pane-primary" class="m3x-pane m3x-pane-primary"></div><div anvil-slot="pane-secondary" anvil-name="m3x-pane-secondary" class="m3x-pane m3x-pane-secondary"></div></div>'}
+  properties: {html: <div anvil-name="m3x-panes" class="m3x-panes m3x-panes-list_detail"><div anvil-slot="pane-primary" anvil-name="m3x-pane-primary" class="m3x-pane m3x-pane-primary"></div><div anvil-slot="pane-secondary" anvil-name="m3x-pane-secondary" class="m3x-pane m3x-pane-secondary"></div></div>}
   type: HtmlTemplate
 custom_component: true
 custom_component_container: true
 events:
-- {description: 'When the window moves to another size class. The event has the argument width_class.', name: width_class_change}
+- {description: When the window moves to another size class. The event has the argument width_class., name: width_class_change}
 - {description: When the component is shown on the screen., name: show}
 - {description: When the component is removed from the screen., name: hide}
 is_package: true
 properties:
-- {default_value: list_detail, description: 'list_detail: a list (primary pane) and the chosen item''s detail (secondary pane); on narrow windows one pane at a time. supporting: main content (primary pane) with a supporting pane; on narrow windows the supporting pane goes below.', group: Key Properties, important: true, name: layout, options: [list_detail, supporting], type: enum}
+- default_value: list_detail
+  description: 'list_detail: a list (primary pane) and the chosen item''s detail (secondary pane); on narrow windows one pane at a time. supporting: main content (primary pane) with a supporting pane; on narrow windows the supporting pane goes below.'
+  group: Key Properties
+  important: true
+  name: layout
+  options: [list_detail, supporting]
+  type: enum
 - {default_value: false, description: 'list_detail on narrow windows: if True the secondary (detail) pane is shown, otherwise the primary (list) pane. Wide windows show both.', group: Key Properties, important: true, name: show_secondary, type: boolean}
 - {default_value: 360, description: 'The width in pixels of the fixed pane on wide windows: the list in list_detail, the supporting pane in supporting.', group: Layout, important: false, name: fixed_pane_width, type: number}
 - {default_value: true, description: 'If True, the component will be displayed.', designer_hint: visible, group: Look and Feel, important: true, name: visible, type: boolean}
