@@ -1,32 +1,29 @@
-# Welcome to Anvil's Material 3 theme
+# m3-custom-theme
 
-[Anvil](https://anvil.works)'s new [Material 3 theme](https://anvil.works/blog/introducing-material-3) defines components, layout forms and colour schemes to use in Anvil apps. The theme is based on the specs and guidelines of [Google's Material 3 theme](https://m3.material.io/)
+A complete Material 3 (M3) theme for [Anvil](https://anvil.works) apps, including the M3 Expressive components and styles. It is built on Anvil's [Material 3 Theme](https://github.com/anvil-works/material-3-theme) v1.2.6 and keeps its package name, `m3`, so an app switches to it by changing one dependency, with no changes to its forms or code.
 
-<img width="600px" src="https://anvil.works/blog/img/new-material-3/plant-shop-main.png">
+## What it adds to Anvil's theme
 
-The Material 3 theme is just an Anvil app that you can add as a [dependency](https://anvil.works/docs/deployment-new-ide/dependencies) to other Anvil apps. 
+- **Every M3 component**: badges, bottom sheets, button groups, carousels, chips, date and time pickers, dialogs, FABs and FAB menus, list items, loading indicators, navigation bars, rich tooltips, search, snackbars, split buttons, tabs, toolbars, top app bars, and list-detail and supporting-pane layouts.
+- **M3 Expressive**: button and icon button sizes and shapes, toggle buttons, slider sizes, wavy progress indicators, the Expressive navigation rail and Expressive menus.
+- **Palettes and dark mode**: five palettes, each light and dark, chosen in Anvil's Theme editor or from code.
+- **Design tokens**: every colour, type size, shape, elevation, state layer, motion and spacing value as an `--m3x-*` CSS variable, taken from Google's Jetpack Compose Material 3 tokens.
+- **Spring motion** from the M3 Expressive motion springs, with reduced-motion support.
+- **Adaptive layouts** for the five M3 window size classes.
 
-> [!Important]
-> The Material 3 theme is still in beta while we work out the bugs, add more components and make it more user-friendly. If you'd like to help us improve the theme, check out our [contributing](/CONTRIBUTING.md) file to learn how to get involved!
+## How to use it
 
-## How to use the theme
+1. Open your app in the Anvil editor, then **Settings**, then **Dependencies**.
+2. Remove Anvil's Material 3 Theme if the app has it.
+3. Add a dependency on the **m3-custom-theme** app, version **v2.0.0**.
 
-It's easy! Log into [Anvil](https://anvil.works/build) and create a new M3 (Beta) app.
+Everything in `m3` keeps working. The usage guide explains palettes, dark mode, menu style, motion, adaptive layouts and every component:
+[usage guide](https://github.com/sassycomapp/m3-custom-theme-project-library/blob/main/docs/usage-guide.md).
 
-<img width="500px" src="https://anvil.works/docs/ui/app-themes/material-3/img/choose-m3-theme.png">
+## Demo
 
-You can also add the theme to an existing app. Go to Settings -> Dependencies and  choose "Third Party". Enter the dependency ID "4UK6WHQ6UX7AKELK".
+`Form1` in this app shows every component, in every variant and state, with the palette and mode controls at the top. Run the app to see it.
 
-> [!Warning]
-> If your app already contains an existing theme, it is possible that the theme CSS will disrupt the M3 theme. If you’re seeing strange results, try creating a new blank M3 app.
+## Changes and licence
 
-
-## Want to contribute?
-
-The Material 3 theme is currently incomplete! If you'd like to pitch in and help us make the theme better and more complete, read our [contributing file](/CONTRIBUTING.md) to learn how to get started.
-
-## What is Anvil?
-
-If you’re new to Anvil, welcome! Anvil is a platform for building full-stack web apps with nothing but Python. No need to wrestle with JS, HTML, CSS, Python, SQL and all their frameworks – just build it all in Python.
-
-To learn more about Anvil, visit [https://anvil.works](https://anvil.works?utm_source=github:app_README).
+Releases are listed in [CHANGELOG.md](CHANGELOG.md). The theme is released under the MIT licence in [LICENSE](LICENSE), which keeps Anvil's notice for the original theme.
