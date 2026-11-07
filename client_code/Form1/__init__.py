@@ -1235,6 +1235,21 @@ class Form1(Form1Template):
                            f"window is {m3x_adaptive.width_class()}.")
         adaptive.add_event_handler("click", adapt)
         layout.add_component(adaptive, slot="anvil-m3-content")
+        # A side sheet, to check its padding, colours and motion (E8).
+        layout.add_component(m3.Heading(text="Side sheet", style="title", scale="large"),
+                             slot="anvil-m3-sidesheet")
+        layout.add_component(m3.Text(
+            text="Related details sit in the side sheet. On phone widths it slides "
+                 "over the page with rounded corners."), slot="anvil-m3-sidesheet")
+        sheet = m3.Button(text="Show the side sheet", appearance="outlined",
+                          toggle=True, size="small")
+
+        def flip_sheet(sender, **e):
+            layout.show_sidesheet = sender.selected
+            sender.text = ("Hide the side sheet" if sender.selected
+                           else "Show the side sheet")
+        sheet.add_event_handler("click", flip_sheet)
+        layout.add_component(sheet, slot="anvil-m3-content")
         back = m3.Button(text="Back to the demo page", appearance="outlined")
         back.add_event_handler("click", lambda **e: open_form("Form1"))
         layout.add_component(back, slot="anvil-m3-content")
