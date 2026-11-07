@@ -64,3 +64,11 @@
 .anvil-m3-slider.m3x-slider-sized .anvil-m3-slider-markers-container-progress {
   top: calc((var(--m3x-slider-track-height) - 4px) / 2);
 }
+
+/* Fix to the base slider (all sizes): Slider._update_progress places the value
+   label with window coordinates (getBoundingClientRect), but the base styles
+   it position: absolute on the page body, so on a scrolled page the label
+   lands above the visible window. Fixed positioning matches the coordinates. */
+.anvil-m3-slider-label-container {
+  position: fixed;
+}
