@@ -1,71 +1,71 @@
 color_scheme:
   colors:
-  - {color: '#6750A4', name: Primary}
-  - {color: '#EADDFF', name: Primary Container}
+  - {color: '#006A6A', name: Primary}
+  - {color: '#9CF1F0', name: Primary Container}
   - {color: '#FFFFFF', name: On Primary}
-  - {color: '#21005E', name: On Primary Container}
-  - {color: '#625B71', name: Secondary}
-  - {color: '#E8DEF8', name: Secondary Container}
+  - {color: '#002020', name: On Primary Container}
+  - {color: '#4A6363', name: Secondary}
+  - {color: '#CCE8E7', name: Secondary Container}
   - {color: '#FFFFFF', name: On Secondary}
-  - {color: '#1D192B', name: On Secondary Container}
-  - {color: '#7D5260', name: Tertiary}
-  - {color: '#FFD8E4', name: Tertiary Container}
+  - {color: '#051F1F', name: On Secondary Container}
+  - {color: '#4B607C', name: Tertiary}
+  - {color: '#D3E4FF', name: Tertiary Container}
   - {color: '#FFFFFF', name: On Tertiary}
-  - {color: '#370B1E', name: On Tertiary Container}
-  - {color: '#B3261E', name: Error}
-  - {color: '#FFFBFE', name: Background}
-  - {color: '#FFFBFE', name: Surface}
-  - {color: '#1C1B1F', name: On Background}
-  - {color: '#1C1B1F', name: On Surface}
-  - {color: '#E7E0EC', name: Surface Variant}
-  - {color: '#49454E', name: On Surface Variant}
-  - {color: '#79747E', name: Outline}
-  - {color: 'rgba(29, 27, 32, 0.38)', name: On Disabled}
-  - {color: 'rgba(29, 27, 32, 0.12)', name: Disabled Container}
+  - {color: '#041C35', name: On Tertiary Container}
+  - {color: '#BA1A1A', name: Error}
+  - {color: '#F4FBFA', name: Background}
+  - {color: '#F4FBFA', name: Surface}
+  - {color: '#161D1D', name: On Background}
+  - {color: '#161D1D', name: On Surface}
+  - {color: '#DAE5E3', name: Surface Variant}
+  - {color: '#3F4948', name: On Surface Variant}
+  - {color: '#6F7978', name: Outline}
+  - {color: 'rgba(22, 29, 29, 0.38)', name: On Disabled}
+  - {color: 'rgba(22, 29, 29, 0.12)', name: Disabled Container}
   - {color: 'rgba(255, 255, 255, 0.08)', name: Light Overlay 1}
   - {color: 'rgba(255, 255, 255, 0.12)', name: Light Overlay 2}
-  - {color: 'rgba(29, 25, 43, 0.08)', name: Dark Overlay 1}
-  - {color: 'rgba(29, 25, 43, 0.12)', name: Dark Overlay 2}
-  - {color: 'rgba(103, 80, 164, 0.05)', name: Primary Overlay 1}
-  - {color: 'rgba(103, 80, 164, 0.08)', name: Primary Overlay 2}
-  - {color: 'rgba(103, 80, 164, 0.12)', name: Primary Overlay 3}
-  - {color: '#C4C7C5', name: Outline Variant}
+  - {color: 'rgba(0, 0, 0, 0.08)', name: Dark Overlay 1}
+  - {color: 'rgba(0, 0, 0, 0.12)', name: Dark Overlay 2}
+  - {color: 'rgba(0, 106, 106, 0.05)', name: Primary Overlay 1}
+  - {color: 'rgba(0, 106, 106, 0.08)', name: Primary Overlay 2}
+  - {color: 'rgba(0, 106, 106, 0.12)', name: Primary Overlay 3}
+  - {color: '#BEC9C7', name: Outline Variant}
   - {color: '#FFFFFF', name: On Error}
-  - {color: '#F7F2FA', name: Surface Container Low}
-  - {color: '#ECE6F0', name: Surface Container High}
-  - {color: '#E6E0E9', name: Surface Container Highest}
-  - {color: 'rgba(29, 27, 32, 0.04)', name: Disabled Container 2}
-  - {color: 'rgba(179, 38, 30, 0.08)', name: Error Overlay 1}
-  - {color: 'rgba(179, 38, 30, 0.12)', name: Error Overlay 2}
-  - {color: 'rgba(29, 25, 43, 0.16)', name: Dark Overlay 3}
-  - {color: '#410E0B', name: On Error Container}
-  - {color: '#F3EDF7', name: Surface Container}
-  - {color: '#322F35', name: Inverse Surface}
-  - {color: '#F5EFF7', name: Inverse On Surface}
-  - {color: 'rgba(73,69,79, 0.08)', name: On Surface Variant Overlay 1}
-  - {color: 'rgba(73,69,79, 0.12)', name: On Surface Variant Overlay 2}
-  - {color: 'rgba(245,239,247, 0.08)', name: Inverse On Surface Overlay 1}
-  - {color: 'rgba(245,239,247, 0.12)', name: Inverse On Surface Overlay 2}
-  - {color: '#F9DEDC', name: Error Container}
-  - {color: '#D0BCFF', name: Inverse Primary}
-  - {color: '#6750A4', name: Surface Tint}
-  - {color: '#DED8E1', name: Surface Dim}
-  - {color: '#FEF7FF', name: Surface Bright}
+  - {color: '#EEF4F3', name: Surface Container Low}
+  - {color: '#E3E9E9', name: Surface Container High}
+  - {color: '#DDE4E3', name: Surface Container Highest}
+  - {color: 'rgba(22, 29, 29, 0.04)', name: Disabled Container 2}
+  - {color: 'rgba(186, 26, 26, 0.08)', name: Error Overlay 1}
+  - {color: 'rgba(186, 26, 26, 0.12)', name: Error Overlay 2}
+  - {color: 'rgba(0, 0, 0, 0.16)', name: Dark Overlay 3}
+  - {color: '#410002', name: On Error Container}
+  - {color: '#E9EFEE', name: Surface Container}
+  - {color: '#2B3131', name: Inverse Surface}
+  - {color: '#EDF2F1', name: Inverse On Surface}
+  - {color: 'rgba(63, 73, 72, 0.08)', name: On Surface Variant Overlay 1}
+  - {color: 'rgba(63, 73, 72, 0.12)', name: On Surface Variant Overlay 2}
+  - {color: 'rgba(237, 242, 241, 0.08)', name: Inverse On Surface Overlay 1}
+  - {color: 'rgba(237, 242, 241, 0.12)', name: Inverse On Surface Overlay 2}
+  - {color: '#FFDAD6', name: Error Container}
+  - {color: '#80D5D4', name: Inverse Primary}
+  - {color: '#006A6A', name: Surface Tint}
+  - {color: '#D5DBDA', name: Surface Dim}
+  - {color: '#F4FBFA', name: Surface Bright}
   - {color: '#FFFFFF', name: Surface Container Lowest}
   - {color: '#000000', name: Scrim}
   - {color: '#000000', name: Shadow}
-  - {color: '#EADDFF', name: Primary Fixed}
-  - {color: '#D0BCFF', name: Primary Fixed Dim}
-  - {color: '#21005D', name: On Primary Fixed}
-  - {color: '#4F378B', name: On Primary Fixed Variant}
-  - {color: '#E8DEF8', name: Secondary Fixed}
-  - {color: '#CCC2DC', name: Secondary Fixed Dim}
-  - {color: '#1D192B', name: On Secondary Fixed}
-  - {color: '#4A4458', name: On Secondary Fixed Variant}
-  - {color: '#FFD8E4', name: Tertiary Fixed}
-  - {color: '#EFB8C8', name: Tertiary Fixed Dim}
-  - {color: '#31111D', name: On Tertiary Fixed}
-  - {color: '#633B48', name: On Tertiary Fixed Variant}
+  - {color: '#9CF1F0', name: Primary Fixed}
+  - {color: '#80D5D4', name: Primary Fixed Dim}
+  - {color: '#002020', name: On Primary Fixed}
+  - {color: '#004F4F', name: On Primary Fixed Variant}
+  - {color: '#CCE8E7', name: Secondary Fixed}
+  - {color: '#B0CCCB', name: Secondary Fixed Dim}
+  - {color: '#051F1F', name: On Secondary Fixed}
+  - {color: '#324B4B', name: On Secondary Fixed Variant}
+  - {color: '#D3E4FF', name: Tertiary Fixed}
+  - {color: '#B3C8E8', name: Tertiary Fixed Dim}
+  - {color: '#041C35', name: On Tertiary Fixed}
+  - {color: '#334863', name: On Tertiary Fixed Variant}
   preset_groups:
   - name: Colour Scheme
     options:
