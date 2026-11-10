@@ -15,7 +15,7 @@ A complete Material 3 (M3) theme for [Anvil](https://anvil.works) apps, includin
 
 1. Open your app in the Anvil editor, then **Settings**, then **Dependencies**.
 2. Remove Anvil's Material 3 Theme if the app has it.
-3. Add a dependency on the **m3-custom-theme** app, version **v2.0.0**.
+3. Add a dependency on the **m3-custom-theme** app (`UGGJBAZUZ74XZ7VU`), branch **master**.
 
 Everything in `m3` keeps working. The usage guide explains palettes, dark mode, menu style, motion, adaptive layouts and every component:
 [usage guide](https://github.com/sassycomapp/m3-custom-theme-project-library/blob/main/docs/usage-guide.md).
