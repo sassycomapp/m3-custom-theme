@@ -24,6 +24,6 @@ Everything in `m3` keeps working. The usage guide explains palettes, dark mode, 
 
 `Form1` in this app shows every component, in every variant and state, with the palette and mode controls at the top. Run the app to see it.
 
-## Changes and licence
+## Licence
 
-Releases are listed in [CHANGELOG.md](CHANGELOG.md). The theme is released under the MIT licence in [LICENSE](LICENSE), which keeps Anvil's notice for the original theme.
+The theme is released under the MIT licence in [LICENSE](LICENSE), which keeps Anvil's notice for the original theme.
