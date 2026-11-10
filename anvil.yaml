@@ -1,7 +1,9 @@
 allow_embedding: false
 client_init_module: InitModule
 code_prelude: {form: import m3.components as m3}
+correct_dependency_ids: {}
 db_schema: {}
+dependencies: []
 name: m3-custom-theme
 native_deps:
   head_html: |
