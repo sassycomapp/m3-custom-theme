@@ -6,7 +6,7 @@ A complete Material 3 (M3) theme for [Anvil](https://anvil.works) apps, includin
 
 - **Every M3 component**: badges, bottom sheets, button groups, carousels, chips, date and time pickers, dialogs, FABs and FAB menus, list items, loading indicators, navigation bars, rich tooltips, search, snackbars, split buttons, tabs, toolbars, top app bars, and list-detail and supporting-pane layouts.
 - **M3 Expressive**: button and icon button sizes and shapes, toggle buttons, slider sizes, wavy progress indicators, the Expressive navigation rail and Expressive menus.
-- **Palettes and dark mode**: five palettes, each light and dark, chosen in Anvil's Theme editor or from code.
+- **Palettes and dark mode**: eight palettes, each light and dark, chosen in Anvil's Theme editor or from code.
 - **Design tokens**: every colour, type size, shape, elevation, state layer, motion and spacing value as an `--m3x-*` CSS variable, taken from Google's Jetpack Compose Material 3 tokens.
 - **Spring motion** from the M3 Expressive motion springs, with reduced-motion support.
 - **Adaptive layouts** for the five M3 window size classes.
