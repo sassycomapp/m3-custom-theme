@@ -11,7 +11,7 @@ events:
 - {description: When the search bar is removed from the screen., name: hide}
 is_package: true
 properties:
-- {default_binding_prop: true, default_value: '', description: The text in the search bar., group: Key Properties, important: true, name: text, type: string}
+- {allow_binding_writeback: true, binding_writeback_events: [change], default_binding_prop: true, default_value: '', description: The text in the search bar., group: Key Properties, important: true, name: text, type: string}
 - {default_value: Search, description: The text shown in the empty search bar., group: Key Properties, important: true, name: placeholder, type: string}
 - default_value: []
   description: Suggestions shown below the bar while the user types, one per line. The list shows the suggestions that contain the typed text.

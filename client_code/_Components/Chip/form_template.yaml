@@ -19,7 +19,7 @@ properties:
   name: type
   options: [assist, filter, input, suggestion]
   type: enum
-- {default_value: false, description: 'If True, a filter or input Chip is selected.', group: Key Properties, important: true, name: selected, type: boolean}
+- {allow_binding_writeback: true, binding_writeback_events: [change], default_value: false, description: 'If True, a filter or input Chip is selected.', group: Key Properties, important: true, name: selected, type: boolean}
 - default_value: ''
   description: An icon shown before the text.
   group: Key Properties

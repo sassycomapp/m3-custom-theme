@@ -9,7 +9,7 @@ events:
 - {description: When the time picker is removed from the screen., name: hide}
 is_package: true
 properties:
-- {default_binding_prop: true, description: 'The chosen time, as a datetime.time. None when empty.', group: Key Properties, important: true, name: time, type: object}
+- {allow_binding_writeback: true, binding_writeback_events: [change], default_binding_prop: true, description: 'The chosen time, as a datetime.time. None when empty.', group: Key Properties, important: true, name: time, type: object}
 - {default_value: Time, description: The label of the field., group: Key Properties, important: true, name: label, type: string}
 - {default_value: true, description: 'If True, the time uses the 24-hour clock (14:30). If False, the 12-hour clock with AM and PM (2:30 PM).', group: Key Properties, important: true, name: format_24h, type: boolean}
 - default_value: outlined

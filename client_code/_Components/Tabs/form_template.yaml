@@ -21,7 +21,7 @@ properties:
   important: true
   name: icons
   type: text[]
-- {default_binding_prop: true, default_value: 0, description: 'The position of the selected tab, counting from 0.', group: Key Properties, important: true, name: selected_index, type: number}
+- {allow_binding_writeback: true, binding_writeback_events: [change], default_binding_prop: true, default_value: 0, description: 'The position of the selected tab, counting from 0.', group: Key Properties, important: true, name: selected_index, type: number}
 - default_value: primary
   description: primary tabs sit at the top of a page and switch its main views. secondary tabs sit inside a part of a page and switch its content.
   group: Key Properties

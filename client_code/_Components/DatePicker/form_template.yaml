@@ -9,7 +9,7 @@ events:
 - {description: When the date picker is removed from the screen., name: hide}
 is_package: true
 properties:
-- {default_binding_prop: true, description: 'The chosen date, as a datetime.date. None when empty.', group: Key Properties, important: true, name: date, type: object}
+- {allow_binding_writeback: true, binding_writeback_events: [change], default_binding_prop: true, description: 'The chosen date, as a datetime.date. None when empty.', group: Key Properties, important: true, name: date, type: object}
 - {default_value: Date, description: The label of the field., group: Key Properties, important: true, name: label, type: string}
 - {default_value: '%d/%m/%Y', description: 'How the date is written in the field, using %d (day), %m (month number), %b (short month name), %B (month name), %Y (year) and %y (two-digit year).', group: Key Properties, important: true, name: format, type: string}
 - {description: 'The earliest date that can be chosen, as a datetime.date. None for no limit.', group: Key Properties, important: false, name: min_date, type: object}
